@@ -1,0 +1,108 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+	Fonction utilisée pour insérer une image. L'image doit être située dans le répertoire "img"
+	Paramètres : 
+	#1 : Positionnement de l'image [Paramètre optionnel]
+			H 	Place le flottant ici, c'est-à-dire à l'endroit auquel il apparaît dans le texte source.
+			t 	Position en haut de la page.
+			b 	Position en bas de la page.
+			p 	Place sur une page particulière réservée aux flottants.
+			! 	Passe outre les paramètres internes que Latex utilise pour déterminer une position optimale des flottants. (déconseillé)
+	#2 : échelle de l'image
+	#3 : nom absolu du fichier (extension du fichier comprise)
+	#4 : Commentaire affiché sous l'image
+	#5 : id de l'image (utile pour y faire référence par la suite)
+	Exemple d'utilisation :
+	\newImage{2}{test.png}{ceci est un test}{test} : Laisser LateX se demerder pour placer au mieux
+	\newImage[H]{2}{test.png}{ceci est un test}{test} : Forcer le placement de l'image à cet endroit exact.
+\end{comment}
+\newcommand{\newImage}[5][h]
+{
+\begin{figure}[#1]
+    \centering
+    \includegraphics[scale=#2]{img/#3}
+    \caption{#4}
+    \label{fig:#5}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Same as before, but annexe without captions.
+\newcommand{\newImageAnnexe}[4][h]
+{
+\begin{figure}[#1]
+    \centering
+    \includegraphics[scale=#2]{img/#3}
+    \label{annexe:#4}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+	Fonction utilisée pour ajouter une URL.
+	@see http://timmurphy.org/2010/04/04/referencing-website-urls-with-latex-bibtex/ ?
+	Paramètres : 
+	#1 : url (doit OBLIGATOIREMENT faire référence à un id de main.bib)
+	#2 : Nom donné
+	Exemple d'utilisation :
+	\addURL{www.google.fr}{Google}
+\end{comment}
+\newcommand{\addURL}[2]
+{
+#2\footnote{#1 (cf. entrée \cite{#1} des références)}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+	Fonction pour ajouter un acronyme contenant une définition au glossaire.
+	Paramètres : 
+	#1 : id acronyme
+	#2 : Nom acronyme court
+	#3 : Nom complet acronyme
+	#4 : Description dans le glossaire
+
+	Exemple d'utilisation :
+	\newAcronym{API}{API}{Application Programming Interface}{Définition de API}
+\end{comment}
+\newcommand{\newAcronym}[4]
+{
+	\newglossaryentry{#1}
+	{
+			name={#2},
+			description={#4},
+			first={\glsentrylong{#1} (#2)},
+			long={#3}
+	}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% http://www.developpez.net/forums/d961640/autres-langages/autres-langages/latex/mise-forme/referencer-annexe/#post5400726
+% Pas un grand intérêt, mais à garder sous le coude, on sait jamais.
+\newcommand{\annexe}[1]{annexe~\ref{#1} (page~\pageref{#1})}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+	Quelques commandes utiles pour la compilation avec un index ou des références.
+	
+	Build Glossaries
+		- "makeindex.exe -s main.ist -t main.glg -o main.gls main.glo"
+	
+	Build References
+	- "bibtex main"
+	
+	Exemple bibliographie dans le fichier main.bib :
+	\@Misc{ 
+		google, % Identifiant pour y faire références
+		note = {}, % Une note optionnelle
+		title = {Google}, % Titre
+		author = {\url{google.com}} % Lien vers URL ou titre du livre.
+	}
+	
+	Créer des tableaux LateX facilement
+	http://www.tablesgenerator.com
+	
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is where the magic happens..
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}

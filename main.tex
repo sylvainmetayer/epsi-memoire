@@ -1,0 +1,95 @@
+% Magic comment to tell latex to compile with lualatex
+% !TeX program = lualatex
+
+\documentclass[11pt,a4paper]{article}
+
+\input{packages}
+\input{parameters}
+\input{fonctions}
+
+% Définir le titre des annexes dans le sommaire (ne marche pas si mis dans parameters)
+\renewcommand{\addappheadtotoc}{Annexes}
+
+% Création glossaire
+\makeglossaries
+% Chargements des entrées du glossaire. APRES \makeglossaries
+\loadglsentries{glossaire.tex}
+
+% Début du document
+\begin{document}	
+	\pagestyle{plain} % Juste le numero de page pour en-tête / pied de page.
+	\pagenumbering{gobble} % pas de numérotation
+	\input{content/cover} 
+\newpage
+	~ % Hide summary page.
+\newpage
+	%% TODO Listing. Comment this page before printing !
+	\listoftodos 
+\newpage
+	% Define Sommaire instead of "Table of Content"
+	\renewcommand{\contentsname}{Sommaire}
+	\tableofcontents
+\newpage
+	\pagenumbering{\numerotationType} % start numerotation
+	\section*{Introduction}
+	\addcontentsline{toc}{section}{Introduction} % ajout de la référence dans la table des matières
+	\input{content/introduction}
+\newpage
+	%%%%%%%%%%%%%%%% FANCY %%%%%%%%%%%%%%%%%
+	% Fancy header / footer
+	\pagestyle{fancy}
+	
+	% Obtenir le nom de la section/sous-section sans le numero
+	\renewcommand{\sectionmark}[1]{\markright{#1}}
+	\renewcommand{\subsectionmark}[1]{\markright{#1}}
+	\renewcommand{\subsubsectionmark}[1]{\markright{#1}}
+	
+	%% HEADER
+	%\renewcommand{\headrulewidth}{0.4pt}
+	\lhead{\fancyplain{}{}}
+	\chead{\fancyplain{}}
+	\rhead{\fancyplain{}{\rightmark}}
+	
+	%% FOOTER
+	%\renewcommand{\footrulewidth}{0.4pt}
+	\lfoot{\fancyplain{}{}}	
+	\cfoot{\fancyplain{}{}}	
+	\rfoot{\fancyplain{}{\thepage}}
+	%%%%%%%%%%%%%%%% END FANCY %%%%%%%%%%%%
+
+  \section{Context}
+	\input{content/contexte}
+\newpage
+	\section{Main Content}
+	\input{content/content_part1}
+\newpage
+	\pagestyle{plain} % Juste le numero de page pour en-tête / pied de page à partir de maintenant
+	\section*{Conclusion}
+	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
+	\input{content/conclusion}
+\newpage
+	\addcontentsline{toc}{section}{Glossaire, références, tables des codes, des figures, des tableaux et annexes}
+	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
+  \printglossaries % afficher le glossaire
+\newpage
+	\nocite{*} % Add all bibliography items that have not been listed yet.
+	\bibliographystyle{unsrt} 
+	\bibliography{main}{}
+	\clearpage
+
+	\listoffigures 
+	\listoflistings
+	\listoftables
+\newpage
+	\pagenumbering{gobble} % No numerotation
+	\vspace*{\stretch{1}}
+		\begin{center}
+			\begin{Huge}
+				\section*{\MakeUppercase{Annexes}} 
+			\end{Huge}
+		\end{center}
+	\vspace*{\stretch{1}}
+\newpage
+	\appendix % Annexes with A, B, C, D numerotation
+	\input{content/annexes}
+\end{document}

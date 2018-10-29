@@ -1,0 +1,17 @@
+Table example : 
+
+% Créer des tableaux LateX facilement
+% http://www.tablesgenerator.com
+\begin{table}[H] % Le paramètre H (majuscule) signifie : place cet élément à cet endroit précisement.
+\centering
+\begin{tabular}{|c|l|l|l|}
+\hline
+\textbf{Utilisateur} & \multicolumn{1}{c|}{\textbf{Version 1}} & \multicolumn{1}{c|}{\textbf{Version 2}} & \multicolumn{1}{c|}{\textbf{Version 3}} \\ \hline
+\textit{Pierre} & Non & Non & Oui \\ \hline
+\textit{Paul} & Oui & Oui & Non \\ \hline
+\textit{Jacques} & Oui & Oui & Non \\ \hline
+\textit{Hector} & Oui & Oui & Oui \\ \hline
+\end{tabular}
+\caption{Accès des différents utilisateurs aux différents versions}
+\label{tab:versions}
+\end{table}

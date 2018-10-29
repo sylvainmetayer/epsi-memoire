@@ -1,0 +1,35 @@
+% Entrées du glossaire + acronymes
+
+\begin{comment}
+Glossaire : 
+  Nouvelle entrée :
+    \newglossaryentry{test} % l'id référençant cette entrée
+    {%
+        name={test}, % le terme à référencer (l'entrée qui apparaîtra dans le glossaire)
+        description={<description>}, % la description du terme (sans retour à la ligne),
+        plural={tests} % au pluriel
+    }
+  Usage : 
+    \gls{test} Retourne "test"
+    \Gls{test} Retourne "Test"
+    \glsplural{test} Retourne "tests"
+    \Glsplural{test} Retourne "Tests"
+        
+Pour des mots utilisés fréquemment, petite astuce : 
+	\newcommand{\bsr}{bilan scientifique régional} 
+Ensuite, dans le contenu, il suffit d'y faire référence comme ceci : "\bsr{}"
+\end{comment}
+
+%%%%%%%%%%%%% TERMES DU GLOSSAIRE %%%%%%%%%%%%%%%
+
+		\newglossaryentry{framework}
+    {%
+        name={framework},
+        description={(Anglicisme informatique) Ensemble de composants structurels permettant de construire des logiciels ou des sites internet}
+    }
+
+%%%%%%%%%%%%% ACRONYMES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newAcronym{HTML}{HTML}{Hypertext Markup Language}{L’Hypertext Markup Language, généralement abrégé HTML, est le format de données conçu pour représenter les pages web}		
+
+%%%%%%%%%%%% MOT UTILISES FREQUEMMENT / VARIABLES %%%%%%%%%%%%
+\newcommand{\macOS}{Mac OS}
