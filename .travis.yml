@@ -1,0 +1,23 @@
+language: generic
+
+before_install:
+ - sudo apt-get install python-pygments make
+install:
+ - source ./.travisci/texlive_install.sh
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+before_script: cd $TRAVIS_BUILD_DIR/
+script:
+  - make build
+deploy:
+  provider: releases
+  skip_cleanup: true
+  before_deploy: "make soft_clean"
+  api_key:
+    secure: $CI_TOKEN
+  file:
+    - ./main.pdf
+  on:
+    branch: master

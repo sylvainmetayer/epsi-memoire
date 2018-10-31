@@ -7,6 +7,8 @@ build:
 	makeglossaries ${filename}
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 
-clean:
-	rm -f ${filename}.{ps,pdf,log,aux,out,dvi,bbl,blg,glg,glo,gls,ist,lof,lol,lot,synctex.gz,tdo,toc}
+clean: soft_clean
+	rm -f ${filename}.pdf
 
+soft_clean: # Remove everything but keep the PDF. Used in TravisCI
+	rm -f ${filename}.{ps,log,aux,out,dvi,bbl,blg,glg,glo,gls,ist,lof,lol,lot,synctex.gz,tdo,toc}
