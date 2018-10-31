@@ -10,6 +10,9 @@
 # Find directory this file is in, to find the texlive.profile file.
 BASEDIR=$(pwd -P)
 
+echo $BASEDIR
+echo "TOCARD"
+
 # See if there is a cached version of TL available
 export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 if ! command -v texlua > /dev/null; then
