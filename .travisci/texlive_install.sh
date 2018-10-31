@@ -8,10 +8,7 @@
 # required
 
 # Find directory this file is in, to find the texlive.profile file.
-BASEDIR=$(pwd -P)
-
-echo $BASEDIR
-echo "TOCARD"
+BASEDIR="$(pwd -P)/.travisci"
 
 # See if there is a cached version of TL available
 export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
@@ -45,7 +42,7 @@ tlmgr install collection-langeuropean
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # One package per line in texive_packages
 # We need to change the working directory before including a file
-cd "$(dirname "${BASH_SOURCE[0]}")"
+cd "$(pwd -P)"
 tlmgr install "$(cat texlive_packages)"
 
 # Keep no backups (not required, simply makes cache bigger)
