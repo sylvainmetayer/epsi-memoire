@@ -7,6 +7,9 @@
 # A minimal current TL is installed adding only the packages that are
 # required
 
+# Find directory this file is in, to find the texlive.profile file.
+BASEDIR=$(pwd -P)
+
 # See if there is a cached version of TL available
 export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 if ! command -v texlua > /dev/null; then
@@ -15,8 +18,6 @@ if ! command -v texlua > /dev/null; then
   tar -xzf install-tl-unx.tar.gz
   cd install-tl-20*
 
-  # Find directory this file is in, to find the texlive.profile file.
-  BASEDIR=$( cd "$(dirname ${BASH_SOURCE[0]})"; pwd -P )
 
   # Install a minimal system
   ./install-tl --profile="$BASEDIR"/texlive.profile
