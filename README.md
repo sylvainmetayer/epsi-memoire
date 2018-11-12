@@ -16,4 +16,6 @@
 
 - `git tag -a v1.4 -m "my version 1.4"`
 
+Then remember to push tags with `git push --tags`
+
 PDF will be build on every tags.
