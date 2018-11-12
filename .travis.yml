@@ -7,7 +7,7 @@ addons:
     packages:
       - texlive-full
 before_install:
- - sudo apt-get install python-pygments make xzdec texlive-latex-extra
+ - sudo apt-get install python-pygments make aspell aspell-fr aspell-en
 cache:
   directories:
     - /tmp/texlive
@@ -16,6 +16,7 @@ cache:
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
   - make build
+  - make ci-spellcheck
 deploy:
   provider: releases
   skip_cleanup: true
