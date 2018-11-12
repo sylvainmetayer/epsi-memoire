@@ -1,13 +1,22 @@
-language: generic
+sudo: require
+dist: xenial
+language: bash
 
+addons:
+  apt:
+    packages:
+      - texlive-full
 before_install:
- - sudo apt-get install python-pygments make lmodern
-install:
- - source ./.travisci/texlive_install.sh
+ - sudo apt-get install python-pygments make xzdec texlive-latex-extra
+ #- tlmgr init-usertree
+ #- tlmgr install shellesc
+#install:
+# - source ./.travisci/texlive_install.sh
 cache:
   directories:
     - /tmp/texlive
     - $HOME/.texlive
+  apt: true
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
   - make build

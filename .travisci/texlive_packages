@@ -50,3 +50,6 @@ imakeidx
 graphics
 tools
 oberdiek
+xpatch
+xparse
+expl3

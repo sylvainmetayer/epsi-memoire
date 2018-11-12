@@ -25,6 +25,8 @@ if ! command -v texlua > /dev/null; then
   cd ..
 fi
 
+tlmgr init-usertree
+
 # Just including texlua so the cache check above works
 # Needed for any use of texlua even if not testing LuaTeX
 tlmgr install luatex
@@ -44,6 +46,8 @@ tlmgr install collection-langeuropean
 # We need to change the working directory before including a file
 cd "$(pwd -P)"
 tlmgr install "$(cat texlive_packages)"
+
+luaotfload-tool --update
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
