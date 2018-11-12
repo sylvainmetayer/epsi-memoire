@@ -8,10 +8,6 @@ addons:
       - texlive-full
 before_install:
  - sudo apt-get install python-pygments make xzdec texlive-latex-extra
- #- tlmgr init-usertree
- #- tlmgr install shellesc
-#install:
-# - source ./.travisci/texlive_install.sh
 cache:
   directories:
     - /tmp/texlive
@@ -30,3 +26,5 @@ deploy:
     - ./main.pdf
   on:
     branch: master
+    tags: true
+
