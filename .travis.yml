@@ -24,7 +24,7 @@ deploy:
   api_key:
     secure: $CI_TOKEN
   file:
-    - ./main.pdf
+    - ./M19_SYLVAINMETAYER.pdf
   on:
     branch: master
     tags: true
