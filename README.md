@@ -7,6 +7,7 @@
 ## Pre-requis
 
 - `latex-full`
+- `python-pygments`
 
 ## Build
 
