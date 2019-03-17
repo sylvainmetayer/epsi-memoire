@@ -1,6 +1,7 @@
 # Mémoire EPSI
 
 [![Build Status](https://travis-ci.org/sylvainmetayer/epsi-memoire.svg?branch=master)](https://travis-ci.org/sylvainmetayer/epsi-memoire)
+![GitHub release](https://img.shields.io/github/release/sylvainmetayer/epsi-memoire.svg)
 
 > Mémoire EPSI - Promotion 2019 - Sylvain METAYER
 
