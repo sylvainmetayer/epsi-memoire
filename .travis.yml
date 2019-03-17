@@ -29,6 +29,10 @@ deploy:
       tags: true
   - provider: releases
     skip_cleanup: true
+    name: "$TRAVIS_BRANCH"
+    body: |
+      Commit $TRAVIS_COMMIT
+      Message $TRAVIS_COMMIT_MESSAGE
     draft: true
     before_deploy: "make soft_clean"
     api_key:
