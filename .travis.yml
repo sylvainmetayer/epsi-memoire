@@ -16,7 +16,6 @@ cache:
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
   - make build
-  - make ci-spellcheck
 deploy:
   provider: releases
   skip_cleanup: true
