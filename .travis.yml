@@ -39,4 +39,7 @@ deploy:
       secure: $CI_TOKEN
     file:
       - ./M19_SYLVAINMETAYER.pdf
-    all_branches: true
+    on:
+      branches:
+        only:
+          - /.*/
