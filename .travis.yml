@@ -42,4 +42,4 @@ deploy:
     on:
       branches:
         only:
-          - /.*/
+          - /feature\/.*/
