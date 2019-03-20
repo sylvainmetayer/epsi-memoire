@@ -26,12 +26,24 @@
 	%% TODO Listing. Comment this page before printing !
 	\listoftodos 
 \newpage
+	\section*{Remerciements}
+	\input{content/remerciements}
+\newpage
 	% Define Sommaire instead of "Table of Content"
 	\renewcommand{\contentsname}{Sommaire}
 	\tableofcontents
 \newpage
+\newpage
 	\pagenumbering{\numerotationType} % start numerotation
-	\section*{Introduction}
+	\includepdf[scale=0.8,pagecommand=\section{Attestation de non plagiat}, offset=0 -2cm]{docs/non-plagiat.pdf}
+\newpage
+	\section{Résumé}
+	\input{content/resume}
+\newpage
+	\section{Abstract}
+	\input{content/abstract}
+\newpage
+	\section{Introduction}
 	\addcontentsline{toc}{section}{Introduction} % ajout de la référence dans la table des matières
 	\input{content/introduction}
 \newpage
@@ -73,7 +85,7 @@
 	\input{content/limites}
 \newpage
 	\pagestyle{plain} % Juste le numero de page pour en-tête / pied de page à partir de maintenant
-	\section*{Conclusion}
+	\section{Conclusion}
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
 	\input{content/conclusion}
 \newpage
