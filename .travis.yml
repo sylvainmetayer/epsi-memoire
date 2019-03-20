@@ -22,24 +22,10 @@ deploy:
     before_deploy: "make soft_clean"
     api_key:
       secure: $CI_TOKEN
+    prerelease: true
     file:
       - ./M19_SYLVAINMETAYER.pdf
     on:
       branch: master
       tags: true
-  - provider: releases
-    skip_cleanup: true
-    name: "$TRAVIS_BRANCH"
-    body: |
-      Commit $TRAVIS_COMMIT
-      Message $TRAVIS_COMMIT_MESSAGE
-    draft: true
-    before_deploy: "make soft_clean"
-    api_key:
-      secure: $CI_TOKEN
-    file:
-      - ./M19_SYLVAINMETAYER.pdf
-    on:
-      branches:
-        only:
-          - /feature\/.*/
+
