@@ -35,15 +35,18 @@
 \newpage
 \newpage
 	\pagenumbering{\numerotationType} % start numerotation
-	\includepdf[scale=0.8,pagecommand=\section{Attestation de non plagiat}, offset=0 -2cm]{docs/non-plagiat.pdf}
+	\includepdf[scale=0.8,pagecommand=\section*{Attestation de non plagiat}, offset=0 -2cm]{docs/non-plagiat.pdf}
+	\addcontentsline{toc}{section}{Attestation de non plagiat} % ajout de la référence dans la table des matières
 \newpage
-	\section{Résumé}
+	\section*{Résumé}
+	\addcontentsline{toc}{section}{Resumé} % ajout de la référence dans la table des matières
 	\input{content/resume}
 \newpage
-	\section{Abstract}
+	\section*{Abstract}
+	\addcontentsline{toc}{section}{Abstract} % ajout de la référence dans la table des matières
 	\input{content/abstract}
 \newpage
-	\section{Introduction}
+	\section*{Introduction}
 	\addcontentsline{toc}{section}{Introduction} % ajout de la référence dans la table des matières
 	\input{content/introduction}
 \newpage
@@ -85,7 +88,7 @@
 	\input{content/limites}
 \newpage
 	\pagestyle{plain} % Juste le numero de page pour en-tête / pied de page à partir de maintenant
-	\section{Conclusion}
+	\section*{Conclusion}
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
 	\input{content/conclusion}
 \newpage
