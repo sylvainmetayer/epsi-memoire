@@ -22,7 +22,6 @@ deploy:
     before_deploy: "make soft_clean"
     api_key:
       secure: $CI_TOKEN
-    prerelease: true
     file:
       - ./M19_SYLVAINMETAYER.pdf
     on:
