@@ -6,8 +6,10 @@ pdfname=M19_SYLVAINMETAYER
 build:
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 	makeglossaries ${filename}
+	bibtex "${filename}".aux
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
-	mv ${filename}.pdf ${pdfname}.pdf
+	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
+	cp ${filename}.pdf ${pdfname}.pdf
 
 clean: soft_clean
 	rm -f ${pdfname}.pdf
