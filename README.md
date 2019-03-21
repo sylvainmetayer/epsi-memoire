@@ -16,7 +16,7 @@
 
 ## Tags
 
-- `git tag -a v1.4 -m "my version 1.4"`
+- `make tag`
 
 Then remember to push tags with `git push --tags`
 

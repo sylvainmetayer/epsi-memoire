@@ -11,6 +11,13 @@ build:
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 	cp ${filename}.pdf ${pdfname}.pdf
 
+version:
+	@echo -n "Dernière version : "
+	@git describe --abbrev=0 --tags
+
+tag: version
+	@echo "Numéro de version?"; read tag; echo "Message du tag ?"; read message; git tag -a $$tag -m "$$message"; git push --tags
+
 clean: soft_clean
 	rm -f ${pdfname}.pdf
 
@@ -19,6 +26,6 @@ soft_clean: # Remove everything but keep the PDF. Used in TravisCI
 
 spellcheck:
 	./.spellcheck/check.sh main.tex
-
+	
 ci-spellcheck:
 	./.spellcheck/non-interactive-check.sh main.tex
