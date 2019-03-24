@@ -1,3 +1,9 @@
+\todo{Automatiser un projet}
+
+\subsection{Partie Management, gestion de projet}
+
+Pré-requis, comment gérer la mise en place avec le management, ... Gérer les différentes personnes impliquées, ...
+
 \subsection{Localement, lors des phases de développement}
 
 But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et soit donc sur le dépôt Git).
@@ -10,7 +16,7 @@ But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et so
  	\item Git hook pour vérifier que tout est ok.
  \end{itemize}
 
-\subsection{Intégration continue}
+\subsection{Intégration et déploiement continu}
 
 Retour le plus rapide possible pour éviter des bugs en prod. 
 
@@ -22,11 +28,10 @@ Intégration des tests dans gitlab-ci / jenkins
 
 Monitoring : monit pour monitorer l'état d'application ? (perso)
 
-\subsection{Déploiement continu}
-
 Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recette, intégration, staging, et lorsque tout passe, en production.
 
-\todo{parler de \clubSportif Automatisation de la création de la base de données (projet club sportif) et de la restauration des données}
+\textit{Exemple : parler de \clubSportif Automatisation de la création de la base de données (projet club sportif) et de la restauration des données}
+
 
 \subsection{L'importance des tests}
 
@@ -40,4 +45,9 @@ différence entre intégration continue et tests unitaire (image du lavabo + sé
 
 Gestion des tokens, gestion des comptes.
 Un compte admin ou plusieurs sous compte avec des droits limités ? En cas d'intrusion, un attaquant a moins de chance de corrompre tout le système.
-Infra : restricition d'accès (htaccess / firewall / ..?)
+Infra : restriction d'accès (htaccess / firewall / ..?)
+
+
+Attention à l'endroit ou sont fait les builds/tests. Il est préférable, pour des raisons de sécurité évidente d'utiliser un outil auto-hébergé, open source, plutôt que des outils clés en main, ou les données sont envoyées sur des serveurs inconnus. 
+
+Dans certains cas, l'application ne doit pas quitter le périmètre de l'entreprise,il faut donc avoir la maitrise totale de la chaine d'industrialisation
