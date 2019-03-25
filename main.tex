@@ -86,19 +86,25 @@
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
 	\input{content/conclusion}
 \newpage
-	\addcontentsline{toc}{section}{Glossaire, références, tables des codes, des figures, des tableaux et annexes}
+	\addcontentsline{toc}{section}{Glossaire}
 	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
-  \printglossaries % afficher le glossaire
+	\printglossaries % afficher le glossaire
 \newpage
+	\addcontentsline{toc}{section}{Références}
 	\nocite{*} % Add all bibliography items that have not been listed yet.
 	\bibliographystyle{unsrtnat} 
 	\bibliography{main}{}
-	\clearpage
-
+\newpage
+	\addcontentsline{toc}{section}{Liste des figures}
 	\listoffigures 
+\newpage
+	\addcontentsline{toc}{section}{Liste des code sources}
 	\listoflistings
+\newpage
+	\addcontentsline{toc}{section}{Liste des tableaux}
 	\listoftables
 \newpage
+	\addcontentsline{toc}{section}{Annexes}
 	\pagenumbering{gobble} % No numerotation
 	\vspace*{\stretch{1}}
 		\begin{center}
