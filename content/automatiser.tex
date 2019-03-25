@@ -1,5 +1,11 @@
 \todo{Automatiser un projet}
 
+\subsection{Contexte}
+
+\textit{Projet \bv{}, ou il y a une architecture actuelle qui n'est pas satisfaisante pour X raisons (reproductiblité, ...), et qui doit être changé}.
+
+\textit{Elaborer un schéma directeur à partir d’orientations stratégiques} => Conduite de changement
+
 \subsection{Partie Management, gestion de projet}
 
 Pré-requis, comment gérer la mise en place avec le management, ... Gérer les différentes personnes impliquées, ...
@@ -16,6 +22,14 @@ But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et so
  	\item Git hook pour vérifier que tout est ok.
  \end{itemize}
 
+\subsection{L'importance des tests}
+
+Tout l'automatisation ne sert à rien sans une bonne campagne de tests, fonctionnel, unitaire, d'intégration, E2E, ...
+
+Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métier.
+
+différence entre intégration continue et tests unitaire (image du lavabo + séchoir à mains côte à côte). Les test unitaires vont tester la cohérence d'une partie du système tandis que l'intégration va tester la cohérence de l'échange entre divers systèmes / fonctions.
+
 \subsection{Intégration et déploiement continu}
 
 Retour le plus rapide possible pour éviter des bugs en prod. 
@@ -24,22 +38,13 @@ Vérifier les dépendances (failles, ...)
 
 le reporting de bug automatique (sentry.io)
 
-Intégration des tests dans gitlab-ci / jenkins
+Intégration des tests dans jenkins
 
 Monitoring : monit pour monitorer l'état d'application ? (perso)
 
 Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recette, intégration, staging, et lorsque tout passe, en production.
 
 \textit{Exemple : parler de \clubSportif Automatisation de la création de la base de données (projet club sportif) et de la restauration des données}
-
-
-\subsection{L'importance des tests}
-
-Tout l'automatisation ne sert à rien sans une bonne campagne de tests, fonctionnel, unitaire, d'intégration, E2E, ...
-
-Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métier.
-
-différence entre intégration continue et tests unitaire (image du lavabo + séchoir à mains côte à côte). Les test unitaires vont tester la cohérence d'une partie du système tandis que l'intégration va tester la cohérence de l'échange entre divers systèmes / fonctions.
 
 \subsection{Et la sécurité dans tout ça ?}
 
