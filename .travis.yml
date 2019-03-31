@@ -5,12 +5,8 @@ language: bash
 env:
   - PDF_NAME=M19_SYLVAINMETAYER.pdf
   - PAPER_NAME=M19_SYLVAINMETAYER_PAPER.pdf
-addons:
-  apt:
-    packages:
-      - texlive-full
-      - make
-      - python-pygments
+before_install:
+  - sudo apt-get install -y --no-install-recommends texlive-full make python-pygments
 cache:
   directories:
     - /tmp/texlive
@@ -37,3 +33,4 @@ deploy:
     on:
       branch: master
       tags: true
+
