@@ -14,6 +14,8 @@ Comment l'automatisation peut permettre d'améliorer le cycle de vie d'une appli
 - `latex-full`
 - `python-pygments`
 
+Si l'IDE utilisé pour LateX est TexStudio, il peut être bien d'installer également [LanguageTool](https://languagetool.org/download/) afin de pouvoir profiter d'une correction orthographique complète.
+
 ## Build
 
 - `make build`
