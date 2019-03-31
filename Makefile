@@ -9,7 +9,6 @@ build:
 	bibtex "${filename}".aux
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
-	cp ${filename}.pdf ${pdfname}.pdf
 
 version:
 	@echo -n "Dernière version : "
@@ -19,7 +18,7 @@ tag: version
 	@echo "Numéro de version?"; read tag; echo "Message du tag ?"; read message; git tag -a $$tag -m "$$message"; git push --tags
 
 clean: soft_clean
-	rm -f ${pdfname}.pdf
+	rm -f ${filename}.pdf
 
 soft_clean: # Remove everything but keep the PDF. Used in TravisCI
 	rm -f ${filename}.{ps,log,aux,out,dvi,bbl,blg,glg,glo,gls,ist,lof,lol,lot,synctex.gz,tdo,toc}
@@ -29,3 +28,11 @@ spellcheck:
 	
 ci-spellcheck:
 	./.spellcheck/non-interactive-check.sh main.tex
+
+paper:
+	sed -i 's/% \\toggletrue{paper}/\\toggletrue{paper}/' parameters.tex
+	sed -i 's/\\togglefalse{paper}/% \\togglefalse{paper}/' parameters.tex
+
+computer:
+	sed -i 's/\\toggletrue{paper}/% \\toggletrue{paper}/' parameters.tex
+	sed -i 's/% \\togglefalse{paper}/\\togglefalse{paper}/' parameters.tex

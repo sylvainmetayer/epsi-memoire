@@ -6,8 +6,8 @@ addons:
   apt:
     packages:
       - texlive-full
-before_install:
- - sudo apt-get install python-pygments make aspell aspell-fr aspell-en
+      - make
+      - python-pygments
 cache:
   directories:
     - /tmp/texlive
@@ -15,7 +15,13 @@ cache:
   apt: true
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
+  - make computer
   - make build
+  - mv main.pdf M19_SYLVAINMETAYER.pdf
+  - make clean
+  - make paper
+  - make build # Now, we want to build the paper version, which has differents margins.
+  - mv main.pdf M19_SYLVAINMETAYER_PAPER.pdf
 deploy:
   - provider: releases
     skip_cleanup: true
@@ -24,7 +30,7 @@ deploy:
       secure: $CI_TOKEN
     file:
       - ./M19_SYLVAINMETAYER.pdf
+      - ./M19_SYLVAINMETAYER_PAPER.pdf
     on:
       branch: master
       tags: true
-
