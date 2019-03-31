@@ -2,6 +2,9 @@ sudo: require
 dist: xenial
 language: bash
 
+env:
+  - PDF_NAME=M19_SYLVAINMETAYER.pdf
+  - PAPER_NAME=M19_SYLVAINMETAYER_PAPER.pdf
 addons:
   apt:
     packages:
@@ -17,11 +20,11 @@ before_script: cd $TRAVIS_BUILD_DIR/
 script:
   - make computer
   - make build
-  - mv main.pdf M19_SYLVAINMETAYER.pdf
+  - mv main.pdf $PDF_NAME
   - make clean
   - make paper
   - make build # Now, we want to build the paper version, which has differents margins.
-  - mv main.pdf M19_SYLVAINMETAYER_PAPER.pdf
+  - mv main.pdf $PAPER_NAME
 deploy:
   - provider: releases
     skip_cleanup: true
@@ -29,8 +32,8 @@ deploy:
     api_key:
       secure: $CI_TOKEN
     file:
-      - ./M19_SYLVAINMETAYER.pdf
-      - ./M19_SYLVAINMETAYER_PAPER.pdf
+      - ./$PDF_NAME
+      - ./$PAPER_NAME
     on:
       branch: master
       tags: true
