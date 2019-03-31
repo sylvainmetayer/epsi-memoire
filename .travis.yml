@@ -3,8 +3,9 @@ dist: xenial
 language: bash
 
 env:
-  - PDF_NAME=M19_SYLVAINMETAYER.pdf
-  - PAPER_NAME=M19_SYLVAINMETAYER_PAPER.pdf
+  global:
+    - PDF_NAME=M19_SYLVAINMETAYER.pdf
+    - PAPER_NAME=M19_SYLVAINMETAYER_PAPER.pdf
 before_install:
   - sudo apt-get install -y --no-install-recommends texlive-full make python-pygments
 cache:
