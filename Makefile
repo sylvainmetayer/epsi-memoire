@@ -31,5 +31,3 @@ computer:
 	sed -i 's/\\toggletrue{paper}/% \\toggletrue{paper}/' parameters.tex
 	sed -i 's/% \\togglefalse{paper}/\\togglefalse{paper}/' parameters.tex
 
-view: build
-	open ${filename}.pdf
