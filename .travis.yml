@@ -12,11 +12,11 @@ cache:
   directories:
     - /tmp/texlive
     - $HOME/.texlive
+    - $HOME/.cache/latex
   apt: true
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
-  - make computer && make build && mv main.pdf $PDF_NAME # PDF
-  - make clean && make paper && make build && mv main.pdf $PAPER_NAME # Paper, with differents margins
+  - make computer && make && mv main.pdf $PDF_NAME && make clean && make paper && make && mv main.pdf $PAPER_NAME
 deploy:
   - provider: releases
     skip_cleanup: true
