@@ -16,7 +16,8 @@ cache:
   apt: true
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
-  - make computer && make && mv main.pdf $PDF_NAME && make clean && make paper && make && mv main.pdf $PAPER_NAME
+  - make && mv main.pdf $PDF_NAME
+  - make clean && make paper && make && mv main.pdf $PAPER_NAME
 deploy:
   - provider: releases
     skip_cleanup: true

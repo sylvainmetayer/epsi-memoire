@@ -23,11 +23,6 @@ soft_clean: # Remove everything but keep the PDF. Used in TravisCI
 	rm -f ${filename}.{ps,log,aux,out,dvi,bbl,blg,glg,glo,gls,ist,lof,lol,lot,synctex.gz,tdo,toc}
 
 paper:
-	sed -i'' 's/% \\toggletrue{paper}/\\toggletrue{paper}/' parameters.tex
-	sed -i'' 's/\\togglefalse{paper}/% \\togglefalse{paper}/' parameters.tex
-	grep "toggle" parameters.tex
-
-computer:
-	sed -i 's/\\toggletrue{paper}/% \\toggletrue{paper}/' parameters.tex
-	sed -i 's/% \\togglefalse{paper}/\\togglefalse{paper}/' parameters.tex
+	sed -i 's/% \\toggletrue{paper}/\\toggletrue{paper}/' parameters.tex
+	sed -i 's/\\togglefalse{paper}/% \\togglefalse{paper}/' parameters.tex
 
