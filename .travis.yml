@@ -2,6 +2,11 @@ sudo: require
 dist: xenial
 language: bash
 
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+
 env:
   global:
     - PDF_NAME=M19_SYLVAINMETAYER.pdf
