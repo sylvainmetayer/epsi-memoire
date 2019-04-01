@@ -15,13 +15,8 @@ cache:
   apt: true
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
-  - make computer
-  - make build
-  - mv main.pdf $PDF_NAME
-  - make clean
-  - make paper
-  - make build # Now, we want to build the paper version, which has differents margins.
-  - mv main.pdf $PAPER_NAME
+  - make computer && make build && mv main.pdf $PDF_NAME # PDF
+  - make clean && make paper && make build && mv main.pdf $PAPER_NAME # Paper, with differents margins
 deploy:
   - provider: releases
     skip_cleanup: true
