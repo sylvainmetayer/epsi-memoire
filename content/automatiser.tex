@@ -4,25 +4,51 @@
 
 Pré-requis, comment gérer la mise en place avec le management, ... Gérer les différentes personnes impliquées, ...
 
+- Définir les personnes responsables du projet
+
+- Définir les personnes responsables financièrement du projet. Ce sont elles qui pourront être les plus difficile à convaincre
+
+- Définir les personne réfractaire au changement. Exemple : développeur de 55-60 ans, qui a toujours fait d'une façon, et qui a 4-5 ans de la retraite, ne voit pas l'intérêt de changer de méthodes.
+
+- Gérer le flux de travail, pour ne pas se retrouver submerger.
+
+- First Way (DevOps handbook) : Gérer le flux de travail. 
+
+- Voir le travail à faire (Kanban)
+
+- Limiter le travail en cours (WIP) pour éviter que tout soit en cours et que rien ne se termine
+
+- Limiter les trop grosses livraisons, pour éviter l'effet "n'en finit jamais". Mieux vaut livrer 4 fois des petites fonctionnalités qu'une seule grosse, avec 3 mois de retard.
+
+- Second Way : Feedback. retour entre dev et ops. Besoin de métrique pour pouvoir savoir ou / comment intervenir. Résoudre les problèmes lorsqu'ils arrivent plutôt que les laisser grandir et devenir trop important.
+
+- Third Way : Apprentissage continu. Prévoir du temps pour améliorer l'environnement de travail, les déploiements  \& co.
+
+- Partage de connaissance, pour construire une équipe qui puisse s'adapter.
+
+- Résilience de l'application, tester l'application sous différents angles continuellement afin de vérifier qu'elle se comporte correctement.
+
 \subsection{Localement, lors des phases de développement}
 
 But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et soit donc sur le dépôt Git).
 
- \begin{itemize}
- 	\item Linter
- 	\item Docker, stack reproductible et indépendante selon environnement (windows/linux/mac) 
- 	\item IDE à configurer, éventuellement partager la configuration (ex: PHP Storm Code Style)
- 	\item Makefile / scripts shell de taches récurrentes (cache clear, installation, ...)
- 	\item Git hook pour vérifier que tout est ok.
- \end{itemize}
+-  Linter
+
+-  Docker, stack reproductible et indépendante selon environnement (windows/linux/mac) 
+
+- IDE à configurer, éventuellement partager la configuration (ex: PHP Storm Code Style)
+
+-  Makefile / scripts shell de taches récurrentes (cache clear, installation, ...)
+
+- Git hook pour vérifier que tout est ok.
 
 \subsection{L'importance des tests}
 
 Tout l'automatisation ne sert à rien sans une bonne campagne de tests, fonctionnel, unitaire, d'intégration, E2E, ...
 
-Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métier.
+Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métiers.
 
-différence entre intégration continue et tests unitaire (image du lavabo + séchoir à mains côte à côte). Les test unitaires vont tester la cohérence d'une partie du système tandis que l'intégration va tester la cohérence de l'échange entre divers systèmes / fonctions.
+différence entre intégration continue et tests unitaires (image du lavabo + séchoir à main côte à côte). Les tests unitaires vont tester la cohérence d'une partie du système tandis que l'intégration va tester la cohérence de l'échange entre divers systèmes / fonctions.
 
 \subsection{Intégration et déploiement continu}
 
@@ -30,7 +56,7 @@ Retour le plus rapide possible pour éviter des bugs en prod.
 
 Vérifier les dépendances (failles, ...)
 
-le reporting de bug automatique (sentry.io)
+Le reporting de bug automatique (sentry.io)
 
 Intégration des tests dans jenkins
 
@@ -38,7 +64,7 @@ Monitoring : monit pour monitorer l'état d'application ? (perso)
 
 Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recette, intégration, staging, et lorsque tout passe, en production.
 
-\textit{Exemple : parler de \clubSportif Automatisation de la création de la base de données (projet club sportif) et de la restauration des données}
+\textit{Exemple : parler de NAQ Automatisation de la création de la base de données et de la restauration des données}
 
 \subsection{Et la sécurité dans tout ça ?}
 
