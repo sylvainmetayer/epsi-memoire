@@ -1,7 +1,7 @@
 sudo: require
 dist: xenial
 language: bash
-
+if: tag IS present
 notifications:
   email:
     on_success: never
