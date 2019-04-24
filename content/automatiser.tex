@@ -1,6 +1,10 @@
-\todo{Automatiser un projet}
+\todo{Automatiser un projet, 12 pages mini}
 
 \subsection{Partie Management, gestion de projet}
+
+\todo{Partie management, comment gérer un changement ?, 3 pages}
+
+Conduite du changement, cela ne se fait pas en un jour.
 
 Pré-requis, comment gérer la mise en place avec le management, ... Gérer les différentes personnes impliquées, ...
 
@@ -13,6 +17,8 @@ Pré-requis, comment gérer la mise en place avec le management, ... Gérer les 
 - Gérer le flux de travail, pour ne pas se retrouver submerger.
 
 - First Way (DevOps handbook) : Gérer le flux de travail. 
+
+notion d'empilement, de "unplanned work" qui prends le temps de travail,
 
 - Voir le travail à faire (Kanban)
 
@@ -30,6 +36,10 @@ Pré-requis, comment gérer la mise en place avec le management, ... Gérer les 
 
 \subsection{Localement, lors des phases de développement}
 
+\todo{Localemnt, lors des phases de développement, 2 pages}
+
+Permettre un démarrage rapide pour pouvoir se concentrer sur une fonctionnalité plutôt que sur le "ça marche pas parce que tu as pas installé ça". => Valeur ajoutée, performance, productivité
+
 But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et soit donc sur le dépôt Git).
 
 -  Linter
@@ -44,13 +54,19 @@ But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et so
 
 \subsection{L'importance des tests}
 
+\todo{Importance des tests, 1-2 pages}
+
 Tout l'automatisation ne sert à rien sans une bonne campagne de tests, fonctionnel, unitaire, d'intégration, E2E, ...
 
 Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métiers.
 
 différence entre intégration continue et tests unitaires (image du lavabo + séchoir à main côte à côte). Les tests unitaires vont tester la cohérence d'une partie du système tandis que l'intégration va tester la cohérence de l'échange entre divers systèmes / fonctions.
 
+rapidité des tests à une importance pour un retour rapide aux dev
+
 \subsection{Intégration et déploiement continu}
+
+\todo{Intégration de déploiement continu, 3-4 pages}
 
 Retour le plus rapide possible pour éviter des bugs en prod. 
 
@@ -64,14 +80,17 @@ Monitoring : monit pour monitorer l'état d'application ? (perso)
 
 Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recette, intégration, staging, et lorsque tout passe, en production.
 
+Infra As Code
+
 \textit{Exemple : parler de NAQ Automatisation de la création de la base de données et de la restauration des données}
 
 \subsection{Et la sécurité dans tout ça ?}
 
+\todo{Sécurité, 1-2 page }
+
 Gestion des tokens, gestion des comptes.
 Un compte admin ou plusieurs sous compte avec des droits limités ? En cas d'intrusion, un attaquant a moins de chance de corrompre tout le système.
 Infra : restriction d'accès (htaccess / firewall / ..?)
-
 
 Attention à l'endroit ou sont fait les builds/tests. Il est préférable, pour des raisons de sécurité évidente d'utiliser un outil auto-hébergé, open source, plutôt que des outils clés en main, ou les données sont envoyées sur des serveurs inconnus. 
 
