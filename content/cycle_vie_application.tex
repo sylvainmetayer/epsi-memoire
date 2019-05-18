@@ -79,9 +79,9 @@ Il convient aussi de définir les fonctionnalités par priorités. En effet, sel
 
 \begin{itemize}
 	\item Les \emph{must-have}. Ce sont les fonctionnalités sans lesquelles l'application n'est pas utilisable. Par exemple, si le service propose des achats, mais que le tunnel d'achat ne gère pas les paiements, il sera impossible de compléter la moindre commande, et par conséquent, le site ne sera pas utilisable.
-	\item Les \emph{should have}
-	\item Les \emph{could have}
-	\item Les \emph{won't have}
+	\item Les \emph{should have} sont des fonctionnalités essentielles, mais qui ne sont pas bloquantes pour l'utilisation de l'application. Par exemple, dans le cas d'une connexion à un service, il peut être intéressant de proposer un bouton permettant de garder la session active, pour éviter d'avoir à se reconnecter. Néanmoins, si cela n'est pas présent, on peut tout de même se connecter.
+	\item Les \emph{could have} Sont des fonctionnalités dites de confort. Elles ne sont pas prioritaires, mais il serait intéressant de les développer puisqu'elles apportent un certain confort d'utilisation. Par exemple, proposer un aperçu automatique sur un éditeur \gls{markdown} est une fonctionnalité qui apporte un certain confort à l'utilisateur, puisqu'il a un retour immédiat. Cela ne change pas le fonctionnement de l'éditeur \gls{markdown} pour autant.
+	\item Les \emph{won't have} sont des fonctionnalités intéressantes mais qui ne sont pas prévues pour le moment. Elles pourront néanmoins être étudiées pour pouvoir être implémentées plus tard. \todo{missing example}
 \end{itemize}
 
 %% https://fr.wikipedia.org/wiki/M%C3%A9thode_MoSCoW
@@ -108,7 +108,7 @@ Dans le cas d'une méthodologie \gls{cycle_v}, une seule phase de réalisation e
 
 Comme le montre l'image \ref{fig:gestionProjet}, souvent utilisée pour illustrer de manière humoristique les potentielles dérives de la gestion de projet, plus le nombre de personnes est important sur un projet et moins la communication est présente, plus les différences d'interprétation peuvent être importante. 
 
-Une deuxième méthodologie de travail a vu le jour dans les années \todo{Chercher date début agilité}, et a pour objectif de combler ce manque de communication, et de faire des retours rapide au client. Dans cette méthodologie, la phase de réalisation est caractérisée sous forme de sprint, qui inclus non pas toutes les fonctionnalités demandées, mais seulement une partie, qui peut-être réalisable dans un temps convenu avec le client. Le but est de développer fonctionnalités par fonctionnalités, et de pouvoir présenter quelques choses de concret au client lors de chaque fin de sprint. Ainsi, à chaque itération, on se rapproche un peu plus de la version finale du produit, et on apporte constamment de la valeur ajoutée au produit.
+Une deuxième méthodologie de travail a vu le jour dans les années \todo{Chercher date début agilité}, et a pour objectif de combler ce manque de communication, et de faire des retours rapide au client. Dans cette méthodologie, dites \emph{méthodologie agile}, la phase de réalisation est caractérisée sous forme de sprint, qui inclus non pas toutes les fonctionnalités demandées, mais seulement une partie, qui peut-être réalisable dans un temps convenu avec le client. Le but est de développer fonctionnalités par fonctionnalités, et de pouvoir présenter quelques choses de concret au client lors des fins de sprint. Ainsi, à chaque itération, on se rapproche un peu plus de la version définitive du produit, et on apporte constamment de la valeur ajoutée au produit.
 
 \todo{Planification}
 
@@ -126,25 +126,17 @@ La réalisation de l'application intervient après la validation du besoin avec 
 
 \todo{Réalisation}
 
-\subsection{Mise en recette \& Qualification}
+\subsection{Qualification}
 
-- Déploiement en interne de l'application
+La phase de qualification permet au client d'avoir un premier contact avec son application. C'est également durant ce temps que sont lancés plusieurs tests de performance, des tests de qualités... Pour s'assurer que l'application se comporte correctement.
 
-- Permet de découvrir les premiers bug avec un environnement de production
+Souvent, l'application va d'abord être déployé en interne, sur un environnement qui sera similaire à celui de la future production. Cela va permettre de vérifier que la configuration de production, qui est souvent très différente de celle de développement (ou l'on a besoin d'outils pour pouvoir débugger l'application, tracer ses performances...), est fonctionnelle. De plus, c'est à ce moment la que l'on va tester la procédure de déploiement de l'application et l'ajuster afin de s'assurer qu'elle permettra un déploiement sans accroche.
 
-- Retour sur ce qui était pensé par le client et ce qu'il veut au final (ce bouton, il le veut vraiment la le client en fait ? Ca fait pas très pratique ici..)
+Une fois cette phase de qualification interne passée avec succès, l'application sera alors livrée au client, pour qu'il puisse la tester et faire d'éventuelles remontées sur des fonctionnalités manquantes ou non conformes. Il n'est pas rare de voir la phase de qualification se faire en plusieurs phases, puisque c'est en général à ce moment que le client va se rendre compte que la fonctionnalité demandée ne comporte pas tous les cas métiers, ou que l'équipe de développement va s'apercevoir d'un bug et le corriger, en effectuant une nouvelle livraison. Plus cette phase est effectuée avec sérieux et rigueur, moins on a de chance de se retrouver avec un bug en production. 
 
-- Environnement pré-production / intégration \& co avant mise en production.
+Selon les erreurs/retours remontés par le client, elles seront alors évaluées en fonction de l'expression du besoin initial, et catégorisée en bug (et donc corrigée) ou alors en évolution, qui ne sera alors pas traitée tout de suite et entrainera des couts supplémentaire. Cela peut être le cas si le client, qui souhaitait initialement un formulaire de connexion simple à un service, découvre qu'il ne peut se connecter via un \gls{LDAP}. Étant donné que le client n'avait pas exprimé son besoin, il est logique que ce dernier ait mal été interprété. \emph{Heureusement, ces désagréments sont censés être évités si l'expression du besoin, réalisée en collaboration entre le client et son prestataire, est bien réalisée et ne laisse pas place à des zones d'ombres.}
 
-\todo{Mise en recette}
-
-- Qualification : le client vérifie la conformité de l’application développée aux spécifications établies.
-
-- Premier contact de l'application avec le client
-
-- Evolution potentiellement lourde ("oh, au final je voulais plutôt ça, ça se fait bien ? Alors qu'il faut 10j pour le mettre en place")
-
-- Potentiellement plusieurs déploiement avant validation finale
+De plus, selon le projet, l'application finale pourra être déployée sur un serveur appartenant au prestataire ou bien chez un prestataire externe qui effectuera uniquement la partie hébergement. Si c'est le cas, il s'agit alors de tester que la communication entre les deux prestataires est bonne, en fournissant la procédure d'installation et en testant sur un environnement similaire à la production le bon fonctionnement de l'application.
 
 \subsection{Mise en production}
 
@@ -164,15 +156,13 @@ La réalisation de l'application intervient après la validation du besoin avec 
 
 \subsection{Maintenance}
 
-- Correction de bug au fur et à mesure
+La phase de maintenance intervient suite à la mise en production, et tout au long du cycle de vie du projet. Ses clauses sont définies lors de l'établissement du contrat. Il convient d'y prêter attention puisqu'il est possible d'avoir une maintenance très poussée, ou une très sommaire, selon les contenus des clauses du contrat. Évidemment, plus la maintenance est de qualité, plus le cout de cette dernière augmentera.
 
-- Besoin de métrique pour pouvoir déterminer le statut de l'application, ses performances \& eventuels défauts.
+La maintenance inclut donc le suivi de l'application, via des métriques afin de déterminer le statut de l'application, ses performances et éventuels défauts. Si une anomalie est relevée, elle sera alors remontée aux équipes de développement qui prendront en charge l'anomalie et proposeront un correctif.
 
-- Suivi des logs 
+Il est important de ne pas négliger le monitoring de l'application, sous peine de ne pas détecter à temps des potentiels bugs. Par exemple, si l'on constate que le site répond correctement mais parfois lentement et que la charge du serveur qui héberge ce site est constamment haute, il faudra alors investiguer pour déterminer si cela provient de l'application, de l'environnement dans lequel elle s'exécute (\emph{exemple : le serveur héberge plusieurs applications, et c'est une autre application qui occupe toutes les ressources}) ou une cause externe. Les logs de l'application sont alors très utile pour pouvoir déterminer les causes de ces anomalies.
 
-- Système de remontée d'erreur organisée
-
-\todo{Maintenance}
+\todo{Parler SLA ?}
 
 \subsection{Évolution}
 
