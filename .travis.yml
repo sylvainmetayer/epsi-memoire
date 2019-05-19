@@ -9,6 +9,7 @@ notifications:
 
 env:
   global:
+    - TODO_NAME=report_with_todo.pdf
     - PDF_NAME=M19_SYLVAINMETAYER.pdf
     - PAPER_NAME=M19_SYLVAINMETAYER_PAPER.pdf
 before_install:
@@ -21,6 +22,7 @@ cache:
   apt: true
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
+  - make && mv main.pdf $TODO_NAME
   - make removeComment
   - make && mv main.pdf $PDF_NAME
   - make clean && make paper && make && mv main.pdf $PAPER_NAME
@@ -33,6 +35,7 @@ deploy:
     file:
       - ./$PDF_NAME
       - ./$PAPER_NAME
+      - ./$TODO_NAME
     on:
       branch: master
       tags: true

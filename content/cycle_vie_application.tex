@@ -1,4 +1,4 @@
-\todo{Cycle de vie d'une application, 8 pages}
+\todo[color=yellow]{Cycle de vie d'une application, 8 pages}
 
 Une application, qu'il s'agisse d'une application web ou de bureau se décompose la plupart du temps en plusieurs étapes. Rares, pour ne pas dire quasi-inexistant, sont les projets réussis qui ont été développés sans jalons, sans documentation (bien rédigée ou non), et sans support (technique, utilisateur).
 
@@ -23,7 +23,7 @@ L'une des premières étapes, peut être de vérifier si une application similai
 
 Il s'agit ensuite de déterminer son but, le besoin auquel le produit répond. Par exemple, les VTC\footnote{voiture de transport avec chauffeur} répondent à un besoin de déplacement instantané d'un point A à un point B et une facilité de réservation (le plus souvent via une application, avec géolocalisation des VTC les plus proches).  
 
-De plus, il faut également se renseigner sur les utilisateurs potentiels avant de lancer son produit. Si des services similaires existent, il est nécessaire de pouvoir déterminer une tranche d'utilisateurs à viser. Si le service est nouveau, il faut pouvoir déterminer les \gls{earlyadopter} du service. Cela peut se faire au travers de démonstration d'une version bêta du site, par un sondage en ligne afin de déterminer les cibles les plus à même d'utiliser le service... \todo{Je suis sur qu'on a eu un cours / une ressource sur les early adopter ?}. Pour bien déterminer ses \gls{earlyadopter}, on peut se poser les questions suivantes afin de déterminer des \glsplural{persona} : 
+De plus, il faut également se renseigner sur les utilisateurs potentiels avant de lancer son produit. Si des services similaires existent, il est nécessaire de pouvoir déterminer une tranche d'utilisateurs à viser. Si le service est nouveau, il faut pouvoir déterminer les \gls{earlyadopter} du service. Cela peut se faire au travers de démonstration d'une version bêta du site, par un sondage en ligne afin de déterminer les cibles les plus à même d'utiliser le service... Pour bien déterminer ses \gls{earlyadopter}, on peut se poser les questions suivantes afin de déterminer des \glsplural{persona} : 
 
 \begin{itemize}
 	\item Quel est l'age de la personne ciblée ?
@@ -43,7 +43,7 @@ Une fois la cible établie, il convient également de savoir si la solution est 
 	\item Quel est le prix maximum acceptable pour l'utilisation de ce service?
 \end{itemize}
 
-\todo{Expression du besoin}
+\todo[color=cyan]{Expression du besoin}
 
 - Étude de faisabilité / concurrence
 
@@ -81,12 +81,12 @@ Il convient aussi de définir les fonctionnalités par priorités. En effet, sel
 	\item Les \emph{must-have}. Ce sont les fonctionnalités sans lesquelles l'application n'est pas utilisable. Par exemple, si le service propose des achats, mais que le tunnel d'achat ne gère pas les paiements, il sera impossible de compléter la moindre commande, et par conséquent, le site ne sera pas utilisable.
 	\item Les \emph{should have} sont des fonctionnalités essentielles, mais qui ne sont pas bloquantes pour l'utilisation de l'application. Par exemple, dans le cas d'une connexion à un service, il peut être intéressant de proposer un bouton permettant de garder la session active, pour éviter d'avoir à se reconnecter. Néanmoins, si cela n'est pas présent, on peut tout de même se connecter.
 	\item Les \emph{could have} Sont des fonctionnalités dites de confort. Elles ne sont pas prioritaires, mais il serait intéressant de les développer puisqu'elles apportent un certain confort d'utilisation. Par exemple, proposer un aperçu automatique sur un éditeur \gls{markdown} est une fonctionnalité qui apporte un certain confort à l'utilisateur, puisqu'il a un retour immédiat. Cela ne change pas le fonctionnement de l'éditeur \gls{markdown} pour autant.
-	\item Les \emph{won't have} sont des fonctionnalités intéressantes mais qui ne sont pas prévues pour le moment. Elles pourront néanmoins être étudiées pour pouvoir être implémentées plus tard. \todo{missing example}
+	\item Les \emph{won't have} sont des fonctionnalités intéressantes mais qui ne sont pas prévues pour le moment. Elles pourront néanmoins être étudiées pour pouvoir être implémentées plus tard. \todo[color=red]{missing example pour les foncitonnalités won't have}
 \end{itemize}
 
 %% https://fr.wikipedia.org/wiki/M%C3%A9thode_MoSCoW
 
-\todo{Finir la partie planification}
+\todo[color=cyan]{Finir la partie planification}
 
 - Définition d'un budget
 
@@ -102,17 +102,17 @@ Cahier des charges :permet de définir charte graphique \& architecture projet. 
 
 - Définition des priorités : Must, Should, May en vue de réaliser un MVP
 
-Dans le cas d'une méthodologie \gls{cycle_v}, une seule phase de réalisation est faite, avant d'effectuer la validation avec le client. Cette méthodologie était beaucoup utilisée dans les années \todo{Chercher les années ou était utilisé Cycle en V}, mais avant l'inconvénient de provoquer une différence entre ce que le client souhaitait réellement et ce qu'il obtenait à la fin, plus ou moins conforme au cahier des charges. 
+Dans le cas d'une méthodologie \gls{cycle_v}, une seule phase de réalisation est faite, avant d'effectuer la validation avec le client. Cette méthodologie était beaucoup utilisée dans les années \todo[color=red]{Chercher les années ou était utilisé Cycle en V}, mais avant l'inconvénient de provoquer une différence entre ce que le client souhaitait réellement et ce qu'il obtenait à la fin, plus ou moins conforme au cahier des charges. 
 
 \newImage{0.5}{gestionProjet.jpg}{Gestion de projet, allégorie. Source : https://www.anyideas.net}{gestionProjet} 
 
 Comme le montre l'image \ref{fig:gestionProjet}, souvent utilisée pour illustrer de manière humoristique les potentielles dérives de la gestion de projet, plus le nombre de personnes est important sur un projet et moins la communication est présente, plus les différences d'interprétation peuvent être importante. 
 
-Une deuxième méthodologie de travail a vu le jour dans les années \todo{Chercher date début agilité}, et a pour objectif de combler ce manque de communication, et de faire des retours rapide au client. Dans cette méthodologie, dites \emph{méthodologie agile}, la phase de réalisation est caractérisée sous forme de sprint, qui inclus non pas toutes les fonctionnalités demandées, mais seulement une partie, qui peut-être réalisable dans un temps convenu avec le client. Le but est de développer fonctionnalités par fonctionnalités, et de pouvoir présenter quelques choses de concret au client lors des fins de sprint. Ainsi, à chaque itération, on se rapproche un peu plus de la version définitive du produit, et on apporte constamment de la valeur ajoutée au produit.
+Une deuxième méthodologie de travail a vu le jour dans les années \todo[color=red]{Chercher date début agilité}, et a pour objectif de combler ce manque de communication, et de faire des retours rapide au client. Dans cette méthodologie, dites \emph{méthodologie agile}, la phase de réalisation est caractérisée sous forme de sprint, qui inclus non pas toutes les fonctionnalités demandées, mais seulement une partie, qui peut-être réalisable dans un temps convenu avec le client. Le but est de développer fonctionnalités par fonctionnalités, et de pouvoir présenter quelques choses de concret au client lors des fins de sprint. Ainsi, à chaque itération, on se rapproche un peu plus de la version définitive du produit, et on apporte constamment de la valeur ajoutée au produit.
 
 TODO : Il doit également tenir compte du temps pris par les tâches qui ne sont pas de nature technique (réunions, rapports, congés maladie, etc.) 
 
-\todo{Planification}
+\todo[color=cyan]{Planification}
 
 \subsection{Réalisation}
 
@@ -126,7 +126,7 @@ La réalisation de l'application intervient après la validation du besoin avec 
 
 - Développement de tests
 
-\todo{Réalisation}
+\todo[color=cyan]{Réalisation}
 
 \subsection{Qualification}
 
@@ -154,7 +154,7 @@ De plus, selon le projet, l'application finale pourra être déployée sur un se
 
 - Besoin de métrique pour pouvoir déterminer le succès de l'application
 
-\todo{Mise en production}
+\todo[color=cyan]{Mise en production}
 
 \subsection{Maintenance}
 
@@ -164,13 +164,13 @@ La maintenance inclut donc le suivi de l'application, via des métriques afin de
 
 Il est important de ne pas négliger le monitoring de l'application, sous peine de ne pas détecter à temps des potentiels bugs. Par exemple, si l'on constate que le site répond correctement mais parfois lentement et que la charge du serveur qui héberge ce site est constamment haute, il faudra alors investiguer pour déterminer si cela provient de l'application, de l'environnement dans lequel elle s'exécute (\emph{exemple : le serveur héberge plusieurs applications, et c'est une autre application qui occupe toutes les ressources}) ou une cause externe. Les logs de l'application sont alors très utile pour pouvoir déterminer les causes de ces anomalies.
 
-\todo{Parler SLA ?}
+\todo[color=orange]{Parler SLA ?}
 
 \subsection{Évolution}
 
 Un projet qui n'évolue pas est un projet mort. Ainsi, il est nécessaire pour une application de se remettre continuellement en question, de chercher et d'implémenter de nouvelles idées, de faciliter la vie de l'utilisateur, de proposer de nouvelles fonctionnalités, de se mettre à jour vis à vis des dernières évolutions technologiques.
 
-\todo{Evolution}
+\todo[color=cyan]{Evolution}
 
 - Vie du projet
 

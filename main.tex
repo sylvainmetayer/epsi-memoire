@@ -13,6 +13,7 @@
 % Définir le titre des annexes dans le sommaire (ne marche pas si mis dans parameters)
 \renewcommand{\addappheadtotoc}{Annexes}
 
+
 % Création glossaire
 \makeglossaries
 % Chargements des entrées du glossaire. APRES \makeglossaries
@@ -27,7 +28,17 @@
 \newpage
 	~ % Hide summary page.
 \newpage
-	%% TODO Listing. Comment this page before printing !
+	%% TODO Listing. Add disable option to package before printing !
+	\iftoggle{todoExplain}{%
+		\section*{Détails des couleurs todo}
+		\begin{itemize}
+			\item \emph{gray} est utilisé pour les parties obligatoires, mais non relative au contenu pur du mémoire (remerciements, abstract...)
+			\item \emph{red} est utilisé pour les todos nécessitant de la recherche et de la rédaction.
+			\item \emph{orange} est utilisé pour les parties nécessitant des refonte, soit sur la forme, soit parce qu'elle doivent être liées à d'autres parties.
+			\item \emph{cyan} est utilisé pour les parties nécessitant de la rédaction sans recherche.
+			\item \emph{yellow} est utilisé pour des estimations de nombre de page que la partie est \emph{censée} occuper.
+		\end{itemize}
+	}{}
 	\listoftodos 
 \newpage
 	\section*{Remerciements}

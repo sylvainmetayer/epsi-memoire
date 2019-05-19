@@ -32,3 +32,7 @@
 %% FROM http://forum.mathematex.net/latex-f6/glossaire-t8654.html#p85429
 \renewcommand{\glstextformat}[1]{#1*} % Affichage dans le corps du texte d'une entrée du glossaire
 
+\newtoggle{todoExplain}
+\makeatletter % changes the catcode of @ to 11
+\@ifpackagewith{todonotes}{disable}{\togglefalse{todoExplain}}{\toggletrue{todoExplain}}
+\makeatother % changes the catcode of @ back to 12

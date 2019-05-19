@@ -3,7 +3,7 @@
 filename=main
 
 build:
-	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
+	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 	makeglossaries ${filename}
 	bibtex "${filename}".aux
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
@@ -27,6 +27,6 @@ paper:
 	sed -i 's/\\togglefalse{paper}/% \\togglefalse{paper}/' parameters.tex
 
 removeComment:
-	sed -i 's/\\usepackage{todonotes}/\\usepackage[disable]{todonotes}/' packages.tex
+	sed -i 's/\\usepackage[colorinlistoftodos,french]{todonotes}/\\usepackage[colorinlistoftodos,french,disable]{todonotes}{todonotes}/' packages.tex
 
 
