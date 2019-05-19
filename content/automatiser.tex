@@ -4,13 +4,27 @@
 
 \todo{Partie management, comment gérer un changement ?, 3 pages}
 
+\epigraph{Neuf femmes ne font pas un enfant en un mois}{\cite{manmonth}}
+
+L'automatisation d'un projet ne peut s'effectuer un en jour. De même que la citation ci-dessus fait sens, il n'est pas possible de migrer un projet existant en une journée vers une automatisation totale. Il est donc nécessaire de préparer et planifier une conduite du changement qui permettra d'accompagner tous les acteurs du projet, afin que la transition s'effectue dans les meilleurs conditions possible. Cela passe d'abord par une réflexion sur la conduite à adopter et les changements à apporter. 
+
+Prenons pour exemple un projet fonctionnel depuis maintenant plusieurs mois. Le projet a déjà été livré (avec plus ou moins de difficulté) quelques fois en production. Comment convaincre que l'automatisation va apporter du bien à ce projet ? Qui est-il nécessaire de convaincre ?
+
+Tout d'abord, il faut convaincre les personnes responsables financièrement du projet. En effet, il est possible d'avoir un projet automatisé de A à Z, si ce processus d'automatisation vient à couter 3 fois le prix total vendu au client, aucun responsable ne vous donnera son accord. Il va également falloir convaincre les personnes responsables du projet (chef de projet, directeur de projet...) qu'il y a un intérêt à effectuer cela. En effet, sans garantie que ce processus pourra amener quelque chose de positif, peu laisseront une opportunité d'essayer d'automatiser un projet.
+
+
+Il faut ainsi préparer son argumentaire, avec les bienfaits que cela pourra obtenir sur les \gls{KPI} et sur la vie du projet à moyen/long terme.
+
+\begin{itemize}
+	\item \todo{Listes de KPI intéresant avec deux trois mots sur chaque.}
+\end{itemize}
+
+Il est également nécessaire de planifier au mieux les durées des travaux à accomplir afin d'éviter des dépassements dans les délais annoncés. Cela implique donc de réfléchir au temps nécessaire à investir et aux différents jalons qui valideront la bonne mise en place de l'automatisation. 
+
+
 Conduite du changement, cela ne se fait pas en un jour.
 
 Pré-requis, comment gérer la mise en place avec le management, ... Gérer les différentes personnes impliquées, ...
-
-- Définir les personnes responsables du projet
-
-- Définir les personnes responsables financièrement du projet. Ce sont elles qui pourront être les plus difficile à convaincre
 
 - Définir les personne réfractaire au changement. Exemple : développeur de 55-60 ans, qui a toujours fait d'une façon, et qui a 4-5 ans de la retraite, ne voit pas l'intérêt de changer de méthodes.
 
@@ -74,8 +88,6 @@ rapidité des tests à une importance pour un retour rapide aux dev
 
 Retour le plus rapide possible pour éviter des bugs en prod. 
 
-Vérifier les dépendances (failles, ...)
-
 Le reporting de bug automatique (sentry.io)
 
 Intégration des tests dans jenkins
@@ -97,6 +109,8 @@ Feature flipping pour tester (A/B) et faire des rollback rapides.
 Gestion des tokens, gestion des comptes.
 Un compte admin ou plusieurs sous compte avec des droits limités ? En cas d'intrusion, un attaquant a moins de chance de corrompre tout le système.
 Infra : restriction d'accès (htaccess / firewall / ..?)
+
+Vérifier les dépendances (failles, ...)
 
 Attention à l'endroit ou sont fait les builds/tests. Il est préférable, pour des raisons de sécurité évidente d'utiliser un outil auto-hébergé, open source, plutôt que des outils clés en main, ou les données sont envoyées sur des serveurs inconnus. 
 
