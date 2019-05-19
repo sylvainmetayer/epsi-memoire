@@ -22,7 +22,7 @@ cache:
   apt: true
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
-  - make && mv main.pdf $TODO_NAME
+  - make && mv main.pdf $TODO_NAME && make clean
   - make removeComment
   - make && mv main.pdf $PDF_NAME
   - make clean && make paper && make && mv main.pdf $PAPER_NAME
