@@ -7,7 +7,7 @@ build:
 	makeglossaries ${filename}
 	bibtex "${filename}".aux
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
-	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
+	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 
 version:
 	@echo -n "Dernière version : "
