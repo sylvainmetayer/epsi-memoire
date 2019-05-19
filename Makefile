@@ -27,5 +27,6 @@ paper:
 	sed -i 's/\\togglefalse{paper}/% \\togglefalse{paper}/' parameters.tex
 
 removeComment:
-	sed -i 's/\\listoftodos/% \\listoftodos/' main.tex
+	sed -i 's/\\usepackage{todonotes}/\\usepackage[disable]{todonotes}/' packages.tex
+
 
