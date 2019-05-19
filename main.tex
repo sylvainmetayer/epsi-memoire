@@ -17,6 +17,7 @@
 \makeglossaries
 % Chargements des entrées du glossaire. APRES \makeglossaries
 \loadglsentries{glossaire.tex}
+\addbibresource{main.bib}
 
 % Début du document
 \begin{document}
@@ -95,8 +96,10 @@
 \newpage
 	\addcontentsline{toc}{section}{Références}
 	\nocite{*} % Ajout de toutes les références bibliographiques non citées jusqu'à présent.
-	\bibliographystyle{unsrtnat} 
-	\bibliography{main}{}
+	%\bibliographystyle{unsrtnat} 
+	%\bibliographystyle{babunsrt}
+	% \bibliography{main}{}
+	\printbibliography
 \newpage
 	\addcontentsline{toc}{section}{Liste des figures}
 	\listoffigures 
