@@ -26,3 +26,6 @@ paper:
 	sed -i 's/% \\toggletrue{paper}/\\toggletrue{paper}/' parameters.tex
 	sed -i 's/\\togglefalse{paper}/% \\togglefalse{paper}/' parameters.tex
 
+removeComment:
+	sed -i 's/\\listoftodos/% \\listoftodos/' main.tex
+

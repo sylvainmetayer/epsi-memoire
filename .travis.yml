@@ -21,6 +21,7 @@ cache:
   apt: true
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
+  - make removeComment
   - make && mv main.pdf $PDF_NAME
   - make clean && make paper && make && mv main.pdf $PAPER_NAME
 deploy:
