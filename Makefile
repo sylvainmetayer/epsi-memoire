@@ -27,6 +27,8 @@ paper:
 	sed -i 's/\\togglefalse{paper}/% \\togglefalse{paper}/' parameters.tex
 
 removeComment:
+	grep todonotes packages.tex
 	sed -i 's/\\usepackage\[colorinlistoftodos,french\]{todonotes}/\\usepackage\[colorinlistoftodos,french,disable\]{todonotes}/' packages.tex
+	grep todonotes packages.tex
 
 
