@@ -24,4 +24,4 @@ Si l'IDE utilisé pour LateX est TexStudio, il peut être bien d'installer égal
 
 - `make tag`
 
-PDF will be build on every tags and added to the Github release
+Les PDF seront générés à chaque tag et seront ajoutés aux [releases Github](https://github.com/sylvainmetayer/epsi-memoire/releases)
