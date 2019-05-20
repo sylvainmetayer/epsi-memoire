@@ -31,4 +31,9 @@ removeComment:
 	sed -i 's/\\usepackage\[colorinlistoftodos,french\]{todonotes}/\\usepackage\[colorinlistoftodos,french,disable\]{todonotes}/' packages.tex
 	grep todonotes packages.tex
 
+wordCount:
+	@detex main.tex | wc -w | tr -d [:space:]
+	@echo
+	@echo or 
+	@texcount main.tex -inc -incbib -sum -1 2>/dev/null
 
