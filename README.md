@@ -30,6 +30,5 @@ Les PDF seront générés à chaque tag et seront ajoutés aux [releases Github]
 
 ## Upload Dockerfile
 
-- `docker tag latex-debian sylvainmetayer/latex-debian`
-- `docker push new sylvainmetayer/latex-debian`
+- `make push-image`
 
