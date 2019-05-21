@@ -35,8 +35,6 @@
 \newtoggle{todoExplain}
 \makeatletter % changes the catcode of @ to 11
 \@ifpackagewith{todonotes}{disable}{\togglefalse{todoExplain}}{\toggletrue{todoExplain}}
-\makeatother % changes the catcode of @ back to 12
-
 \hypersetup{
 	colorlinks=true, %colorise les liens
 	breaklinks=true, %permet le retour à la ligne dans les liens trop longs
@@ -46,4 +44,12 @@
 	bookmarksopen=true,
 	pdftoolbar=false,
 	pdfmenubar=false,
+	unicode=true,
+	pdftitle={\@title},
+	pdfauthor={\@author},
+	pdfkeywords={epsi, memoire, automatisation},
+	pdfsubject={Comment l'automatisation peut-elle permettre d'améliorer le cycle de vie d'une application ?},
+	pdfcreator={\LaTeX}
 }
+\makeatother % changes the catcode of @ back to 12
+
