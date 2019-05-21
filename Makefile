@@ -9,6 +9,13 @@ build:
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 
+docker-build:
+	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "my-latex" lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
+	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "my-latex" makeglossaries ${filename}
+	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "my-latex" bibtex "${filename}".aux
+	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "my-latex" lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
+	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "my-latex" lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
+
 version:
 	@echo -n "Dernière version : "
 	@git describe --abbrev=0 --tags
