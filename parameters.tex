@@ -36,3 +36,14 @@
 \makeatletter % changes the catcode of @ to 11
 \@ifpackagewith{todonotes}{disable}{\togglefalse{todoExplain}}{\toggletrue{todoExplain}}
 \makeatother % changes the catcode of @ back to 12
+
+\hypersetup{
+	colorlinks=true, %colorise les liens
+	breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+	urlcolor= blue, %couleur des hyperliens
+	linkcolor= blue, %couleur des liens internes
+	citecolor=blue,    %couleur des liens de citations
+	bookmarksopen=true,
+	pdftoolbar=false,
+	pdfmenubar=false,
+}
