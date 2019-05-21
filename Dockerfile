@@ -24,6 +24,6 @@ RUN ls -ail /usr/local/texlive
 # Install latex packages
 RUN tlmgr install scheme-full
 
-RUN ls -ail /usr/local/texlive
+RUN luaotfload-tool --update
 
 VOLUME ["/data"]
