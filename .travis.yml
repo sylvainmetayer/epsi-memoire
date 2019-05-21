@@ -2,36 +2,26 @@ sudo: require
 dist: xenial
 language: bash
 if: tag IS present
-
-addons:
-  apt:
-    packages:
-      - docker-ce
-
-services:
-  - docker
-
-before_install:
-  - docker build -t my-latex .
-
-notifications:
-  email:
-    on_success: never
-    on_failure: always
-
 env:
   global:
     - TODO_NAME=report_with_todo.pdf
     - PDF_NAME=M19_SYLVAINMETAYER.pdf
     - PAPER_NAME=M19_SYLVAINMETAYER_PAPER.pdf
 
-before_script: cd $TRAVIS_BUILD_DIR/
+services:
+  - docker
+addons:
+  apt:
+    packages:
+      - docker-ce
 
+before_script: cd $TRAVIS_BUILD_DIR/
 script:
   - make docker-build && mv main.pdf $TODO_NAME && make clean
   - make removeComment
-  - make docker-build && mv main.pdf $PDF_NAME
-  - make docker-build clean && make paper && make && mv main.pdf $PAPER_NAME
+  - make docker-build && mv main.pdf $PDF_NAME && make clean
+  - make paper
+  - make docker-build && mv main.pdf $PAPER_NAME
 
 deploy:
   - provider: releases
@@ -46,4 +36,9 @@ deploy:
     on:
       branch: master
       tags: true
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
 

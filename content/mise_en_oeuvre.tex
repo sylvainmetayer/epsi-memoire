@@ -2,21 +2,28 @@
 
 Maintenant que nous avons vu les différentes étapes qui composaient le cycle de vie d'une application, nous pouvons voir, au travers d'un cas pratique, la mise en place d'une démarche d'automatisation dans un projet ou, dans le cas présent, d'une entreprise.
 
-L'entreprise retenue pour l'étude suivante est \etsy.
+L'entreprise retenue pour l'étude suivante est \etsy\footnote{\url{https://www.etsy.com}}. \etsy{} est une entreprise créé en 2005 spécialisée dans la vente de création personnelles. Elle permet à ses utilisateurs de créer leurs boutiques et d'y vendre leurs créations à toute la communauté. En 2013, elle comptait plus de 4 millions d'items vendus et disposait d'une communauté de 22 millions d'utilisateurs pour un total de \numprint{80000} boutiques actives sur leur site.
+
+L'entreprise a connue une forte croissance à ses débuts et à donc du s'adapter pour pouvoir offrir une qualité de service et des évolutions constantes.
+
+\subsection{États des lieux}
+
+Avant de détailler la transition effectuée, faisons un état des lieux techniques avant leur transition vers l'automatisation.
+
+- \etsy{} dispose d'un environnement \gls{LAMP} et d'une application dite monolithique, c'est-à-dire qu'elle est constituée en une seule partie et donc difficile à faire évoluer lors de grosse mise à jour.
+- Évidemment, \etsy utilisait un gestionnaire de version de son code (\gls{git})
+
+- Etsy déploiement 2-3 fois semaine à raison de 
 
 \todo[color=red]{Cas pratique, 5-6 pages}
-
-Exemple de transformation : Etsy
-
-- Vente de produit fait main
-
-- Créé en 2003
 
 - Au début, livraison 2 fois / semaines, mais cela durait 4h.
 
 Besoin d'améliorer le processus pour pouvoir suivre la cadence.
 
 Passage d'un développement lourd, non organisé à un déploiement de micro service, avec plusieurs MEP / jours.
+
+a beaucoup utilisé l'open source et y a beaucoup contribué en retour (outil post mortem par ex) %https://github.com/etsy/
 
 \subsection{Difficulté d'avoir la panacée}
 

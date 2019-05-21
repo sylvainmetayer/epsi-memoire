@@ -20,8 +20,16 @@ Si l'IDE utilisé pour LateX est TexStudio, il peut être bien d'installer égal
 
 - `make build`
 
+- With docker `make docker-build`
+
 ## Tags
 
 - `make tag`
 
 Les PDF seront générés à chaque tag et seront ajoutés aux [releases Github](https://github.com/sylvainmetayer/epsi-memoire/releases)
+
+## Upload Dockerfile
+
+- `docker tag latex-debian sylvainmetayer/latex-debian`
+- `docker push new sylvainmetayer/latex-debian`
+
