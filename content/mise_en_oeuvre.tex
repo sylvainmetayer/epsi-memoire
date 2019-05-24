@@ -10,20 +10,19 @@ L'entreprise a connue une forte croissance à ses débuts et à donc du s'adapte
 
 Avant de détailler la transition effectuée, faisons un état des lieux techniques avant leur transition vers l'automatisation.
 
-- \etsy{} dispose d'un environnement \gls{LAMP} et d'une application dite monolithique, c'est-à-dire qu'elle est constituée en une seule partie et donc difficile à faire évoluer lors de grosse mise à jour.
-- Évidemment, \etsy{} utilisait un gestionnaire de version de son code (\gls{git}) mais n'utilisait pas de branches\footnote{Dans un gestionnaire de version, les branches permettent de séparer les fonctionnalités qui sont en cours de développement ainsi que les différentes versions du code}
+\begin{itemize}
+	\item \etsy{} dispose d'un environnement \gls{LAMP} et d'une application dite monolithique, c'est-à-dire qu'elle est constituée en une seule partie et donc difficile à faire évoluer lors de grosse mise à jour.
+	\item Évidemment, \etsy{} utilisait un gestionnaire de version de son code (\gls{git}) mais n'utilisait pas de branches\footnote{Dans un gestionnaire de version, les branches permettent de séparer les fonctionnalités qui sont en cours de développement ainsi que les différentes versions du code}
+	\item Du fait de sa croissance rapide, \etsy{} effectuait 2 à 3 mise à jour par semaine, mais ces dernières étaient effectuées avec difficulté et prenaient environ 4h par livraison. 
+\end{itemize}
 
-- Etsy déploiement 2-3 fois semaine à raison de 4h par livraison
+\epigraph{[deploy were done] twice a week, and each deploy took well over four hours.}{\citetitle{etsyInterview} \cite{etsyInterview}}
+
+Au vu de ces informations et du fait de leur croissance, il était nécessaire de faire évoluer les méthodes de travail et de déploiement pour pouvoir suivre la cadence. L'objectif était donc de passer d'un développement lourd, non organisé à un déploiement rapide permettant un retour rapide sur l'état des déploiements ainsi que plusieurs déploiements par jours.
 
 \todo[color=red]{Cas pratique, 5-6 pages}
 
-- Au début, livraison 2 fois / semaines, mais cela durait 4h.
-
-Besoin d'améliorer le processus pour pouvoir suivre la cadence.
-
-Passage d'un développement lourd, non organisé à un déploiement de micro service, avec plusieurs MEP / jours.
-
-a beaucoup utilisé l'open source et y a beaucoup contribué en retour (outil post mortem par ex) %https://github.com/etsy/
+a beaucoup utilisé l'open source et y a beaucoup contribué en retour (outil post mortem par ex) %https://github.com/etsy/'
 
 \subsection{Difficulté d'avoir la panacée}
 
@@ -42,7 +41,7 @@ Chef, puppet, ansible, jenkins, travis, docker, terraform, heroku, aws, ...
 Combinaison d'outils qui répondent à un besoin, pattern.
 
 
-\textbf{ATTENTION : NE PAS REPONDRE A LA QUESTIOn, SEULEMENT SOULEVER DES INTERROGATIONS POUR LE LECTEUR}
+\textbf{ATTENTION : NE PAS REPONDRE A LA QUESTION, SEULEMENT SOULEVER DES INTERROGATIONS POUR LE LECTEUR}
 
 Cas pratique (démo entreprise migration) / Comment le généraliser (NE PAS RÉPONDRE A CETTE QUESTION). Cas précis et généraliser, parler des autres solutions. Difficulté d'avoir une solution clé en main, une solution à tout, la panacée
 
