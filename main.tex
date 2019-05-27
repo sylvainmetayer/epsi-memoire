@@ -24,6 +24,7 @@
 
 % Début du document
 \begin{document}
+	\selectlanguage{french}
 	\pagestyle{plain} % Juste le numero de page pour en-tête / pied de page.
 	\pagenumbering{gobble} % pas de numérotation
 	\input{content/cover} 
@@ -46,9 +47,7 @@
 	\section*{Remerciements}
 	\input{content/remerciements}
 \newpage
-	% Define Sommaire instead of "Table of Content"
-	\renewcommand{\contentsname}{Sommaire}
-	\tableofcontents
+	\shorttoc{Sommaire}{2} % Only sections
 \newpage
 \newpage
 	\pagenumbering{\numerotationType} % start numerotation
@@ -97,7 +96,7 @@
 \newpage
 	\section{Automatisation du cycle de vie}
 	\input{content/automatiser}
-\newpage
+\	newpage
 	\pagestyle{plain} % Juste le numéro de page pour en-tête / pied de page à partir de maintenant
 	\section*{Conclusion}
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
@@ -127,6 +126,9 @@
 	\begin{flushright} \large 
 		Rédigé avec \LaTeX 
 	\end{flushright}
+\newpage
+	\addcontentsline{toc}{section}{Table des matières}
+	\tableofcontents
 \newpage
 	\addcontentsline{toc}{section}{Annexes}
 	\pagenumbering{gobble} % No numérotation
