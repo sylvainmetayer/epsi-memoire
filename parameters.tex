@@ -27,6 +27,7 @@
 \widowpenalty=10000 % Pour les veuves et les orphelines
 \clubpenalty=10000 % Pour les veuves et les orphelines
 \FrenchFootnotes %% FROM : http://www.xm1math.net/doculatex/notesbasdepage.html
+\selectlanguage{french}
 \newcommand{\numerotationType}{arabic} %Type de numérotation : Roman ou arabic
 
 %% FROM http://forum.mathematex.net/latex-f6/glossaire-t8654.html#p85429
@@ -52,4 +53,9 @@
 	pdfcreator={\LaTeX}
 }
 \makeatother % changes the catcode of @ back to 12
+
+% \epigraphsize{\small}% Default
+\setlength\epigraphwidth{.8\textwidth}
+% \setlength\epigraphwidth{\textwidth}
+\setlength\epigraphrule{1pt}
 

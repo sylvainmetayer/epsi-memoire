@@ -2,6 +2,11 @@
 
 Maintenant que nous avons vu les différentes étapes qui composaient le cycle de vie d'une application, nous pouvons voir, au travers d'un cas pratique, la mise en place d'une démarche d'automatisation dans un projet ou, dans le cas présent, d'une entreprise.
 
+\begin{wrapfigure}{H}{3.5cm}
+	\includegraphics[scale=0.125]{img/etsy.png}
+	\caption{Logo de l'entreprise \etsy}\label{fig:etsy}
+\end{wrapfigure}
+
 L'entreprise retenue pour l'étude suivante est \etsy\footnote{\url{https://www.etsy.com}}. \etsy{} est une entreprise créée en 2005 spécialisée dans la vente de création personnelles. Elle permet à ses utilisateurs de créer leurs boutiques et d'y vendre leurs créations à toute la communauté. En 2013, elle comptait plus de 4 millions d'items vendus et disposait d'une communauté de 22 millions d'utilisateurs pour un total de \numprint{80000} boutiques actives sur leur site.
 
 L'entreprise a connu une forte croissance à ses débuts et à donc du s'adapter pour pouvoir offrir une qualité de service et des évolutions constantes.
@@ -13,12 +18,21 @@ Avant de détailler la transition effectuée, faisons un état des lieux techniq
 \begin{itemize}
 	\item \etsy{} dispose d'un environnement \gls{LAMP} et d'une application dite monolithique, c'est-à-dire qu'elle est constituée en une seule partie et donc difficile à faire évoluer lors de grosse mise à jour.
 	\item Évidemment, \etsy{} utilisait un gestionnaire de version de son code (\gls{git}) mais n'utilisait pas de branches\footnote{Dans un gestionnaire de version, les branches permettent de séparer les fonctionnalités qui sont en cours de développement ainsi que les différentes versions du code}
-	\item Du fait de sa croissance rapide, \etsy{} effectuait 2 à 3 mise à jour par semaine, mais ces dernières étaient effectuées avec difficulté et prenaient environ 4h par livraison. 
+	\item Du fait de sa croissance rapide, \etsy{} effectuait 2 à 3 mise à jour par semaine, mais ces dernières étaient effectuées avec difficulté et prenaient environ 4h par livraison, comme le montre la citation suivante. 
 \end{itemize}
 
-\epigraph{[deploy were done] twice a week, and each deploy took well over four hours.}{\citetitle{etsyInterview} \cite{etsyInterview}}
+\epigraph{``[Les déploiements se déroulaient] deux fois par semaine, et chacun prenait jusqu'à 4 heures.''}{\citetitle{etsyInterview} \cite{etsyInterview} (citation originale en anglais)}
 
-Au vu de ces informations et du fait de leur croissance, il était nécessaire de faire évoluer les méthodes de travail et de déploiement pour pouvoir suivre la cadence. L'objectif était donc de passer d'un développement lourd, non organisé à un déploiement rapide permettant un retour rapide sur l'état des déploiements ainsi que plusieurs déploiements par jours.
+Au vu de ces informations et du fait de leur croissance, il était nécessaire de faire évoluer les méthodes de travail et de déploiement pour pouvoir suivre la cadence. L'objectif était donc de passer d'un développement lourd, non organisé à un déploiement rapide permettant un retour rapide sur l'état des déploiements ainsi que plusieurs déploiements par jours. Pour cela, \etsy{} a réfléchi sur les solutions qui permettrait d'améliorer la situation. 
+
+\subsection{Solutions apportées}
+
+Une des premières mesures fut de permettre un démarrage rapide pour les développeurs. Ainsi, un travail fut effectué sur les postes de développement afin de garantir que chacun travail sur le même environnement. Pour cela, chaque développeur travaille sur une \gls{vm}\footnote{Machine virtuelle} sur laquelle est installée \emph{Chef}\footnote{\url{https://www.chef.io/}}, un outil d'automatisation de configuration et de déploiement d'application. Cela garantit ainsi que chaque développeur travaille sur la même version et le même environnement permettant ainsi de reproduire plus facilement les bugs. 
+
+Une deuxième mesure qui fut prise fut d'améliorer la communication au sein des équipes. Pour ce faire et comme il est indiqué sur leur blog, toute personne présente à \etsy{} utilise \gls{irc} et un wiki est disponible pour les idées et les définitions des plannings/jalons. (\textquote[\citetitle{etsyManageDevOps} \cite{etsyManageDevOps}]{Everyone in the company uses IRC.  Lots of ideas are worked out on a wiki})
+
+Afin de réduire le problème des livraisons évoqué précédemment, la solution fut de déployer plus rapidement et de manière automatique. C'est ainsi que les nouveaux arrivants sont invités à déployer dès leur premier jour. L'objectif est de supprimer cette peur du déploiement. Néanmoins, tout développement n'a pas vocation à être déployé ou utilisé immédiatement et il fallait donc limiter leur utilisation. C'est ainsi qu'\etsy{} s'est inspiré de la solution utilisée par Flickr\footnote{\url{https://www.flickr.com/}}, les \emph{features flag} qui consistent à activer et désactiver certaines fonctionnalités de l'application via des paramètres de configuration (variables d'environnement, booléen...). Cela peut également servir à faire du test A/B, cette technique utilisée entre autre en marketing afin de tester plusieurs solutions afin de déterminer laquelle est la plus efficace. En activant une fonctionnalité uniquement pour un certain pourcentage des utilisateurs, il est possible de tester une fonctionnalité et d'obtenir des retours sur son taux d'engagement auprès des utilisateurs. De plus, si à ses débuts, la fonctionnalité génère des bugs, ces derniers impactent alors moins d'utilisateurs.
+
 
 \todo[color=red]{Cas pratique, 5-6 pages}
 
@@ -26,19 +40,23 @@ a beaucoup utilisé l'open source et y a beaucoup contribué en retour (outil po
 
 \subsection{Difficulté d'avoir la panacée}
 
+Les solutions évoquées précédemment sont intéressantes mais si elles étaient si efficace, pourquoi n'existe-t-il pas une solution unique, permettant de répondre à tous les besoins ? Chaque outil répond à une problématique et à une seule. Le but est de trouver la façon de coordonner les différentes solutions ensemble afin de répondre à un besoin spécifique.
+
+De plus, on est en droit de se poser la question de savoir comment on a pu passer d'un mode de déploiement dans les années 1990 ou l'ou venait à déployer un site web via \gls{ftp},à un système ou il faut maintenant télécharger de nombreuses dépendances, installer et configurer des fichiers avant de pouvoir commencer à utiliser son application ?
+
+Cela vient en partie du fait que les besoins ont évolué. Au début, on se contentait d'afficher du texte, avec quelques images. Les effets de style étaient très sommaire et l'interaction sur une page était quasiment inexistante. Ce sont cette stylisation et l'interactivité des pages qui ont permis de démocratiser internet au sein du grand public et de sortir de cette idée qu'un ordinateur était \frquote{un terminal noir avec du texte blanc}.
+
 \todo[color=red]{Difficulté d'avoir la panacée, 1-2 pages}
 
-- pourquoi n'existe pas une solution unique ? 
+- pourquoi n'existe pas une solution unique ? 
 
-- Pourquoi complexité des processus de déploiement ? 
+- Pourquoi complexité des processus de déploiement ? 
 
-- chaque outil répond à un besoin, mais existe-t-il un outil all-in-one ? (non)
+- chaque outil répond à un besoin, mais existe-t-il un outil all-in-one ? (non)
 
 Solutions existantes
 
 Chef, puppet, ansible, jenkins, travis, docker, terraform, heroku, aws, ...
-
-Combinaison d'outils qui répondent à un besoin, pattern.
 
 
 \textbf{ATTENTION : NE PAS REPONDRE A LA QUESTION, SEULEMENT SOULEVER DES INTERROGATIONS POUR LE LECTEUR}

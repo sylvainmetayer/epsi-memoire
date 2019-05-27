@@ -1,4 +1,2 @@
 Kanban => https://commons.wikimedia.org/wiki/File:Kanban_Board_for_software_development_teams.png
-
-
-
+etsy => https://fr.wikipedia.org/wiki/Etsy#/media/File:Etsy_logo_lg_rgb.png
