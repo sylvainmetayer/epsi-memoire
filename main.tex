@@ -47,13 +47,12 @@
 	\section*{Remerciements}
 	\input{content/remerciements}
 \newpage
+\includepdf[scale=0.8,pagecommand=\section*{Attestation de non plagiat}, offset=0 -2cm]{docs/non-plagiat.pdf}
+% \addcontentsline{toc}{section}{Attestation de non plagiat} % ajout de la référence dans la table des matières
+\newpage
 	\shorttoc{Sommaire}{2} % Only sections
 \newpage
-\newpage
 	\pagenumbering{\numerotationType} % start numerotation
-	\includepdf[scale=0.8,pagecommand=\section*{Attestation de non plagiat}, offset=0 -2cm]{docs/non-plagiat.pdf}
-	\addcontentsline{toc}{section}{Attestation de non plagiat} % ajout de la référence dans la table des matières
-\newpage
 	\section*{Résumé}
 	\addcontentsline{toc}{section}{Resumé} % ajout de la référence dans la table des matières
 	\input{content/resume}
@@ -94,9 +93,9 @@
 	\section{Mise en œuvre une démarche d'automatisation}
 	\input{content/mise_en_oeuvre}
 \newpage
-	\section{Automatisation du cycle de vie}
+	\section{Automatisation du cycle de vie}\label{automatisation}
 	\input{content/automatiser}
-\	newpage
+\newpage
 	\pagestyle{plain} % Juste le numéro de page pour en-tête / pied de page à partir de maintenant
 	\section*{Conclusion}
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières

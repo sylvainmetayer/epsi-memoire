@@ -1,6 +1,6 @@
-\subsection{Cas pratique}
+\subsection{Intérêt de l'automatisation - Cas pratique - \etsy}
 
-Maintenant que nous avons vu les différentes étapes qui composaient le cycle de vie d'une application, nous pouvons voir, au travers d'un cas pratique, la mise en place d'une démarche d'automatisation dans un projet ou, dans le cas présent, d'une entreprise.
+Maintenant que nous avons vu les différentes étapes qui composaient le cycle de vie d'une application, nous pouvons voir, au travers d'un cas pratique, l'intérêt de la mise en place d'une démarche d'automatisation dans un projet ou, dans le cas présent, d'une entreprise.
 
 \begin{wrapfigure}{H}{3.5cm}
 	\includegraphics[scale=0.125]{img/etsy.png}
@@ -16,12 +16,12 @@ L'entreprise a connu une forte croissance à ses débuts et à donc du s'adapter
 Avant de détailler la transition effectuée, faisons un état des lieux techniques avant leur transition vers l'automatisation.
 
 \begin{itemize}
-	\item \etsy{} dispose d'un environnement \gls{LAMP} et d'une application dite monolithique, c'est-à-dire qu'elle est constituée en une seule partie et donc difficile à faire évoluer lors de grosse mise à jour.
+	\item \etsy{} est construit sur un environnement \gls{LAMP} et sur une application dite monolithique, c'est-à-dire qu'elle est constituée en une seule partie et donc plus complexe à faire évoluer lors de grosse mise à jour.
 	\item Évidemment, \etsy{} utilisait un gestionnaire de version de son code (\gls{git}) mais n'utilisait pas de branches\footnote{Dans un gestionnaire de version, les branches permettent de séparer les fonctionnalités qui sont en cours de développement ainsi que les différentes versions du code}
 	\item Du fait de sa croissance rapide, \etsy{} effectuait 2 à 3 mise à jour par semaine, mais ces dernières étaient effectuées avec difficulté et prenaient environ 4h par livraison, comme le montre la citation suivante. 
 \end{itemize}
 
-\epigraph{``[Les déploiements se déroulaient] deux fois par semaine, et chacun prenait jusqu'à 4 heures.''}{\citetitle{etsyInterview} \cite{etsyInterview} (citation originale en anglais)}
+\epigraph{\textquote{[Les déploiements se déroulaient] deux fois par semaine, et chacun prenait jusqu'à 4 heures.}}{\citetitle{etsyInterview} \cite{etsyInterview} (citation originale en anglais)}
 
 Au vu de ces informations et du fait de leur croissance, il était nécessaire de faire évoluer les méthodes de travail et de déploiement pour pouvoir suivre la cadence. L'objectif était donc de passer d'un développement lourd, non organisé à un système permettant un retour rapide sur l'état de multiple déploiements par jour. Pour cela, \etsy{} a réfléchi sur les solutions qui permettraient d'améliorer la situation. 
 
@@ -33,43 +33,49 @@ Une deuxième mesure qui fut prise fut d'améliorer la communication au sein des
 
 Afin de réduire le problème des livraisons évoqué précédemment, la solution fut de déployer plus rapidement et de manière automatique. C'est ainsi que les nouveaux arrivants sont invités à déployer dès leur premier jour. L'objectif est de supprimer cette peur du déploiement. Néanmoins, tout développement n'a pas vocation à être déployé ou utilisé immédiatement et il fallait donc limiter leur utilisation. C'est ainsi qu'\etsy{} s'est inspiré de la solution utilisée par Flickr\footnote{\url{https://www.flickr.com/}}, les \emph{features flag} qui consistent à activer et désactiver certaines fonctionnalités de l'application via des paramètres de configuration (variables d'environnement, booléen...). Cela peut également servir à faire du test A/B, cette technique utilisée entre autre en marketing afin de tester plusieurs solutions afin de déterminer laquelle est la plus efficace. En activant une fonctionnalité uniquement pour un certain pourcentage des utilisateurs, il est possible de tester une fonctionnalité et d'obtenir des retours sur son taux d'engagement auprès des utilisateurs. De plus, si à ses débuts, la fonctionnalité génère des bugs, ces derniers impactent alors moins d'utilisateurs.
 
-L'entreprise, pour pouvoir gérer ses déploiements multiples, a du également revoir sa politique de suivi des logs. En effet et comme \etsy{} le dit \textquote[\citetitle{etsyLogs} \cite{etsyLogs}][(citation originale en anglais)]{Monitorer chaque aspect de l'architecture de son réseau et de son serveur permet d'aider à détecter quelque chose qui va mal}. C'est ainsi qu'elle a mis en place des solutions à l'aide d'outil open source\footnote{un logiciel open-source est distribué sous une licence respectant certains critères, tel que par exemple le libre accès au code source, la redistribution ou encore la réutilisation. \LaTeX{} par exemple, qui permet de générer ce document, est un logiciel open-source (\url{https://www.latex-project.org/lppl/})} tel que \emph{Graphite}\footnote{\url{http://graphiteapp.org/}} qui permet ainsi d'établir des graphiques à partir de données récoltées depuis les applications. Ces dernières peuvent aller des erreurs ou avertissements lors du déroulement de l'application jusqu'à la durée des requêtes \gls{SQL}, en passant par le temps de rendu des pages. Ces métriques permettent ainsi de savoir les évolutions du produit, et aide à déterminer si ces évolutions sont positives ou nécessitent des corrections.
+L'entreprise, pour pouvoir gérer ses déploiements multiples, a également été dans l'obligation de revoir sa politique de suivi des logs. En effet et comme \etsy{} le dit \textquote[\citetitle{etsyLogs} \cite{etsyLogs}][(citation originale en anglais)]{Monitorer chaque aspect de l'architecture de son réseau et de son serveur permet d'aider à détecter quelque chose qui va mal}. C'est ainsi qu'elle a mis en place des solutions à l'aide d'outil open source\footnote{un logiciel open-source est distribué sous une licence respectant certains critères, tel que par exemple le libre accès au code source, la redistribution ou encore la réutilisation. \LaTeX{} par exemple, qui permet de générer ce document, est un logiciel open-source (\url{https://www.latex-project.org/lppl/})} tel que \emph{Graphite}\footnote{\url{http://graphiteapp.org/}} qui permet ainsi d'établir des graphiques à partir de données récoltées depuis les applications. Ces dernières peuvent aller des erreurs ou avertissements lors du déroulement de l'application jusqu'à la durée des requêtes \gls{SQL}, en passant par le temps de rendu des pages. Ces métriques permettent ainsi de savoir les évolutions du produit, et aide à déterminer si ces évolutions sont positives ou nécessitent des corrections.
 
 Une autre démarche mise en place par \etsy{} fut de réaliser ses propres logiciels, répondant à ses besoins. Cela demanda un certain temps au début mais une fois les logiciels réalisé, cela leur a permis d'être plus efficace. L'un d'entre eux par exemple, le \emph{Deployinator} leur permet de déployer leur application web sur différents environnements en moins de 2 minutes et cela sans intervention humaine autre qu'une personne pressant un bouton. En plus de créer ces applications pour son usage interne, \etsy{} les a ensuite ouvert et redistribué à la communauté open-source, en guise de remerciement pour avoir beaucoup appris de cette dernière. On peut notamment noter qu'\etsy, en plus d'ouvrir ce projet en open-source, a mis à disposition de nombreux autres projets, comme on peut le voir sur leur profil \github\footnote{ \url{http://github.com/etsy/}} (voir figure \ref{fig:etsy-github}).
 
 \newImage{0.25}{etsy-github.png}{Profil \github{} d'\etsy{} ou l'on peut voir que l'entreprise a ouvert plus de 60 applications au public}{etsy-github}
 
-Enfin, et parce qu'un projet ne peut se dérouler parfaitement tout le temps, \etsy{} s'est préparé pour gérer les crises qui peuvent arriver. 
+Enfin, et parce qu'un projet ne peut se dérouler parfaitement tout le temps, \etsy{} s'est préparé pour gérer les crises qui peuvent arriver. Pour cela, elle a également développé un outil\footnote{\url{https://github.com/etsy/morgue}} qui lui sert de bilan post-mortem. Cela va permettre de suivre les incidents, la durée de ces derniers, les étapes qui ont permis de résoudre le souci ainsi que les personnes impliquées. Le but ici n'est pas de définir ou punir un coupable, mais bien de progresser et d'assimiler des informations pour permettre que cela ne se reproduise pas à l'avenir. Cela se rapproche également de la \emph{Third Way} qui dit que cette voie est celle de \textquote[\citetitle{devOpsHandbook}, p.37 \cite{devOpsHandbook} (citation originale en anglais)]{l'apprentissage continu et de l'expérimentation continue}. On comprend alors que le but ici n'est pas de blâmer quelqu'un mais bien de tirer des leçons d'un incident, et de permettre à d'autres de ne pas reproduire la même erreur, en documentant et en formant, partageant ses connaissances.
 
-a beaucoup utilisé l'open source et y a beaucoup contribué en retour (outil post mortem par ex) %https://github.com/etsy/'
+\subsection{Difficulté d'obtenir la panacée}
 
-\todo[color=cyan]{Terminer post mortem avec third way devops ref}
+\subsubsection{De nombreux outils}
 
-\subsection{Difficulté d'avoir la panacée}
+Les solutions évoquées précédemment sont intéressantes mais si elles étaient si efficace, pourquoi n'existe-t-il pas une solution unique, permettant de répondre à tous les besoins ? Certains outils tentent ainsi de satisfaire des besoins spécifiques, tel que gérer uniquement les dépendances (\emph{npm}, \emph{composer}, ou encore les \emph{gems} ruby) tandis que d'autres cherchent à combler plusieurs exigences.
 
-Les solutions évoquées précédemment sont intéressantes mais si elles étaient si efficace, pourquoi n'existe-t-il pas une solution unique, permettant de répondre à tous les besoins ? Chaque outil répond à une problématique et à une seule. Le but est de trouver la façon de coordonner les différentes solutions ensemble afin de répondre à un besoin spécifique.
+\newImage{0.5}{standards.png}{L'impossibilité de répondre à un besoin absolu - \url{https://xkcd.com/927}}{standard}
 
-De plus, on est en droit de se poser la question de savoir comment on a pu passer d'un mode de déploiement dans les années 1990 ou l'ou venait à déployer un site web via \gls{ftp},à un système ou il faut maintenant télécharger de nombreuses dépendances, installer et configurer des fichiers avant de pouvoir commencer à utiliser son application ?
+Avec la figure \ref{fig:standard}, on peut constater qu'il est souvent impossible de répondre à un besoin \frquote{absolu}, et que chaque projet finit au final par construire sa propre solution ou du moins nécessite l'assemblage d'une ou plusieurs solutions existantes, pour pouvoir répondre au besoin métier spécifique à ce projet.
 
-Cela vient en partie du fait que les besoins ont évolué. Au début, on se contentait d'afficher du texte, avec quelques images. Les effets de style étaient très sommaire et l'interaction sur une page était quasiment inexistante. Ce sont cette stylisation et l'interactivité des pages qui ont permis de démocratiser internet au sein du grand public et de sortir de cette idée qu'un ordinateur était \frquote{un terminal noir avec du texte blanc}.
-
-\todo[color=cyan]{Difficulté d'avoir la panacée, 1-2 pages}
-
-- pourquoi n'existe pas une solution unique ? 
-
-- Pourquoi complexité des processus de déploiement ? 
-
-- chaque outil répond à un besoin, mais existe-t-il un outil all-in-one ? (non)
+Parmi les outils les plus populaires, on peut noter \emph{Docker}, système de \glsplural{conteneur} qui permet d'isoler et de reproduire un environnement.
 
 Solutions existantes
 
 Chef, puppet, ansible, jenkins, travis, docker, terraform, heroku, aws, ...
 
-
 \textbf{ATTENTION : NE PAS REPONDRE A LA QUESTION, SEULEMENT SOULEVER DES INTERROGATIONS POUR LE LECTEUR}
 
-Cas pratique (démo entreprise migration) / Comment le généraliser (NE PAS RÉPONDRE A CETTE QUESTION). Cas précis et généraliser, parler des autres solutions. Difficulté d'avoir une solution clé en main, une solution à tout, la panacée
+\todo[color=orange]{Trouver comment étayer cette sous-partie}.
 
-Qu'est ce qui a poussé à l'automatiser ? Complexification de ces étapes (npm) pour pousser à la nécessité l'automatisation. Le fait que l'utilisateur veut toujours plus de simplicité pousse à toujours plus de complexité de réalisation. Permet de se concentrer sur des tâches à forte valeur ajoutée.
+\subsubsection{Des changements importants}
 
-Innovation technologique 
+De plus, on est en droit de se poser la question de savoir comment on a pu passer d'un mode de déploiement dans les années 1990 ou l'on venait à déployer un site web via \gls{ftp},à un système ou il faut maintenant télécharger de nombreuses dépendances, installer et configurer des fichiers avant de pouvoir commencer à utiliser son application ?
+
+Cela vient en partie du fait que les besoins ont évolué. Au début, on se contentait d'afficher du texte, avec quelques images. Les effets de style étaient très sommaire et l'interaction sur une page était quasiment inexistante. Ce sont cette stylisation et l'interactivité des pages qui ont permis de démocratiser internet au sein du grand public et de sortir de cette idée qu'un ordinateur était \frquote{un terminal noir avec du texte blanc}. De plus, qui dit nouvelles fonctionnalités et interactivité accrue dit besoin de tests plus important. Là ou il n'était pas spécialement nécessaire de tester une page \gls{HTML} simple, il est maintenant important de vérifier que son affichage s'effectue correctement, que les scripts sont bien exécutés, que la page s'affiche correctement, quel que soit le support utilisé (mobile, ordinateur portable, de bureau...) la ou il n'y avait qu'un (ou éventuellement deux) support(s) possible(s) auparavant. 
+
+De plus, le développement d'internet a permis l'émergence et la démocratisation du partage des connaissances et également des logiciels. Ainsi, pour permettre une ré-utilisabilité accrue, séparer les briques d'une applications en modules, paquets ou autres permet de ne pas réinventer la route à chaque développement et de pouvoir utiliser\footnote{et contribuer, si l'on vient à corriger une faille par exemple} ce qui a été déjà réalisé par d'autres développeurs. La gestion des dépendances permettant de récupérer le travail d'autres développeurs pour pouvoir l'inclure dans son propre projet a donc amené de nouvelles problématiques concernant le déploiement d'une application, puisque le code seul d'une application ne suffit plus à l'exécuter. 
+
+Néanmoins, il est nécessaire d'être vigilant ! Cela doit être effectué dans une certaine mesure, sous peine d'utiliser des dépendances très basique et modulaire, qui peuvent être trop modulaire. Ce fut notamment le cas pour le gestionnaire de dépendances du langage \emph{NodeJS}, \emph{npm} qui a été victime de nombreuses dépendances cassées en 2016, du au fait qu'une personne ayant publiée un paquet a supprimé ce dernier (voir \citetitle{npm-missing-deps} \cite{npm-missing-deps} (\citedate{npm-missing-deps})). Du fait que ce paquet était marqué comme dépendance de très nombreux autres paquets, ces derniers ne pouvaient ainsi plus se télécharger sans erreurs, puisqu'ils leur manquaient une dépendance. De plus, il faut également être vigilant vis-à-vis des failles de sécurités qui peuvent s'introduire via les dépendances externes, comme ce fut le cas pour \emph{npm} en novembre 2018 (voir \citetitle{npm-faille} \cite{npm-faille} (\citedate{npm-faille})).
+
+La démocratisation d'internet à également amené des problématiques de performances qui n'étaient pas prioritaire avant. Là ou un site \frquote{populaire} voulait dire des milliers de visites il y a quelques années, il n'est pas rare que cela se compte désormais plus en million de visites. Cela amène donc des problématiques auquel il faut répondre d'une autre façon et complexifie les méthodes de déploiement, suivi des logs...
+
+
+\subsubsection{Les exemples, c'est bien beau, mais on fait comment ?}
+
+\todo[color=orange]{revoir le titre de cette sous-section?}
+
+Maintenant que nous avons vu les différentes étapes du cycle de vie d'une application et que nous avons vu qu'il y avait un intérêt à mettre en place une démarche d'automatisation au sein d'un projet, nous allons voir dans la section suivante comment mettre cela en place plus concrètement.

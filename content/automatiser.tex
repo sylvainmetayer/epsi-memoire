@@ -1,10 +1,10 @@
 \todo[color=yellow]{Automatiser un projet, 12 pages mini}
 
-\subsection{Partie Management, gestion de projet}
+\subsection{Management, gestion de projet \& planification sont sur un bateau}
 
 \todo[color=yellow]{Partie management, comment gérer un changement ?, 3 pages}
 
-\epigraph{Neuf femmes ne font pas un enfant en un mois}{\citetitle{manmonth} - \citeauthor{manmonth} \cite{manmonth}}
+\epigraph{\frquote{Neuf femmes ne font pas un enfant en un mois}}{\citetitle{manmonth} - \citeauthor{manmonth} \cite{manmonth}}
 
 L'automatisation d'un projet ne peut s'effectuer un en jour. De même que la citation ci-dessus fait sens, il n'est pas possible de migrer un projet existant en une journée vers une automatisation totale. Il est donc nécessaire de préparer et planifier une conduite du changement qui permettra d'accompagner tous les acteurs du projet, afin que la transition s'effectue dans les meilleurs conditions possible. Cela passe d'abord par une réflexion sur la conduite à adopter et les changements à apporter. 
 
@@ -27,9 +27,9 @@ Le flux de travail, ce sont les différentes tâches qui sont à réaliser sur l
 
 Quelles sont donc les solutions pour gérer ce travail non prévu ? L'objectif est ici de faire en ce sorte que ce travail non prévu ne soit plus exécuté directement sans passer par une phase minimale de planification. Pour cela, il est possible de mettre en place des kanbans. Qu'est ce qu'un Kanban ? Il s'agit d'une méthode de représentation des tâches qui permet de visualiser l'avancée du projet en temps réel (\emph{ou du moins, à chaque fois que le tableau est mis à jour}). 
 
-\newImage{0.35}{kanban.jpg}{Représentation d'un tableau Kanban - Source : https://commons.wikimedia.org/wiki/File:Kanban\_board\_example.jpg}{kanban}
+\newImage{0.35}{kanban.jpg}{Représentation d'un tableau Kanban -  \url{https://commons.wikimedia.org/}}{kanban}
 
-On peut constater sur la figure \ref{fig:kanban} que l'on peut limiter le travail non prévu, en l'ajoutant à une catégorie, le \emph{backlog}, qui correspond à la pile de tâche, à réaliser. Une fois ces tâches estimées, découpées et discutées avec le client, elles peuvent être considérées comme prête à être commencées. On peut ensuite suivre l'évolution des tâches dans leur différentes étapes, du développement à leur livraison, en passant par les tests. Ainsi, le travail non prévu ne peut plus déranger un sprint en cours puisqu'il est possible de définir des limites, en disant par exemple que seules les tâches étant prêtes seront travaillées dans ce sprint et que les autres devront attendre le prochain sprint pour pouvoir être traitées. Néanmoins, il s'agit de faire attention à un point en mettant en place un kanban. En effet, si l'on met simplement en place un kanban et que l'on continue de traiter les tâches comme elles l'étaient précédemment, on s'expose au risque de voir le travail en cours, ou \emph{WIP\footnote{Work In Progress}} s'accumuler. Cela risque donc de ralentir les équipes voir de les démotiver. De plus, si tous le travail est en WIP, il n'y a aucune façon de savoir depuis combien de temps un tâche est présente ici, ce qui fait que certaines tâches peuvent très bien rester en WIP pendant des jours voir des semaines. La solution à ce problème tient dans le fait de limiter le travail en cours. En effet, en limitant le travail en cours, on s'assure que les tâches ne resteront pas éternellement en attente. Les tâches bloquées pourront éventuellement être passées dans une colonne "Bloqué"\footnote{Cette colonne devra elle aussi être limitée en élements, sous peine de seulement décaler le soucis !}.
+On peut constater sur la figure \ref{fig:kanban} que l'on peut limiter le travail non prévu, en l'ajoutant à une catégorie, le \emph{backlog}, qui correspond à la pile de tâche à réaliser. Une fois ces tâches estimées, découpées et discutées avec le client, elles peuvent être considérées comme prête à être commencées. On peut ensuite suivre l'évolution des tâches dans leur différentes étapes, du développement à leur livraison, en passant par les tests. Ainsi, le travail non prévu ne peut plus déranger un sprint en cours puisqu'il est possible de définir des limites, en disant par exemple que seules les tâches étant prêtes seront travaillées dans ce sprint et que les autres devront attendre le prochain sprint pour pouvoir être traitées. Néanmoins, il s'agit de faire attention à un point en mettant en place un kanban. En effet, si l'on met simplement en place un kanban et que l'on continue de traiter les tâches comme elles l'étaient précédemment, on s'expose au risque de voir le travail en cours, ou \emph{WIP\footnote{Work In Progress}} s'accumuler. Cela risque donc de ralentir les équipes voir de les démotiver. De plus, si tous le travail est en WIP, il n'y a aucune façon de savoir depuis combien de temps un tâche est présente ici, ce qui fait que certaines tâches peuvent très bien rester en WIP pendant des jours voir des semaines. La solution à ce problème tient dans le fait de limiter le travail en cours. En effet, en limitant le travail en cours, on s'assure que les tâches ne resteront pas éternellement en attente. Les tâches bloquées pourront éventuellement être passées dans une colonne "Bloqué"\footnote{Cette colonne devra elle aussi être limitée en éléments, sous peine de seulement décaler le soucis !}. De plus, si le travail en cours est restreint, il sera de meilleur qualité, puisque moins dispersé et donc engendrera moins de bug !
 
 L'un des objectifs de l'automatisation est également de faciliter le passage d'un système ou l'on met plusieurs mois avant de livrer une grosse fonctionnalité à un ou l'on livre de multiples petites fonctionnalités. Attendre plusieurs mois pour livrer une fonctionnalité peut en effet avoir des effets indésirables.
 
@@ -115,7 +115,7 @@ Gestion des tokens, gestion des comptes.
 Un compte admin ou plusieurs sous compte avec des droits limités ? En cas d'intrusion, un attaquant a moins de chance de corrompre tout le système.
 Infra : restriction d'accès (htaccess / firewall / ..?)
 
-Vérifier les dépendances (failles, ...)
+Vérifier les dépendances (failles, paquet npm corrompu...)
 
 Attention à l'endroit ou sont fait les builds/tests. Il est préférable, pour des raisons de sécurité évidente d'utiliser un outil auto-hébergé, open source, plutôt que des outils clés en main, ou les données sont envoyées sur des serveurs inconnus. 
 
