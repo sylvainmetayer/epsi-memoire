@@ -23,7 +23,7 @@ Avant de détailler la transition effectuée, faisons un état des lieux techniq
 
 \epigraph{``[Les déploiements se déroulaient] deux fois par semaine, et chacun prenait jusqu'à 4 heures.''}{\citetitle{etsyInterview} \cite{etsyInterview} (citation originale en anglais)}
 
-Au vu de ces informations et du fait de leur croissance, il était nécessaire de faire évoluer les méthodes de travail et de déploiement pour pouvoir suivre la cadence. L'objectif était donc de passer d'un développement lourd, non organisé à un déploiement rapide permettant un retour rapide sur l'état des déploiements ainsi que plusieurs déploiements par jours. Pour cela, \etsy{} a réfléchi sur les solutions qui permettrait d'améliorer la situation. 
+Au vu de ces informations et du fait de leur croissance, il était nécessaire de faire évoluer les méthodes de travail et de déploiement pour pouvoir suivre la cadence. L'objectif était donc de passer d'un développement lourd, non organisé à un système permettant un retour rapide sur l'état de multiple déploiements par jour. Pour cela, \etsy{} a réfléchi sur les solutions qui permettraient d'améliorer la situation. 
 
 \subsection{Solutions apportées}
 
@@ -33,6 +33,7 @@ Une deuxième mesure qui fut prise fut d'améliorer la communication au sein des
 
 Afin de réduire le problème des livraisons évoqué précédemment, la solution fut de déployer plus rapidement et de manière automatique. C'est ainsi que les nouveaux arrivants sont invités à déployer dès leur premier jour. L'objectif est de supprimer cette peur du déploiement. Néanmoins, tout développement n'a pas vocation à être déployé ou utilisé immédiatement et il fallait donc limiter leur utilisation. C'est ainsi qu'\etsy{} s'est inspiré de la solution utilisée par Flickr\footnote{\url{https://www.flickr.com/}}, les \emph{features flag} qui consistent à activer et désactiver certaines fonctionnalités de l'application via des paramètres de configuration (variables d'environnement, booléen...). Cela peut également servir à faire du test A/B, cette technique utilisée entre autre en marketing afin de tester plusieurs solutions afin de déterminer laquelle est la plus efficace. En activant une fonctionnalité uniquement pour un certain pourcentage des utilisateurs, il est possible de tester une fonctionnalité et d'obtenir des retours sur son taux d'engagement auprès des utilisateurs. De plus, si à ses débuts, la fonctionnalité génère des bugs, ces derniers impactent alors moins d'utilisateurs.
 
+Une autre démarche mise en place par \etsy{} fut de réaliser ses propres logiciels, répondant à ses besoins. Cela demanda un certain temps au début mais une fois les logiciels réalisé, cela leur a permis d'être plus efficace. L'un d'entre eux par exemple,
 
 \todo[color=red]{Cas pratique, 5-6 pages}
 
