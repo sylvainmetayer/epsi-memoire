@@ -15,18 +15,6 @@ addons:
     packages:
       - docker-ce
 
-cache:
-  timeout: 1000
-  bundler: true
-  directories:
-    - $HOME/docker
-
-before_cache:
-  - mkdir -p $HOME/docker && docker save sylvainmetayer/latex-debian | gzip -2 > $HOME/docker/sylvainmetayer_latex_debian.tar.gz'
-
-before_install:
-  - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
-
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
   - make docker-build && mv main.pdf $TODO_NAME && make clean
