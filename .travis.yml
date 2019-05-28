@@ -15,21 +15,17 @@ addons:
     packages:
       - docker-ce
 
-before_cache:
-  # Save tagged docker images
-  - >
-    mkdir -p $HOME/docker && docker images -a --filter='dangling=false' --format '{{.Repository}}:{{.Tag}} {{.ID}}'
-    | xargs -n 2 -t sh -c 'test -e $HOME/docker/$1.tar.gz || docker save $0 | gzip -2 > $HOME/docker/$1.tar.gz'
-
-before_install:
-  # Load cached docker images
-  - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
-
 cache:
   timeout: 1000
   bundler: true
   directories:
     - $HOME/docker
+
+before_cache:
+  - mkdir -p $HOME/docker && docker save sylvainmetayer/latex-debian | gzip -2 > $HOME/docker/sylvainmetayer_latex_debian.tar.gz'
+
+before_install:
+  - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
 
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
