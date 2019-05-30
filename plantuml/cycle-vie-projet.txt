@@ -1,0 +1,15 @@
+@startuml
+start
+:Répondre à un besoin;
+while (projet en vie ?) is (oui)
+  :Expression du besoin;
+  :Planification du besoin;
+  :Réalisation;
+  :Qualification;
+  :Mise en production;
+  :Maintenance;
+endwhile (non)
+:Fin de vie / Décommissionnement;
+stop
+@enduml
+
