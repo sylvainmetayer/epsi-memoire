@@ -24,10 +24,13 @@
 \setcounter{tocdepth}{5} % granularité de la table des matières
 \setlength{\parindent}{2em} % On modifie l'indentation des paragraphes
 \setlength{\parskip}{1em} % On modifie l'espace entre les paragraphes
-\widowpenalty=10000 % Pour les veuves et les orphelines
-\clubpenalty=10000 % Pour les veuves et les orphelines
+
+%\widowpenalty=10000 % Pour les veuves et les orphelines
+%\clubpenalty=10000 % Pour les veuves et les orphelines
+
 \newcommand{\numerotationType}{arabic} %Type de numérotation : Roman ou arabic
 
+% font settings
 \setsansfont{CMU Sans Serif}%{Arial}
 \setmainfont{CMU Serif}%{Times New Roman}
 \setmonofont{CMU Typewriter Text}%{Consolas}
@@ -38,7 +41,14 @@
 
 \newtoggle{todoExplain}
 \makeatletter % changes the catcode of @ to 11
-\@ifpackagewith{todonotes}{disable}{\togglefalse{todoExplain}}{\toggletrue{todoExplain}}
+
+\@ifpackagewith{todonotes}{disable}{
+	\togglefalse{todoExplain}
+}{
+	\setlength{\marginparwidth}{2cm}
+	\toggletrue{todoExplain}
+}
+
 \hypersetup{
 	colorlinks=true, %colorise les liens
 	breaklinks=true, %permet le retour à la ligne dans les liens trop longs
@@ -46,8 +56,8 @@
 	linkcolor= black, %couleur des liens internes
 	citecolor=blue,    %couleur des liens de citations
 	bookmarksopen=true,
-	pdftoolbar=false,
-	pdfmenubar=false,
+	pdftoolbar=true,
+	pdfmenubar=true,
 	unicode=true,
 	pdftitle={\@title},
 	pdfauthor={\@author},
@@ -57,8 +67,11 @@
 }
 \makeatother % changes the catcode of @ back to 12
 
+% Pour les citations avec epigraphs
 % \epigraphsize{\small}% Default
 \setlength\epigraphwidth{.8\textwidth}
 % \setlength\epigraphwidth{\textwidth}
 \setlength\epigraphrule{1pt}
 
+\setlength{\headheight}{14pt}
+\presetkeys{todonotes}{inline}{}

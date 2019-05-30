@@ -3,7 +3,7 @@
 % !TeX spellcheck = fr_FR
 % !TeX root = main.tex
 
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper,twoside]{article}
 
 \title{Comment l'automatisation peut-elle permettre d'améliorer le cycle de vie d'une application ?}
 \author{Sylvain METAYER}
@@ -11,10 +11,6 @@
 \input{packages}
 \input{parameters}
 \input{fonctions}
-
-% Définir le titre des annexes dans le sommaire (ne marche pas si mis dans parameters)
-\renewcommand{\addappheadtotoc}{Annexes}
-
 
 % Création glossaire
 \makeglossaries
@@ -64,23 +60,26 @@
 	%%%%%%%%%%%%%%%% FANCY %%%%%%%%%%%%%%%%%
 	% Fancy header / footer
 	\pagestyle{fancy}
-	
+
 	% Obtenir le nom de la section/sous-section sans le numero
-	\renewcommand{\sectionmark}[1]{\markright{#1}}
-	\renewcommand{\subsectionmark}[1]{\markright{#1}}
-	\renewcommand{\subsubsectionmark}[1]{\markright{#1}}
+	%\renewcommand{\sectionmark}[1]{\markright{#1}}
+	%\renewcommand{\subsectionmark}[1]{\markright{#1}}
+	%\renewcommand{\subsubsectionmark}[1]{\markright{#1}}
 	
 	%% HEADER
 	%\renewcommand{\headrulewidth}{0.4pt}
 	\lhead{\fancyplain{}{}}
 	\chead{\fancyplain{}}
 	\rhead{\fancyplain{}{\rightmark}}
-	
+
 	%% FOOTER
 	%\renewcommand{\footrulewidth}{0.4pt}
 	\lfoot{\fancyplain{}{}}	
 	\cfoot{\fancyplain{}{}}	
 	\rfoot{\fancyplain{}{\thepage}}
+
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0.4pt}
 	%%%%%%%%%%%%%%%% END FANCY %%%%%%%%%%%%
 
   \section{Cycle de vie d'une application}
@@ -118,9 +117,6 @@
 	\addcontentsline{toc}{section}{Liste des tableaux}
 	\listoftables
 	\vfill
-	\begin{flushright} \large 
-		Rédigé avec \LaTeX 
-	\end{flushright}
 \newpage
 	\addcontentsline{toc}{section}{Table des matières}
 	\tableofcontents
@@ -128,11 +124,9 @@
 	\addcontentsline{toc}{section}{Annexes}
 	\pagenumbering{gobble} % No numérotation
 	\vspace*{\stretch{1}}
-		\begin{center}
-			\begin{Huge}
-				\section*{\MakeUppercase{Annexes}} 
-			\end{Huge}
-		\end{center}
+%		\begin{center}
+			\centering \Huge \section*{\MakeUppercase{Annexes}}
+%		\end{center}
 	\vspace*{\stretch{1}}
 \newpage
 	\appendix % Annexes with A, B, C, D numérotation
