@@ -99,17 +99,14 @@
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
 	\input{content/conclusion}
 \newpage
-	\addcontentsline{toc}{section}{Glossaire}
 	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
-	\printglossaries % afficher le glossaire
+	\printglossary[title={Glossaire}] \label{glossaire}
 \newpage
-	\addcontentsline{toc}{section}{Références}
+	\addcontentsline{toc}{section}{Références bibliographiques}
 	\nocite{*} % Ajout de toutes les références bibliographiques non citées jusqu'à présent.
-	%\bibliographystyle{unsrtnat} 
-	%\bibliographystyle{babunsrt}
-	%\bibliographystyle{apacite}
-	% \bibliography{main}{}
-	\printbibliography
+	\printbibliography[type=book,title={Références bibliographiques}]
+	\addcontentsline{toc}{section}{Références webographiques}
+	\printbibliography[type=online,title={Références webographiques}]
 \newpage
 	\addcontentsline{toc}{section}{Liste des figures}
 	\listoffigures 
@@ -127,9 +124,7 @@
 	\addcontentsline{toc}{section}{Annexes}
 	\pagenumbering{gobble} % No numérotation
 	\vspace*{\stretch{1}}
-%		\begin{center}
-			\centering \Huge \section*{\MakeUppercase{Annexes}}
-%		\end{center}
+		\centering \Huge \section*{\MakeUppercase{Annexes}}
 	\vspace*{\stretch{1}}
 \newpage
 	\appendix % Annexes with A, B, C, D numérotation
