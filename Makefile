@@ -24,10 +24,11 @@ tag: version
 	@echo "Numéro de version?"; read tag; echo "Message du tag ?"; read message; git tag -a $$tag -m "$$message"; git push --tags
 
 clean: soft_clean
-	rm -f ${filename}.pdf
+	@rm -f ${filename}.pdf
 
 soft_clean: # Remove everything but keep the PDF. Used in TravisCI
-	rm -f ${filename}.{ps,log,aux,out,dvi,bbl,blg,glg,glo,gls,ist,lof,lol,lot,synctex.gz,tdo,toc}
+	@rm -f ${filename}.{ps,log,aux,out,dvi,bbl,blg,glg,glo,gls,ist,lof,lol,lot,synctex.gz,tdo,toc,bcf,run.xml,aux.bbl,aux.blg} ${filename}-blx.bib
+	@rm -rf ?/
 
 paper:
 	sed -i 's/% \\toggletrue{paper}/\\toggletrue{paper}/' parameters.tex
