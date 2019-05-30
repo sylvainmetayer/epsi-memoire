@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := build
-
+.PHONY: plantuml
 filename=main
 
 build:
@@ -48,4 +48,7 @@ build-image:
 push-image: build-image
 	docker tag latex-debian sylvainmetayer/latex-debian
 	docker push sylvainmetayer/latex-debian
+
+plantuml:
+	@docker run -v $$(pwd):/usr/src/myapp -w /usr/src/myapp --rm --user="$$(id -u):$$(id -g)" openjdk:13 java -jar plantuml/plantuml.1.2019.6.jar "./plantuml" -o ../img/
 
