@@ -4,7 +4,9 @@ Une application, qu'il s'agisse d'une application web ou de bureau, se décompos
 
 Selon les différentes phases du projet, plusieurs personnes vont être amenées à travailler sur ce dernier. Il est donc primordial de pouvoir établir un suivi de l'application. Si plusieurs personnes interviennent sur un projet, il est tout à fait possible que des personnes aillent et viennent, nécessitant une bonne organisation pour éviter de tout reprendre de zéro à chaque fois. On peut donc distinguer plusieurs étapes dans le cycle de vie d'une application.
 
-On peut ainsi représenter chacune de ses étapes avec le schéma présent sur la figure \ref{fig:cycleVieProjet}. Le but de cette partie est donc de présenter, les une après les autres, ces étapes.
+On peut ainsi représenter chacune de ses étapes avec le schéma présent sur la figure \ref{fig:cycleVieProjet}. Toutes les étapes du cycle de vie d'une application ne sont pas présentes (notamment les parties financières par exemple), et certains projets n'ont peut-être pas besoin de chacune de ses étapes. Ce schéma se veut général, afin de donner une vision d'ensemble de la façon dont se déroule un projet
+
+Le but de cette partie est de présenter, les une après les autres, les étapes présente sur ce schéma.
 
 \newImage{0.50}{cycle-vie-projet.png}{Schéma simplifié du cycle de vie d'un projet}{cycleVieProjet}
 
@@ -49,9 +51,29 @@ Une autre étape intervenant en amont du projet est \emph{l'expression du besoin
 
 \subsubsection{Expression du besoin}
 
-Commençons par détailler l'expression du besoin
+Commençons par détailler l'expression du besoin. Cela consiste à découper les fonctionnalités de l'application en parties et à en détailler le fonctionnement, dans un document (souvent constitué de plusieurs dizaines de pages) qui sera transmis à l'équipe en charge du développement.
 
-La planification est également une étape qui sera présente durant tout le cycle de vie de l'application, jusqu’à sa fin de vie. L'organisation du projet passe souvent par l'élaboration de \glsplural{gantt} pour représenter de façon graphique les jalons du cycle de vie d'une application.
+Il s'agit d'une étape à ne pas négliger puisqu'elle va servir de support à l'équipe de développement lors des phases de réalisation. Ainsi, ce sont les phases d'expression du besoin qui définissent les règles métiers de l'application. C'est également durant cette phase que l'on va décrire les interactions de l'application avec d'autre système.
+
+Par exemple, prenons une application de covoiturage. Cette dernière va certainement interagir avec plusieurs autres systèmes.
+
+\begin{description}
+	\item L'application va interagir avec une base de données Base de données support résa
+	\item Google maps , trajet + traffic
+	\item Paypal / banque
+	\item googel analytcs
+\end{description}
+
+\todo[color=cyan]{PRIORITY TO FINISH REWORK THIS}
+
+L'expression du besoin était auparavant réalisé par le client, puis donnée au moe
+
+
+%% Parler kick-off projet pour exprimer besoin au travers d'ateliers
+
+%%%%%%%%%%%%%%%%%%%%%
+
+L'organisation du projet passe souvent par l'élaboration de \glsplural{gantt} pour représenter de façon graphique les jalons du cycle de vie d'une application.
 
 \newImage{0.4}{gantt.png}{Exemple de \gls{gantt} - \url{wikimedia.org}}{gantt}
 
@@ -86,7 +108,7 @@ Cahier des charges :permet de définir charte graphique \& architecture projet. 
 
 Dans le cas d'une méthodologie \gls{cycle_v}, une seule phase de réalisation est faite, avant d'effectuer la validation avec le client. Cette méthodologie était beaucoup utilisée dans les années \todo[color=red]{Chercher les années ou était utilisé Cycle en V}, mais avait l'inconvénient de provoquer une différence entre ce que le client souhaitait réellement et ce qu'il obtenait à la fin, plus ou moins conforme au cahier des charges. 
 
-\newImage{0.5}{gestionProjet.jpg}{Gestion de projet, allégorie. \url{https://www.anyideas.net}}{gestionProjet} 
+\newImage{0.5}{gestionProjet.jpg}{Gestion de projet, allégorie. \url{https://www.anyideas.net}}{gestionProjet}
 
 Comme le montre l'image \ref{fig:gestionProjet}, souvent utilisée pour illustrer de manière humoristique les dérives potentielles de la gestion de projet, plus le nombre de personnes est important sur un projet et moins la communication est présente, plus les différences d'interprétation peuvent être importantes. 
 
@@ -98,7 +120,7 @@ TODO : Il doit également tenir compte du temps pris par les tâches qui ne sont
 	\item Les dates des ateliers de définitions du besoin entre équipe de développement et client
 	\item Les dates de recette et de pré-production du service
 	\item La validation client
-	\item Les différentes réunions de suivi du projet 
+	\item Les différentes réunions de suivi du projet
 	\item Son annonce au public
 	\item Sa mise en production
 	\item ...
