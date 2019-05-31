@@ -38,6 +38,16 @@
 
 %% FROM http://forum.mathematex.net/latex-f6/glossaire-t8654.html#p85429
 \renewcommand{\glstextformat}[1]{#1*} % Affichage dans le corps du texte d'une entrée du glossaire
+%\defglsdisplayfirst{#1#4\protect\footnote{#2}}
+
+\defglsentryfmt{%
+	\ifglsused{\glslabel}{%
+		\glsgenentryfmt%
+	}{%
+		\glsgenentryfmt\protect\footnote{\glsentrydesc{\glslabel}}
+	}%
+}
+
 
 \newtoggle{todoExplain}
 \makeatletter % changes the catcode of @ to 11
