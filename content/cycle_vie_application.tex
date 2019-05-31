@@ -51,46 +51,33 @@ Une autre étape intervenant en amont du projet est \emph{l'expression du besoin
 
 \subsubsection{Expression du besoin}
 
-Commençons par détailler l'expression du besoin. Cela consiste à découper les fonctionnalités de l'application en parties et à en détailler le fonctionnement, dans un document (souvent constitué de plusieurs dizaines de pages) qui sera transmis à l'équipe en charge du développement.
+Commençons par détailler l'expression du besoin. Cela consiste à découper les fonctionnalités de l'application et à en détailler le fonctionnement, dans un document (souvent constitué de plusieurs dizaines de pages) qui sera transmis à l'équipe en charge du développement. L'objectif est de s'assurer qu'il n'y ait pas d'ambiguïté sur les fonctionnalités à réaliser. Il s'agit d'une étape à ne pas négliger puisqu'elle va servir de support à l'équipe de développement lors des phases de réalisation. Ainsi, ce sont les phases d'expression du besoin qui définissent les règles métiers de l'application. 
 
-Il s'agit d'une étape à ne pas négliger puisqu'elle va servir de support à l'équipe de développement lors des phases de réalisation. Ainsi, ce sont les phases d'expression du besoin qui définissent les règles métiers de l'application. 
+L'expression du besoin contient aussi des garanties tant que pour le client que pour le prestataire. Ces garanties peuvent être des assurances de stabilité du service (\gls{SLA}) \todo[color=orange]{FINISH IT }
+
+%%%%%%
+Cahier des charges :permet de définir charte graphique \& architecture projet. Définit objectif. Poser au clair les besoins et spécificités des demandes. Priorisation. Définit qui a quel rôle? Contient des garanties pour le client (SLA...) \& l'entreprise (fonctionnalités hors scope \& co)
+%%%%%%%%
 
 C'est également durant cette phase que l'on va décrire les interactions de l'application avec d'autre système. Par exemple, prenons une application de covoiturage. Cette dernière va certainement interagir avec plusieurs autres systèmes.
 
 \begin{itemize}
 	\setlength\itemsep{0em}
 	\item L'application va interagir avec une base de données afin de stocker les réservations des utilisateurs.
-	\item L'application va certainement interagir avec des systèmes de cartographies, tel qu'OpenStreetMap\footnote{\url{https://openstreetmap.org/}} pour pouvoir afficher les trajets.
+	\item L'application va probablement interagir avec des systèmes de cartographies externe, tel qu'OpenStreetMap\footnote{\url{https://openstreetmap.org/}} pour pouvoir afficher les trajets.
 	\item Les paiements correspondant au prix du covoiturage devront être géré par un système de paiement et étant donné la complexité et la sécurité des données bancaires, il s'agira sûrement d'un système externe.
 	\item A des fins de statistiques sur le taux d'utilisation, le site utilisera peut-être un système de suivis statistiques tel que Matomo\footnote{\url{https://matomo.org}} 
 \end{itemize}
 
-\todo[color=cyan]{PRIORITY TO FINISH REWORK THIS}
+Dans la méthodologie \gls{cycle_v}, l'expression du besoin était réalisé par le client uniquement et remise à l'équipe de développement qui devait tenter de comprendre les ambiguïtés si le document n'était pas assez précis, ce qui pouvait donner lieu à de mauvaises interprétations et provoquer une différence entre ce que le client souhaitait réellement et ce qu'il obtenait à la fin. 
 
-L'expression du besoin était auparavant réalisé par le client, puis donnée au dev qui se débrouillait avec et attendant la prochaine verision pour corriger si cela ne collait pas. Maintenant agilité, évolution en fonction de, aterlier pour guider client,....
-
-
-%% Parler kick-off projet pour exprimer besoin au travers d'ateliers
-
-%%%%%%%%%%%%%%%%%%%%%
-
-L'organisation du projet passe souvent par l'élaboration de \glsplural{gantt} pour représenter de façon graphique les jalons du cycle de vie d'une application.
-
-\newImage{0.4}{gantt.png}{Exemple de \gls{gantt} - \url{wikimedia.org}}{gantt}
-
-Un \gls{gantt} contient donc les différents jalons du cycle de vie d'une application, mais il est aussi nécessaire de prévoir les éléments pouvant être bloquants. Par exemple, dans le cas de collecte de données utilisateurs afin de réaliser un traitement, il convient de prévoir un délai pour effectuer les démarches auprès de la \gls{cnil}, prévoir un délai de validation du contrat avec les différents prestataires, les délais de réponse au sein de l'organisation afin de valider le projet...
-
-Dans le cas d'une méthodologie \gls{cycle_v}, une seule phase de réalisation est faite, avant d'effectuer la validation avec le client. Cette méthodologie était beaucoup utilisée dans les années \todo[color=red]{Chercher les années ou était utilisé Cycle en V}, mais avait l'inconvénient de provoquer une différence entre ce que le client souhaitait réellement et ce qu'il obtenait à la fin, plus ou moins conforme au cahier des charges. 
-
-\newImage{0.5}{gestionProjet.jpg}{Gestion de projet, allégorie. \url{https://www.anyideas.net}}{gestionProjet}
+\newImage{0.5}{gestionProjet.jpg}{Gestion de projet, allégorie - \url{https://www.anyideas.net}}{gestionProjet}
 
 Comme le montre l'image \ref{fig:gestionProjet}, souvent utilisée pour illustrer de manière humoristique les dérives potentielles de la gestion de projet, plus le nombre de personnes est important sur un projet et moins la communication est présente, plus les différences d'interprétation peuvent être importantes. 
 
-Une deuxième méthodologie de travail a vu le jour dans les années \todo[color=red]{Chercher date début agilité}, et a pour objectif de combler ce manque de communication, et de faire des retours rapides au client. Dans cette méthodologie, dites \emph{méthodologie agile}, la phase de réalisation est caractérisée sous forme de sprint, qui inclus non pas toutes les fonctionnalités demandées, mais seulement une partie, qui peut-être réalisable dans un temps convenu avec le client. Le but est de développer fonctionnalités par fonctionnalités, et de pouvoir présenter quelques choses de concret au client lors des fins de sprint. Ainsi, à chaque itération, on se rapproche un peu plus de la version définitive du produit, et on apporte constamment de la valeur ajoutée au produit.
+Une méthode de travail alternative à commencer à s'imposer depuis une dizaine d'années et a pour objectif de combler ce manque de communication et de faire des retours rapides au client. Dans cette méthodologie, dites \emph{méthodologie agile}, la phase de réalisation est caractérisée sous forme de sprint, qui inclus non pas toutes les fonctionnalités demandées, mais seulement une partie, qui peut-être réalisable dans un temps convenu avec le client. Le but est de développer fonctionnalités par fonctionnalités, et de pouvoir présenter quelques choses de concret au client lors des fins de sprint. Ainsi, à chaque itération, on se rapproche un peu plus de la version définitive du produit, et on apporte constamment de la valeur ajoutée au produit.
 
-\todo{Parler de la partie historique agilité vs cycel V ici avant d'aborder priorisation}
-
-Il convient aussi de définir les fonctionnalités par priorités. En effet, selon les délais impartis, il ne sera peut-être pas possible de voir toutes les fonctionnalités présentes dans la première version. Cela impliquerait un \gls{timetomarket} plus élevé, et donc des risques de voir d'autres concurrents se positionner sur le marché. Il est donc plus prudent de définir les fonctionnalités clés de l'application, et de prévoir les autres fonctionnalités dans les évolutions futures. On peut prioriser les fonctionnalités d'une application en plusieurs catégories, détaillées ci-dessous.
+Il est ainsi nécessaire de trier les fonctionnalités par priorité. En effet, selon les délais impartis, il ne sera peut-être pas possible de voir toutes les fonctionnalités présentes dans la première version. Cela impliquerait un \gls{timetomarket} plus élevé, et donc des risques de voir d'autres concurrents se positionner sur le marché. Il est donc plus prudent de définir les fonctionnalités clés de l'application, et de prévoir les autres fonctionnalités dans les évolutions futures. On peut prioriser les fonctionnalités d'une application en plusieurs catégories, détaillées ci-dessous.
 
 \begin{description}
 	\item [Les \emph{must-have}]. Ce sont les fonctionnalités sans lesquelles l'application n'est pas utilisable. Par exemple, si le service propose des achats, mais que le tunnel d'achat ne gère pas les paiements, il sera impossible de compléter la moindre commande, et par conséquent, le site ne sera pas utilisable. On peut ainsi dire que ces fonctionnalités correspondent au \gls{mvp} du projet.
@@ -101,13 +88,26 @@ Il convient aussi de définir les fonctionnalités par priorités. En effet, sel
 
 %% https://fr.wikipedia.org/wiki/M%C3%A9thode_MoSCoW
 
+Concernant la planification d'un projet, l'organisation de ce dernier passe souvent par l'élaboration de \glsplural{gantt} pour représenter de façon graphique les jalons du cycle de vie d'une application.
+
+\newImage{0.4}{gantt.png}{Exemple de \gls{gantt} - \url{wikimedia.org}}{gantt}
+
+Un \gls{gantt} contient donc les différents jalons du cycle de vie d'une application, mais il est aussi nécessaire de prévoir les éléments pouvant être bloquants. Par exemple, dans le cas de collecte de données utilisateurs afin de réaliser un traitement, il convient de prévoir un délai pour effectuer les démarches auprès de la \gls{cnil}, prévoir un délai de validation du contrat avec les différents prestataires, les délais de réponse au sein de l'organisation afin de valider le projet... De plus, on peut également prévoir les dates des kick-off et autres ateliers aidant à exprimer les besoins sur certaines fonctionnalités, en collaboration avec le client.
+
+
+\todo[color=cyan]{PRIORITY TO FINISH REWORK THIS}
+
+L'expression du besoin était auparavant réalisé par le client, puis donnée au dev qui se débrouillait avec et attendant la prochaine version pour corriger si cela ne collait pas. Maintenant agilité, évolution en fonction de, atelier pour guider client,....
+
+%% Parler kick-off projet pour exprimer besoin au travers d'ateliers
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\todo{Parler de la partie historique agilité vs cycel V ici avant d'aborder priorisation}
+
 \todo[color=cyan]{Finir la partie planification}
 
 - Définition risques juridiques / légaux (GDPR, CNIL...).
-
-- Expression du besoin, rédaction cahier des charges. Objectif : supprimer ambiguité
-
-Cahier des charges :permet de définir charte graphique \& architecture projet. Définit objectif. Poser au clair les besoins et spécificités des demandes. Priorisation. Définit qui a quel rôle? Contient des garanties pour le client (SLA...) \& l'entreprise (fonctionnalités hors scope \& co)
 
 TODO : Il doit également tenir compte du temps pris par les tâches qui ne sont pas de nature technique (réunions, rapports, congés maladie, etc.) 
 
@@ -121,7 +121,6 @@ TODO : Il doit également tenir compte du temps pris par les tâches qui ne sont
 	\item Sa mise en production
 	\item ...
 \end{itemize}
-
 
 \todo[color=cyan]{Planification}
 
