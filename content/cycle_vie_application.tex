@@ -1,6 +1,4 @@
-\todo[color=yellow]{Cycle de vie d'une application, 8 pages}
-
-Une application, qu'il s'agisse d'une application web ou de bureau, se décompose la plupart du temps en plusieurs étapes. Rares, pour ne pas dire quasi-inexistant, sont les projets réussis qui ont été développés sans jalons, sans documentation (bien rédigée ou non), et sans support (technique, utilisateur). C'est pour répondre à un (ou plusieurs) que l'on vient à développer une application. Par exemple, Blablacar\footnote{\url{https://blablacar.fr/}} est né du besoin de répondre à la demande de covoiturage pour se déplacer plus facilement (\emph{recherche facile de trajet, communication entre les membres...}) et à moindre coût.
+Une application, qu'il s'agisse d'une application web ou de bureau, ne se réalise pas du jour au lendemain d'un claquement de doigt. Sa mise en place et son déroulement se décomposent la plupart du temps en plusieurs étapes. Rares, pour ne pas dire quasi-inexistant, sont les projets réussis qui ont été développés sans jalons, sans documentation (bien rédigée ou non) et sans support (technique ou utilisateur). C'est pour répondre à un (ou plusieurs) que l'on vient à développer une application. Par exemple, Blablacar\footnote{\url{https://blablacar.fr/}} est né du besoin de répondre à la demande de covoiturage pour se déplacer plus facilement (\emph{recherche facile de trajet, communication entre les membres...}) et à moindre coût.
 
 Selon les différentes phases du projet, plusieurs personnes vont être amenées à travailler sur ce dernier. Il est donc primordial de pouvoir établir un suivi de l'application. Si plusieurs personnes interviennent sur un projet, il est tout à fait possible que des personnes aillent et viennent, nécessitant une bonne organisation pour éviter de tout reprendre de zéro à chaque fois. On peut donc distinguer plusieurs étapes dans le cycle de vie d'une application.
 
@@ -86,7 +84,7 @@ Il est ainsi nécessaire de trier les fonctionnalités par priorité. En effet, 
 
 Concernant la planification d'un projet, l'organisation de ce dernier passe souvent par l'élaboration de \glsplural{gantt} (ou équivalent) pour représenter de façon graphique les jalons du cycle de vie d'une application (fin des développements, phase de qualification, mise en production, réunions périodiques de suivi, durée de chaque sprint\ldots).
 
-\newImage{0.4}{gantt.png}{Exemple de Gantt - \url{wikimedia.org}}{gantt}
+\newImage{0.30}{gantt.png}{Exemple de Gantt - \url{wikimedia.org}}{gantt}
 
 Un \gls{gantt} contient donc les différents jalons du cycle de vie d'une application, mais il est aussi nécessaire de prévoir les éléments pouvant être bloquants. Par exemple, dans le cas de collecte de données utilisateurs afin de réaliser un traitement, il convient de prévoir un délai pour effectuer les démarches auprès de la \gls{cnil}, prévoir un délai de validation du contrat avec les différents prestataires, les délais de réponse au sein de l'organisation afin de valider le projet, les démarches administratives (conditions générales d'utilisations à rédiger par des cabinets d'avocats)... De plus, on peut également prévoir les dates des kick-off et autres ateliers aidant à exprimer les besoins sur certaines fonctionnalités, en collaboration avec le client. Selon la granularité souhaitée, on pourra également y faire figurer, à titre indicatif pour les équipes en charge de la réalisation, les dates à partir de laquelle le client va faire la promotion de son application (\emph{et par conséquent, la date à laquelle l'application doit être plus ou moins prête})
 
@@ -109,7 +107,25 @@ Si les besoins sont plus complexe, on peut envisager deux possibilités.
 
 Une des phases souvent négligées dans les projets est la phase de tests. En effet, il est essentiel de garantir le bon fonctionnement du projet, autrement que par un \frquote{Cela marche sur mon poste, c'est bon !}. Le client souhaite des tests afin de s'assurer du bon fonctionnement de son application, et pour être rassuré\footnote{Même s'il est impossible de garantir une application sans bug} quant à l'apparition d'un bug en production, pouvant potentiellement impacter son activité, chiffre d'affaires ou la relation avec ses clients. Il existe différents types de test, chacun ayant une responsabilité différentes. Nous aborderons les détails à propos des tests dans la partie sur \frquote{\nameref{importance-test}} (p. \pageref{importance-test})
 
+C'est également lors de la phase de réalisation que l'on va porter attention plusieurs éléments. On peut notamment citer les éléments suivants qui sont à prendre en compte.
+
+\begin{description}
+	\item [La sécurité et le respect de la vie privée] des utilisateurs afin de garantir que les données de ces derniers soient en sûreté. 
+	
+	On néglige trop souvent cette partie, par manque de temps, de moyen engagés ou par méconnaissance des risques et on se retrouve, même parmi les grandes multinationales avec des scandales médiatiques qui peuvent entrainer de lourdes amendes, une perte de confiance de la part des utilisateurs et perte de chiffres d'affaires.\footnote{\url{https://dayssincelastfacebookscandal.com/}}
+	
+	Heureusement, avec la mise en place du \gls{RGPD} (qui oblige à limiter les traitements de données personnelles uniquement lorsque cela est nécessaire) en mai 2018, on peut espérer de meilleure prise en compte de ces contraintes par les entreprises dans le futur.
+	\item [L'accessibilité de l'application] qui peut être une clause obligatoire selon le type d'application et le client, cela peut d'ailleurs être une clause obligatoire.
+	
+	La norme \gls{RGAA}, par exemple, impose des règles strictes pour les sites pour lesquels l'accessibilité est primordiale (par exemple les sites institutionnels) afin que chacun puisse accéder au contenu.
+	\item [Le référencement] car un site qui n'est pas référencé est un site qui ne sera pas visible. Le référencement est à prendre en compte dès le début des phases de développement, via l'application des bonnes pratiques de référencement.
+	\item [Le green--IT] qui est un mouvement visant à réduire la consommation énergétique des applications, au travers de bonnes pratique. Cela peut aller d'une gestion de cache amélioré à de la configuration spécifique sur les serveurs pour permettre de meilleures performances tout en passant par l'optimisation du code écrit par les développeurs.
+	\item [Les bonnes pratiques en général] car une application qui respectent des bonnes pratiques, défini par un organisme reconnu et approuvé par une grande communauté, est une application qui sera plus simple à maintenir et qui entrainera potentiellement moins de bugs\footnote{Et il est toujours plus agréable de se dire que l'on a réalisé quelque chose correctement plutôt que livrer un travail que l'on sait de mauvaise qualité}. Pour les développements de site web, un ensemble de bonnes pratiques existe, il s'agit de la \citetitle{opquast-best-practices} \cite{opquast-best-practices}, qui propose une certification\footnote{\url{https://opquast.com/fr/}} reconnue professionnellement aux personnes souhaitant la passer afin de valider leur expertise dans la mise en place des bonnes pratiques web.
+\end{description}
+
 \subsection{Qualification}
+
+\todo[color=orange]{Toutes les infos sont présentes dans cette sous partie, par contre ça me semble être le bordel niveau organisation des paragraphes. Besoin de repasser dessus pour rendre la lecture plus claire.}
 
 Comme il a été dit précédemment, une phase de réalisation ne s'effectue pas en une fois\footnote{sauf exceptions, par exemple dans le cas d'un projet très court}, et va donc être découpé sous forme de sprint. A la fin de chaque sprint, dont la durée est déterminée durant la phase de planification, il va être présenter au client le travail réalisé. Comme indiqué sur le schéma \ref{fig:cycleVieProjet} (p. \pageref{fig:cycleVieProjet}), on peut voir cela comme une succession de \emph{mini-phase} de réalisation et de qualification. Cela va permettre d'obtenir un retour du client avec des éventuelles précisions sur le besoin, des demandes de modifications\ldots Ces itérations vont alors se répéter jusqu'à obtenir une validation du client qui permettra alors la mise en production.
 
@@ -117,37 +133,33 @@ La phase de qualification permet ainsi au client d'avoir un contact direct avec 
 
 Néanmoins, la phase de qualification début rarement par la présentation de l'application au client. En effet, avant cela, l'application va d'abord être déployée en interne, sur un environnement qui sera similaire à celui de la future production. Cela va permettre de vérifier la validité de la configuration de production. De plus, c'est à ce moment là que l'on va tester la procédure de déploiement de l'application et l'ajuster afin de s'assurer qu'elle permettra un déploiement sans accroche, cette fois sur un environnement de production.
 
-La phase de qualification nécessite beaucoup de rigueur. Plus cette phase est effectuée avec sérieux et rigueur, moins il y a de chance de retrouver un bug en production.
-
-Selon les erreurs/retours remontés par le client, elles seront alors évaluées en fonction de l'expression du besoin initial, et catégorisée en bug (et donc corrigée) ou alors en évolution, qui ne sera alors pas traitée tout de suite et entrainera des coûts supplémentaires. Cela peut être le cas si le client, qui souhaitait initialement un formulaire de connexion simple à un service, découvre qu'il ne peut se connecter via un \gls{LDAP}. Étant donné que le client n'avait pas exprimé son besoin, il est logique que ce dernier ait mal été interprété. \emph{Heureusement, ces désagréments sont censés être évités si l'expression du besoin, réalisée en collaboration entre le client et son prestataire, est bien réalisée et ne laisse pas place à des zones d'ombres.}
+La phase de qualification nécessite beaucoup de rigueur. Plus cette phase est effectuée avec sérieux et rigueur, moins il y a de chance de retrouver un bug en production. Selon les erreurs/retours remontés par le client, elles seront alors évaluées en fonction de l'expression du besoin initial, et catégorisée en bug (et donc corrigée) ou alors en évolution, qui ne sera alors pas traitée tout de suite et entrainera des coûts supplémentaires. Cela peut être le cas si le client, qui souhaitait initialement un formulaire de connexion simple à un service, découvre qu'il ne peut se connecter via un \gls{LDAP}. Étant donné que le client n'avait pas exprimé son besoin, il est logique que ce dernier ait mal été interprété. \emph{Heureusement, ces désagréments sont censés être évités si l'expression du besoin, réalisée en collaboration entre le client et son prestataire, est bien réalisée et ne laisse pas place à des zones d'ombres.}
 
 De plus, selon le projet, l'application finale pourra être déployée sur un serveur appartenant au prestataire ou bien chez un prestataire externe qui effectuera uniquement la partie hébergement. Si c'est le cas, il s'agit alors de tester que la communication entre les deux prestataires est bonne, en fournissant la procédure d'installation et en testant sur un environnement similaire à la production le bon fonctionnement de l'application.
 
 \subsection{Mise en production}
 
-- Choix de la date important (ex: Transport, pas 10j avant la rentrée et tous les parents qui renouvellent l'abonnement de leur enfant.)
+La mise en production correspond au déploiement de l'application pour les utilisateurs finaux. Il s'agit d'une étape importante, qui marque l'aboutissement d'un période, plus ou moins longue, de travail.
 
-- Prévoir les imprévus : validation application mobile, propagation dns...
+Avant de passer à la mise en production, il est important de vérifier plusieurs éléments. Ci-dessous se trouve quelques exemples qui peuvent être bloquant pour la mise en production d'une application.
 
-- Formations utilisateurs
+\textit{La date de mise en production est-elle cohérente ?} Par exemple, dans le cas d'un site marchand, un déploiement deux semaines avant Noël est peu recommandé puisqu'il s'agit d'une période très importante. S'il s'agit du premier déploiement, et donc de la mise en ligne initial du site, il est sûrement trop tard pour pouvoir être référencée par les moteurs de recherche correctement. S'il s'agit d'une mise à jour d'un site déjà existant, le risque d'interrompre le trafic, même pour une mise à jour mineure ou aucun problème n'a été relevé, est important et pourrait provoquer de sérieuse pertes pour le client.
 
-- Promotion client du produit.
+\textit{Si la phase de planification a bien été menée, toutes les démarches, qu'elles soient administratives, techniques ou juridiques, devraient être effectuées avant la mise en production.} Imaginez le lancement d'une application mobile, avec toute la phase de communication qui s'en précède, bloqué à cause d'une attente de validation par le magasin d'application. Cela pourrait donner une mauvaise image du client et montrer une mauvaise anticipation de la part du prestataire, qui n'a pas pensé à prévenir le client de ces potentiels délais. Dans le même registre, on peut également penser à la propagation\footnote{Même si cela tend à être de plus en plus rapide} du \gls{DNS} pour un domaine récemment enregistré ou mis à jour. Si l'application est déployée mais que le domaine n'est pas encore propagé et que par conséquent, les clients ne sont pas en mesure d'accéder au site, cela donne une mauvaise image et risque de surcharger inutilement le support.
 
-- Premier déploiement souvent "stressant"
+Une fois ces étapes validées, la mise en production peut alors commencer. Cette dernière est effectuée par le prestataire, qui va communiquer avec le client les dates de début et de fin estimée d'intervention, ainsi que le statut de la mise en production. Si cette dernière a été réalisée avec succès, il va falloir surveiller son activité afin de s'assurer que l'application se comporte bien une fois déployée. Si la mise en production s'est mal déroulée, il va falloir investiguer sur la cause de l'échec et, si l'application a déjà été déployée auparavant, effectuer un retour en arrière afin de ne pas laisser l'application indisponible trop longtemps. 
 
-- Besoin de métrique pour pouvoir déterminer le succès de l'application
+Une fois la mise en production effectuée avec succès, et dans le cas d'un outil interne, le client (ou le prestataire, selon les clauses du contrat) va devoir former les utilisateurs finaux afin de s'assurer que tous soient en mesure de pouvoir utiliser l'application. Dans le cas d'un site à destination du public, il va falloir communiquer pour indiquer que le site est disponible et éventuellement rédiger des articles pour expliquer l'utilisation du service\footnote{Mais cela est totalement optionnel, car tous les sites sont utilisable de façon accessible et intuitive, c'est bien connu!}
 
-\todo[color=cyan]{Mise en production}
+Une fois la mise en production effectuée, une batterie de test est en général effectuée, afin de s'assurer que l'application est bien déployée correctement et répond de façon voulue. Une fois cela fait, il va falloir s'assurer de pouvoir monitorer le statut de l'application afin d'être en mesure de réagir rapidement et avec toutes les données permettant la résolution de l'incident.
 
 \subsection{Maintenance}
 
-La phase de maintenance intervient suite à la mise en production, et tout au long du cycle de vie du projet. Ses clauses sont définies lors de l'établissement du contrat. Il convient d'y prêter attention puisqu'il est possible d'avoir une maintenance très poussée, ou une très sommaire, selon les contenus des clauses du contrat. Évidemment, plus la maintenance est de qualité, plus le coût de cette dernière augmentera.
+La phase de maintenance peut être très calme comme très stressante, selon le sérieux accordé lors des phases de réalisation et de qualification. Elle intervient suite à la mise en production, et tout au long du cycle de vie du projet. Ses clauses sont définies lors de l'établissement du contrat entre le client et le prestataire. Il convient d'y prêter attention puisqu'il est possible d'avoir une maintenance très poussée, ou une très sommaire, selon les contenus des clauses du contrat. Évidemment, plus la maintenance est de qualité, plus le coût de cette dernière augmentera.
 
-La maintenance inclut donc le suivi de l'application, via des métriques afin de déterminer le statut de l'application, ses performances et éventuels défauts. Si une anomalie est relevée, elle sera alors remontée aux équipes de développement qui prendront en charge l'anomalie et proposeront un correctif.
+La maintenance inclut donc le suivi de l'application, via des métriques afin de déterminer le statut de l'application, ses performances et éventuels défauts. Si une anomalie est relevée par le client ou des utilisateurs, elle sera alors remontée aux équipes de développement qui prendront en charge l'anomalie et proposeront un correctif\ldots
 
 Il est important de ne pas négliger le monitoring de l'application, sous peine de ne pas détecter à temps des potentiels bugs. Par exemple, si l'on constate que le site répond correctement mais parfois lentement et que la charge du serveur qui héberge ce site est constamment haute, il faudra alors investiguer pour déterminer si cela provient de l'application, de l'environnement dans lequel elle s'exécute (\emph{exemple : le serveur héberge plusieurs applications, et c'est une autre application qui occupe toutes les ressources}) ou une cause externe. Les logs de l'application sont alors très utile pour pouvoir déterminer les causes de ces anomalies.
-
-\todo[color=orange]{Parler SLA ?}
 
 \subsection{Évolution}
 
@@ -163,12 +175,16 @@ Un projet qui n'évolue pas est un projet mort. Ainsi, il est nécessaire pour l
 
 \subsection{Fin de vie d'un projet / Décommissionnement}
 
+\todo[color=cyan]{Fin de vie}
+
 Éventuellement, un projet attendra sa fin de vie. Cela peut provenir de plusieurs raisons.
 
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item Un nouveau concurrent a gagné des parts de marché, entrainant une baisse de l'utilisation et de la rentabilité du service.
 	\item Suite à une erreur de communication, ou une faille de sécurité, le projet est déserté par ses utilisateurs.
 	\item Le projet est repris par un autre prestataire pour une refonte, ou tout simplement par choix du client (choix économique, mauvaise entente avec le prestataire actuel...).
+	\item Le produit ne répond plus à un besoin (\emph{Par exemple, le produit a été réalisé pour un évènement ponctuel et n'a donc plus d'utilité une fois ce dernier passé})
 \end{itemize}
 
 Quoiqu'il en soit, il faut pouvoir gérer la fin de vie d'un projet correctement afin de repartir sur d'autres projets sereinement. 

@@ -1,16 +1,19 @@
 @startuml
 start
 :Répondre à un besoin;
-while (projet en vie ?) is (oui)
+while (Nouveau besoin ?) is (oui)
   :Expression du besoin;
   :Planification du besoin;
+  repeat
   repeat
   :Réalisation;
   :Qualification;
   repeat while (validation client ?) is (non)
   :Mise en production;
   :Maintenance;
+  repeat while (bugs détectés?) is (oui)
 endwhile (non)
+
 :Fin de vie / Décommissionnement;
 stop
 @enduml
