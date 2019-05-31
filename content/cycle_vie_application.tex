@@ -84,62 +84,40 @@ Il est ainsi nécessaire de trier les fonctionnalités par priorité. En effet, 
 
 %% https://fr.wikipedia.org/wiki/M%C3%A9thode_MoSCoW
 
-Concernant la planification d'un projet, l'organisation de ce dernier passe souvent par l'élaboration de \glsplural{gantt} pour représenter de façon graphique les jalons du cycle de vie d'une application.
+Concernant la planification d'un projet, l'organisation de ce dernier passe souvent par l'élaboration de \glsplural{gantt} (ou équivalent) pour représenter de façon graphique les jalons du cycle de vie d'une application (fin des développements, phase de qualification, mise en production, réunions périodiques de suivi, durée de chaque sprint\ldots).
 
-\newImage{0.4}{gantt.png}{Exemple de \gls{gantt} - \url{wikimedia.org}}{gantt}
+\newImage{0.4}{gantt.png}{Exemple de Gantt - \url{wikimedia.org}}{gantt}
 
-Un \gls{gantt} contient donc les différents jalons du cycle de vie d'une application, mais il est aussi nécessaire de prévoir les éléments pouvant être bloquants. Par exemple, dans le cas de collecte de données utilisateurs afin de réaliser un traitement, il convient de prévoir un délai pour effectuer les démarches auprès de la \gls{cnil}, prévoir un délai de validation du contrat avec les différents prestataires, les délais de réponse au sein de l'organisation afin de valider le projet... De plus, on peut également prévoir les dates des kick-off et autres ateliers aidant à exprimer les besoins sur certaines fonctionnalités, en collaboration avec le client.
-
-\todo[color=cyan]{PRIORITY TO FINISH REWORK THIS}
-
-L'expression du besoin était auparavant réalisé par le client, puis donnée au dev qui se débrouillait avec et attendant la prochaine version pour corriger si cela ne collait pas. Maintenant agilité, évolution en fonction de, atelier pour guider client,....
-
-%% Parler kick-off projet pour exprimer besoin au travers d'ateliers
-
-%%%%%%%%%%%%%%%%%%%%%
-
-\todo{Parler de la partie historique agilité vs cycel V ici avant d'aborder priorisation}
-
-\todo[color=cyan]{Finir la partie planification}
-
-- Définition risques juridiques / légaux (GDPR, CNIL...).
-
-TODO : Il doit également tenir compte du temps pris par les tâches qui ne sont pas de nature technique (réunions, rapports, congés maladie, etc.) 
-
-\begin{itemize}
-	\setlength\itemsep{-0.5em}
-	\item Les dates des ateliers de définitions du besoin entre équipe de développement et client
-	\item Les dates de recette et de pré-production du service
-	\item La validation client
-	\item Les différentes réunions de suivi du projet
-	\item Son annonce au public
-	\item Sa mise en production
-	\item ...
-\end{itemize}
-
-\todo[color=cyan]{Planification}
+Un \gls{gantt} contient donc les différents jalons du cycle de vie d'une application, mais il est aussi nécessaire de prévoir les éléments pouvant être bloquants. Par exemple, dans le cas de collecte de données utilisateurs afin de réaliser un traitement, il convient de prévoir un délai pour effectuer les démarches auprès de la \gls{cnil}, prévoir un délai de validation du contrat avec les différents prestataires, les délais de réponse au sein de l'organisation afin de valider le projet, les démarches administratives (conditions générales d'utilisations à rédiger par des cabinets d'avocats)... De plus, on peut également prévoir les dates des kick-off et autres ateliers aidant à exprimer les besoins sur certaines fonctionnalités, en collaboration avec le client. Selon la granularité souhaitée, on pourra également y faire figurer, à titre indicatif pour les équipes en charge de la réalisation, les dates à partir de laquelle le client va faire la promotion de son application (\emph{et par conséquent, la date à laquelle l'application doit être plus ou moins prête})
 
 \subsection{Réalisation}
 
-La réalisation de l'application intervient après la validation du besoin avec le client. Démarre alors la conception de la charte graphique, la réflexion sur les différentes fonctionnalités demandées, ainsi que les réalisations à proprement parler pour concevoir le site. La réalisation peut se dérouler de deux manières différentes.
+La réalisation de l'application intervient après la validation du besoin avec le client. Démarre alors la conception de maquette basée sur les exigences de la charte graphique, la réflexion sur la façon d'implémenter les différentes fonctionnalités demandées, ainsi que les réalisations à proprement parler pour concevoir le site. Ces étapes peuvent s'étaler, dans le cas d'une méthodologie agile, sur plusieurs sprints selon la complexité du projet.
 
-- Réalisation graphique
+Une phase de réalisation, en particulier au commencement d'un projet, n'est pas l'équipe de développement tapant à toute vitesse sur son clavier pour livrer au plus vite l'application. L'une des premières étapes est de définir un environnement de développement, souvent avec plusieurs outils additionnels, afin d'aider la phase de développement.
 
-- Plusieurs itérations
+\todo[color=orange]{Ne pas citer d'exemple d'outils additionnels, cela sera fait dans la partie 3, phase locale de développement.}
 
-- Retour client, demande de précisions sur les fonctionnalités
+Il s'agit ensuite de déterminer la façon dont vont être réalisés les développements. Si le projet est un blog basique, on peut envisager l'utilisation d'un \gls{cms}, puisqu'il n'est peut-être pas utile de réinventer la roue pour ce besoin, sachant que des dizaines de solutions existent déjà. Il faudra alors réaliser une étude afin de déterminer l'outil le plus adapté parmi ceux existants, tout en prenant en compte les contraintes du projet (\emph{par exemple, si le client souhaite exclusivement un projet en \gls{PHP}, il ne sert à rien de lui proposer un \gls{cms} en java}).
 
-- Développement de tests
+Si les besoins sont plus complexe, on peut envisager deux possibilités.
 
-\todo[color=cyan]{Réalisation}
+\begin{enumerate}
+	\item L'utilisation de \gls{framework} qui permet de démarrer rapidement un projet, à condition de maitriser le \gls{framework}. Ce dernier peut en effet nécessiter une courbe d'apprentissage plus ou moins importante selon ce que l'on souhaite en faire. De plus, si le \gls{framework} est une boite à outil permettant de définir des normes de travail afin de gagner en efficacité et de fournir un socle de travail commun à toute l'équipe de développement, il n'est peut-être pas adapté à tous les cas, au risque de rapidement se retrouver dans la position ou l'on va constamment \emph{tordre} le comportement du \gls{framework} pour obtenir le résultat escompté.
+	\item Un développement \emph{from scratch} également appelé développement maison qui consiste à construire une solution depuis zéro, ce qui implique un temps de développement potentiellement plus long et une maintenance nécessitant de se former sur le projet spécifiquement. En effet, les \gls{framework} permettent une intervention d'un développeur externe au projet plus facile, à condition qu'il ai connaissance du \gls{framework}, tandis que dans le cas d'un projet \emph{from scratch}, il est plus compliqué d'intervenir rapidement sans connaitre le projet. Néanmoins, cela offre une totale liberté et ne ferme pas de porte, comme peuvent le faire certains \gls{framework} en déconseillant ou forçant (\emph{à tort ou à raison}) certaines pratiques.
+\end{enumerate}
+
+Une des phases souvent négligées dans les projets est la phase de tests. En effet, il est essentiel de garantir le bon fonctionnement du projet, autrement que par un \frquote{Cela marche sur mon poste, c'est bon !}. Le client souhaite des tests afin de s'assurer du bon fonctionnement de son application, et pour être rassuré\footnote{Même s'il est impossible de garantir une application sans bug} quant à l'apparition d'un bug en production, pouvant potentiellement impacter son activité, chiffre d'affaires ou la relation avec ses clients. Il existe différents types de test, chacun ayant une responsabilité différentes. Nous aborderons les détails à propos des tests dans la partie sur \frquote{\nameref{importance-test}} (p. \pageref{importance-test})
 
 \subsection{Qualification}
 
-La phase de qualification permet au client d'avoir un premier contact avec son application. C'est également durant ce temps que sont lancés plusieurs tests de performance, des tests de qualités... Pour s'assurer que l'application se comporte correctement.
+Comme il a été dit précédemment, une phase de réalisation ne s'effectue pas en une fois\footnote{sauf exceptions, par exemple dans le cas d'un projet très court}, et va donc être découpé sous forme de sprint. A la fin de chaque sprint, dont la durée est déterminée durant la phase de planification, il va être présenter au client le travail réalisé. Comme indiqué sur le schéma \ref{fig:cycleVieProjet} (p. \pageref{fig:cycleVieProjet}), on peut voir cela comme une succession de \emph{mini-phase} de réalisation et de qualification. Cela va permettre d'obtenir un retour du client avec des éventuelles précisions sur le besoin, des demandes de modifications\ldots Ces itérations vont alors se répéter jusqu'à obtenir une validation du client qui permettra alors la mise en production.
 
-Souvent, l'application va d'abord être déployée en interne, sur un environnement qui sera similaire à celui de la future production. Cela va permettre de vérifier que la configuration de production, qui est souvent très différente de celle de développement (ou l'on a besoin d'outils pour pouvoir débugger l'application, tracer ses performances...), est fonctionnelle. De plus, c'est à ce moment là que l'on va tester la procédure de déploiement de l'application et l'ajuster afin de s'assurer qu'elle permettra un déploiement sans accroche.
+La phase de qualification permet ainsi au client d'avoir un contact direct avec son application. C'est également durant ce temps que sont lancés plusieurs tests de performance, des tests de qualités... Pour s'assurer que l'application se comporte correctement.
 
-Une fois cette phase de qualification interne passée avec succès, l'application sera alors livrée au client, pour qu'il puisse la tester et faire d'éventuelles remontées sur des fonctionnalités manquantes ou non conformes. Il n'est pas rare de voir la phase de qualification se faire en plusieurs phases, puisque c'est en général à ce moment que le client va se rendre compte que la fonctionnalité demandée ne comporte pas tous les cas métiers, ou que l'équipe de développement va s'apercevoir d'un bug et le corriger, en effectuant une nouvelle livraison. Plus cette phase est effectuée avec sérieux et rigueur, moins on a de chance de se retrouver avec un bug en production. 
+Néanmoins, la phase de qualification début rarement par la présentation de l'application au client. En effet, avant cela, l'application va d'abord être déployée en interne, sur un environnement qui sera similaire à celui de la future production. Cela va permettre de vérifier la validité de la configuration de production. De plus, c'est à ce moment là que l'on va tester la procédure de déploiement de l'application et l'ajuster afin de s'assurer qu'elle permettra un déploiement sans accroche, cette fois sur un environnement de production.
+
+La phase de qualification nécessite beaucoup de rigueur. Plus cette phase est effectuée avec sérieux et rigueur, moins il y a de chance de retrouver un bug en production.
 
 Selon les erreurs/retours remontés par le client, elles seront alors évaluées en fonction de l'expression du besoin initial, et catégorisée en bug (et donc corrigée) ou alors en évolution, qui ne sera alors pas traitée tout de suite et entrainera des coûts supplémentaires. Cela peut être le cas si le client, qui souhaitait initialement un formulaire de connexion simple à un service, découvre qu'il ne peut se connecter via un \gls{LDAP}. Étant donné que le client n'avait pas exprimé son besoin, il est logique que ce dernier ait mal été interprété. \emph{Heureusement, ces désagréments sont censés être évités si l'expression du besoin, réalisée en collaboration entre le client et son prestataire, est bien réalisée et ne laisse pas place à des zones d'ombres.}
 
@@ -197,4 +175,4 @@ Quoiqu'il en soit, il faut pouvoir gérer la fin de vie d'un projet correctement
 
 Si l'application est reprise par un autre prestataire, il va se passer une période dite de réversibilité. Durant cette période, le prestataire actuel sera alors en communication afin de fournir les différents livrables pour assurer une bonne transition. 
 
-Si l'application est en fin de vie, il faudra alors communiquer avec les utilisateurs, pour leur proposer de migrer vers des solutions alternatives, et leur proposer un moyen de récupérer leur données.
+Si l'application est en fin de vie, il faudra alors communiquer avec les utilisateurs pour leur proposer de migrer vers des solutions alternatives et leur proposer un moyen de récupérer leur données.

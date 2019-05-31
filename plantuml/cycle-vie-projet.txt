@@ -4,8 +4,10 @@ start
 while (projet en vie ?) is (oui)
   :Expression du besoin;
   :Planification du besoin;
+  repeat
   :Réalisation;
   :Qualification;
+  repeat while (validation client ?) is (non)
   :Mise en production;
   :Maintenance;
 endwhile (non)
