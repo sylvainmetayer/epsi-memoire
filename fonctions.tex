@@ -66,12 +66,23 @@
 \end{comment}
 \newcommand{\newAcronym}[4]
 {
-	\newglossaryentry{#1}
+	\newglossaryentry{#1-g}
 	{
-			name={#2},
-			description={#4},
-			first={\glsentrylong{#1} (#2)},
-			long={#3}
+		name={#2},
+		description={#4},
+		first={\glsentrylong{#1} (#2)},
+		long={#3}
+		name={#2},
+		description={#4}
+	}
+
+	\newglossaryentry{#1}{
+		type=\acronymtype,
+		name={#2},
+		description={#3},
+		first={\glsentrylong{#1} (#2)\glsadd{#1-g}},
+		long={#3},
+		see=[Voir glossaire:]{#1-g}
 	}
 }
 

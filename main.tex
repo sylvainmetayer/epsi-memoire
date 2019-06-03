@@ -100,7 +100,10 @@
 	\input{content/conclusion}
 \newpage
 	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
-	\printglossary[title={Glossaire}] \label{glossaire}
+	\printglossary[type=\acronymtype,title={Acronymes}]
+	%%% \newpage just to demonstrate that links are correct
+	\newpage
+	\printglossary[type=main,title={Glossaire}] \label{glossaire}
 \newpage
 	\addcontentsline{toc}{section}{Références bibliographiques}
 	\nocite{*} % Ajout de toutes les références bibliographiques non citées jusqu'à présent.
