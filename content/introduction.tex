@@ -3,13 +3,11 @@ L'automatisation est souvent perçue comme un moyen de gagner en productivité, 
 	
 Les projets informatiques sont de plus en plus nombreux, que cela soit des logiciels de bureau, des applications web, ou encore avec les nouveaux terminaux, des applications mobile, tablettes ou même pour montres connectées.
 	
-Les projets augmentent donc en quantité, mais augmentent-ils en qualité ? Leur fiabilité n'est en effet pas toujours optimale.
-	
-Combien de projet sont encore déployés manuellement car aucune automatisation n'est présente sur le projet ? 
+Combien de projet sont encore déployés manuellement car aucune automatisation n'est présente sur ce dernier ? 
 	
 En plus d'une perte de temps, parfois importante, cela engendre un stress chez les développeurs, qui à chaque livraison redoute les régressions qui pourraient survenir ou encore les bugs de déploiement.
 
-L'automatisation peut également permettre d'améliorer l'arrivée d'un nouveau développeur sur un projet. Il n'est en effet par rare de voir des projets ou la configuration de l'environnement requiert à elle seule plusieurs jours, sans que le développeur puisse vraiment commencer à travailler.
+L'automatisation peut également permettre d'améliorer l'arrivée d'un nouveau développeur sur un projet. Il n'est en effet par rare de voir des projets ou la configuration de l'environnement requiert à elle seule plusieurs jours, sans que le développeur puisse vraiment commencer à travailler. En plus d'être frustrant pour le développeur qui a l'impression de ne pas avancer, cela n'apporte pas de valeur ajoutée ou de connaissance sur le projet.
 	
 L'automatisation va permettre d'améliorer la fiabilité ainsi que la confiance des développeurs et clients dans le projet, puisque des tests automatisés ainsi qu'une chaine d'industrialisation complètement automatisée permet ainsi de déployer avec confiance une application.
 	
@@ -54,6 +52,8 @@ Idées :
 Quels en sont les avantages ?
 
 - éviter erreurs développeurs
+
+- Permettre un suivi de l'évolution du projet via les PR + issues, permet de suivre les demandes et leur résolutions => demande traitée automatiquement déployée, suivi de l'activité de chaque dev pour le CRA\ldots
 
 - éviter script executé avec mauvais paramètres
 
@@ -115,7 +115,7 @@ En 2018, \onepoint{} ouvre des bureaux à Lyon et en Australie, et rachète éga
 
 Lors de mon alternance, j'ai été amené à travailler sur plusieurs sujets.
 
-Le premier fut la maintenance et l'évolution d'une application web de certifications dans l'industrie, \bv. Cette dernière est une entreprise de certifications pour les professionnels. De ce fait, elle dispose d’un portail de vente en ligne permettant la commande de prestations pour certifier leurs activités. Ces prestations sont souvent obligatoires lors de lancement, poursuite ou reprise d'activité. Elles permettent de garantir le respect des normes imposées à ces entreprises dans le cadre de leur activité. Cette application web est décomposée en 2 parties, une application Symfony constituant l'API consommé par le front-end. Le front-end est lui en AngularJS et sert de backoffice pour les collaborateurs \bv{} lors de la rédaction de contrats. Enfin, une autre application Symfony permet aux clients de \bv{} de fournir les contrats et leur permettre d'effectuer un retour sur les contrats proposés.
+Le premier fut la maintenance et l'évolution d'une application web de certifications dans l'industrie, \bv. Cette dernière est une entreprise de certifications pour les professionnels. De ce fait, elle dispose d’un portail de vente en ligne permettant la commande de prestations pour certifier leurs activités. Ces prestations sont souvent obligatoires lors de lancement, poursuite ou reprise d'activité. Elles permettent de garantir le respect des normes imposées à ces entreprises dans le cadre de leur activité. Cette application web est décomposée en 2 parties, une application \gls{symfony} constituant l'\gls{API} consommé par le front-end. Le front-end est lui en \gls{angularjs} et sert de \gls{backoffice} pour les collaborateurs \bv{} lors de la rédaction de contrats. Enfin, une autre application \gls{symfony} permet aux clients de \bv{} de fournir les contrats et leur permettre d'effectuer un retour sur les contrats proposés.
 
 L'autre projet sur lequel j'ai eu l'occasion de travailler fut le développement de portail web pour la région \naq{}. Ces portails étaient demandés afin de refondre ceux existants et de permettre une meilleure communication sur les différents services et aides offertes par la région. Certains portails ont demandé une migration venant des précédentes versions, d'autres portails étaient de nouveaux portails, ne nécessitant pas de migration. Étant donné que la région avait déjà formé tous ses utilisateurs (rédacteurs, modérateurs) au \gls{cms} \drupal, il a été demandé de conserver cette même technologie. La seule différence est que les portails seront tous sous la version 8 de \drupal{} à l'occasion de cette refonte, à la différence des anciens portails qui étaient sous la version 7.
 
