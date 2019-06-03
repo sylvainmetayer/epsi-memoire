@@ -62,7 +62,7 @@ C'est également durant cette phase que l'on va décrire les interactions de l'a
 \begin{itemize}
 	\setlength\itemsep{0em}
 	\item L'application a besoin d'enregistrer les réservations des utilisateurs. Pour cela, elle va interagir avec une base de données afin de stocker les réservations.
-	\item L'application aura besoin de calculer les trajets les plus optimisés pour pouvoir proposer un trajet rapide à ses utilisateurs. Elle va donc interagir avec des systèmes de cartographies externe, tel qu'OpenStreetMap\footnote{\url{https://openstreetmap.org/}}.
+	\item L'application aura besoin de calculer les trajets les plus optimisés pour pouvoir proposer un trajet rapide à ses utilisateurs. Elle va donc interagir avec des systèmes de cartographies externes, tel qu'OpenStreetMap\footnote{\url{https://openstreetmap.org/}}.
 	\item Il va falloir enregistrer les paiements des utilisateurs à la fin de leur réservations. Pour cela, il va falloir interagir avec un système de paiement. Étant donné la complexité et la sécurité des données bancaires, il s'agira sûrement d'un système externe.
 	\item A des fins de statistiques sur le taux d'utilisation, le site utilisera peut-être un système de suivis statistiques tel que Matomo\footnote{\url{https://matomo.org}} 
 \end{itemize}
@@ -102,7 +102,7 @@ Une phase de réalisation, en particulier au commencement d'un projet, n'est pas
 
 Il s'agit ensuite de déterminer la façon dont vont être réalisés les développements. Si le projet est un blog basique, on peut envisager l'utilisation d'un \gls{cms}, puisqu'il n'est peut-être pas utile de réinventer la roue pour ce besoin, sachant que des dizaines de solutions existent déjà. Il faudra alors réaliser une étude afin de déterminer l'outil le plus adapté parmi ceux existants, tout en prenant en compte les contraintes du projet (\emph{par exemple, si le client souhaite exclusivement un projet en \gls{PHP}, il ne sert à rien de lui proposer un \gls{cms} en java}).
 
-Si les besoins sont plus complexe, on peut envisager deux possibilités.
+Si les besoins sont plus complexes, on peut envisager deux possibilités.
 
 \begin{enumerate}
 	\item L'utilisation de \gls{framework} qui permet de démarrer rapidement un projet, à condition de maitriser le \gls{framework}. Ce dernier peut en effet nécessiter une courbe d'apprentissage plus ou moins importante selon ce que l'on souhaite en faire. Le \gls{framework} est une boite à outil permettant de définir des normes de travail afin de gagner en efficacité et de fournir un socle de travail commun à toute l'équipe de développement mais il peut ne pas être adapté à tous les cas, au risque de rapidement se retrouver dans une position ou l'on va constamment \emph{tordre} le comportement du \gls{framework} pour obtenir le résultat escompté.
@@ -116,7 +116,7 @@ C'est également lors de la phase de réalisation que l'on va porter attention p
 \begin{description}
 	\item [La sécurité et le respect de la vie privée] des utilisateurs afin de garantir que les données de ces derniers soient en sûreté. 
 	
-	On néglige trop souvent cette partie, par manque de temps, de moyen engagés ou par méconnaissance des risques et on se retrouve, même parmi les grandes multinationales avec des scandales médiatiques qui peuvent entrainer de lourdes amendes, une perte de confiance de la part des utilisateurs et perte de chiffres d'affaires.\footnote{\url{https://dayssincelastfacebookscandal.com/}}
+	On néglige trop souvent cette partie, par manque de temps, de moyens engagés ou par méconnaissance des risques et on se retrouve, même parmi les grandes multinationales avec des scandales médiatiques qui peuvent entrainer de lourdes amendes, une perte de confiance de la part des utilisateurs et perte de chiffres d'affaires.\footnote{\url{https://dayssincelastfacebookscandal.com/}}
 	
 	Heureusement, avec la mise en place du \gls{RGPD} (qui oblige à limiter les traitements de données personnelles uniquement lorsque cela est nécessaire) en mai 2018, on peut espérer de meilleure prise en compte de ces contraintes par les entreprises dans le futur.
 	\item [L'accessibilité de l'application] qui peut être une clause obligatoire selon le type d'application et le client.
@@ -131,7 +131,7 @@ C'est également lors de la phase de réalisation que l'on va porter attention p
 
 \todo[color=orange]{Toutes les infos sont présentes dans cette sous partie, par contre ça me semble être le bordel niveau organisation des paragraphes. Besoin de repasser dessus pour rendre la lecture plus claire.}
 
-Comme il a été dit précédemment, une phase de réalisation ne s'effectue pas en une fois\footnote{sauf exceptions, par exemple dans le cas d'un projet très court}, et va donc être découpé sous forme de sprint. A la fin de chaque sprint, dont la durée est déterminée durant la phase de planification, il va être présenter au client le travail réalisé. Comme indiqué sur le schéma \ref{fig:cycleVieProjet} (p. \pageref{fig:cycleVieProjet}), on peut voir cela comme une succession de \emph{mini-phase} de réalisation et de qualification. Cela va permettre d'obtenir un retour du client avec des éventuelles précisions sur le besoin, des demandes de modifications\ldots Ces itérations vont alors se répéter jusqu'à obtenir une validation du client qui permettra alors la mise en production.
+Comme il a été dit précédemment, une phase de réalisation ne s'effectue pas en une fois\footnote{sauf exceptions, par exemple dans le cas d'un projet très court}, et va donc être découpée sous forme de sprint. A la fin de chaque sprint, dont la durée est déterminée durant la phase de planification, il va être présenter au client le travail réalisé. Comme indiqué sur le schéma \ref{fig:cycleVieProjet} (p. \pageref{fig:cycleVieProjet}), on peut voir cela comme une succession de \emph{mini-phase} de réalisation et de qualification. Cela va permettre d'obtenir un retour du client avec des éventuelles précisions sur le besoin, des demandes de modifications\ldots Ces itérations vont alors se répéter jusqu'à obtenir une validation du client qui permettra alors la mise en production.
 
 La phase de qualification permet ainsi au client d'avoir un contact direct avec son application. C'est également durant ce temps que sont lancés plusieurs tests de performance, des tests de qualités... Pour s'assurer que l'application se comporte correctement.
 
@@ -145,7 +145,7 @@ De plus, selon le projet, l'application finale pourra être déployée sur un se
 
 % \newImage[H]{0.25}{no-deploy-friday.jpg}{\frquote{\emph{Never deploy on friday}} - \url{http://commitstrip.com/}}{no-deploy-friday}
 
-La mise en production correspond au déploiement de l'application pour les utilisateurs finaux. Il s'agit d'une étape importante, qui marque l'aboutissement d'un période, plus ou moins longue, de travail. 
+La mise en production correspond au déploiement de l'application pour les utilisateurs finaux. Il s'agit d'une étape importante, qui marque l'aboutissement d'une période plus ou moins longue de travail.
 
 Avant de passer à la mise en production, il est important de vérifier plusieurs éléments. Ci-dessous se trouve quelques exemples qui peuvent être bloquant pour la mise en production d'une application.
 
