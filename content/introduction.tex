@@ -1,65 +1,65 @@
-\subsection{Accroche}
-L'automatisation est souvent perçue comme un moyen de gagner en productivité, temps, et donc de rendre des projets toujours plus rentables.
+\todo[color=orange]{A la fin, supprimer toutes les sections de l'intro/conclu, elles sont la pour guider l'écriture uniquement et ne sont pas destinées à être visible.}
+
+\subsection*{Accroche}
+\todo[color=red]{Trouver une punchline pour accrocher le lecteur}
+
+L'automatisation est souvent perçue comme un moyen de gagner en productivité, temps et donc de rendre des projets toujours plus rentables financièrement. Les projets informatiques sont de plus en plus nombreux, que cela soit des logiciels de bureau, des applications web ou encore avec les nouveaux terminaux, des applications mobile, tablettes ou même pour montres connectées.
 	
-Les projets informatiques sont de plus en plus nombreux, que cela soit des logiciels de bureau, des applications web, ou encore avec les nouveaux terminaux, des applications mobile, tablettes ou même pour montres connectées.
+\emph{Mais pour autant, combien de projets sont encore déployés manuellement car aucune automatisation n'est présente sur ces derniers ?}
 	
-Combien de projet sont encore déployés manuellement car aucune automatisation n'est présente sur ce dernier ? 
-	
-En plus d'une perte de temps, parfois importante, cela engendre un stress chez les développeurs, qui à chaque livraison redoute les régressions qui pourraient survenir ou encore les bugs de déploiement.
+En plus d'une perte de temps, parfois importante, cela engendre un stress chez les développeurs, qui à chaque livraison redoute les régressions qui pourraient survenir.
 
-L'automatisation peut également permettre d'améliorer l'arrivée d'un nouveau développeur sur un projet. Il n'est en effet par rare de voir des projets ou la configuration de l'environnement requiert à elle seule plusieurs jours, sans que le développeur puisse vraiment commencer à travailler. En plus d'être frustrant pour le développeur qui a l'impression de ne pas avancer, cela n'apporte pas de valeur ajoutée ou de connaissance sur le projet.
-	
-L'automatisation va permettre d'améliorer la fiabilité ainsi que la confiance des développeurs et clients dans le projet, puisque des tests automatisés ainsi qu'une chaine d'industrialisation complètement automatisée permet ainsi de déployer avec confiance une application.
-	
-Nous allons donc tenter de répondre à la problématique suivante :
+L'automatisation, en plus de rassurer les équipes dans leur façon de travailler, peut également permettre d'améliorer l'arrivée d'un nouveau développeur sur un projet. Il n'est en effet par rare de voir des projets ou la configuration de l'environnement requiert à elle seule plusieurs jours, sans que le développeur puisse vraiment commencer à travailler. En plus d'être frustrant pour le développeur qui a l'impression de ne pas avancer, cela n'apporte pas de valeur ajoutée ou de connaissance sur le projet.
 
-\todo[color=cyan]{Terminer l'accroche}
-	
-{\LARGE \problematique}
+L'automatisation va donc permettre d'améliorer la fiabilité ainsi que la confiance des développeurs et clients dans le projet, puisque des tests automatisés et une chaine d'industrialisation complètement automatisée permettent ainsi de déployer avec confiance une application.
 
-\subsection{Définition}
+Nous allons donc tenter de répondre à la problématique suivante dans les pages composant ce mémoire.
 
-Avant de continuer, il convient de s'attarder sur ce qu'est l'automatisation.
+\hrulefill
 
-Selon le Larousse, l'automatisation est le 
+{\Large \problematique}
 
-\begin{quote}
-fait d'automatiser l'exécution d'une tâche, d'une suite d'opérations...
-\end{quote}
+\hrulefill
 
-\todo[color=red]{Définir l'automatisation}
+\subsection*{Définition}
 
-\subsection{Historique}
+Avant de continuer, il convient de s'attarder sur ce qu'est l'automatisation pour définir les termes qui vont se retrouver dans ce document.
 
-Idées : 
-	
-- Mode opératoire suivi religieusement, 
+Selon le Larousse, l'automatisation est l'\frquote{exécution totale ou partielle de tâches techniques par des machines fonctionnant sans intervention humaine.}\footnote{\url{https://www.larousse.fr/dictionnaires/francais/automatisation/6753}}. Ainsi, l'objectif est de gagner du temps et donc de l'argent en faisant effectuer des tâches répétables de façon automatique par une machine qui se trouve être dans notre cas le plus souvent un serveur informatique.
 
-- script expect
+\subsection*{Historique}
 
-- Comment déployait-on avant ?
+Mais cette idée d'automatisation n'est pas nouvelle. Avec l'avancée technologique, l'Homme a toujours tenté de faciliter son travail informatique en automatisant au maximum ses tâches. 
 
--  ...
+Cela a d'abord commencé par la rédaction de manuels opératoires permettant de définir les tâches à effectuer les une après les autres. Ces derniers étaient alors suivis religieusement par la personne en charge de déployer ou d'installer l'application. Néanmoins, cette procédure ne retirait pas le facteur humain de l'opération et rendait alors instable l'installation. En effet, comment s'assurer que la personne n'a pas manqué une étape ? 
+
+Pour tenter de palier cela, des scripts furent mis en place. On peut notamment citer \emph{expect}\footnote{\url{https://fr.wikipedia.org/wiki/Expect}} qui est un outil permettant d'automatiser des déploiements via \gls{SSH}, \gls{SFTP}\ldots{} L'objectif de cet outil était d'utiliser les mêmes outils qu'avant (à savoir \gls{SSH} ou \gls{SFTP} par exemple) mais de supprimer l'interaction humaine nécessaire pour déployer l'application. Au lieu d'écrire un manuel opératoire indiquant qu'il fallait se connecter avec l'utilisateur, vérifier que le paquet \emph{MonApplication} était bien présent, puis redémarrer le serveur, il suffisait alors d'écrire ces instructions dans un fichier, puis de faire exécuter ce dernier à la personne en charge du déploiement. On réduit ainsi le risque d'erreur humain. Cette solution avait néanmoins l'inconvénient d'être assez peu maintenable et pouvait rapidement se révéler verbeux. Cela avait également l'inconvénient de ne pas être testable. On pouvait difficilement s'assurer que le script fonctionnait sur le serveur une première fois, sans faire un \emph{crash-test} en espérant que tout se passe pour le mieux. Les environnements n'étant pas spécialement tous identiques, cela pouvait également entrainer des incompatibilités, nécessitant des développements spécifiques. De plus, sur l'outil utilisé (\gls{SSH} par exemple) publiait une mise à jour introduisant un gros changement, il fallait alors revoir le script de déploiement afin de l'adapter.
 
 \todo[color=cyan]{Faire un historique de l'automatisation}
 
-\subsection{Que peut-on automatiser ?}
+- Comment déployait-on avant ?
+
+\subsection*{Que peut-on automatiser ?}
+
+Techniquement, on peut tout automatiser, de la simple copie de fichier jusqu'au déploiement d'une application complexe répartie sur plusieurs serveurs. 
+
+Même une opération réalisée une fois par an peut être automatisée. D'ailleurs, il est fort probable qu'une opération effectuée à une faible fréquence par une personne soit souvent une opération qui entraine une erreur puisque la personne n'est pas habituée à effectuer cette opération. Elle a alors un grand risque de faire une erreur et de passer des heures supplémentaires à corriger cette dernière. L'inverse est également vrai, puisque si l'on effectue une tâche de façon répétitive à la main, il est possible que l'on ne fasse une erreur d'inattention à force de répétition. 
+
+Néanmoins, il convient d'être réaliste quant aux moyens que l'on souhaite mettre en place pour pouvoir automatiser les différentes tâches à effectuer, sous peine d'entrainer de fort coûts financiers pour une tâche qui n'en nécessite pas tant et dont les effets de bords sont faibles.
 
 \todo[color=cyan]{Que peut-on automatiser ?}
 
-\subsection{Pourquoi automatiser ?}
+\subsection*{Pourquoi automatiser ?}
 
-Quels en sont les avantages ?
+L'intérêt premier d'automatiser a déjà été évoqué dans plus haut : il s'agit de réduire au maximum les erreurs humaines lors de la réalisation d'un déploiement, d'une installation. Le but est également de faciliter la vie des développeurs, leur permettant ainsi de se concentrer sur des tâches apportant une vraie valeur métier à l'application.
 
-- éviter erreurs développeurs
+\todo[color=cyan]{Pourquoi automatiser ?}
+
+- Quels en sont les avantages ?
 
 - Permettre un suivi de l'évolution du projet via les PR + issues, permet de suivre les demandes et leur résolutions => demande traitée automatiquement déployée, suivi de l'activité de chaque dev pour le CRA\ldots
 
-- éviter script executé avec mauvais paramètres
-
-\todo[color=blue]{Pourquoi automatiser ?}
-
-\subsection{Présentation entreprise \& mission}
+\subsection*{Présentation entreprise \& mission}
 
 L'entreprise dans laquelle j'effectue mon alternance depuis septembre 2017 est \onepoint. 
 
@@ -95,11 +95,11 @@ De plus, \onepoint{} se définit autour de 5 valeurs, définies ci-dessous.
 	\item[Le courage] Pour oser sortir des sentiers battus, et continuellement proposer de nouvelles solutions innovantes.
 \end{description}
 
-\subsubsection{Historique} 
+\subsubsection*{Historique} 
 
 \xmakefirstuc{\onepoint{}} a été créé en 2002, par David Layani.
 
-De 2003 jusqu'en 2007, elle va s'ouvrir à l'international, avec l'ouverture de bureaux au Canada, en Chine et en Tunisie.
+De 2003 jusqu'en 2007, elle va s'ouvrir à l'international, avec l'ouverture de bureaux au Canada, en Chine et en Tunisie. 
 
 En 2008, elle étend sa position en France, avec l'ouverture de deux centres de production, à Bordeaux et Nantes.
 
@@ -107,11 +107,11 @@ En 2015, \onepoint{} continue son développement international au Luxembourg, en
 
 En 2018, \onepoint{} ouvre des bureaux à Lyon et en Australie, et rachète également Weave ainsi que Géronimo, acteur important dans la conception d'application mobile.
 
-\subsubsection{Réalisations}
+\subsubsection*{Réalisations}
 
 \todo[color=red]{Ajouter des réalisations de onepoint}
 
-\subsubsection{Contexte de l'alternance}
+\subsubsection*{Contexte de l'alternance}
 
 Lors de mon alternance, j'ai été amené à travailler sur plusieurs sujets.
 
@@ -119,14 +119,15 @@ Le premier fut la maintenance et l'évolution d'une application web de certifica
 
 L'autre projet sur lequel j'ai eu l'occasion de travailler fut le développement de portail web pour la région \naq{}. Ces portails étaient demandés afin de refondre ceux existants et de permettre une meilleure communication sur les différents services et aides offertes par la région. Certains portails ont demandé une migration venant des précédentes versions, d'autres portails étaient de nouveaux portails, ne nécessitant pas de migration. Étant donné que la région avait déjà formé tous ses utilisateurs (rédacteurs, modérateurs) au \gls{cms} \gls{drupal}, il a été demandé de conserver cette même technologie. La seule différence est que les portails seront tous sous la version 8 de \gls{drupal} à l'occasion de cette refonte, à la différence des anciens portails qui étaient sous la version 7.
 
-Projet Nouvelle Aquitaine, chaine d'industrialisation pour pouvoir permettre déploiement de multiple sites \Gls{drupal}.
+Concernant les projets \naq, j'ai également eu l'occasion de travailler sur la chaine d'industrialisation afin de permettre un déploiement automatisé des différents portails, d'abord en interne et à terme en pré-production ou en production.
 
-\textit{Projet \bv{}, ou il y a une architecture actuelle qui n'est pas satisfaisante pour X raisons (reproductibilité...), et qui doit être changé}.
+\subsection*{Annonce du plan}
 
-\textit{Elaborer un schéma directeur à partir d’orientations stratégiques} => Conduite de changement
+Afin de traiter la problématique évoquée plus haut dans cette introduction, ce document est composé de 3 parties qui permettront chacune d'apporter des éléments de réponse. 
 
-\todo[color=cyan]{Contexte alternance}
+\begin{itemize}
+	\item La première partie va tout d'abord concerner le cycle de vie d'une application afin de se familiariser avec les différentes étapes que composent un projet.
+	\item Dans un deuxième temps, l'intérêt de l'automatisation sera abordé afin de justifier son utilité au travers d'un cas pratique avec une entreprise existante.
+	\item Puis dans un dernier temps, la façon d'automatiser un projet sera abordée, selon différentes phases et moment du cycle de vie du projet.
+\end{itemize}
 
-\subsection{Annonce du plan}
-
-\todo[color=cyan]{Annonce du plan}

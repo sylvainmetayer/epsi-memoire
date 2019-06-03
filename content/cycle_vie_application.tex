@@ -169,32 +169,28 @@ Il est important de ne pas négliger le monitoring de l'application, sous peine 
 
 \subsection{Évolution}
 
-Un projet qui n'évolue pas est un projet mort. Ainsi, il est nécessaire pour les mainteneurs du projet de se remettre continuellement en question, de chercher et d'implémenter de nouvelles idées, de faciliter la vie de l'utilisateur, de proposer de nouvelles fonctionnalités, de se mettre à jour vis à vis des dernières évolutions technologiques.
+Un projet qui n'évolue pas est un projet mort. Ainsi, il est nécessaire pour les mainteneurs du projet de se remettre continuellement en question, de chercher et d'implémenter de nouvelles idées, de faciliter la vie de l'utilisateur, proposer de nouvelles fonctionnalités, de se mettre à jour vis-à-vis des dernières évolutions technologiques. 
 
-\todo[color=cyan]{Evolution}
+Ces idées d'évolutions peuvent venir du client, qui souhaite faire évoluer fonctionnellement son produit, mais également des équipes de développement, qui peuvent apporter leur expertise afin d'améliorer le produit, que cela soit au niveau de l'\gls{UX} ou des choix techniques à faire.
 
-- Vie du projet
-
-- Audit de sécurité, pour se tenir à jour
-
-- Audit de performance
+La technologie évoluant continuellement, il est également nécessaire d'effectuer une veille technologique afin de se tenir au courant des tendances actuelles et surtout des potentielles failles qui pourraient avoir été découvertes dans les dépendances utilisées. Il peut également être intéressant d'effectuer des audits de sécurités pour pouvoir attester la fiabilité de son application\footnote{à un instant T, cela ne veut pas dire que l'application ne sera pas faillible plus tard !} et des moyens mis en place pour sécuriser les données des utilisateurs. Il est également possible d'effectuer des audits de performance, afin de déterminer les éventuelles lacunes de l'application ou les défauts de performance des systèmes avec lesquels elle interagit.
 
 \subsection{Fin de vie d'un projet / Décommissionnement}
-
-\todo[color=cyan]{Fin de vie}
 
 Éventuellement, un projet attendra sa fin de vie. Cela peut provenir de plusieurs raisons.
 
 \begin{itemize}
-	\setlength\itemsep{-0.5em}
+	\setlength\itemsep{0em}
 	\item Un nouveau concurrent a gagné des parts de marché, entrainant une baisse de l'utilisation et de la rentabilité du service.
-	\item Suite à une erreur de communication, ou une faille de sécurité, le projet est déserté par ses utilisateurs.
-	\item Le projet est repris par un autre prestataire pour une refonte, ou tout simplement par choix du client (choix économique, mauvaise entente avec le prestataire actuel...).
+	\item Suite à une erreur de communication ou une faille de sécurité, le projet est déserté par ses utilisateurs.
+	\item Le projet est repris par un autre prestataire pour une refonte ou tout simplement par choix du client (choix économique, mauvaise entente avec le prestataire actuel...).
 	\item Le produit ne répond plus à un besoin (\emph{Par exemple, le produit a été réalisé pour un évènement ponctuel et n'a donc plus d'utilité une fois ce dernier passé})
 \end{itemize}
 
-Quoiqu'il en soit, il faut pouvoir gérer la fin de vie d'un projet correctement afin de repartir sur d'autres projets sereinement. 
+Quoiqu'il en soit, il faut pouvoir gérer la fin de vie d'un projet correctement afin de repartir sur d'autres projets sereinement. La communication est alors très importante puisqu'il s'agit de ne pas donner une mauvaise image du client ou du prestataire aux utilisateurs. En effet, une mauvaise image ne pourrait être que négative pour les futures collaborations de chacun.
 
-Si l'application est reprise par un autre prestataire, il va se passer une période dite de réversibilité. Durant cette période, le prestataire actuel sera alors en communication afin de fournir les différents livrables pour assurer une bonne transition. 
+Si l'application est reprise par un autre prestataire, il va se passer une période dite de \emph{réversibilité}. Durant ce laps de temps, le prestataire actuel sera alors en communication avec le repreneur du projet afin de lui fournir les différents livrables pour assurer une bonne transition. Si l'application est en fin de vie, il faudra alors communiquer avec les utilisateurs pour leur proposer de migrer vers des solutions alternatives et leur offrir un éventuel moyen de récupérer leur données.
 
-Si l'application est en fin de vie, il faudra alors communiquer avec les utilisateurs pour leur proposer de migrer vers des solutions alternatives et leur proposer un moyen de récupérer leur données.
+\hrulefill
+
+\emph{Maintenant que nous avons vu les différentes étapes qui composent le cycle de vie d'une application, nous allons détailler dans la prochaine partie les raisons qui poussent à mettre en place une démarche d'automatisation.}
