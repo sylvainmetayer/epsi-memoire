@@ -19,6 +19,7 @@ Il faut ainsi préparer son argumentaire, avec les bienfaits que cela pourra obt
 	\item [La durée de de déploiement] peut être réduite pour permettre de se concentrer sur d'autres problématiques. De plus, si les temps de déploiement sont réduits, cela signifie que les temps d'interruption de service pourront être réduit lors des livraisons.
 	\item [Erreur de déploiement] Si les déploiements sont automatisés, les risques d'incidents lors des déploiements, souvent du à des erreurs humaines, seront alors réduit.
 	\item [Rentabilité financière] Prenons une tâche qui coute \numprint{3000}€ , à réaliser toutes les 3 semaines. Son cout est donc assez élevé. Le fait d'automatiser cette tâche permettra d'économiser de l'argent sur la durée. Si le fait d'automatiser cette tâche coute par exemple, \numprint{10000}€, un gain sera perçu dès la 12\up{ème} semaine.
+	\item \todo[color=cyan]{Rédiger un KPI sur le PCA, PRA, reprise d'activité}
 	\item \todo[color=red]{Listes de KPI intéressant avec deux trois mots sur chaque.}
 \end{description}
 
@@ -57,13 +58,24 @@ L'un des premiers avantages si l'on met en place une démarche d'automatisation 
 
 - Third Way : Apprentissage continu. Prévoir du temps pour améliorer l'environnement de travail, les déploiements  \& co.
 
-- Partage de connaissance, pour construire une équipe qui puisse s'adapter.
+- Partage de connaissance, pour construire une équipe qui puisse s'adapter. Faire en sorte que l'automatisation ne casse pas et que l'on en tire quelques chose, que l'on soit nouvel arrivant sur le projet, ou développeur déjà présent sur le projet. (Workflow : savoir ce qui est automatisé, comment c'est mis en oeuvre ,documentation des outils, ... )
 
-\subsection{Localement, lors des phases de développement}
+Le temps libéré par l'automatisation des tâches peut permettre de souder les liens d'une équipe et d'améliorer les relations de cette dernière. Cela libère du temps pour du team building par exemple. Un sujet technique qui rapproche en terme d'humain
+
+\subsection{Environnement de développement}
 
 \todo[color=cyan]{Localement, lors des phases de développement, 2 pages}
 
 Permettre un démarrage rapide pour pouvoir se concentrer sur une fonctionnalité plutôt que sur le "ça marche pas parce que tu n’as pas installé ça". => Valeur ajoutée, performance, productivité
+
+Déploiement : chaine de déploiement (dev/test/inte/preprod/prod) avec chacune ses spécificités
+
+Exemple :
+
+en dev, on souhaite des logs direct dans la console, en prod on les mets dans un fichier de log.
+en dev, on veut le mode debug, en prod on le désactive.
+
+rapprocher env de dev et de prod.
 
 But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et soit donc sur le dépôt Git).
 
@@ -83,6 +95,7 @@ But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et s
 
 \todo[color=cyan]{Importance des tests, 1-2 pages}
 
+Réaliser des tests unitaires en utilisant des règles d’erreur et exceptions> Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métier.
 
 - Résilience de l'application, tester sous différents angles continuellement afin de vérifier qu'elle se comporte correctement.
 
@@ -113,11 +126,17 @@ Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recet
 
 Infra As Code % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
 
+scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ansible par exemple
+
 \textit{Exemple : parler de NAQ Automatisation de la création de la base de données et de la restauration des données}
 
 Feature flipping pour tester (A/B) et faire des rollback rapides.
 
 Comment setup ? webhook (avec en annexe deux images, côté Jenkins avec le secret et côté Gitlab avec le secret)
+
+Métriques pour attester déroulement OK => Uptime, temps déploiement. tous les KPI ne sont pas identiques à ceux de mangement. Ca peut être Nombre de build OK / KO / ratio succès build...
+
+
 
 \subsection{Et la sécurité dans tout ça ?}
 
@@ -132,3 +151,5 @@ Vérifier les dépendances (failles, paquet npm corrompu...)
 Attention à l'endroit ou sont fait les builds/tests. Il est préférable, pour des raisons de sécurité évidente d'utiliser un outil auto-hébergé, open source, plutôt que des outils clés en main, ou les données sont envoyées sur des serveurs inconnus. 
 
 Dans certains cas, l'application ne doit pas quitter le périmètre de l'entreprise,il faut donc avoir la maitrise totale de la chaine d'industrialisation
+
+Des controles / supervisons périodique afin de checker que tout va bien.
