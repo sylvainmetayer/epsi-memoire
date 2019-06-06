@@ -19,7 +19,9 @@ Il faut ainsi préparer son argumentaire, avec les bienfaits que cela pourra obt
 	\item [La durée de de déploiement] peut être réduite pour permettre de se concentrer sur d'autres problématiques. De plus, si les temps de déploiement sont réduits, cela signifie que les temps d'interruption de service pourront être réduit lors des livraisons.
 	\item [Erreur de déploiement] Si les déploiements sont automatisés, les risques d'incidents lors des déploiements, souvent du à des erreurs humaines, seront alors réduit.
 	\item [Rentabilité financière] Prenons une tâche qui coute \numprint{3000}€ , à réaliser toutes les 3 semaines. Son cout est donc assez élevé. Le fait d'automatiser cette tâche permettra d'économiser de l'argent sur la durée. Si le fait d'automatiser cette tâche coute par exemple, \numprint{10000}€, un gain sera perçu dès la 12\up{ème} semaine.
-	\item \todo[color=cyan]{Rédiger un KPI sur le PCA, PRA, reprise d'activité}
+	\item \todo[color=cyan]{Augmentation des parts de marché sur moyen/long terme} déduite de l'item précédent.
+	\item \todo[color=cyan]{Réduire Lead Time / Processing Time => temps prise en compte / temps livré. Une lead time long est synonyme de nombreuses validation au sein d'une hiérarchie, qui peuvent potentiellemnt être réduit en réduisant les intermédiaire inutile.Réduire temps entre "en cours de développement" et "livré en prod".} 
+	\item \todo[color=cyan]{Rédiger un KPI sur le PCA, PRA, reprise d'activité, temps de restauration de services réduit}
 	\item \todo[color=red]{Listes de KPI intéressant avec deux trois mots sur chaque.}
 \end{description}
 
@@ -45,12 +47,15 @@ L'un des objectifs de l'automatisation est également de faciliter le passage d'
 	\item Une fonctionnalité qui met longtemps à être livré induira un stress au niveau des équipes, qui auront sur leurs épaules la responsabilité de livrer \emph{la fonctionnalité parfaite}, plutôt que livrer plusieurs petites fonctionnalités
 	\item Le risque d'échec est beaucoup plus important en livrant une fonctionnalité plutôt que plusieurs petites, surtout si des changements d'architecture (\emph{Structure de la base de données, ajout de nouveaux composants...})
 	\item Plus l'on attend longtemps pour livrer une fonctionnalité, plus on prend le risque de se retrouver dans le cas d'un \emph{effet tunnel} ou la compréhension de ce qui était à faire s'est retrouvée au fur et à mesure du temps par être l'opposé de ce qui était demandé. Dans cette position, le client et le chef de projet communique souvent peu, l'équipe de développement travaille en général sans avertir de ses avancées,\ldots Seule la date limite permet de voir ce qui a été réalisé et il s'agit plus souvent d'un échec que d'une réussite.
+	\item \todo[color=cyan]{Plus l'on met de temps à livrer, plus on risque de générer des mauvaises pratiques, qui seront plus longues à corriger et entraineront de la dette technique. Détail sur dette technique \& dire que plus court => permet de réduire corriger dette technique plus facilement.}
 	% Effet tunel à éventuellement aborder
 \end{itemize}
 
-Cette volonté de vouloir livrer plus petit mais plus régulièrement s'inscrit dans \emph{l'amélioration continue}. Au début, la fonctionnalité ne sera peut-être pas parfaite, mais elle sera continuellement améliorée jusqu'à correspondre au besoin voulu.
+Cette volonté de vouloir livrer plus petit mais plus régulièrement s'inscrit dans \emph{l'amélioration continue}. Au début, la fonctionnalité ne sera peut-être pas parfaite, mais elle sera continuellement améliorée jusqu'à correspondre au besoin voulu. 
 
-Néanmoins, il convient de vérifier que ce système est intégré et accepté par l'équipe, sous peine de voir un rejet de cette méthodologie et d'entrainer des conflits internes dans les équipes. Cela peut être le cas avec certaines personnes réfractaires au changement, par exemple des développeurs âgés, proche de le retraite, qui n'ont peut-être pas envie de se reformer et s'adapter à de nouvelles méthodes de travail et qui tenteront de garder leurs habitudes. Cela peut également provenir de personnalités avec un fort caractère qui pensent que leur méthode est plus efficace que les autres ou encore de bien d'autres cas. De manière générale, les personnes ne souhaitent pas sortir de leur zone de confort. Pour permettre ce changement, il va falloir exposer les différents avantages aux équipes et leur montrer les intérêts qu'ils ont à s'essayer à cette méthode pour peut-être finir par l'adopter de leur plein gré.
+\newImage{1}{devops-objective.jpg}{Mise en place de l'amélioration continue - \url{https://itrevolution.com}}{devopsObjective}
+
+Néanmoins, il convient de vérifier que ce système est intégré et accepté par l'équipe, sous peine de voir un rejet de cette méthodologie et d'entrainer des conflits internes dans les équipes. Cela peut être le cas avec certaines personnes réfractaires au changement, par exemple des développeurs âgés, proche de le retraite, qui n'ont peut-être pas envie de se reformer et s'adapter à de nouvelles méthodes de travail et qui tenteront de garder leurs habitudes. Cela peut également provenir de personnalités avec un fort caractère qui pensent que leur méthode est plus efficace que les autres ou encore de bien d'autres cas. De manière générale, les personnes ne souhaitent pas sortir de leur zone de confort. Pour permettre ce changement, il va falloir exposer les différents avantages aux équipes et leur montrer les intérêts qu'ils ont à s'essayer à cette méthode pour peut-être finir par l'adopter de leur plein gré. \todo[color=cyan]{Devops handbook p.59 parler de convaincre d'abord early adopter, puis une majorité silencieuse (suiveur) et ensuite de convaincre les récalcitrant.}
 
 L'un des premiers avantages si l'on met en place une démarche d'automatisation est une meilleure communication entre les développeurs, également appelés \emph{Dev}, et les administrateurs des infrastructures, administrant et déployant les applications, appelés \emph{Ops}. Si l'on met en place une démarche d'automatisation, un besoin de métrique va être nécessaire. Ces métriques, semblables aux \gls{KPI} précédemment détaillés, permettront de savoir par exemple le temps de déploiement de l'application, les derniers bugs remontés, les suivis de performance afin de déterminer si une requête \gls{SQL} est trop lente ou non... Ces métriques, conjointement définies par les \emph{Devs} et les \emph{Ops} va permettre d'obtenir des retours rapides et ainsi de pouvoir améliorer le produit plus facilement, en corrigeant les bugs au plus tôt. C'est la base de la \emph{Second Way}, ou deuxième étape, comme détaillé dans \citetitle{phoenixProject} \cite{phoenixProject} \todo[color=orange]{Faire valider cette partie sur le feedback}.
 
@@ -89,6 +94,7 @@ But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et s
 
 - Git hook pour vérifier que tout est OK.
 
+mise en place code review => erreur au plus tôt
 % https://dev.to/shameemreza/3-tricks-to-automate-development-tasks-with-git-hooks-2dah
 
 \subsection{L'importance des tests} \label{importance-test}
@@ -105,7 +111,7 @@ Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) p
 
 différence entre intégration continue et tests unitaires (image du lavabo + séchoir à main côte à côte). Les tests unitaires vont tester la cohérence d'une partie du système tandis que l'intégration va tester la cohérence de l'échange entre divers systèmes / fonctions.
 
-rapidité des tests à une importance pour un retour rapide aux dev
+rapidité des tests à une importance pour un retour rapide aux dev. Si on doit attendre des heures que l'environnement se eprovisionne et se load en fixtures, on pert tout intérêt.
 
 parler des différents type de test, en détaillant un peu le fonctionnement et l'utilité de chacun.
 \subsection{Intégration et déploiement continu}
@@ -124,19 +130,19 @@ Monitoring : monit pour monitorer l'état d'application ? (perso)
 
 Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recette, intégration, staging, et lorsque tout passe, en production.
 
-Infra As Code % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
+Infra As Code => permet de découpler architecture ? % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
 
-scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ansible par exemple
+scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ansible par exemple. Inconvénient : nécessite une architecture découplée, si on vient a faire un changemnt (ex: rajouter un serveur redis) mais qu'on doit attendre 2 semaines pour valider ce changement, on pert intérêt
 
 \textit{Exemple : parler de NAQ Automatisation de la création de la base de données et de la restauration des données}
 
-Feature flipping pour tester (A/B) et faire des rollback rapides.
+Feature flipping pour tester (A/B) et ouvrir fonctionnalité aux utilisateurs petit à petit et faire des rollback rapides.
 
 Comment setup ? webhook (avec en annexe deux images, côté Jenkins avec le secret et côté Gitlab avec le secret)
 
 Métriques pour attester déroulement OK => Uptime, temps déploiement. tous les KPI ne sont pas identiques à ceux de mangement. Ca peut être Nombre de build OK / KO / ratio succès build...
 
-
+fail fast, learn fast
 
 \subsection{Et la sécurité dans tout ça ?}
 

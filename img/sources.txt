@@ -3,5 +3,7 @@ Kanban => https://commons.wikimedia.org/wiki/File:Kanban\_board\_example.jpg
 etsy => https://fr.wikipedia.org/wiki/Etsy#/media/File:Etsy_logo_lg_rgb.png
 standards => https://xkcd.com/927
 no-deploy-friday => http://www.commitstrip.com/fr/2019/03/29/zero-risk/
-
+devops-objective => https://itrevolution.com/the-three-ways-principles-underpinning-devops/
+ci-vs-cd => https://medium.com/@jeehad.jebeile/devops-and-segregation-of-duties-9c1a1bea022e
+single-piece-flow => https://medium.com/@stefanluyten/single-piece-flow-5d2c2bec845b
 
