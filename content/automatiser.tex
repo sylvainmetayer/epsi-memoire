@@ -104,7 +104,21 @@ Les tests garantissent alors la validité du comportement de l'application. On d
 
 \subsubsection{Les tests unitaire}
 
+L'objectif d'un test unitaire est d'attester le bon fonctionnement d'un composant isolé du reste de l'application. L'objectif est que la fonctionnalité testée soit totalement isolée afin de se concentrer uniquement sur cette dernière, sans dépendre d'autre composant. On peut alors tester tous les cas, du cas dit \frquote{général}, qui représente 80\% des cas, jusqu'aux \frquote{cas limites}, cas apparaissant plus rarement mais pouvant entrainer un comportement non souhaité de l'application.
+
+Un exemple commun de test unitaire est par exemple le test d'une méthode de calcul d'une calculette. On dispose d'une méthode \frquote{calculer} disposant de 3 paramètres, 2 \frquote{opérandes} numériques et un \frquote{opérateur}. Un cas général serait alors de tester que \frquote{3+2} retourne bien \frquote{5} et un cas limite serait de tester que \frquote{5/0} lève bien une exception, puisqu'il s'agit d'une opération illégale.
+
 \subsubsection{Les tests d'intégration}
+
+Une fois chaque composant testé unitairement, il convient de vérifier que ces composants sont capable d'interagir entre eux. En effet, dans la sous-partie précédente, il était indiqué que les composants étaient isolés les uns des autres. Néanmoins, dans de nombreux cas, il est nécessaire que des composants interagissent entre eux. On va alors alors utiliser un \gls{mock} afin de simuler le comportement d'un composant, afin de tester l'autre.
+
+Un exemple serait une \gls{API} qui communiquerait avec une base de données afin de retourner les résultats. Lorsque l'on teste l'\gls{API}, on ne souhaite pas dépendre de la base de données. On va donc simuler les réponses que nous donnerait la base de données et envoyer ces données à l'\gls{API} qui pourra alors être testée.
+
+Cependant, si l'on teste toute notre application de cette façon, il est impossible d'attester le bon fonctionnement de nos composants entre eux. La version de la base de données pourrait en effet être incompatible avec le code actuellement utilisé par l'\gls{API}. Si aucun test d'intégration n'est effectué, la confiance dans l'application sera basée sur le \gls{mock} de la base de données et on risque alors de se retrouver dans le cas de la figure TODO.
+
+\missingfigure{Figure intégration failed}
+
+Les tests d'intégration vont alors garantir que chaque composant est capable de communiquer de façon correcte avec ses dépendances.
 
 \subsubsection{Les tests de charge}
 
@@ -134,15 +148,15 @@ rapidité des tests à une importance pour un retour rapide aux dev. Si on doit 
 parler des différents type de test, en détaillant un peu le fonctionnement et l'utilité de chacun.
 \subsection{Intégration et déploiement continu}
 
+Une fois que les tests permettent de modifier le code de l'application avec confiance sans introduire de régression, on peut alors mettre en place une démarche d'automatisation. Cela va permettre à l'équipe de développement d'obtenir un retour rapide lors de chaque déploiement, avec un lancement automatisé des tests ainsi qu'un déploiement automatique de l'application sur un environnement de recette interne par exemple.
+
+L'idée de l'intégration et du déploiement continu est de banaliser le déploiement afin de réduire la peur des développeurs vis à vis de la mise en production. Plus le code est déployé souvent, plus les développeurs seront serein quant à leur travail puisqu'ils pourront obtenir des retours rapide et être prévenu au plus vite lors d'incident afin de les corriger avant qu'il n'atteigne la production.
+
+Une première étape consiste à tester de façon continue l'application, à chaque nouvelle modification du code. C'est l'intégration continue. Elle est caractérisée par un logiciel s'exécutant sur un serveur, connecté au gestionnaire de sources contenant le code. Dès qu'une modification de code est poussée sur le gestionnaire de source, un \gls{webhook} \todo{Comment setup ? webhook (avec en annexe deux images, côté Jenkins avec le secret et côté Gitlab avec le secret)} est envoyé à l'outil d'intégration continue (par exemple Jenkins \todo{citer référence vers jenkins}) qui va alors dérouler un certains nombre d'étapes (installation des dépendances, exécutions des tests\ldots) pour vérifier que l'application soit  conforme aux demandes client.   
+
 \todo[color=cyan]{Intégration de déploiement continu, 3-4 pages}
 
-Retour le plus rapide possible pour éviter des bugs en prod. 
-
-banalisation du déploiement = moins de stress et de code mort
-
 Le reporting de bug automatique (sentry.io)
-
-Intégration des tests dans jenkins
 
 Monitoring : monit pour monitorer l'état d'application ? (perso)
 
@@ -156,13 +170,17 @@ scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ans
 
 Feature flipping pour tester (A/B) et ouvrir fonctionnalité aux utilisateurs petit à petit et faire des rollback rapides.
 
-Comment setup ? webhook (avec en annexe deux images, côté Jenkins avec le secret et côté Gitlab avec le secret)
-
 Métriques pour attester déroulement OK => Uptime, temps déploiement. tous les KPI ne sont pas identiques à ceux de mangement. Ca peut être Nombre de build OK / KO / ratio succès build...
 
-fail fast, learn fast
-
 \subsection{Et la sécurité dans tout ça ?}
+
+Un projet automatisé de A à Z peut être testé intégralement, s'il la sécurité autour de l'infrastructure d'intégration et de déploiement n'est pas sécurisé, cela revient à ouvrir la porte à tous les maux. \todo{reformuler}
+
+En effet, si l'on vient à déployer de façon automatique, il va falloir que les outils déployant et testant automatiquement l'application ait accès aux données de l'application, données qui peuvent parfois contenir des tokens, des clés d'\gls{API}\ldots Il faut alors réfléchir à la façon de sécuriser l'infrastructure. 
+
+Il faut tout d'abord restreindre les accès aux différents outils d'automatisation. IPtable / firewall / dmz / ...
+
+Cela peut passer par un compte de service, qui sera utilisé pour les déploiements et différents des comptes classiques. On peut également sécuriser les connexions avec des clés \gls{SSH} plutôt que des mots de passe. 
 
 \todo[color=cyan]{Sécurité, 1-2 page }
 
@@ -177,3 +195,5 @@ Attention à l'endroit ou sont fait les builds/tests. Il est préférable, pour 
 Dans certains cas, l'application ne doit pas quitter le périmètre de l'entreprise,il faut donc avoir la maitrise totale de la chaine d'industrialisation
 
 Des controles / supervisons périodique afin de checker que tout va bien.
+
+bastion qui peut permettre de couper l'accès à l'infra.
