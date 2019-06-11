@@ -172,21 +172,19 @@ Un projet automatisé de A à Z peut être testé intégralement, s'il la sécur
 
 En effet, si l'on vient à déployer de façon automatique, il va falloir que les outils déployant et testant automatiquement l'application ait accès aux données de l'application, données qui peuvent parfois contenir des tokens, des clés d'\gls{API}\ldots Il faut alors réfléchir à la façon de sécuriser l'infrastructure. 
 
-Il faut tout d'abord restreindre les accès aux différents outils d'automatisation. IPtable / firewall / dmz / ...
+Il faut tout d'abord restreindre les accès aux différents outils d'automatisation. Pour cela, on peut se servir d'un pare feu, qui va filtrer les connexions entrantes sur les différents serveurs. On peut également mettre en place une \gls{DMZ}, qui permet ainsi de séparer le réseau interne de celui externe, connecté à Internet et qui contient les applications ayant besoin d'être accessible via l'extérieur. En plus de cela, on peut également restreindre les accès aux différentes applications via la mise en place d'un \gls{VPN}, qui permet l'accès aux applications via une connexion sécurisée, comme si l'on était présent sur site et évite ainsi d'avoir à exposer les applications sur Internet. Mais toutes ces mesures sont valable pour tout type d'application, automatisée ou non. 
 
-Cela peut passer par un compte de service, qui sera utilisé pour les déploiements et différents des comptes classiques. On peut également sécuriser les connexions avec des clés \gls{SSH} plutôt que des mots de passe. 
+On peut ainsi se référer à la documentation des outils d'automatisation utilisé. Par exemple, la documentation de Jenkins\footnote{\url{https://jenkins.io/doc/}} ainsi que le livre numérique \citetitle{jenkins-guide} \cite[chapitre 7, Sécuriser Jenkins]{jenkins-guide} décrivent les façons de sécuriser l'outil et éviter ainsi que le serveur d'intégration ne serve de vecteur d'attaque pour compromettre l'application (\emph{ou pire, l'entreprise entière}). Une des premières mesures est de restreindre les accès utilisateurs, en appliquant le principe de moindre privilège. Cela signifie donner uniquement les droits strictement nécessaire. Si un utilisateur a simplement besoin de consulter les rapports, il n'y a pas d'intérêt de lui donner les droits pour pouvoir éditer la configuration de ces derniers.
+
+Concernant les interactions entre le serveur d'intégration continue, le gestionnaire de version et les différents serveurs, il peut être intéressant de créer un compte de service (\emph{compte système, n'étant relié à aucun utilisateur et disposant des droits minimaux pour l'exécution de la tâche pour lequel il est utilisé}) avec des accès par clé \gls{SSH} utilisés pour les déploiements. L'utilisation d'une clé \gls{SSH} plutôt qu'un mot de passe est nécessaire puisque la demande de mot de passe se fait de façon interactive (et requiert donc une intervention utilisateur)\footnote{Même s'il est possible de contourner ce fonctionnement, par exemple avec sshpass, il est recommandé d'utiliser des clés \gls{SSH}}. De même, l'accès aux serveurs doit être limité et surtout contrôlé. Il faut ainsi préférer des comptes nominatif, même si leur création peut s'avérer plus fastidieuse plutôt qu'un seul compte administrateur partagé entre les membres de l'équipe. Ainsi, si un compte vient être compromis, il est plus facile de révoquer ses accès plutôt que de bloquer l'accès à tous les membres de l'équipe.
+
+Comme vu dans la figure \todo{ref figure setup jenkins partie intégration continue}, des tokens seront forcément nécessaire à un moment pour pouvoir garantir l'échange de données. Ces tokens sont à générer avec le minimum de droits possible (\emph{principe de moindre privilège}) et à traiter comme s'il s'agissait de mot de passe. Il ne devraient d'ailleurs être enregistrés nul part ailleurs que dans les champs de configuration requis, puisqu'ils n'ont pas vocation à être utilisés ailleurs.
+
+Un autre aspect à prendre en compte, selon la confidentialité requise par les projets, est l'endroit ou le code source du projet va transiter. Si par exemple, un prestataire ne dispose pas de son propre serveur d'intégration continue mais possède une offre chez un autre prestataire (TravisCI\footnote{\url{http://travis-ci.org/}} par exemple), il faut être prudent, puisque le code sera alors à un moment transmis en dehors du réseau de l'entreprise. Selon les projets, il peut être nécessaire d'auto-héberger des solutions en interne afin de garder une maitrise totale de la chaine d'industrialisation.
 
 \todo[color=cyan]{Sécurité, 1-2 page }
 
-Gestion des tokens, gestion des comptes.
-Un compte admin ou plusieurs sous compte avec des droits limités ? En cas d'intrusion, un attaquant a moins de chance de corrompre tout le système.
-Infra : restriction d'accès (htaccess / firewall / ..?)
-
 Vérifier les dépendances (failles, paquet npm corrompu...)
-
-Attention à l'endroit ou sont fait les builds/tests. Il est préférable, pour des raisons de sécurité évidente d'utiliser un outil auto-hébergé, open source, plutôt que des outils clés en main, ou les données sont envoyées sur des serveurs inconnus. 
-
-Dans certains cas, l'application ne doit pas quitter le périmètre de l'entreprise,il faut donc avoir la maitrise totale de la chaine d'industrialisation
 
 Des controles / supervisons périodique afin de checker que tout va bien.
 
