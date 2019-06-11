@@ -118,11 +118,11 @@ Une fois chaque composant testé unitairement, il convient de vérifier que ces 
 
 Un exemple serait une \gls{API} qui communiquerait avec une base de données afin de retourner les résultats. Lorsque l'on teste l'\gls{API}, on ne souhaite pas dépendre de la base de données. On va donc simuler les réponses que nous donnerait la base de données et envoyer ces données à l'\gls{API} qui pourra alors être testée.
 
-Cependant, si l'on teste toute notre application de cette façon, il est impossible d'attester le bon fonctionnement de nos composants entre eux. La version de la base de données pourrait en effet être incompatible avec le code actuellement utilisé par l'\gls{API}. Si aucun test d'intégration n'est effectué, la confiance dans l'application sera basée sur le \gls{mock} de la base de données et on risque alors de se retrouver dans le cas de la figure \ref{fig:no-integration-test}, avec des composants isolés fonctionnant très bien individuellement mais incapable de s'exécuter ensemble.
+Cependant, si l'on teste toute notre application de cette façon, il est impossible d'attester le bon fonctionnement de nos composants entre eux. La version de la base de données pourrait en effet être incompatible avec le code actuellement utilisé par l'\gls{API}. Si aucun test d'intégration n'est effectué, la confiance dans l'application sera basée sur le \gls{mock} de la base de données et on risque alors de se retrouver dans le cas de la figure \ref{fig:no-integration-test}, avec des composants isolés fonctionnant très bien individuellement mais incapable de s'exécuter ensemble. Cela s'illustre avec la figure \ref{fig:no-integration-test}. Dans ce cas, les tiroirs s'ouvrent très bien individuellement mais lorsqu'on les assemblent, il n'est pas possible d'ouvrir les deux tiroirs en même temps, puisque le premier bloque l'ouverture du second.
 
-\newImage{1}{no-integration-tests.png}{Exemple de tests unitaire sans tests d'intégration. Dans ce cas, les tiroirs, individuellement s'ouvrent très bien, mais si l'on les assemblent ensemble, il n'est pas possible d'ouvrir les deux tiroirs ensemble, puisque le premier bloque l'ouverture du second}{no-integration-test}
+\newImage{0.4}{no-integration-tests.png}{Exemple de tests unitaire sans tests d'intégration.}{no-integration-test}
 
-Les tests d'intégration vont alors garantir que chaque composant est capable de communiquer de façon correcte avec ses dépendances.
+Les tests d'intégration vont donc garantir que chaque composant est capable de communiquer de façon correcte avec ses dépendances.
 
 \subsubsection{Les tests fonctionnels}
 
@@ -132,17 +132,13 @@ Ce sont également les tests qui sont les plus haut niveau, puisqu'il s'exécute
 
 Le \gls{framework} \gls{angularjs} , par exemple, permet de réaliser des tests \gls{E2E} avec Protractor\footnote{\url{https://www.protractortest.org/}}. Cela va ainsi émuler un navigateur dans lequel il va être possible de décrire les comportements utilisateurs. 
 
-Un autre exemple de test fonctionnel sera par exemple un test de charge, réalisé sur un environnement similaire à la production, durant lequel on ne va pas tester la conformité de l'application mais sa capacité à supporter un certain trafic. Dans le cas d'une application web, cela consiste à simuler des centaines ou milliers de connexion simultanées sur le site afin de vérifier sa capacité à répondre convenablement. 
+Un autre exemple de test fonctionnel serait un test de charge, réalisé sur un environnement similaire à la production, durant lequel on ne va pas tester la conformité de l'application mais sa capacité à supporter un certain trafic. Dans le cas d'une application web, cela consiste à simuler des centaines ou milliers de connexion simultanées sur le site afin de vérifier sa capacité à répondre convenablement. 
 
 L'avantage de ces tests fonctionnels est qu'il s'agit des tests les plus complets, puisqu'ils permettent de tester le produit fini. L'inconvénient est que ces derniers sont plus longs à exécuter, nécessitant généralement l'approvisionnement d'un environnement de test, d'une base de données de test\ldots
 
 %\subsubsection{Campagne de test}
 %Parler de Protractor et Squash sur \bv
-
-\todo[color=cyan]{Importance des tests, 1-2 pages}
-
 %Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métiers.
-
 
 \subsection{Intégration et déploiement continu}
 
