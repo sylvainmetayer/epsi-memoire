@@ -98,15 +98,19 @@ mise en place code review => erreur au plus tôt
 
 \subsection{L'importance des tests} \label{importance-test}
 
-Les tests ont un rôle important dans une démarche d'automatisation. En effet, lorsque l'on automatise quelque chose, il est essentiel de s'assurer que le comportement de l'application est valide puisque l'on peut potentiellement déployer automatiquement une application en production. 
+Les tests ont un rôle crucial dans une démarche d'automatisation. En effet, lorsque l'on automatise quelque chose, il est essentiel de s'assurer que le comportement de l'application est valide puisque l'on peut potentiellement déployer automatiquement une application en production. Un autre critère important lors de l'exécution des tests est leur rapidité : l'objectif est de fournir un retour rapide aux développeurs afin de savoir si leur code est conforme ou non. 
 
-Les tests garantissent alors la validité du comportement de l'application. On distingue plusieurs type de tests.
+Les tests garantissent alors la validité du comportement de l'application. On distingue 3 grand type de tests, selon \citetitle{practical-test-pyramid} (\citeauthor{practical-test-pyramid} \cite{practical-test-pyramid})
+
+\newImage{0.5}{tests.png}{Pyramide des tests illustrée - \url{https://docs.microsoft.com}}{test-pyramid}
 
 \subsubsection{Les tests unitaire}
 
-L'objectif d'un test unitaire est d'attester le bon fonctionnement d'un composant isolé du reste de l'application. L'objectif est que la fonctionnalité testée soit totalement isolée afin de se concentrer uniquement sur cette dernière, sans dépendre d'autre composant. On peut alors tester tous les cas, du cas dit \frquote{général}, qui représente 80\% des cas, jusqu'aux \frquote{cas limites}, cas apparaissant plus rarement mais pouvant entrainer un comportement non souhaité de l'application.
+L'objectif d'un test unitaire est d'attester le bon fonctionnement d'un composant isolé du reste de l'application. L'objectif est que la fonctionnalité testée soit totalement isolée afin de se concentrer uniquement sur cette dernière, sans dépendre d'autre composant. On peut alors tester tous les cas, du cas dit \frquote{général}, qui représente souvent 80\% des cas, jusqu'aux \frquote{cas limites}, cas apparaissant plus rarement mais pouvant entrainer un comportement non souhaité de l'application.
 
 Un exemple commun de test unitaire est par exemple le test d'une méthode de calcul d'une calculette. On dispose d'une méthode \frquote{calculer} disposant de 3 paramètres, 2 \frquote{opérandes} numériques et un \frquote{opérateur}. Un cas général serait alors de tester que \frquote{3+2} retourne bien \frquote{5} et un cas limite serait de tester que \frquote{5/0} lève bien une exception, puisqu'il s'agit d'une opération illégale.
+
+Dans le cas de \gls{PHP}, un exemple de \gls{framework} de test unitaire est PHPUnit\footnote{\url{https://phpunit.de/}}. Le principal avantages de ces tests est leur rapidité : ne nécessitant aucune interaction avec des composants externes (ou bien ces composants disposent d'un \gls{mock}), l'exécution des tests est très rapide, de l'ordre de quelques secondes à quelques minutes selon le nombre de tests à exécuter.
 
 \subsubsection{Les tests d'intégration}
 
@@ -114,38 +118,32 @@ Une fois chaque composant testé unitairement, il convient de vérifier que ces 
 
 Un exemple serait une \gls{API} qui communiquerait avec une base de données afin de retourner les résultats. Lorsque l'on teste l'\gls{API}, on ne souhaite pas dépendre de la base de données. On va donc simuler les réponses que nous donnerait la base de données et envoyer ces données à l'\gls{API} qui pourra alors être testée.
 
-Cependant, si l'on teste toute notre application de cette façon, il est impossible d'attester le bon fonctionnement de nos composants entre eux. La version de la base de données pourrait en effet être incompatible avec le code actuellement utilisé par l'\gls{API}. Si aucun test d'intégration n'est effectué, la confiance dans l'application sera basée sur le \gls{mock} de la base de données et on risque alors de se retrouver dans le cas de la figure TODO.
+Cependant, si l'on teste toute notre application de cette façon, il est impossible d'attester le bon fonctionnement de nos composants entre eux. La version de la base de données pourrait en effet être incompatible avec le code actuellement utilisé par l'\gls{API}. Si aucun test d'intégration n'est effectué, la confiance dans l'application sera basée sur le \gls{mock} de la base de données et on risque alors de se retrouver dans le cas de la figure \ref{fig:no-integration-test}, avec des composants isolés fonctionnant très bien individuellement mais incapable de s'exécuter ensemble.
 
-\missingfigure{Figure intégration failed}
+\newImage{1}{no-integration-tests.png}{Exemple de tests unitaire sans tests d'intégration. Dans ce cas, les tiroirs, individuellement s'ouvrent très bien, mais si l'on les assemblent ensemble, il n'est pas possible d'ouvrir les deux tiroirs ensemble, puisque le premier bloque l'ouverture du second}{no-integration-test}
 
 Les tests d'intégration vont alors garantir que chaque composant est capable de communiquer de façon correcte avec ses dépendances.
 
-\subsubsection{Les tests de charge}
+\subsubsection{Les tests fonctionnels}
 
-\begin{itemize}
-	\setlength\itemsep{0em}
-	\item Les tests unitaire
-	\item Les tests d'intégration 
-	\item Les tests de charge 
-\end{itemize}
+Les tests fonctionnels permettent de tester le comportement de l'application sans avoir connaissance du code. Cela permet ainsi de vérifier que l'application effectue bien ce qui est indiqué dans les spécifications demandées. Ces tests sont également appelés \frquote{tests boite noire}.
+
+Ce sont également les tests qui sont les plus haut niveau, puisqu'il s'exécutent avec toute l'application et ses dépendances / composant. On peut par exemple citer les tests \gls{E2E} qui permettent de tester le comportement d'une application en décrivant les actions réalisées sur cette dernière (cliquer sur un bouton, réduire la fenêtre) et les résultats attendus.
+
+Le \gls{framework} \gls{angularjs} , par exemple, permet de réaliser des tests \gls{E2E} avec Protractor\footnote{\url{https://www.protractortest.org/}}. Cela va ainsi émuler un navigateur dans lequel il va être possible de décrire les comportements utilisateurs. 
+
+Un autre exemple de test fonctionnel sera par exemple un test de charge, réalisé sur un environnement similaire à la production, durant lequel on ne va pas tester la conformité de l'application mais sa capacité à supporter un certain trafic. Dans le cas d'une application web, cela consiste à simuler des centaines ou milliers de connexion simultanées sur le site afin de vérifier sa capacité à répondre convenablement. 
+
+L'avantage de ces tests fonctionnels est qu'il s'agit des tests les plus complets, puisqu'ils permettent de tester le produit fini. L'inconvénient est que ces derniers sont plus longs à exécuter, nécessitant généralement l'approvisionnement d'un environnement de test, d'une base de données de test\ldots
+
+%\subsubsection{Campagne de test}
+%Parler de Protractor et Squash sur \bv
 
 \todo[color=cyan]{Importance des tests, 1-2 pages}
 
-Détailler les différents type de test et leur usage.
+%Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métiers.
 
-Réaliser des tests unitaires en utilisant des règles d’erreur et exceptions> Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métier.
 
-- Résilience de l'application, tester sous différents angles continuellement afin de vérifier qu'elle se comporte correctement.
-
-Tout l'automatisation ne sert à rien sans une bonne campagne de tests, fonctionnel, unitaire, d'intégration, E2E...
-
-Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métiers.
-
-différence entre intégration continue et tests unitaires (image du lavabo + séchoir à main côte à côte). Les tests unitaires vont tester la cohérence d'une partie du système tandis que l'intégration va tester la cohérence de l'échange entre divers systèmes / fonctions.
-
-rapidité des tests à une importance pour un retour rapide aux dev. Si on doit attendre des heures que l'environnement se eprovisionne et se load en fixtures, on pert tout intérêt.
-
-parler des différents type de test, en détaillant un peu le fonctionnement et l'utilité de chacun.
 \subsection{Intégration et déploiement continu}
 
 Une fois que les tests permettent de modifier le code de l'application avec confiance sans introduire de régression, on peut alors mettre en place une démarche d'automatisation. Cela va permettre à l'équipe de développement d'obtenir un retour rapide lors de chaque déploiement, avec un lancement automatisé des tests ainsi qu'un déploiement automatique de l'application sur un environnement de recette interne par exemple.

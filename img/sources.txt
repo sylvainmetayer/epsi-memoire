@@ -6,4 +6,5 @@ no-deploy-friday => http://www.commitstrip.com/fr/2019/03/29/zero-risk/
 devops-objective => https://itrevolution.com/the-three-ways-principles-underpinning-devops/
 ci-vs-cd => https://medium.com/@jeehad.jebeile/devops-and-segregation-of-duties-9c1a1bea022e
 single-piece-flow => https://medium.com/@stefanluyten/single-piece-flow-5d2c2bec845b
-
+test-pyramid => https://docs.microsoft.com/fr-fr/dotnet/standard/modern-web-apps-azure-architecture/test-asp-net-core-mvc-apps
+no-integration-test => https://me.me/i/unittests-passing-nointegrationitests-unit-tests-passing-no-integration-tests-53c8003af57f45e4be46960b62cf6627
