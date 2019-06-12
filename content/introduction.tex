@@ -29,11 +29,9 @@ Mais cette idée d'automatisation n'est pas nouvelle. Avec l'avancée technologi
 
 Cela a d'abord commencé par la rédaction de manuels opératoires permettant de définir les tâches à effectuer les une après les autres. Ces derniers étaient alors suivis religieusement par la personne en charge de déployer ou d'installer l'application. Néanmoins, cette procédure ne retirait pas le facteur humain de l'opération et rendait alors instable l'installation. En effet, comment s'assurer que la personne n'a pas manqué une étape ? 
 
-Pour tenter de palier cela, des scripts furent mis en place. On peut notamment citer \emph{expect}\footnote{\url{https://fr.wikipedia.org/wiki/Expect}} qui est un outil permettant d'automatiser des déploiements via \gls{SSH}, \gls{SFTP}\ldots{} L'objectif de cet outil était d'utiliser les mêmes outils qu'avant (à savoir \gls{SSH} ou \gls{SFTP} par exemple) mais de supprimer l'interaction humaine nécessaire pour déployer l'application. Au lieu d'écrire un manuel opératoire indiquant qu'il fallait se connecter avec l'utilisateur, vérifier que le paquet \emph{MonApplication} était bien présent, puis redémarrer le serveur, il suffisait alors d'écrire ces instructions dans un fichier, puis de faire exécuter ce dernier à la personne en charge du déploiement. On réduit ainsi le risque d'erreur humain. Cette solution avait néanmoins l'inconvénient d'être assez peu maintenable et pouvait rapidement se révéler verbeux. Cela avait également l'inconvénient de ne pas être testable. On pouvait difficilement s'assurer que le script fonctionnait sur le serveur une première fois, sans faire un \emph{crash-test} en espérant que tout se passe pour le mieux. Les environnements n'étant pas spécialement tous identiques, cela pouvait également entrainer des incompatibilités, nécessitant des développements spécifiques. De plus, sur l'outil utilisé (\gls{SSH} par exemple) publiait une mise à jour introduisant un gros changement, il fallait alors revoir le script de déploiement afin de l'adapter.
+Pour tenter de palier cela, des scripts furent mis en place. On peut notamment citer \emph{expect}\footnote{\url{https://fr.wikipedia.org/wiki/Expect}} qui est un outil permettant d'automatiser des déploiements via \gls{SSH}, \gls{SFTP}\ldots{} L'objectif de cet outil était d'utiliser les mêmes outils qu'avant (à savoir \gls{SSH} ou \gls{SFTP} par exemple) mais de supprimer l'interaction humaine nécessaire pour déployer l'application. Au lieu d'écrire un manuel opératoire indiquant qu'il fallait se connecter avec l'utilisateur, vérifier que le paquet \emph{MonApplication} était bien présent, puis redémarrer le serveur, il suffisait alors d'écrire ces instructions dans un fichier, puis de faire exécuter ce dernier à la personne en charge du déploiement. On réduit ainsi le risque d'erreur humain. Cette solution avait néanmoins l'inconvénient d'être assez peu maintenable et pouvait rapidement se révéler verbeux. Cela avait également l'inconvénient de ne pas être testable. On pouvait difficilement s'assurer que le script fonctionnait sur le serveur une première fois, sans faire un \emph{crash-test} en espérant que tout se passe pour le mieux. Les environnements n'étant pas spécialement tous identiques, cela pouvait également entrainer des incompatibilités, nécessitant des développements spécifiques. De plus, sur l'outil utilisé (\gls{SSH} par exemple) publiait une mise à jour introduisant une incompatibilité avec la version précédente, il fallait alors revoir le script de déploiement afin de l'adapter. 
 
-\todo[color=cyan]{Faire un historique de l'automatisation}
-
-- Comment déployait-on avant ?
+C'est pourquoi des outils et des méthodes ont été mise en place afin de permettre une meilleure fluidité du cycle de vie de l'application.
 
 \subsection*{Que peut-on automatiser ?}
 
@@ -43,17 +41,9 @@ Même une opération réalisée une fois par an peut être automatisée. D'aille
 
 Néanmoins, il convient d'être réaliste quant aux moyens que l'on souhaite mettre en place pour pouvoir automatiser les différentes tâches à effectuer, sous peine d'entrainer de fort coûts financiers pour une tâche qui n'en nécessite pas tant et dont les effets de bords sont faibles.
 
-\todo[color=cyan]{Que peut-on automatiser ?}
-
 \subsection*{Pourquoi automatiser ?}
 
 L'intérêt premier d'automatiser a déjà été évoqué dans plus haut : il s'agit de réduire au maximum les erreurs humaines lors de la réalisation d'un déploiement, d'une installation. Le but est également de faciliter la vie des développeurs, leur permettant ainsi de se concentrer sur des tâches apportant une vraie valeur métier à l'application.
-
-\todo[color=cyan]{Pourquoi automatiser ?}
-
-- Quels en sont les avantages ?
-
-- Permettre un suivi de l'évolution du projet via les PR + issues, permet de suivre les demandes et leur résolutions => demande traitée automatiquement déployée, suivi de l'activité de chaque dev pour le CRA\ldots
 
 \subsection*{Présentation entreprise \& mission}
 
