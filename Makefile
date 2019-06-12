@@ -3,7 +3,7 @@
 filename=main
 
 build: ## Build the pdf without docker
-	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
+	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 	@makeglossaries ${filename}
 	@biber "${filename}"
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null

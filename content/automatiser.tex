@@ -1,8 +1,5 @@
-\todo[color=yellow]{Automatiser un projet, 12 pages mini}
-
 \subsection{Management, gestion de projet \& planification sont sur un bateau}
-
-\todo[color=yellow]{Partie management, comment gérer un changement ?, 3 pages}
+\todo[color=orange]{Renommer cette partie}
 
 \epigraph{\frquote{Neuf femmes ne font pas un enfant en un mois}}{\citetitle{manmonth} - \citeauthor{manmonth} \cite{manmonth}}
 
@@ -74,6 +71,8 @@ Permettre un démarrage rapide pour pouvoir se concentrer sur une fonctionnalit�
 
 Déploiement : chaine de déploiement (dev/test/inte/preprod/prod) avec chacune ses spécificités
 
+pair programming => gain temps car détection erreur au plus tôt.
+
 Exemple :
 
 en dev, on souhaite des logs direct dans la console, en prod on les mets dans un fichier de log.
@@ -98,47 +97,70 @@ mise en place code review => erreur au plus tôt
 
 \subsection{L'importance des tests} \label{importance-test}
 
-Les tests ont un rôle crucial dans une démarche d'automatisation. En effet, lorsque l'on automatise quelque chose, il est essentiel de s'assurer que le comportement de l'application est valide puisque l'on peut potentiellement déployer automatiquement une application en production. Un autre critère important lors de l'exécution des tests est leur rapidité : l'objectif est de fournir un retour rapide aux développeurs afin de savoir si leur code est conforme ou non. 
+Les tests ont un rôle crucial dans une démarche d'automatisation. En effet, lorsque l'on automatise quelque chose, il est essentiel de s'assurer que le comportement de l'application est valide puisque l'on va par la suite déployer automatiquement cette application en production. Selon le \gls{CFTL} et l'\gls{ISTQB}, il existe 4 types de tests et chacun dispose de 4 objectifs formant ainsi une matrice représentée dans le tableau \ref{tab:matrice-test}.
 
-Les tests garantissent alors la validité du comportement de l'application. On distingue 3 grand type de tests, selon \citetitle{practical-test-pyramid} (\citeauthor{practical-test-pyramid} \cite{practical-test-pyramid})
 
-\newImage{0.5}{tests.png}{Pyramide des tests illustrée - \url{https://docs.microsoft.com}}{test-pyramid}
+\begin{table}[H]
+	\centering
+	\begin{adjustbox}{width=0.95\textwidth,center=\textwidth} 
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			\diagbox{type de test}{objectif} & Fonctionnement unitaire & Règle métier & Développement & Interaction \\ \hline
+			Test de composant     & X                       & X            & X              &             \\ \hline
+			Test d'intégration    &                         & X            & X              & X           \\ \hline
+			Test Système          &                         & X            &               & X           \\ \hline
+			Test d'acceptation    &                         & X            &               &             \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+	\caption{Matrice de tests selon leur type et leur objectif}
+	\label{tab:matrice-test}
+\end{table}
 
-\subsubsection{Les tests unitaire}
+\todo{Valider cette matrice car elle est sûrement fausse?}
 
-L'objectif d'un test unitaire est d'attester le bon fonctionnement d'un composant isolé du reste de l'application. L'objectif est que la fonctionnalité testée soit totalement isolée afin de se concentrer uniquement sur cette dernière, sans dépendre d'autre composant. On peut alors tester tous les cas, du cas dit \frquote{général}, qui représente souvent 80\% des cas, jusqu'aux \frquote{cas limites}, cas apparaissant plus rarement mais pouvant entrainer un comportement non souhaité de l'application.
+\subsubsection{Le test de composant}\label{test-composant}
 
-Un exemple commun de test unitaire est par exemple le test d'une méthode de calcul d'une calculette. On dispose d'une méthode \frquote{calculer} disposant de 3 paramètres, 2 \frquote{opérandes} numériques et un \frquote{opérateur}. Un cas général serait alors de tester que \frquote{3+2} retourne bien \frquote{5} et un cas limite serait de tester que \frquote{5/0} lève bien une exception, puisqu'il s'agit d'une opération illégale.
+Aussi appelé \gls{TU}, son objectif est que le composant testé soit totalement isolé afin de se concentrer uniquement sur le \emph{fonctionnement unitaire} de ce dernier, sans dépendre d'autre composant. On peut alors tester tous les cas, du cas dit \frquote{général}, qui représente souvent 80\% des cas, jusqu'aux \frquote{cas limites}, cas apparaissant plus rarement mais pouvant entrainer un comportement non souhaité de l'application. Cela permet de vérifier que le code écrit par le développeur lors de la phase de \emph{développement} est bien valide. Ainsi, un test de composant peut valider des \emph{règles métier} et ainsi également correspondre à un test d'acceptation\footnote{détails sur les tests d'acceptation dans la sous partie \frquote{\nameref{test-acceptation}} (p. \pageref{test-acceptation})}.
 
-Dans le cas de \gls{PHP}, un exemple de \gls{framework} de test unitaire est PHPUnit\footnote{\url{https://phpunit.de/}}. Le principal avantages de ces tests est leur rapidité : ne nécessitant aucune interaction avec des composants externes (ou bien ces composants disposent d'un \gls{mock}), l'exécution des tests est très rapide, de l'ordre de quelques secondes à quelques minutes selon le nombre de tests à exécuter.
+Un exemple commun de test de composant est par exemple le test d'une méthode de calcul d'une calculette. On dispose d'une méthode \frquote{calculer} disposant de 3 paramètres, 2 \frquote{opérandes} numériques et un \frquote{opérateur}. Un cas général serait alors de tester que \frquote{3+2} retourne bien \frquote{5} et un cas limite serait de tester que \frquote{5/0} lève bien une exception, puisqu'il s'agit d'une opération illégale.
 
-\subsubsection{Les tests d'intégration}
+Dans le cas de \gls{PHP}, un exemple de \gls{framework} de test unitaire est PHPUnit\footnote{\url{https://phpunit.de/}}. Le principal avantages de ce type de test est sa rapidité : ne nécessitant aucune interaction avec des composants externes (ou bien ces composants disposent d'un \gls{mock}), l'exécution des tests est très rapide.
 
-Une fois chaque composant testé unitairement, il convient de vérifier que ces composants sont capable d'interagir entre eux. En effet, dans la sous-partie précédente, il était indiqué que les composants étaient isolés les uns des autres. Néanmoins, dans de nombreux cas, il est nécessaire que des composants interagissent entre eux. On va alors alors utiliser un \gls{mock} afin de simuler le comportement d'un composant, afin de tester l'autre.
+\subsubsection{Le test d'intégration}
 
-Un exemple serait une \gls{API} qui communiquerait avec une base de données afin de retourner les résultats. Lorsque l'on teste l'\gls{API}, on ne souhaite pas dépendre de la base de données. On va donc simuler les réponses que nous donnerait la base de données et envoyer ces données à l'\gls{API} qui pourra alors être testée.
+Une fois chaque composant testé unitairement, il convient de vérifier que ces composants sont capable d'\emph{interagir} entre eux. En effet, dans la sous-partie précédente, il était indiqué que les composants étaient isolés les uns des autres. Néanmoins, dans de nombreux cas, il est nécessaire que des composants interagissent entre eux. On va alors alors utiliser un \gls{mock} afin de simuler le comportement d'un composant, afin de tester l'autre.
+
+Un exemple serait une \gls{API} qui communiquerait avec une base de données afin de retourner les résultats. Lorsque l'on teste l'\gls{API} unitairement, on ne souhaite pas dépendre de la base de données. On va donc simuler les réponses que nous donnerait la base de données et envoyer ces données à l'\gls{API} qui pourra alors être testée.
 
 Cependant, si l'on teste toute notre application de cette façon, il est impossible d'attester le bon fonctionnement de nos composants entre eux. La version de la base de données pourrait en effet être incompatible avec le code actuellement utilisé par l'\gls{API}. Si aucun test d'intégration n'est effectué, la confiance dans l'application sera basée sur le \gls{mock} de la base de données et on risque alors de se retrouver dans le cas de la figure \ref{fig:no-integration-test}, avec des composants isolés fonctionnant très bien individuellement mais incapable de s'exécuter ensemble. Cela s'illustre avec la figure \ref{fig:no-integration-test}. Dans ce cas, les tiroirs s'ouvrent très bien individuellement mais lorsqu'on les assemblent, il n'est pas possible d'ouvrir les deux tiroirs en même temps, puisque le premier bloque l'ouverture du second.
 
 \newImage{0.4}{no-integration-tests.png}{Exemple de tests unitaire sans tests d'intégration.}{no-integration-test}
 
-Les tests d'intégration vont donc garantir que chaque composant est capable de communiquer de façon correcte avec ses dépendances.
+Les tests d'intégration vont donc garantir que chaque composant, déployé dans l'environnement d'exécution de l'application, est capable de communiquer de façon correcte avec ses dépendances.
 
-\subsubsection{Les tests fonctionnels}
+\subsubsection{Le test système}
 
-Les tests fonctionnels permettent de tester le comportement de l'application sans avoir connaissance du code. Cela permet ainsi de vérifier que l'application effectue bien ce qui est indiqué dans les spécifications demandées. Ces tests sont également appelés \frquote{tests boite noire}.
+\todo{expliciter la différence entre test système et test d'intégration.}
 
-Ce sont également les tests qui sont les plus haut niveau, puisqu'il s'exécutent avec toute l'application et ses dépendances / composant. On peut par exemple citer les tests \gls{E2E} qui permettent de tester le comportement d'une application en décrivant les actions réalisées sur cette dernière (cliquer sur un bouton, réduire la fenêtre) et les résultats attendus.
+Les tests système permettent de tester le comportement de l'application sans avoir connaissance du code. Cela permet ainsi de vérifier que l'application effectue bien ce qui est indiqué dans les spécifications demandées et que les différents composants interagissent bien entre eux. Ces tests sont également appelés \frquote{tests boite noire}. De plus, les tests systèmes permettent de vérifier que les composants interagissent correctement entre eux, au niveau global de l'application (\emph{au niveau système}) et non composant par composant.
+
+Ce sont également les tests qui sont les plus haut niveau, puisqu'il s'exécutent avec toute l'application et ses dépendances / composant. On peut par exemple citer les tests \gls{E2E} qui sont des tests système \todo{à confirmer?} qui permettent de tester le comportement d'une application en décrivant les actions réalisées sur cette dernière (cliquer sur un bouton, réduire la fenêtre) et les résultats attendus.
 
 Le \gls{framework} \gls{angularjs} , par exemple, permet de réaliser des tests \gls{E2E} avec Protractor\footnote{\url{https://www.protractortest.org/}}. Cela va ainsi émuler un navigateur dans lequel il va être possible de décrire les comportements utilisateurs. 
 
-Un autre exemple de test fonctionnel serait un test de charge, réalisé sur un environnement similaire à la production, durant lequel on ne va pas tester la conformité de l'application mais sa capacité à supporter un certain trafic. Dans le cas d'une application web, cela consiste à simuler des centaines ou milliers de connexion simultanées sur le site afin de vérifier sa capacité à répondre convenablement. 
+Un autre exemple de test système serait un test de charge, réalisé sur un environnement similaire à la production, durant lequel on ne va pas tester la conformité de l'application mais sa capacité à supporter un certain trafic. Dans le cas d'une application web, cela consiste à simuler des centaines ou milliers de connexion simultanées sur le site afin de vérifier sa capacité à répondre convenablement. 
 
-L'avantage de ces tests fonctionnels est qu'il s'agit des tests les plus complets, puisqu'ils permettent de tester le produit fini. L'inconvénient est que ces derniers sont plus longs à exécuter, nécessitant généralement l'approvisionnement d'un environnement de test, d'une base de données de test\ldots
+L'avantage de ces tests systèmes est qu'il s'agit des tests les plus complets, puisqu'ils permettent de tester le produit fini. L'inconvénient est que ces derniers sont plus longs à exécuter.
 
 %\subsubsection{Campagne de test}
 %Parler de Protractor et Squash sur \bv
 %Parler de Protractor et Squash sur \bv. Tests automatisés unitaires (phpunit) permettant à la plateforme d'intégration continue de vérifier la conformité du code par rapport aux attentes métiers.
+
+\subsubsection{Le test d'acceptation}\label{test-acceptation}
+
+Souvent réalisé par le client, il va consister, au travers d'une campagne de test généralement manuelle, à vérifier que les \emph{règles métiers} sont bien respectées. Le client peut néanmoins décider de déléguer ce test à une équipe qualité, ou à un prestataire externe.
+
+Il est néanmoins possible que certain test d'acceptation soit validé en amont, comme l'exemple de la calculatrice donné dans la partie \frquote{\nameref{test-composant}} (p. \pageref{test-composant}) qui va valider la \emph{règle métier} (effectuer une opération) tout en validant le bon fonctionnement du code et ses cas limites.
 
 \subsection{Intégration et déploiement continu}
 
@@ -183,6 +205,8 @@ Comme vu dans la figure \todo{ref figure setup jenkins partie intégration conti
 Un autre aspect à prendre en compte, selon la confidentialité requise par les projets, est l'endroit ou le code source du projet va transiter. Si par exemple, un prestataire ne dispose pas de son propre serveur d'intégration continue mais possède une offre chez un autre prestataire (TravisCI\footnote{\url{http://travis-ci.org/}} par exemple), il faut être prudent, puisque le code sera alors à un moment transmis en dehors du réseau de l'entreprise. Selon les projets, il peut être nécessaire d'auto-héberger des solutions en interne afin de garder une maitrise totale de la chaine d'industrialisation.
 
 \todo[color=cyan]{Sécurité, 1-2 page }
+
+OWASP ZAAP
 
 Vérifier les dépendances (failles, paquet npm corrompu...)
 
