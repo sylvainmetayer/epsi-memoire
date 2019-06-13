@@ -41,19 +41,22 @@ Enfin, et parce qu'un projet ne peut se dérouler parfaitement tout le temps, \e
 
 \subsection{Difficulté d'obtenir la panacée}
 
-\subsubsection{De nombreux outils}
+Les solutions évoquées précédemment sont intéressantes mais supposé qu'elles soient si efficaces, pourquoi n'existe-t-il pas une solution unique, permettant de répondre à tous les besoins et qui pourrait tester, construire et déployer nos applications ?
 
-Les solutions évoquées précédemment sont intéressantes mais si elles étaient si efficaces, pourquoi n'existe-t-il pas une solution unique, permettant de répondre à tous les besoins ? Certains outils tentent ainsi de satisfaire des besoins spécifiques, tel que gérer uniquement les dépendances (\emph{npm}, \emph{composer}, ou encore les \emph{gems} ruby) tandis que d'autres cherchent à combler plusieurs exigences.
+\subsubsection{Des critères différents}
+
+Certains outils tentent ainsi de satisfaire des besoins spécifiques, tel que gérer les dépendances (\emph{npm} pour Javascript, \emph{composer} pour \gls{PHP}, ou encore les \emph{gems} pour ruby) tandis que d'autres cherchent à combler plusieurs exigences, permettant ainsi de gérer le code source, le tester et fournir des moyens de déployer les applications.
 
 \newImage{0.5}{standards.png}{L'impossibilité de répondre à un besoin absolu - \url{https://xkcd.com/927}}{standard}
 
-Avec la figure \ref{fig:standard}, on peut constater qu'il est souvent impossible de répondre à un besoin \frquote{absolu}, et que chaque projet finit au final par construire sa propre solution ou du moins nécessite l'assemblage d'une ou plusieurs solutions existantes, pour pouvoir répondre au besoin métier spécifique à ce projet.
+Cependant, comme on peut le voir sur la figure \ref{fig:standard}, il est souvent impossible de répondre à un besoin \frquote{absolu} et que chaque projet finit au final par construire sa propre solution ou du moins nécessite l'assemblage d'une ou plusieurs solutions existantes (répondant à des besoins précis) pour pouvoir répondre au besoin métier spécifique à ce projet. Cela est du au fait que chaque entreprise/équipe dispose d'une maturité différente vis-à-vis de l'automatisation.
 
 
-\todo[color=orange]{Trouver comment étayer cette sous-partie}.
+\todo[color=orange]{Terminer cette sous partie.}.
 
 Différent type d'entreprise. (fig 8 devops handbook, page 38-40 à mettre en annexe). Entreprise gouvernée par la peur, ou les erreurs sont masquées afin de ne pas être découverte, information non partagée, responsabilté et échange cloisonnées, nouveauté refusée. Cela contraire à ce mouvement qui requiert autre chose pour pouvoir prospérer.
 
+Ne pas parler des outils, pas vraiment le but de la partie.
 Parmi les outils les plus populaires, on peut noter \emph{Docker}, système de \glsplural{conteneur} qui permet d'isoler et de reproduire un environnement.
 
 Solutions existantes
@@ -62,7 +65,7 @@ Chef, puppet, ansible, jenkins, travis, docker, terraform, heroku, aws, ...
 
 \textbf{ATTENTION : NE PAS REPONDRE A LA QUESTION, SEULEMENT SOULEVER DES INTERROGATIONS POUR LE LECTEUR}
 
-\subsubsection{Des changements importants}
+\subsubsection{Des évolutions techniques rapide}
 
 De plus, on est en droit de se poser la question de savoir comment on a pu passer d'un mode de déploiement dans les années 1990 ou l'on venait à déployer un site web via \gls{ftp} à un système où il faut maintenant télécharger de nombreuses dépendances, installer et configurer des fichiers avant de pouvoir commencer à utiliser son application ?
 
@@ -70,7 +73,7 @@ Cela vient en partie du fait que les besoins ont évolué. Au début, on se cont
 
 Là ou il n'était pas spécialement nécessaire de tester une page \gls{HTML} simple, il est maintenant important de vérifier que son affichage s'effectue correctement, que les scripts sont bien exécutés, qu'il n'est pas possible d'exécuter du code à distance, que la page s'affiche correctement, quel que soit le support utilisé (mobile, ordinateur portable, de bureau...) la ou il n'y avait qu'un (ou éventuellement deux) support(s) possible(s) auparavant. 
 
-De plus, le développement d'Internet a permis l'émergence et la démocratisation du partage des connaissances et également des logiciels. Ainsi, pour permettre une ré-utilisabilité accrue, séparer les briques d'une applications en modules, paquets ou autres permet de ne pas réinventer la route à chaque développement et de pouvoir utiliser\footnote{et contribuer, si l'on vient à corriger une faille par exemple} ce qui a été déjà réalisé par d'autres développeurs. La gestion des dépendances permettant de récupérer le travail d'autres développeurs pour pouvoir l'inclure dans son propre projet a donc amené de nouvelles problématiques concernant le déploiement d'une application, puisque le code seul d'une application ne suffit plus à l'exécuter. 
+De plus, le développement d'Internet a permis l'émergence et la démocratisation du partage des connaissances et également des logiciels. Ainsi, pour permettre une ré-utilisabilité accrue, séparer les briques d'une applications en modules, paquets ou autres permet de ne pas réinventer la route à chaque développement et de pouvoir utiliser\footnote{et contribuer, si l'on vient à corriger une faille par exemple} ce qui a été déjà réalisé par d'autres développeurs. La gestion des dépendances permettant de récupérer le travail d'autres développeurs pour pouvoir l'inclure dans son propre projet a donc amené de nouvelles problématiques concernant le déploiement d'une application, puisque le code seul d'un projet ne suffit plus à l'exécuter. 
 
 Néanmoins, il est nécessaire d'être vigilant ! Cela doit être effectué dans une certaine mesure, sous peine d'utiliser des dépendances très basiques et modulaires, qui peuvent être très (\emph{trop ?}) modulaires. Ce fut notamment le cas pour le gestionnaire de dépendances du langage \emph{NodeJS}, \emph{npm} qui a été victime de nombreuses dépendances cassées en 2016, du au fait qu'une personne ayant publiée un paquet a supprimé ce dernier (voir \citetitle{npm-missing-deps} \cite{npm-missing-deps} (\citedate{npm-missing-deps})). Du fait que ce paquet était marqué comme dépendance de très nombreux autres paquets, ces derniers ne pouvaient ainsi plus se télécharger sans erreurs, puisqu'ils leur manquaient une dépendance. De plus, il faut également être vigilant vis-à-vis des failles de sécurités qui peuvent s'introduire via les dépendances externes, comme ce fut le cas pour \emph{npm} en novembre 2018 (voir \citetitle{npm-faille} \cite{npm-faille} (\citedate{npm-faille})).
 
