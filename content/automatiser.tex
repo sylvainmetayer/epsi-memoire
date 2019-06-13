@@ -53,9 +53,11 @@ Cette volonté de vouloir livrer plus petit mais plus régulièrement s'inscrit 
 
 Néanmoins, il convient de vérifier que ce système est intégré et accepté par l'équipe, sous peine de voir un rejet de cette méthodologie et d'entrainer des conflits internes dans les équipes. Cela peut être le cas avec certaines personnes réfractaires au changement, par exemple des développeurs âgés, proche de le retraite, qui n'ont peut-être pas envie de se reformer et s'adapter à de nouvelles méthodes de travail et qui tenteront de garder leurs habitudes. Cela peut également provenir de personnalités avec un fort caractère qui pensent que leur méthode est plus efficace que les autres ou encore de bien d'autres cas. De manière générale, les personnes ne souhaitent pas sortir de leur zone de confort. Pour permettre ce changement, il va falloir exposer les différents avantages aux équipes et leur montrer les intérêts qu'ils ont à s'essayer à cette méthode pour peut-être finir par l'adopter de leur plein gré. \todo[color=cyan]{Devops handbook p.59 parler de convaincre d'abord early adopter, puis une majorité silencieuse (suiveur) et ensuite de convaincre les récalcitrant.}
 
-L'un des premiers avantages si l'on met en place une démarche d'automatisation est une meilleure communication entre les développeurs, également appelés \emph{Dev}, et les administrateurs des infrastructures, administrant et déployant les applications, appelés \emph{Ops}. Si l'on met en place une démarche d'automatisation, un besoin de métrique va être nécessaire. Ces métriques, semblables aux \gls{KPI} précédemment détaillés, permettront de savoir par exemple le temps de déploiement de l'application, les derniers bugs remontés, les suivis de performance afin de déterminer si une requête \gls{SQL} est trop lente ou non... Ces métriques, conjointement définies par les \emph{Devs} et les \emph{Ops} vont permettre d'obtenir des retours rapides sur l'état de l'application et ainsi de pouvoir améliorer le produit plus facilement, en corrigeant les bugs au plus tôt. C'est la base de la \emph{Second Way}, ou deuxième étape, comme expliqué dans \citetitle{phoenixProject} \cite{phoenixProject} \todo[color=orange]{Citer la page ou est expliquée la second way dans phoenix project}.
+L'un des premiers avantages si l'on met en place une démarche d'automatisation est une meilleure communication entre les développeurs, également appelés \emph{Dev}, et les administrateurs des infrastructures, administrant et déployant les applications, appelés \emph{Ops}. Si l'on met en place une démarche d'automatisation, un besoin de métrique va être nécessaire. Ces métriques, semblables aux \gls{KPI} précédemment détaillés, permettront de savoir par exemple le temps de déploiement de l'application, les derniers bugs remontés, les suivis de performance afin de déterminer si une requête \gls{SQL} est trop lente ou non... Ces métriques, conjointement définies par les \emph{Devs} et les \emph{Ops} vont permettre d'obtenir des retours rapides sur l'état de l'application et ainsi de pouvoir améliorer le produit plus facilement, en corrigeant les bugs au plus tôt. C'est la base de la \emph{Second Way}, ou deuxième étape, comme expliqué dans \citetitle{phoenixProject} \cite[p.405-410]{phoenixProject}.
 
 \todo[color=cyan]{Terminer partie management automatisation.}
+Un autre point à prendre en compte lors d'une démarche d'automatisation est l'amélioration continue, ou apprentissage continu. Comme nous l'avons vu dans la partie précédente, \etsy a mis en place un outil de post-mortem (p.\pageref{post-mortem})
+
 
 - Third Way : Apprentissage continu. Prévoir du temps pour améliorer l'environnement de travail, les déploiements  \& co.
 
@@ -64,6 +66,22 @@ L'un des premiers avantages si l'on met en place une démarche d'automatisation 
 Le temps libéré par l'automatisation des tâches peut permettre de souder les liens d'une équipe et d'améliorer les relations de cette dernière. Cela libère du temps pour du team building par exemple. Un sujet technique qui rapproche en terme d'humain
 
 \subsection{Environnement de développement}
+
+Objectif
+
+\subsubsection{Arrivée sur le projet}
+
+Temps d'efficience => installation \& co
+
+\subsubsection{Build local}
+
+- IDE
+
+- SCM (hook)
+
+- Pair programming / code review
+
+- Test ( TDD /TCR test commit revert / ...)
 
 \todo[color=cyan]{Localement, lors des phases de développement, 2 pages}
 
@@ -105,7 +123,7 @@ Les tests ont un rôle crucial dans une démarche d'automatisation. En effet, lo
 	\begin{adjustbox}{width=0.95\textwidth,center=\textwidth} 
 		\begin{tabular}{|l|l|l|l|l|}
 			\hline
-			\diagbox{type de test}{objectif} & Fonctionnement unitaire & Règle métier & Développement & Interaction \\ \hline
+			\diagbox{type de test}{valide} & Fonctionnement unitaire & Règle métier & Développement & Interaction \\ \hline
 			Test de composant     & X                       & X            & X              &             \\ \hline
 			Test d'intégration    &                         & X            & X              & X           \\ \hline
 			Test Système          &                         & X            &               & X           \\ \hline
@@ -162,31 +180,73 @@ Souvent réalisé par le client, il va consister, au travers d'une campagne de t
 
 Il est néanmoins possible que certain test d'acceptation soit validé en amont, comme l'exemple de la calculatrice donné dans la partie \frquote{\nameref{test-composant}} (p. \pageref{test-composant}) qui va valider la \emph{règle métier} (effectuer une opération) tout en validant le bon fonctionnement du code et ses cas limites.
 
-\subsection{Intégration et déploiement continu}
+\subsection{Intégration, déploiement et livraison continue}
 
+TODO intro.
+
+\subsubsection{Gestion de version et de branches}
+
+Critère à définir en amont, puisque il va devoir être géré automatiquement. Intégration avec le SCM à prévoir.
+
+Insérer références Schéma GOP. Pourquoi dump sur staging ? force utilisation update, evite clicodrome, permet test update avant prod.
+
+feature flipping vs feature branching.
+
+
+Feature flipping pour tester (A/B) et ouvrir fonctionnalité aux utilisateurs petit à petit et faire des rollback rapides.
+
+\subsubsection{Choix des outils}
+
+Jenkins Jfrog (artifactory) Gitlab avec interaction entre eux.
+
+On peut tout automatiser (montée de version de deps auto chaque soir, qui va rebuild tous les projets), mais il faut faire en fonction de la durée du projet, du budget, du besoin.
+
+Mieux vaut commencer par de l'IC simple, et éventuellement DC plutôt que direct LC. Evolutif avec le temps.
+
+\subsubsection{Intégration continue}
+
+Intégration et test des modification au fil de l'eau
+
+Métriques pour attester déroulement OK => test OK/KO, temps traitement. 
+
+\subsubsection{Livraison continue}
+
+Livre du Build des package + test continu dès leur validation. Système de promotion environnement manuel.
+
+Métriques pour attester déroulement OK => Taille paquet, temps traitement. 
+
+Permet déploiement via interaction humaine.
+
+\textit{Exemple : parler de NAQ Automatisation de la création de la base de données et de la restauration des données}
+
+\subsubsection{Déploiement continu}
+
+deploiement de packages continu dès leur création et validation. Système de promotion auto.
+
+Métriques pour attester déroulement OK => Uptime, temps déploiement, ratio rollback suite à déploiement foiré\ldots
+
+scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ansible par exemple. Inconvénient : nécessite une architecture découplée, si on vient a faire un changemnt (ex: rajouter un serveur redis) mais qu'on doit attendre 2 semaines pour valider ce changement, on pert intérêt
+
+\subsubsection{Gestion de l'infrastructure}
+
+\gls{IaC} => permet de découpler architecture ? % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
+
+\subsubsection{Monitoring}
+
+Le reporting de bug automatique (sentry.io)
+
+Monitoring : monit pour monitorer l'état d'application ? (perso)
+
+ELK, traitement logs, grafana\ldots
+
+\todo[color=cyan]{Intégration de déploiement continu, 3-4 pages}
 Une fois que les tests permettent de modifier le code de l'application avec confiance sans introduire de régression, on peut alors mettre en place une démarche d'automatisation. Cela va permettre à l'équipe de développement d'obtenir un retour rapide lors de chaque déploiement, avec un lancement automatisé des tests ainsi qu'un déploiement automatique de l'application sur un environnement de recette interne par exemple.
 
 L'idée de l'intégration et du déploiement continu est de banaliser le déploiement afin de réduire la peur des développeurs vis à vis de la mise en production. Plus le code est déployé souvent, plus les développeurs seront serein quant à leur travail puisqu'ils pourront obtenir des retours rapide et être prévenu au plus vite lors d'incident afin de les corriger avant qu'il n'atteigne la production.
 
 Une première étape consiste à tester de façon continue l'application, à chaque nouvelle modification du code. C'est l'intégration continue. Elle est caractérisée par un logiciel s'exécutant sur un serveur, connecté au gestionnaire de sources contenant le code. Dès qu'une modification de code est poussée sur le gestionnaire de source, un \gls{webhook} \todo{Comment setup ? webhook (avec en annexe deux images, côté Jenkins avec le secret et côté Gitlab avec le secret)} est envoyé à l'outil d'intégration continue (par exemple Jenkins \todo{citer référence vers jenkins}) qui va alors dérouler un certains nombre d'étapes (installation des dépendances, exécutions des tests\ldots) pour vérifier que l'application soit  conforme aux demandes client.   
 
-\todo[color=cyan]{Intégration de déploiement continu, 3-4 pages}
-
-Le reporting de bug automatique (sentry.io)
-
-Monitoring : monit pour monitorer l'état d'application ? (perso)
-
 Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recette, intégration, staging, et lorsque tout passe, en production.
-
-Infra As Code => permet de découpler architecture ? % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
-
-scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ansible par exemple. Inconvénient : nécessite une architecture découplée, si on vient a faire un changemnt (ex: rajouter un serveur redis) mais qu'on doit attendre 2 semaines pour valider ce changement, on pert intérêt
-
-\textit{Exemple : parler de NAQ Automatisation de la création de la base de données et de la restauration des données}
-
-Feature flipping pour tester (A/B) et ouvrir fonctionnalité aux utilisateurs petit à petit et faire des rollback rapides.
-
-Métriques pour attester déroulement OK => Uptime, temps déploiement. tous les KPI ne sont pas identiques à ceux de mangement. Ca peut être Nombre de build OK / KO / ratio succès build...
 
 \subsection{Et la sécurité dans tout ça ?}
 
