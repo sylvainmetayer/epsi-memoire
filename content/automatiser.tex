@@ -182,9 +182,13 @@ Il est néanmoins possible que certain test d'acceptation soit validé en amont,
 
 \subsection{Intégration, déploiement et livraison continue}
 
-TODO intro.
+Une fois que les tests permettent de modifier le code de l'application avec confiance sans introduire de régression, on peut alors mettre en place une démarche d'automatisation. Cela va permettre à l'équipe de développement d'obtenir un retour rapide lors de chaque déploiement, avec un lancement automatisé des tests ainsi qu'un déploiement automatique de l'application sur un environnement de recette interne par exemple.
+
+L'un des objectifs de l'intégration et du déploiement continu est de banaliser le déploiement afin de réduire la peur des développeurs vis-à-vis de la mise en production. Plus le code est déployé souvent, plus les développeurs seront sereins quant à leur travail puisqu'ils pourront obtenir des retours rapide et être prévenu au plus vite lors d'incident afin de les corriger avant qu'il n'atteigne la production.
 
 \subsubsection{Gestion de version et de branches}
+
+\todo{Gestion de version et de branches}
 
 Critère à définir en amont, puisque il va devoir être géré automatiquement. Intégration avec le SCM à prévoir.
 
@@ -192,10 +196,11 @@ Insérer références Schéma GOP. Pourquoi dump sur staging ? force utilisation
 
 feature flipping vs feature branching.
 
-
 Feature flipping pour tester (A/B) et ouvrir fonctionnalité aux utilisateurs petit à petit et faire des rollback rapides.
 
 \subsubsection{Choix des outils}
+
+\todo{Choix des outils}
 
 Jenkins Jfrog (artifactory) Gitlab avec interaction entre eux.
 
@@ -205,11 +210,17 @@ Mieux vaut commencer par de l'IC simple, et éventuellement DC plutôt que direc
 
 \subsubsection{Intégration continue}
 
+\todo{Intégration continue}
+
+Le but de l'intégration continue est d'intégrer les changements des \emph{Dev} à l'application et de les tester, à chaque nouvelle modification du code. Pour cela, on utilise un logiciel s'exécutant sur un serveur, connecté au gestionnaire de sources contenant le code. Dès qu'une modification de code est poussée sur le gestionnaire de source, un \gls{webhook} est envoyé à l'outil d'intégration continue (par exemple Jenkins \cite{jenkins-guide}) qui va alors dérouler un certains nombre d'étapes définies (installation des dépendances, exécutions des tests\ldots) pour vérifier que l'application est conforme aux demandes client. Ces retours doivent être rapide afin que les développeurs puissent s'assurer qu'il n'y a pas d'erreurs bloquante dans leur code.
+
 Intégration et test des modification au fil de l'eau
 
 Métriques pour attester déroulement OK => test OK/KO, temps traitement. 
 
 \subsubsection{Livraison continue}
+
+\todo{Livraison continue}
 
 Livre du Build des package + test continu dès leur validation. Système de promotion environnement manuel.
 
@@ -221,6 +232,8 @@ Permet déploiement via interaction humaine.
 
 \subsubsection{Déploiement continu}
 
+\todo{Déploiement continu}
+
 deploiement de packages continu dès leur création et validation. Système de promotion auto.
 
 Métriques pour attester déroulement OK => Uptime, temps déploiement, ratio rollback suite à déploiement foiré\ldots
@@ -229,11 +242,15 @@ scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ans
 
 \subsubsection{Gestion de l'infrastructure}
 
+\todo{Gestion de l'infrastructure}
+
 \gls{IaC} => permet de découpler architecture ? % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
 
 % https://aws.amazon.com/fr/cloudformation/ ----------- https://www.terraform.io/
 
 \subsubsection{Monitoring}
+
+\todo{Monitoring}
 
 % https://prometheus.io/
 
@@ -243,18 +260,9 @@ Monitoring : monit pour monitorer l'état d'application ? (perso)
 
 ELK, traitement logs, grafana\ldots
 
-\todo[color=cyan]{Intégration de déploiement continu, 3-4 pages}
-Une fois que les tests permettent de modifier le code de l'application avec confiance sans introduire de régression, on peut alors mettre en place une démarche d'automatisation. Cela va permettre à l'équipe de développement d'obtenir un retour rapide lors de chaque déploiement, avec un lancement automatisé des tests ainsi qu'un déploiement automatique de l'application sur un environnement de recette interne par exemple.
-
-L'idée de l'intégration et du déploiement continu est de banaliser le déploiement afin de réduire la peur des développeurs vis à vis de la mise en production. Plus le code est déployé souvent, plus les développeurs seront serein quant à leur travail puisqu'ils pourront obtenir des retours rapide et être prévenu au plus vite lors d'incident afin de les corriger avant qu'il n'atteigne la production.
-
-Une première étape consiste à tester de façon continue l'application, à chaque nouvelle modification du code. C'est l'intégration continue. Elle est caractérisée par un logiciel s'exécutant sur un serveur, connecté au gestionnaire de sources contenant le code. Dès qu'une modification de code est poussée sur le gestionnaire de source, un \gls{webhook} \todo{Comment setup ? webhook (avec en annexe deux images, côté Jenkins avec le secret et côté Gitlab avec le secret)} est envoyé à l'outil d'intégration continue (par exemple Jenkins \todo{citer référence vers jenkins}) qui va alors dérouler un certains nombre d'étapes (installation des dépendances, exécutions des tests\ldots) pour vérifier que l'application soit  conforme aux demandes client.   
-
-Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recette, intégration, staging, et lorsque tout passe, en production.
-
 \subsection{Et la sécurité dans tout ça ?}
 
-Un projet automatisé de A à Z peut être testé intégralement, si la sécurité autour de l'infrastructure d'intégration et de déploiement n'est pas sécurisée, cela revient à avoir une sécurité digne d'une porte ouverte. \todo{reformuler}
+Un projet automatisé de A à Z peut être testé intégralement, si la sécurité autour de l'infrastructure d'intégration et de déploiement n'est pas sécurisée, cela revient à avoir une sécurité digne d'une porte ouverte.
 
 En effet, si l'on vient à déployer de façon automatique, il va falloir que les outils déployant et testant automatiquement l'application ait accès aux données de l'application, données qui peuvent parfois contenir des tokens, des clés d'\gls{API}\ldots Il faut alors réfléchir à la façon de sécuriser l'infrastructure. 
 
