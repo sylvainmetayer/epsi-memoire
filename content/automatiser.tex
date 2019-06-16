@@ -1,5 +1,4 @@
 \subsection{Gestion de projet}
-\todo[color=orange]{Renommer cette partie}
 
 \epigraph{\frquote{Avoir 300 personnes dans une cuisine pour faire un œuf au plat ne permettra pas de servir le plat 300 fois plus vite}}{Analogie de la \frquote{Loi de Brooks\footnote{\url{https://fr.wikipedia.org/wiki/Loi_de_Brooks}}}}
 
@@ -255,26 +254,35 @@ Jenkins, Travis, Déployer automatiquement à partir d'un push sur dev, en recet
 
 \subsection{Et la sécurité dans tout ça ?}
 
-Un projet automatisé de A à Z peut être testé intégralement, s'il la sécurité autour de l'infrastructure d'intégration et de déploiement n'est pas sécurisé, cela revient à ouvrir la porte à tous les maux. \todo{reformuler}
+Un projet automatisé de A à Z peut être testé intégralement, si la sécurité autour de l'infrastructure d'intégration et de déploiement n'est pas sécurisée, cela revient à avoir une sécurité digne d'une porte ouverte. \todo{reformuler}
 
 En effet, si l'on vient à déployer de façon automatique, il va falloir que les outils déployant et testant automatiquement l'application ait accès aux données de l'application, données qui peuvent parfois contenir des tokens, des clés d'\gls{API}\ldots Il faut alors réfléchir à la façon de sécuriser l'infrastructure. 
 
 Il faut tout d'abord restreindre les accès aux différents outils d'automatisation. Pour cela, on peut se servir d'un pare feu, qui va filtrer les connexions entrantes sur les différents serveurs. On peut également mettre en place une \gls{DMZ}, qui permet ainsi de séparer le réseau interne de celui externe, connecté à Internet et qui contient les applications ayant besoin d'être accessible via l'extérieur. En plus de cela, on peut également restreindre les accès aux différentes applications via la mise en place d'un \gls{VPN}, qui permet l'accès aux applications via une connexion sécurisée, comme si l'on était présent sur site et évite ainsi d'avoir à exposer les applications sur Internet. Mais toutes ces mesures sont valable pour tout type d'application, automatisée ou non. 
 
-On peut ainsi se référer à la documentation des outils d'automatisation utilisé. Par exemple, la documentation de Jenkins\footnote{\url{https://jenkins.io/doc/}} ainsi que le livre numérique \citetitle{jenkins-guide} \cite[chapitre 7, Sécuriser Jenkins]{jenkins-guide} décrivent les façons de sécuriser l'outil et éviter ainsi que le serveur d'intégration ne serve de vecteur d'attaque pour compromettre l'application (\emph{ou pire, l'entreprise entière}). Une des premières mesures est de restreindre les accès utilisateurs, en appliquant le principe de moindre privilège. Cela signifie donner uniquement les droits strictement nécessaire. Si un utilisateur a simplement besoin de consulter les rapports, il n'y a pas d'intérêt de lui donner les droits pour pouvoir éditer la configuration de ces derniers.
+On peut (\emph{et l'on doit}) aussi se référer à la documentation des outils d'automatisation utilisés. Par exemple, la documentation de Jenkins\footnote{\url{https://jenkins.io/doc/}} ainsi que le livre numérique \citetitle{jenkins-guide} \cite[chapitre 7, Sécuriser Jenkins]{jenkins-guide} décrivent les façons de sécuriser l'outil et éviter ainsi que le serveur d'intégration ne serve de vecteur d'attaque pour compromettre l'application (\emph{ou pire, l'entreprise entière, étant donné qu'un système d'intégration continu est souvent utilisé pour plusieurs projets}). Une des premières mesures est de restreindre les accès utilisateurs, en appliquant le principe de moindre privilège. Cela signifie donner uniquement les droits strictement nécessaire. Si un utilisateur a simplement besoin de consulter les rapports, il n'y a pas d'intérêt de lui donner les droits pour pouvoir éditer la configuration de ces derniers.
 
 Concernant les interactions entre le serveur d'intégration continue, le gestionnaire de version et les différents serveurs, il peut être intéressant de créer un compte de service (\emph{compte système, n'étant relié à aucun utilisateur et disposant des droits minimaux pour l'exécution de la tâche pour lequel il est utilisé}) avec des accès par clé \gls{SSH} utilisés pour les déploiements. L'utilisation d'une clé \gls{SSH} plutôt qu'un mot de passe est nécessaire puisque la demande de mot de passe se fait de façon interactive (et requiert donc une intervention utilisateur)\footnote{Même s'il est possible de contourner ce fonctionnement, par exemple avec sshpass, il est recommandé d'utiliser des clés \gls{SSH}}. De même, l'accès aux serveurs doit être limité et surtout contrôlé. Il faut ainsi préférer des comptes nominatif, même si leur création peut s'avérer plus fastidieuse plutôt qu'un seul compte administrateur partagé entre les membres de l'équipe. Ainsi, si un compte vient être compromis, il est plus facile de révoquer ses accès plutôt que de bloquer l'accès à tous les membres de l'équipe.
 
-Comme vu dans la figure \todo{ref figure setup jenkins partie intégration continue}, des tokens seront forcément nécessaire à un moment pour pouvoir garantir l'échange de données. Ces tokens sont à générer avec le minimum de droits possible (\emph{principe de moindre privilège}) et à traiter comme s'il s'agissait de mot de passe. Il ne devraient d'ailleurs être enregistrés nul part ailleurs que dans les champs de configuration requis, puisqu'ils n'ont pas vocation à être utilisés ailleurs.
-
 Un autre aspect à prendre en compte, selon la confidentialité requise par les projets, est l'endroit ou le code source du projet va transiter. Si par exemple, un prestataire ne dispose pas de son propre serveur d'intégration continue mais possède une offre chez un autre prestataire (TravisCI\footnote{\url{http://travis-ci.org/}} par exemple), il faut être prudent, puisque le code sera alors à un moment transmis en dehors du réseau de l'entreprise. Selon les projets, il peut être nécessaire d'auto-héberger des solutions en interne afin de garder une maitrise totale de la chaine d'industrialisation.
+
+Finalement, il ne faut pas oublier la vérification de la sécurité de l'application elle-même. En effet, une application nécessite souvent des dépendances externes, réalisées par d'autres personnes. Comment s'assurer que ces dépendances sont à jour et fiable ? 
+
+On peut ainsi utiliser les outils de gestion de dépendances afin de s'assurer que les dépendances sont à jour. Cela requiert néanmoins une action manuelle de la part du développeur. Des outils existent donc afin de surveiller les mises à jour des dépendances, tel que Depfu\footnote{\url{https://depfu.com/}} ou encore DependABot\footnote{\url{https://dependabot.com/}} et permettent de s'intégrer directement la chaine d'intégration continue en proposant des modifications sur une branche dédiée, basée sur la branche de travail principale du dépôt du gestionnaire de version, ce qui permet de tester ces modifications avant de les intégrer dans l'application.
+
+%\begin{listing}[H]
+%	\begin{minted}{bash}
+%	#!/bin/bash
+%	# Liste les dépendances non mises à jour
+%	npm outdated # Javascript
+%	composer outdated # PHP
+%	bundle outdated # Ruby
+%	\end{minted}
+%	\caption{Exemple de vérification des dépendances non mises à jour}
+%\end{listing}
 
 \todo[color=cyan]{Sécurité, 1-2 page }
 
 OWASP ZAAP
-
-Vérifier les dépendances (failles, paquet npm corrompu...)
-
-Des controles / supervisons périodique afin de checker que tout va bien.
 
 bastion qui peut permettre de couper l'accès à l'infra.

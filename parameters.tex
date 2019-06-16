@@ -26,9 +26,6 @@
 \setlength{\parindent}{2em} % On modifie l'indentation des paragraphes
 \setlength{\parskip}{1em} % On modifie l'espace entre les paragraphes
 
-%\widowpenalty=10000 % Pour les veuves et les orphelines
-%\clubpenalty=10000 % Pour les veuves et les orphelines
-
 \newcommand{\numerotationType}{arabic} %Type de numérotation : Roman ou arabic
 
 % font settings
@@ -39,8 +36,9 @@
 
 %% FROM http://forum.mathematex.net/latex-f6/glossaire-t8654.html#p85429
 \renewcommand{\glstextformat}[1]{#1*} % Affichage dans le corps du texte d'une entrée du glossaire
-%\defglsdisplayfirst{#1#4\protect\footnote{#2}}
 
+% Footnote on first occurence of glossary term. Does not apply to acronym and plural terms.
+%\defglsdisplayfirst{#1#4\protect\footnote{#2}}
 \defglsentryfmt{%
 	\ifglsused{\glslabel}{%
 		\glsgenentryfmt%
@@ -50,7 +48,7 @@
 }
 
 \newtoggle{todoExplain}
-\makeatletter % changes the catcode of @ to 11
+\makeatletter
 
 \@ifpackagewith{todonotes}{disable}{
 	\togglefalse{todoExplain}
@@ -75,7 +73,7 @@
 	pdfsubject={Comment l'automatisation peut-elle permettre d'améliorer le cycle de vie d'une application ?},
 	pdfcreator={\LaTeX}
 }
-\makeatother % changes the catcode of @ back to 12
+\makeatother
 
 % Pour les citations avec epigraphs
 % \epigraphsize{\small}% Default

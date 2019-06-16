@@ -38,19 +38,19 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-	Fonction utilisée pour ajouter une URL.
-	@see http://timmurphy.org/2010/04/04/referencing-website-urls-with-latex-bibtex/ ?
-	Paramètres : 
-	#1 : url (doit OBLIGATOIREMENT faire référence à un id de main.bib)
-	#2 : Nom donné
-	Exemple d'utilisation :
-	\addURL{www.google.fr}{Google}
-\end{comment}
-\newcommand{\addURL}[2]
-{
-#2\footnote{#1 (cf. entrée \cite{#1} des références)}
-}
+%\begin{comment}
+%	Fonction utilisée pour ajouter une URL.
+%	@see http://timmurphy.org/2010/04/04/referencing-website-urls-with-latex-bibtex/ ?
+%	Paramètres : 
+%	#1 : url (doit OBLIGATOIREMENT faire référence à un id de main.bib)
+%	#2 : Nom donné
+%	Exemple d'utilisation :
+%	\addURL{www.google.fr}{Google}
+%\end{comment}
+%\newcommand{\addURL}[2]
+%{
+%#2\footnote{#1 (cf. entrée \cite{#1} des références)}
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
@@ -87,10 +87,6 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% http://www.developpez.net/forums/d961640/autres-langages/autres-langages/latex/mise-forme/referencer-annexe/#post5400726
-% Pas un grand intérêt, mais à garder sous le coude, on sait jamais.
-\newcommand{\annexe}[1]{annexe~\ref{#1} (page~\pageref{#1})}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
 	Quelques commandes utiles pour la compilation avec un index ou des références.
 	
@@ -110,10 +106,9 @@
 	
 	Créer des tableaux LateX facilement
 	http://www.tablesgenerator.com
-	
 \end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This is where the magic happens..
-\newcommand{\nocontentsline}[3]{}
-\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+%\newcommand{\nocontentsline}[3]{}
+%\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
