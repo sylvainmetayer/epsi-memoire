@@ -17,9 +17,9 @@ addons:
 
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
-  - make docker-build && mv main.pdf $TODO_NAME && make clean
+  - make docker-build && mv main.pdf $TODO_NAME
   - make removeComment
-  - make docker-build && mv main.pdf $PDF_NAME && make clean
+  - make docker-build && mv main.pdf $PDF_NAME
   - make paper
   - make docker-build && mv main.pdf $PAPER_NAME
 
