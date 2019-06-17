@@ -19,9 +19,8 @@ Jenkins -> Jenkins: Pull de la branche hotfix_1.1.1
 Jenkins -> Jenkins: Installation dépendance
 Jenkins -> Jenkins: Test unitaire
 Jenkins -> Jenkins: Package
-Artifactory -> Jenkins: Récupération dump + file 1.1
+'Artifactory -> Jenkins: Récupération dump + file 1.1
 Jenkins -> Staging: Deploy sur staging;
-note left: Etant donné que la 1.2-dev est déjà release sur cet environnement, déploiement auto d'un environnement _hotfix et d'un hostname apache "hoftix.site.naq" sur une bdd hotfix
 Jenkins -> Jenkins: Test Intégration automatisé;
 Jenkins -> Staging: Smoke test (curl 200...)
 Jenkins -> Artifactory: Upload package sur Artifactory et promote 1.1.1-dev;
@@ -33,13 +32,12 @@ Developpeur -> Staging: Test
 end
 group Deploiement recette hotfix
 Developpeur -> Jenkins: Déploiement recette 1.1.1 hotfix (clic bouton)
-Artifactory -> Jenkins: Récupération package 1.1.1-dev
-Artifactory -> Jenkins: Récupération dump + file 1.1
+'Artifactory -> Jenkins: Récupération package 1.1.1-dev
+'Artifactory -> Jenkins: Récupération dump + file 1.1
 Jenkins -> Recette: Deploy sur recette;
-note left: Etant donné que la 1.2-dev est déjà release sur cet environnement, déploiement auto d'un environnement _hotfix et d'un hostname apache "hoftix.site.naq" sur une bdd hotfix
 Jenkins -> Jenkins: Test Intégration automatisé;
 Jenkins -> Recette: Smoke test (curl 200...)
-Jenkins -> Artifactory: Promote package 1.1.1-dev en 1.1.1-recette
+Jenkins -> Artifactory: Promote package en 1.1.1-recette
 end
 group Tests Recette manuels
 Developpeur -> Recette: Test
@@ -47,10 +45,10 @@ Developpeur -> Recette: Test
 end
 group Deploiement pre-prod hotfix
 Developpeur -> Jenkins: Déploiement pre-prod hotfix 1.1.1 (clic bouton)
-Artifactory -> Jenkins: Récupération package 1.1.1-recette
+'Artifactory -> Jenkins: Récupération package 1.1.1-recette
 Jenkins -> PreProd: Deploy Pre-Prod
 Jenkins -> PreProd: Smoke test (curl 200...)
-Jenkins -> Artifactory: Promote package 1.1.1-recette en 1.1.1-prod
+Jenkins -> Artifactory: Promote package en 1.1.1
 end
 group Tests Pre-prod manuels
 Developpeur -> PreProd: Test
@@ -58,7 +56,7 @@ Developpeur -> PreProd: Test
 end
 group Deploiement prod
 Developpeur -> Jenkins: Déploiement prod 1.1.1 hotfix (clic bouton)
-Artifactory -> Jenkins: Récupération package 1.1.1-prod
+'Artifactory -> Jenkins: Récupération package 1.1.1-prod
 Jenkins -> Prod: Backup SQL + files
 Jenkins -> Artifactory: upload dump + files 1.1 (selon composer.json)
 Jenkins -> Prod: Deploy Prod

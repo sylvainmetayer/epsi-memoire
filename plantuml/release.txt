@@ -1,6 +1,5 @@
 @startuml
-Header à valider
-title Release develop à la demande
+title Création et déploiement d'une release
 Developpeur -> Jenkins: demande de release
 group Staging
 Gitlab -> Jenkins: Pull de la branche develop;
@@ -17,7 +16,6 @@ note left: processus bloquant prévenant un autre pipeline de déployer
 'Jenkins -> Staging: Rollback base + files
 'note left: avantage de rollback le staging à chaque fois : robustesse update + éviter interaction manuelle + reproductibilité
 Jenkins -> Staging: Déploiement;
-note left: config de dev (mail catcher + settings.local + variable d'environnement APACHE) en prérequis
 Jenkins -> Staging: Smoke test (curl 200...)
 Jenkins -> Jenkins: Test Intégration automatisé;
 Jenkins -> Artifactory: Upload package sur Artifactory en tant que VERSION-staging
@@ -30,18 +28,15 @@ Developpeur -> Jenkins: OK/KO
 Jenkins -> Staging: Libération .lock
 end
 group Deploiement recette client
-Artifactory -> Jenkins: Récupération package VERSION-staging
-Jenkins -> Jenkins: Checksum
 'Artifactory -> Jenkins : Récupération du dernier dump + assets de prod
 'Jenkins -> Jenkins: Checksum
 Jenkins -> Recette: Acquisition .lock
 note left: processus bloquant prévenant un autre pipeline de déployer
 'Jenkins -> Recette : Rollback base + files
 Jenkins -> Recette: Deploy recette
-note left: config de dev (mail catcher + settings.local + variable d'environnement APACHE) en prérequis
 Jenkins -> Jenkins: Test Intégration automatisé;
 Jenkins -> Recette: Smoke test (curl 200...)
-Jenkins -> Artifactory: Promote package VERSION-staging en VERSION-RC
+Jenkins -> Artifactory: Promote package en VERSION-RC
 end
 group Tests Recette manuels
 Developpeur -> Recette: Test
@@ -50,17 +45,14 @@ Developpeur -> Jenkins: OK/KO
 Jenkins -> Recette: Libération .lock
 end
 group Deploiement pre-prod
-Artifactory -> Jenkins: Récupération package VERSION-RC
-Jenkins -> Jenkins: Checksum
 'Artifactory -> Jenkins : Récupération du dernier dump + assets de prod
 'Jenkins -> Jenkins: Checksum
 Jenkins -> PreProd: Acquisition .lock
 note left: processus bloquant prévenant un autre pipeline de déployer
 'Jenkins -> PreProd : Rollback base + files
 Jenkins -> PreProd: Deploy Pre-Prod
-note left: config de dev (mail catcher + settings.local + variable d'environnement APACHE) en prérequis
 Jenkins -> PreProd: Smoke test (curl 200...)
-Jenkins -> Artifactory: Promote package VERSION-RC en VERSION
+Jenkins -> Artifactory: Promote package en VERSION
 end
 group Tests Pre-prod manuels
 Developpeur -> PreProd: Test
@@ -69,8 +61,6 @@ Developpeur -> Jenkins: OK/KO
 Jenkins -> Recette: Libération .lock
 end
 group Deploiement prod
-Artifactory -> Jenkins: Récupération package VERSION
-Jenkins -> Jenkins: Checksum
 Jenkins -> Prod: Acquisition .lock
 note left: processus bloquant prévenant un autre pipeline de déployer
 Jenkins -> Prod: Backup SQL + files

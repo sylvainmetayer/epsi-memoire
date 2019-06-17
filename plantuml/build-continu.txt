@@ -1,5 +1,4 @@
 @startuml
-Header à valider
 title Build Continu sur toutes les branches
 loop n times
 Developpeur -> "environnement local dev": Developpement
