@@ -43,15 +43,20 @@ wordCount: ## Count the number of words
 	@echo or 
 	@texcount main.tex -inc -incbib -sum -1 2>/dev/null
 
-build-image: ## Build docker image
-	docker build -t latex-debian .
-
-push-image: build-image ## Push docker image
+build-docker-latex: ## Build LaTeX docker image
+	docker build -t latex-debian .docker/latex
 	docker tag latex-debian sylvainmetayer/latex-debian
-	docker push sylvainmetayer/latex-debian
 
-plantuml: ## Generated all plantuml diagram
-	@docker run -v $$(pwd):/usr/src/myapp -w /usr/src/myapp --rm --user="$$(id -u):$$(id -g)" openjdk:13 java -jar plantuml/plantuml.1.2019.6.jar "./plantuml" -o ../img/
+build-docker-plantuml: ## Build Plantuml docker image
+	docker build -t plantuml .docker/plantuml
+	docker tag plantuml sylvainmetayer/plantuml
+
+push-image: build-docker-latex build-docker-plantuml ## Push docker image
+	docker push sylvainmetayer/latex-debian
+	docker push sylvainmetayer/plantuml
+
+plantuml: build-docker-plantuml ## Generated all plantuml diagram from a docker image
+	@docker run -v $$(pwd):/app/data --rm --user="$$(id -u):$$(id -g)" sylvainmetayer/plantuml && rm -rf \?
 
 check: ## Check syntax
 	chktex ${filename}.tex
