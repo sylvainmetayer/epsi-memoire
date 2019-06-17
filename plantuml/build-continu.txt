@@ -1,0 +1,21 @@
+@startuml
+Header à valider
+title Build Continu sur toutes les branches
+loop n times
+Developpeur -> "environnement local dev": Developpement
+Developpeur -> "environnement local dev": Tests composants
+Developpeur -> "environnement local dev": Commit
+Gitlab -> Developpeur: Récupération modification
+Developpeur -> "environnement local dev": Tests composants
+Developpeur -> Gitlab: Push
+end
+group Build continu
+Gitlab -> Jenkins: Webhook
+Jenkins -> Jenkins: Pull de la branche concernée
+Jenkins -> Jenkins: Installation dépendance
+Jenkins -> Jenkins: Test unitaire
+Jenkins -> Developpeur: Notification
+Jenkins -> Gitlab: Mise à jour du statut du commit
+end
+@enduml
+

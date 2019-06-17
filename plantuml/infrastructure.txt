@@ -1,0 +1,36 @@
+@startuml
+
+cloud Staging {
+    [apache] as apacheStaging
+    [php 7] as php7Staging
+    [elastic search] as elasticStaging
+
+    folder "/var/www/html" {
+        [Régie d'information] as regieInfoStaging
+        [pje] as pjeStaging
+        [transport] as transportStaging
+        [gda] as gdaStaging
+    }
+
+    database "MySQL" {
+        [regie_info_db] as regieInfoDbStaging
+        [pje_db] as pjeDbStaging
+        [transport_db] as transportDbStaging
+        [gda_db] as gdaDbStaging
+    }
+}
+
+regieInfoStaging --> regieInfoDbStaging: use
+gdaStaging --> gdaDbStaging: use
+gdaStaging --> elasticStaging: use
+pjeStaging --> elasticStaging: use
+pjeStaging --> pjeDbStaging: use
+transportStaging --> transportDbStaging: use
+apacheStaging --> php7Staging: use
+php7Staging --> regieInfoStaging: interpret
+php7Staging --> gdaStaging: interpret
+php7Staging --> pjeStaging: interpret
+php7Staging --> transportStaging: interpret
+
+@enduml
+

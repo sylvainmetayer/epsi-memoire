@@ -1,0 +1,72 @@
+@startuml
+Header à valider
+title Bug fix de la prod 1.1 avec une next-release 1.2-dev sur staging et recette
+Developpeur -> Jenkins: Demande création 1.1.1 depuis 1.1 pour hotfix
+Jenkins -> Gitlab: Création branche 1.1.1 depuis 1.1 nommée hotfix_1.1.1
+Jenkins -> Gitlab: Modification composer.json version bump 1.1.1
+loop n times
+Gitlab -> Developpeur: Pull branche 1.1.1
+Developpeur -> "environnement local dev": Developpement hotfix
+Developpeur -> "environnement local dev": TEST
+Developpeur -> "environnement local dev": Commit
+Gitlab -> Developpeur: Récupération modification
+Developpeur -> "environnement local dev": TEST
+Developpeur -> Gitlab: Push
+end
+group Build hotfix
+Gitlab -> Jenkins: Webhook
+Jenkins -> Jenkins: Pull de la branche hotfix_1.1.1
+Jenkins -> Jenkins: Installation dépendance
+Jenkins -> Jenkins: Test unitaire
+Jenkins -> Jenkins: Package
+Artifactory -> Jenkins: Récupération dump + file 1.1
+Jenkins -> Staging: Deploy sur staging;
+note left: Etant donné que la 1.2-dev est déjà release sur cet environnement, déploiement auto d'un environnement _hotfix et d'un hostname apache "hoftix.site.naq" sur une bdd hotfix
+Jenkins -> Jenkins: Test Intégration automatisé;
+Jenkins -> Staging: Smoke test (curl 200...)
+Jenkins -> Artifactory: Upload package sur Artifactory et promote 1.1.1-dev;
+Jenkins -> Developpeur: Notification;
+end
+group Tests intégration manuels
+Developpeur -> Staging: Test
+...Validation manuelle en attente...
+end
+group Deploiement recette hotfix
+Developpeur -> Jenkins: Déploiement recette 1.1.1 hotfix (clic bouton)
+Artifactory -> Jenkins: Récupération package 1.1.1-dev
+Artifactory -> Jenkins: Récupération dump + file 1.1
+Jenkins -> Recette: Deploy sur recette;
+note left: Etant donné que la 1.2-dev est déjà release sur cet environnement, déploiement auto d'un environnement _hotfix et d'un hostname apache "hoftix.site.naq" sur une bdd hotfix
+Jenkins -> Jenkins: Test Intégration automatisé;
+Jenkins -> Recette: Smoke test (curl 200...)
+Jenkins -> Artifactory: Promote package 1.1.1-dev en 1.1.1-recette
+end
+group Tests Recette manuels
+Developpeur -> Recette: Test
+...Validation manuelle en attente...
+end
+group Deploiement pre-prod hotfix
+Developpeur -> Jenkins: Déploiement pre-prod hotfix 1.1.1 (clic bouton)
+Artifactory -> Jenkins: Récupération package 1.1.1-recette
+Jenkins -> PreProd: Deploy Pre-Prod
+Jenkins -> PreProd: Smoke test (curl 200...)
+Jenkins -> Artifactory: Promote package 1.1.1-recette en 1.1.1-prod
+end
+group Tests Pre-prod manuels
+Developpeur -> PreProd: Test
+...Validation manuelle en attente...
+end
+group Deploiement prod
+Developpeur -> Jenkins: Déploiement prod 1.1.1 hotfix (clic bouton)
+Artifactory -> Jenkins: Récupération package 1.1.1-prod
+Jenkins -> Prod: Backup SQL + files
+Jenkins -> Artifactory: upload dump + files 1.1 (selon composer.json)
+Jenkins -> Prod: Deploy Prod
+Jenkins -> Prod: Smoke test (curl 200...)
+Jenkins -> Gitlab: Merge develop sur master
+Jenkins -> Gitlab: Tag 1.1.1 master
+Jenkins -> Gitlab: Merge de hotfix_1.1.1 dans develop pour pouvoir intégrer le correctif dans la next-release
+Jenkins -> Jenkins: Redéploiment next-release
+end
+@enduml
+
