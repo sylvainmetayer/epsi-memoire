@@ -158,9 +158,7 @@ Les tests d'intégration vont donc garantir que chaque composant, déployé dans
 
 \subsubsection{Le test système}
 
-\todo{expliciter la différence entre test système et test d'intégration.}
-
-Les tests système permettent de tester le comportement de l'application sans avoir connaissance du code. Cela permet ainsi de vérifier que l'application effectue bien ce qui est indiqué dans les spécifications demandées et que les différents composants interagissent bien entre eux. Ces tests sont également appelés \frquote{tests boite noire}. De plus, les tests systèmes permettent de vérifier que les composants interagissent correctement entre eux, au niveau global de l'application (\emph{au niveau système}) et non composant par composant.
+Les tests système permettent de tester le comportement de l'application sans forcément avoir connaissance du code. Cela permet ainsi de vérifier que l'application effectue bien ce qui est indiqué dans les spécifications demandées et que les différents composants interagissent bien entre eux. Ces tests sont également appelés \frquote{tests boite noire}. De plus, les tests systèmes permettent de vérifier que les composants interagissent correctement entre eux, au niveau global de l'application (\emph{au niveau système}) et non en mettant un composant dans l'application et en regardant son comportement avec les autres composants, comme c'est le cas avec le test d'intégration.
 
 Ce sont également les tests qui sont les plus haut niveau, puisqu'il s'exécutent avec toute l'application et ses dépendances / composant. On peut par exemple citer les tests \gls{E2E} qui sont des tests système qui permettent de tester le comportement d'une application en décrivant les actions réalisées sur cette dernière (cliquer sur un bouton, réduire la fenêtre) et les résultats attendus.
 
@@ -180,23 +178,55 @@ Souvent réalisé par le client, il va consister, au travers d'une campagne de t
 
 Il est néanmoins possible que certain test d'acceptation soit validé en amont, comme l'exemple de la calculatrice donné dans la partie \frquote{\nameref{test-composant}} (p. \pageref{test-composant}) qui va valider la \emph{règle métier} (effectuer une opération) tout en validant le bon fonctionnement du code et ses cas limites.
 
+\subsubsection{Les tests par mutation et chaos engineering}
+
+\todo[color=gray]{Partie bonus test mutation / chaos engineering à eventuellement traiter}
+
+Ces deux pratiques viennent compléter les batteries de tests existant afin de garantir que le système, et l'application puissent réagir à tout instant, en venant volontairement modifier le code ou endommager un serveur ou paramètre sur le serveur de l'application afin de constater comment réagit cette dernière.
+
 \subsection{Intégration, déploiement et livraison continue}
 
 Une fois que les tests permettent de modifier le code de l'application avec confiance sans introduire de régression, on peut alors mettre en place une démarche d'automatisation. Cela va permettre à l'équipe de développement d'obtenir un retour rapide lors de chaque déploiement, avec un lancement automatisé des tests ainsi qu'un déploiement automatique de l'application sur un environnement de recette interne par exemple.
 
 L'un des objectifs de l'intégration et du déploiement continu est de banaliser le déploiement afin de réduire la peur des développeurs vis-à-vis de la mise en production. Plus le code est déployé souvent, plus les développeurs seront sereins quant à leur travail puisqu'ils pourront obtenir des retours rapide et être prévenu au plus vite lors d'incident afin de les corriger avant qu'il n'atteigne la production.
 
-\subsubsection{Gestion de version et de branches}
+\subsubsection{Gestion de version, de branches et des opérations}
 
 \todo{Gestion de version et de branches}
 
-Critère à définir en amont, puisque il va devoir être géré automatiquement. Intégration avec le SCM à prévoir.
+Il est tout d'abord essentiel de définir une stratégie de gestion de version et de branches du code, afin de s'assurer une bonne mise en place de l'automatisation. De plus, il est important de réfléchir aux actions qui devront être entrepris dans chaque cas. 
+
+En effet, avec l'automatisation du processus d'intégration, de livraison et de déploiement, il est nécessaire d'adopter en amont des \emph{conventions} afin de couvrir les différents cas qui pourraient survenir. Les actions entreprises ne seront pas les mêmes pour couvrir une opération de qualimétrie du code que pour gérer le déploiement d'un \gls{hotfix}.
+
+\paragraph{Gestion de branches}
+
+La gestion de branche est importante à bien définir puisqu'elle va rythmer les flux de travail de développement des équipes. Il n'est donc pas envisageable de changer les habitudes de travail des équipes toutes les 3 semaines sous prétexte que ce flux de travail sera plus adapté avec les outils d'intégration ou de déploiement continu.
+
+On peut alors définir des conventions de nommage des branches. Par exemple, on peut utilises une branche \emph{master} qui représente l'état de la version de production et une autre branche \emph{develop} dite de développement sur laquelle les \emph{Dev} travaillent. Une branche de \gls{hotfix} peut être conventionnellement nommée \emph{hotfix\_NUMERO\_INCIDENT} par exemple pour gérer les incidents de production. Une fois ces conventions mises en place, il sera alors plus facile de déterminer différents comportement dans les outils d'intégration et de déploiement continu, tel que Jenkins à titre d'exemple.
+
+\emph{Au niveau des branches, de nombreuses conventions existent, ci-dessous est présenté un exemple.}
+
+Le feature branching, aussi connu sous le nom de \frquote{git flow} consiste à organiser son processus de développement sous forme de branche, en faisant correspondre à chaque fonctionnalité une branche. On conserve le principe de branche \emph{master} et \emph{develop} présentée dans le paragraphe précédent, mais à chaque fois que l'on souhaite développer une fonctionnalité, on créé une branche en se basant depuis \emph{develop}, ce qui permet de laisser les branches de développement et de production relativement saine. Une fois le développement de la fonctionnalité terminée, il suffit alors de \emph{merger}\footnote{fusionner le code original et le code développé sur la branche de fonctionnalité} les deux branches pour récupérer le travail.
+
+\newImage{0.2}{feature-branching.png}{Illustration du feature branching - \url{https://www.atlassian.com}}{feature-branching}
+
+Le feature flipping n'est pas à proprement parler un flux de travail puisqu'il peut très bien s'accorder sur un flux de travail tel que le feature branching ou sur une branche simple mais il est intéressant de le mentionner. Il consiste à envelopper chaque fonctionnalité avec un paramètre de configuration, de sorte à pouvoir activer et désactiver rapidement des fonctionnalités. Cela peut permettre de tester des nouvelles fonctionnalités progressivement vis-à-vis des utilisateurs ou d'effectuer du \gls{test-a-b} afin de déterminer quelle solution est la plus plébiscitée par les utilisateurs. 
+
+Un exemple de feature flipping peut être le déploiement de la nouvelle interface de Gandi\footnote{\url{http://gandi.net/}} qui a progressivement proposé sa nouvelle interface\footnote{\url{https://news.gandi.net/fr/tag/gandiv5/}} à ses utilisateurs via un bouton leur permettant de tester la nouvelle interface, tout en leur autorisant un retour à l'ancienne s'ils le souhaitaient. 
+
+\paragraph{Gestion de version}
+
+Une fois que l'on a déterminé la façon dont le code source sera organisé, il est nécessaire de déterminer la façon dont les versions du logiciel seront effectuées. En effet, il faut être en mesure de pouvoir dire quelle version est déployée sur quel environnement. Il est rare de disposer seulement d'une production, on dispose à minima pour un projet d'un environnement de recette et d'une pré-production, et souvent d'un contexte de staging pour pouvoir valider les modifications à différentes étapes et éviter de se retrouver avec un bug en production. Ainsi, il n'est pas rare d'avoir une version A en production, avec une version B en pré-production et une version C en recette client.
+
+La version doit être immuable, c'est à dire qu'il ne doit pas être possible de déclarer deux fois la même version. Une fois déclarée, la version doit être taguée dans le \gls{SCM} afin d'en garder une trace et de la retrouver si besoin. Concernant le format de la version, il doit pouvoir être automatiquement incrémenté par les outils d'intégration et de déploiement continus. On recommande généralement alors soit un format de version via la date (\emph{2019-06-17.1} pour la première version du 17/06/2019 par exemple) ou un format standardisé, tel que le Semanting Versionning\footnote{\url{https://semver.org/}} dont le but est d'indiquer via le numéro de version les compatibilités entre version. Ainsi, une version 1.0.0 et une 2.0.0 peuvent entrainer des non compatibilités ascendante ou descendante. Néanmoins, une 1.0.0 et une 1.1.0 indique l'ajout de fonctionnalités n'entrainant pas de non-compatibilités et la différence entre une 1.0.0 et une 1.0.1 indique l'ajout d'un correctif mineur.
+
+\paragraph{Gestion des opérations}
+
+Une fois la façon dont le code est géré par le \gls{SCM} et la façon dont on nomme nos versions, on peut se poser la question sur les différentes actions à effectuer. On va en effet vouloir effectuer des actions rapide suite à une modification du code pour pouvoir valider que ce code est fonctionnel (en lançant les tests unitaire par exemple) mais on ne va pas vouloir forcément produire immédiatement la qualimétrie du code, qui peut prendre du temps à être générée et donc faire attendre les équipes de développements qui attendent un retour rapide. De même, selon les clients, on va vouloir déployer automatiquement un projet s'il passe les tests d'intégration et les tests système, mais certains projets anciens n'ayant pas forcément assez de tests ne peuvent peut-être pas se permettre un déploiement immédiat et il faudra alors demander une validation manuelle.
+
+\todo{continuer à partir de la.}
 
 Insérer références Schéma GOP. Pourquoi dump sur staging ? force utilisation update, evite clicodrome, permet test update avant prod.
-
-feature flipping vs feature branching.
-
-Feature flipping pour tester (A/B) et ouvrir fonctionnalité aux utilisateurs petit à petit et faire des rollback rapides.
 
 \subsubsection{Choix des outils}
 
@@ -209,6 +239,9 @@ On peut tout automatiser (montée de version de deps auto chaque soir, qui va re
 Mieux vaut commencer par de l'IC simple, et éventuellement DC plutôt que direct LC. Evolutif avec le temps. De plus, le client ne veut peut-être pas de tout auto ou au contraire exige.
 
 \subsubsection{Intégration continue}
+
+% AKA build continu
+% Séparer en deux jobs : un après push + un par jour qui fait la qualimétrie.
 
 \todo{Intégration continue}
 

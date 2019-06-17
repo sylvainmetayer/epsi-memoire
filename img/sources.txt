@@ -9,3 +9,4 @@ single-piece-flow => https://medium.com/@stefanluyten/single-piece-flow-5d2c2bec
 test-pyramid => https://docs.microsoft.com/fr-fr/dotnet/standard/modern-web-apps-azure-architecture/test-asp-net-core-mvc-apps
 no-integration-test => https://me.me/i/unittests-passing-nointegrationitests-unit-tests-passing-no-integration-tests-53c8003af57f45e4be46960b62cf6627
 time-worth => https://xkcd.com/1205/
+feature-branching => https://www.atlassian.com/continuous-delivery/principles/workflows-with-feature-branching-and-gitflow
