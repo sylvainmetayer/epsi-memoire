@@ -134,8 +134,6 @@ Les tests ont un rôle crucial dans une démarche d'automatisation. En effet, lo
 	\label{tab:matrice-test}
 \end{table}
 
-\todo{Valider cette matrice car elle est sûrement fausse?}
-
 \subsubsection{Le test de composant}\label{test-composant}
 
 Aussi appelé \gls{TU}, son objectif est que le composant testé soit totalement isolé afin de se concentrer uniquement sur le \emph{fonctionnement unitaire} de ce dernier, sans dépendre d'autre composant. On peut alors tester tous les cas, du cas dit \frquote{général}, qui représente souvent 80\% des cas, jusqu'aux \frquote{cas limites}, cas apparaissant plus rarement mais pouvant entrainer un comportement non souhaité de l'application. Cela permet de vérifier que le code écrit par le développeur lors de la phase de \emph{développement} est bien valide. Ainsi, un test de composant peut valider des \emph{règles métier} et ainsi également correspondre à un test d'acceptation\footnote{détails sur les tests d'acceptation dans la sous partie \frquote{\nameref{test-acceptation}} (p. \pageref{test-acceptation})}.
@@ -192,8 +190,6 @@ L'un des objectifs de l'intégration et du déploiement continu est de banaliser
 
 \subsubsection{Gestion de version, de branches et des opérations}
 
-\todo{Gestion de version et de branches}
-
 Il est tout d'abord essentiel de définir une stratégie de gestion de version et de branches du code, afin de s'assurer une bonne mise en place de l'automatisation. De plus, il est important de réfléchir aux actions qui devront être entrepris dans chaque cas. 
 
 En effet, avec l'automatisation du processus d'intégration, de livraison et de déploiement, il est nécessaire d'adopter en amont des \emph{conventions} afin de couvrir les différents cas qui pourraient survenir. Les actions entreprises ne seront pas les mêmes pour couvrir une opération de qualimétrie du code que pour gérer le déploiement d'un \gls{hotfix}.
@@ -224,11 +220,23 @@ La version doit être immuable, c'est à dire qu'il ne doit pas être possible d
 
 Une fois la façon dont le code est géré par le \gls{SCM} et la façon dont on nomme nos versions, on peut se poser la question sur les différentes actions à effectuer. On va en effet vouloir effectuer des actions rapide suite à une modification du code pour pouvoir valider que ce code est fonctionnel (en lançant les tests unitaire par exemple) mais on ne va pas vouloir forcément produire immédiatement la qualimétrie du code, qui peut prendre du temps à être générée et donc faire attendre les équipes de développements qui attendent un retour rapide. De même, selon les clients, on va vouloir déployer automatiquement un projet s'il passe les tests d'intégration et les tests système, mais certains projets anciens n'ayant pas forcément assez de tests ne peuvent peut-être pas se permettre un déploiement immédiat et il faudra alors demander une validation manuelle.
 
-\todo{continuer à partir de la.}
+Les opérations sont à prévoir pour tous les cas pouvant intervenir, qu'il s'agissent de déploiement d'une nouvelle version, d'un \gls{hotfix} (voir annexe \ref{annexe:hotfix-naq}) ou de la construction de module étant réutilisés par d'autres applications (voir annexe \ref{annexe:commons-modules}).
 
-Insérer références Schéma GOP. Pourquoi dump sur staging ? force utilisation update, evite clicodrome, permet test update avant prod.
+On peut consulter sur l'annexe \ref{annexe:release-naq} le diagramme des opérations pour le déploiement d'une nouvelle version d'un site de la \naq qui passera par 4 environnements, un de staging, suivi d'une recette effectuée par le client, puis d'une pré-production et enfin de l'environnement de production. On constate que le serveur d'intégration continu (ici Jenkins) est au cœur des opérations effectuées et sert de chef d'orchestre pour interagir avec les autres outils et environnements. 
+
+Une notion également importante que l'on peut voir sur ce schéma est la notion de promotion d'artifact. Un artifact représente un fichier (dans ce cas, une archive contenant le site à déployer) stocké sur un \gls{artifactory}. Ce fichier va, au cours du \emph{pipeline}\footnote{Flux de travail}, être validé selon qu'il a ou non été correctement déployé sur un environnement donné. On va alors promouvoir ce fichier selon des statuts défini arbitrairement afin de situer l'évolution du fichier. Les statuts définis dans ce pipeline sont les suivants : \frquote{staging}, \frquote{RC}\footnote{Release Candidate, correspondant à l'environnement de recette client} et \frquote{production}\footnote{dans l'annexe, production est implicite}. On considère alors que si le package atteint l'environnement de pré-production, il peut directement être promu en tant que version définitive.
 
 \subsubsection{Choix des outils}
+
+Une fois que l'on sait comment gérer ses branches, ses versions et que l'on sait les différentes opérations à effectuer pour les différents cas d'usages, il convient de sélectionner les bon outils afin de mener à bien le projet.
+
+Un \gls{SCM} est évidemment obligatoire pour pouvoir effectuer une intégration continue des changements du code, taguer les différentes versions ou encore permettre de séparer le travail en cours avec différentes branches. Plusieurs solutions existent, certaines propriétaires, d'autres open-source ou auto-hébergeables. Parmi les plus populaire, on peut citer \github\footnote{\url{https://github.com}}, Gitea\footnote{\url{https://gitea.io}}, solution auto-hébergeable et économe en terme de ressources ou encore Gitlab\footnote{\url{https://gitlab.com}} qui est utilisé dans le cas de la \naq, auto-hébergé au sein de \onepoint.
+
+Chaque projet va souvent dépendre de dépendances. Dans le cas d'un projet \gls{PHP}, on va souvent retrouver des dépendances via composer\todo{continuer la.}
+
+Il est ensuite, pour pouvoir effectuer de l'intégration continue, de disposer d'un serveur\ldots{} D'intégration continue. De nombreux existe, chacun se démarquant avec ses propres fonctionnalités. Les plus connus sont TravisCI\footnote{\url{http://travis-ci.org/}} qui est souvent utilisé lors de projets étant versionné sous \github, TeamCity\footnote{\url{https://www.jetbrains.com/teamcity/}} qui après ses \gls{IDE}, propose également son propre outil d'intégration continue. Finalement, le leader reste Jenkins\footnote{\url{http://jenkins.io/}}. Tous permettent de réaliser de l'intégration continue, mais proposent souvent plus, tel que la livraison ou encore le déploiement continu, le tout selon les besoins \& le budget du client.
+
+
 
 \todo{Choix des outils}
 
@@ -305,7 +313,7 @@ On peut (\emph{et l'on doit}) aussi se référer à la documentation des outils 
 
 Concernant les interactions entre le serveur d'intégration continue, le gestionnaire de version et les différents serveurs, il peut être intéressant de créer un compte de service (\emph{compte système, n'étant relié à aucun utilisateur et disposant des droits minimaux pour l'exécution de la tâche pour lequel il est utilisé}) avec des accès par clé \gls{SSH} utilisés pour les déploiements. L'utilisation d'une clé \gls{SSH} plutôt qu'un mot de passe est nécessaire puisque la demande de mot de passe se fait de façon interactive (et requiert donc une intervention utilisateur)\footnote{Même s'il est possible de contourner ce fonctionnement, par exemple avec sshpass, il est recommandé d'utiliser des clés \gls{SSH}}. De même, l'accès aux serveurs doit être limité et surtout contrôlé. Il faut ainsi préférer des comptes nominatif, même si leur création peut s'avérer plus fastidieuse plutôt qu'un seul compte administrateur partagé entre les membres de l'équipe. Ainsi, si un compte vient être compromis, il est plus facile de révoquer ses accès plutôt que de bloquer l'accès à tous les membres de l'équipe.
 
-Un autre aspect à prendre en compte, selon la confidentialité requise par les projets, est l'endroit ou le code source du projet va transiter. Si par exemple, un prestataire ne dispose pas de son propre serveur d'intégration continue mais possède une offre chez un autre prestataire (TravisCI\footnote{\url{http://travis-ci.org/}} par exemple), il faut être prudent, puisque le code sera alors à un moment transmis en dehors du réseau de l'entreprise. Selon les projets, il peut être nécessaire d'auto-héberger des solutions en interne afin de garder une maitrise totale de la chaine d'industrialisation.
+Un autre aspect à prendre en compte, selon la confidentialité requise par les projets, est l'endroit ou le code source du projet va transiter. Si par exemple, un prestataire ne dispose pas de son propre serveur d'intégration continue mais possède une offre chez un autre prestataire (TravisCI par exemple), il faut être prudent, puisque le code sera alors à un moment transmis en dehors du réseau de l'entreprise. Selon les projets, il peut être nécessaire d'auto-héberger des solutions en interne afin de garder une maitrise totale de la chaine d'industrialisation.
 
 Finalement, il ne faut pas oublier la vérification de la sécurité de l'application elle-même. En effet, une application nécessite souvent des dépendances externes, réalisées par d'autres personnes. Comment s'assurer que ces dépendances sont à jour et fiable ? 
 
