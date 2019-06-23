@@ -26,6 +26,18 @@
 \end{figure}
 }
 
+\begin{comment}
+Fonction utilisée pour insérer un emoji. 
+Paramètres : 
+#1 : Emoji souhaité, au format unicode 
+Exemple d'utilisation :
+\emoji{😊}
+\end{comment}
+\newcommand{\emoji}[1]
+{
+	{\DejaSans #1}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Same as before, but annexe without captions.
 \newcommand{\newImageAnnexe}[4][ht]

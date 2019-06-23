@@ -61,57 +61,47 @@ L'un des premiers avantages si l'on met en place une démarche d'automatisation 
 
 Un autre point à prendre en compte lors d'une démarche d'automatisation est l'apprentissage continu. Comme nous l'avons vu dans la partie précédente, \etsy a mis en place un outil de post-mortem (p.\pageref{post-mortem}) qui permet de savoir les erreurs rencontrées dans le passé et de permettre qu'elles ne se reproduisent plus. Cette notion constitue la \emph{Third Way} mais ne se limite pas seulement aux erreurs rencontrées. Avec le temps obtenu par l'automatisation, il est ainsi possible de s'améliorer sur d'autres points : partager les connaissances de chacun pour faire progresser l'équipe et les personnes la constituant, documenter et améliorer l'intégration de nouvelles personnes dans les équipes ou les environnements de travail\ldots{} L'équipe sera alors plus performante et pourra ainsi délivrer de meilleurs produits.
 
-%Le temps libéré par l'automatisation des tâches peut permettre de souder les liens d'une équipe et d'améliorer les relations de cette dernière. Cela libère du temps pour du team building par exemple. Un sujet technique qui rapproche en terme d'humain
+% TODO Le temps libéré par l'automatisation des tâches peut permettre de souder les liens d'une équipe et d'améliorer les relations de cette dernière. Cela libère du temps pour du team building par exemple. Un sujet technique qui rapproche en terme d'humain
 
 \subsection{Environnement de développement}
 
-Objectif
+L'environnement de développement est le premier environnement ou sont développés les différentes fonctionnalités du projet. Ce cadre de travail doit pouvoir être installé rapidement afin de se concentrer sur le développement de fonctionnalités et non sur l'installation de l'environnement de travail.
 
 \subsubsection{Arrivée sur le projet}
 
-Temps d'efficience => installation \& co
+Plusieurs personnes sont potentiellement amener à travailler sur le projet. Il est donc important de documenter l'installation et les pré-requis afin de pouvoir commencer à travailler. Il n'est malheureusement pas rare de voir des projet ou la documentation du projet est faible, voir inexistante.
+
+L'idéal pour un développeur qui vient d'arriver sur un projet serait de disposer d'un environnement prêt à l'emploi, qui puisse se lancer en quelques commandes (installation des dépendances et provisionnement de l'environnement). Des outils de conteneurisation tel que Docker\footnote{\url{https://www.docker.com/}} permettent ainsi d'avoir des environnements isolés et reproductibles quel que soit l'environnement du développeur. De plus, avec Docker, l'architecture du projet est représenté sous forme textuelle et donc intégrable dans le \gls{SCM}, ce qui permet de savoir les évolutions sur l'architecture du projet facilement. De plus, un projet qui peut s'installer rapidement signifie un développeur que peut être efficient plus rapidement sur son projet et ainsi apporter ses compétences sur de réelles problématiques plutôt qu'être bloqué pendant de longues heures à chercher comment installer un projet.
+
+Afin de permettre un démarrage rapide, il est également commun de mettre des alias sur les commandes les plus utilisés lors des développements. Par exemple, si une commande permettant d'effacer le cache de l'application est longue à taper, on la raccourcira en quelques chose tel que \frquote{make clear} par exemple. Pour cela, plusieurs solutions sont disponibles: les scripts \gls{PHP} dans le cas d'un projet \gls{PHP} ou encore l'utilisation des Makefile, permettant de construire les logiciels et leur dépendances et d'y effectuer des tâches diverses, définies dans un fichier. Il est également possible d'écrire des scripts shell, permettant d'effectuer des tâches plus complexe\footnote{Comme faire le café ? \emoji{😊} - \url{https://github.com/NARKOZ/hacker-scripts}}
+
+De plus, il est souvent nécessaire d'avoir des configurations spécifiques sur les environnements de développements. En effet, dans un contexte de développement, on va vouloir obtenir les erreurs immédiatement, dans un terminal par exemple, alors que dans un environnement de production, ces dernières seront dans un fichier de log. De plus, on va pouvoir vouloir tracer le temps que prend chaque requête vers une base de données ou encore disposer d'outils permettant de mettre des points d'arrêts dans le code afin de pouvoir débugger lors des phases de développements. Il faut donc des moyens d'activer ses outils simplement. Cela peut passer par des scripts ou encore des images Docker dédiées au développement, basée sur celle de production. Le but est d'obtenir un environnement le plus proche possible de la production tout en ayant la possibilité d'ajouter des outils de développements additionnels.
 
 \subsubsection{Build local}
 
-- IDE
+Le build local correspond à la première boucle de retour au développeur. C'est dans cet environnement qu'il obtient des retours rapide, que cela soit sur ses tests unitaire, ses éventuelles fautes de frappe, erreur de syntaxe\ldots. L'objectif de ce build local est de détecter les erreurs au plus tôt, pour éviter qu'elle ne soit potentiellement oubliée et non détectée par les autres étapes du flux de travail, et provoque un bug en production alors qu'il aurait pu être éviter simplement (dans le cas d'une erreur de syntaxe). Plusieurs solutions peuvent alors être mise en place pour améliorer ce build local.
 
-- MAkefile script installation, aide tâche récurrente\footnote{Et pourquoi pas même faire le café ? (cf. \url{https://github.com/NARKOZ/hacker-scripts})}
+\paragraph{L'utilisation d'un \gls{IDE}}
 
-- SCM (hook)
+L'objectif de l'\gls{IDE} est de fournir un support de travail au développeur et de lui repérer de façons automatique des erreurs d'inattention. Il convient alors de se familiariser avec un \gls{IDE} afin de tirer le maximum de ce dernier. Parmi les fonctionnalités communes d'un bon \gls{IDE}, on retrouve :
 
-- Pair programming / code review
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item Détection des erreurs de syntaxe
+	\item Ajout automatique des imports dans un fichier
+	\item Lancement automatique des tests unitaire à la sauvegarde/modification d'un fichier
+	\item Auto-complétion automatique permettant de connaître le nom des méthodes et fonction à la saisie
+	\item Indenter le code selon des conventions définies
+	\item Affichage des erreurs communes simple à détecter (tel qu'un code non atteignable car après un retour de fonction par exemple)
+\end{itemize}
 
-- Test ( TDD /TCR test commit revert / ...)
+Les \gls{IDE} disposent souvent de plugins qui permettent d'étendre leurs fonctionnalités pour pouvoir améliorer le quotidien du développeur. Par exemple, certains plugins vont permettre de gérer l'affichage de l'état de la base de données, s'interfacer avec l'état des outils d'intégrations continue distants (via les \gls{API} de ces derniers) afin de savoir si les tests d'intégrations sont passés ou non\ldots
 
-\todo[color=cyan]{Localement, lors des phases de développement, 2 pages}
+\paragraph{Les hooks du \gls{SCM}} Git, \gls{SCM} utilisé de façon majoritaire dans les développements dispose d'un mécanisme permettant d'étendre ses fonctionnalités : les hooks. Ces hooks, tel que décrits dans la documentation (\citetitle{git-hook} \cite[chapitre 8.3]{git-hook}) permettent de lancer des scripts à certaines étapes, tel qu'avant un commit, avant de pousser le code sur le serveur, après réception des modifications du serveur\ldots{} Cela permet souvent de vérifier que les tests unitaires passent, qu'il n'y a pas d'erreur de syntaxe ou encore que le linter\footnote{analyse de code statique permettant de détecter les erreurs communes, et d'instaurer une syntaxe (règles d'espacement, nommage des variables\ldots) commune} ne génère pas d'erreur
 
-Permettre un démarrage rapide pour pouvoir se concentrer sur une fonctionnalité plutôt que sur le "ça marche pas parce que tu n’as pas installé ça". => Valeur ajoutée, performance, productivité
+\paragraph{Le pair programming (programmation en binôme)}
 
-Déploiement : chaine de déploiement (dev/test/inte/preprod/prod) avec chacune ses spécificités
-
-pair programming => gain temps car détection erreur au plus tôt.
-
-Exemple :
-
-en dev, on souhaite des logs direct dans la console, en prod on les mets dans un fichier de log.
-en dev, on veut le mode debug, en prod on le désactive.
-
-rapprocher env de dev et de prod.
-
-But : prévenir l'erreur avant qu'elle ne quitte le poste du développeur (et soit donc sur le dépôt Git).
-
--  Linter
-
--  Docker, stack reproductible et indépendante selon environnement (windows/linux/mac) 
-
-- IDE à configurer, éventuellement partager la configuration (ex: PHP Storm Code Style)
-
--  Makefile / scripts shell de taches récurrentes (cache clear, installation...)
-
-- Git hook pour vérifier que tout est OK.
-
-mise en place code review => erreur au plus tôt
-% https://dev.to/shameemreza/3-tricks-to-automate-development-tasks-with-git-hooks-2dah
+Le pair programming consiste à développer à deux développeurs sur le même poste de travail. Bien qu'au premier abord, cela puisse sembler être une perte de temps et d'argent (puisqu'il n'y a au final qu'une seule personne qui tape sur le clavier), cette méthode permet de détecter des erreurs plus tôt, puisqu'il y a 2 paires d'yeux qui peuvent relever les erreurs au lieu d'une seule. Souvent, il peut arriver un développeur seul d'être \frquote{la tête dans le guidon}, c'est à dire qu'il est tellement absorbé dans son code et peut donc oublier certains cas, certaines règles métiers\ldots{} Le fait de travailler en binôme permet ainsi de déceler ces erreurs plus tôt et d'assurer une meilleure qualité de code. Les deux développeurs échangent rapidement leur rôles afin de travailler de façon efficace et de passer d'observateur à développeur. 
 
 \subsection{L'importance des tests} \label{importance-test}
 
@@ -220,31 +210,35 @@ La version doit être immuable, c'est à dire qu'il ne doit pas être possible d
 
 Une fois la façon dont le code est géré par le \gls{SCM} et la façon dont on nomme nos versions, on peut se poser la question sur les différentes actions à effectuer. On va en effet vouloir effectuer des actions rapide suite à une modification du code pour pouvoir valider que ce code est fonctionnel (en lançant les tests unitaire par exemple) mais on ne va pas vouloir forcément produire immédiatement la qualimétrie du code, qui peut prendre du temps à être générée et donc faire attendre les équipes de développements qui attendent un retour rapide. De même, selon les clients, on va vouloir déployer automatiquement un projet s'il passe les tests d'intégration et les tests système, mais certains projets anciens n'ayant pas forcément assez de tests ne peuvent peut-être pas se permettre un déploiement immédiat et il faudra alors demander une validation manuelle.
 
-Les opérations sont à prévoir pour tous les cas pouvant intervenir, qu'il s'agissent de déploiement d'une nouvelle version, d'un \gls{hotfix} (voir annexe \ref{annexe:hotfix-naq}) ou de la construction de module étant réutilisés par d'autres applications (voir annexe \ref{annexe:commons-modules}).
+Les opérations sont à prévoir pour tous les cas pouvant intervenir, qu'il s'agissent de déploiement d'une nouvelle version, d'un \gls{hotfix} ou de la construction de dépendances internes étant réutilisés par d'autres applications (voir annexe \ref{annexe:commons-modules}).
 
 On peut consulter sur l'annexe \ref{annexe:release-naq} le diagramme des opérations pour le déploiement d'une nouvelle version d'un site de la \naq qui passera par 4 environnements, un de staging, suivi d'une recette effectuée par le client, puis d'une pré-production et enfin de l'environnement de production. On constate que le serveur d'intégration continu (ici Jenkins) est au cœur des opérations effectuées et sert de chef d'orchestre pour interagir avec les autres outils et environnements. 
 
-Une notion également importante que l'on peut voir sur ce schéma est la notion de promotion d'artifact. Un artifact représente un fichier (dans ce cas, une archive contenant le site à déployer) stocké sur un \gls{artifactory}. Ce fichier va, au cours du \emph{pipeline}\footnote{Flux de travail}, être validé selon qu'il a ou non été correctement déployé sur un environnement donné. On va alors promouvoir ce fichier selon des statuts défini arbitrairement afin de situer l'évolution du fichier. Les statuts définis dans ce pipeline sont les suivants : \frquote{staging}, \frquote{RC}\footnote{Release Candidate, correspondant à l'environnement de recette client} et \frquote{production}\footnote{dans l'annexe, production est implicite}. On considère alors que si le package atteint l'environnement de pré-production, il peut directement être promu en tant que version définitive.
+Une autre notion que l'on peut voir sur ce schéma est la notion de promotion d'artifact. Un artifact représente un fichier (dans ce cas, une archive contenant le site à déployer) stocké sur un \gls{artifactory}. Ce fichier va, au cours du \emph{pipeline}\footnote{Flux de travail}, être validé selon qu'il a ou non été correctement déployé sur un environnement donné. On va alors promouvoir ce fichier selon des statuts défini arbitrairement afin de situer l'évolution du fichier. Les statuts définis dans ce pipeline sont les suivants : \frquote{staging}, \frquote{RC}\footnote{Release Candidate, correspondant à l'environnement de recette client} et \frquote{production}\footnote{dans l'annexe, production est implicite}. On considère alors que si le package atteint l'environnement de pré-production, il peut directement être promu en tant que version définitive.
+
+Il y a également un dernier aspect important concernant la gestion des opérations lorsque l'on souhaite mettre en place une démarche \devops : Il s'agit de ne pas viser trop grand dès le début. On peut en effet tout automatiser (montée de version des dépendances automatique, déploiement et provisionnement d'environnement de tests automatiquement\ldots) mais en fonction du besoin et du budget client, tout ne sera pas possible. Il vaut peut-être mieux commencer par ne faire que de l'intégration continue, sans livraison ou déploiement continue, que vouloir construire une chaine d'industrialisation tellement complexe qu'elle ne sera utilisée par personne et aura coutée plus cher que le développement du projet. La matrice en annexe \ref{annexe:devops-matrice} présente bien cela, avec divers niveaux, représentant différentes étapes vers la mise en place d'une démarche \devops.
 
 \subsubsection{Choix des outils}
 
 Une fois que l'on sait comment gérer ses branches, ses versions et que l'on sait les différentes opérations à effectuer pour les différents cas d'usages, il convient de sélectionner les bon outils afin de mener à bien le projet.
 
-Un \gls{SCM} est évidemment obligatoire pour pouvoir effectuer une intégration continue des changements du code, taguer les différentes versions ou encore permettre de séparer le travail en cours avec différentes branches. Plusieurs solutions existent, certaines propriétaires, d'autres open-source ou auto-hébergeables. Parmi les plus populaire, on peut citer \github\footnote{\url{https://github.com}}, Gitea\footnote{\url{https://gitea.io}}, solution auto-hébergeable et économe en terme de ressources ou encore Gitlab\footnote{\url{https://gitlab.com}} qui est utilisé dans le cas de la \naq, auto-hébergé au sein de \onepoint.
+Un \gls{SCM} est évidemment obligatoire pour pouvoir effectuer une intégration continue des changements du code, taguer les différentes versions ou encore permettre de séparer le travail en cours avec différentes branches. Plusieurs solutions existent, certaines propriétaires, d'autres open-source ou auto-hébergeables. Parmi les plus populaire, on peut citer \github\footnote{\url{https://github.com}}, Gitea\footnote{\url{https://gitea.io}}, solution auto-hébergeable et économe en terme de ressources ou encore Gitlab\footnote{\url{https://gitlab.com}} qui est utilisé dans le cas des projets de la \naq, auto-hébergé au sein de \onepoint.
 
-Chaque projet va souvent dépendre de dépendances. Dans le cas d'un projet \gls{PHP}, on va souvent retrouver des dépendances via composer\todo{continuer la.}
+Chaque projet va souvent dépendre de dépendances. Dans le cas d'un projet \gls{PHP}, on va souvent retrouver des dépendances via composer, qui sont des dépendances externes. Mais on peut également dépendre de dépendances internes, qui peuvent être des composants réutilisés en interne au sein de plusieurs projets. Il faut alors pouvoir gérer ses dépendances. S'il est possible de déployer ses dépendances internes sur Packagist\footnote{Gestionnaire de dépendances \gls{PHP} - \url{https://packagist.org/}}, il se peut que l'on souhaite garder la main sur ses dépendances, ou ne pas les rendre publique, et que l'on souhaite donc les garder sur un gestionnaires de paquets privés. Dans le cas de la \naq, c'est l'\gls{artifactory} de Jfrog\footnote{Gestionnaire de fichier binaire - \url{https://jfrog.com/artifactory/}} qui est utilisé afin de gérer ses dépendances. Concrètement, cela consiste à ajouter un repository\footnote{dépôt} au fichier de définition des dépendances (dans le cas de \gls{PHP}, il s'agit d'un fichier appelé \frquote{composer.json}).
+
+%\begin{listing}[H]
+%	\begin{minted}{json}
+%	{
+%	"type": "composer",
+%	"url": "https://ARTIFACTORY/api/composer/nouvelle-aquitaine",
+%	"vendor-alias": "nouvelle-aquitaine"
+%	}
+%	\end{minted}
+%	\caption{Définition d'un dépôt composer externe dans un fichier %\frquote{composer.json}}
+%	\label{code:composer-setup}
+%\end{listing}
 
 Il est ensuite, pour pouvoir effectuer de l'intégration continue, de disposer d'un serveur\ldots{} D'intégration continue. De nombreux existe, chacun se démarquant avec ses propres fonctionnalités. Les plus connus sont TravisCI\footnote{\url{http://travis-ci.org/}} qui est souvent utilisé lors de projets étant versionné sous \github, TeamCity\footnote{\url{https://www.jetbrains.com/teamcity/}} qui après ses \gls{IDE}, propose également son propre outil d'intégration continue. Finalement, le leader reste Jenkins\footnote{\url{http://jenkins.io/}}. Tous permettent de réaliser de l'intégration continue, mais proposent souvent plus, tel que la livraison ou encore le déploiement continu, le tout selon les besoins \& le budget du client.
-
-
-
-\todo{Choix des outils}
-
-Jenkins Jfrog (artifactory) Gitlab avec interaction entre eux.
-
-On peut tout automatiser (montée de version de deps auto chaque soir, qui va rebuild tous les projets), mais il faut faire en fonction de la durée du projet, du budget, du besoin.
-
-Mieux vaut commencer par de l'IC simple, et éventuellement DC plutôt que direct LC. Evolutif avec le temps. De plus, le client ne veut peut-être pas de tout auto ou au contraire exige.
 
 \subsubsection{Intégration continue}
 

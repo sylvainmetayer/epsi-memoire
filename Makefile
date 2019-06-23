@@ -64,5 +64,8 @@ check: ## Check syntax
 bibliography: ## Check bibliography 
 	biber --tool --validate-datamodel -l fr_FR ${filename}.bib
 
+todo: ## Find todo
+	@grep -iP "todo" ./content/* *.tex
+
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

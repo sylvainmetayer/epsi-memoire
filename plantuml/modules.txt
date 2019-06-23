@@ -3,6 +3,7 @@ title Build des modules et thèmes communs
 Common -> Gitlab : Push
 Gitlab -> Jenkins : Webhook
 Jenkins -> Jenkins : Build des modules
+Jenkins -> Gitlab: Bump version
 Jenkins -> Artifactory : Upload sur composer GOP
 @enduml
 
