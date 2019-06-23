@@ -15,7 +15,7 @@ Avant de détailler la transition effectuée, faisons un état des lieux techniq
 \begin{itemize}
 	\setlength\itemsep{0em}
 	\item \etsy{} est construit sur un environnement \gls{LAMP} et sur une application dite monolithique, c'est-à-dire qu'elle est constituée en une seule partie et donc plus complexe à faire évoluer lors de grosse mise à jour.
-	\item Évidemment, \etsy{} utilisait un gestionnaire de version de son code (\gls{git}) mais n'utilisait pas de branches\footnote{Dans un gestionnaire de version, les branches permettent de séparer les fonctionnalités qui sont en cours de développement ainsi que les différentes versions du code}
+	\item Évidemment, \etsy{} utilisait un \gls{SCM} pour versionner son code (dans ce cas, il s'agit de Git\footnote{\url{https://git-scm.com/}}) mais n'utilisait pas de branches\footnote{Dans un \gls{SCM}, les branches permettent de séparer les fonctionnalités qui sont en cours de développement ainsi que les différentes versions du code}
 	\item Du fait de sa croissance rapide, \etsy{} effectuait 2 à 3 mise à jour par semaine, mais ces dernières étaient effectuées avec difficulté et prenaient environ 4h par livraison, comme le montre la citation suivante. 
 \end{itemize}
 
