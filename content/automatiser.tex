@@ -328,6 +328,8 @@ On peut ainsi utiliser les outils de gestion de dépendances afin de s'assurer q
 
 \todo[color=cyan]{Sécurité, 1-2 page }
 
+Comme on peut le lire dans \citetitle{jenkins-security} \cite{jenkins-security}, il est important de savoir les limites de l'outil que l'on utilise et à qui on en donne le contrôle, sous peine de se retrouver à donner des accès privilégier à une personne à qui l'on pensait simplement donner des droits d'exécution. L'exemple donné dans cet article est totalement valable, puisqu'un développeur qui peut renseigner des paramètres avant (ou durant) l'exécution d'un job peut tout à fait y inclure des commandes, qui peuvent potentiellement être exécutées et amener à des fuites de secrets, identifiants ou mot de passe\ldots
+
 OWASP ZAAP
 
 bastion qui peut permettre de couper l'accès à l'infra.
