@@ -105,7 +105,6 @@ Le pair programming consiste à développer à deux développeurs sur le même p
 
 Les tests ont un rôle crucial dans une démarche d'automatisation. En effet, lorsque l'on automatise quelque chose, il est essentiel de s'assurer que le comportement de l'application est valide puisque l'on va par la suite déployer automatiquement cette application en production. Selon le \gls{CFTL} et l'\gls{ISTQB}, il existe 4 types de tests et chacun dispose de 4 objectifs formant ainsi une matrice représentée dans le tableau \ref{tab:matrice-test}.
 
-
 \begin{table}[H]
 	\centering
 	\begin{adjustbox}{width=0.95\textwidth,center=\textwidth} 
@@ -163,6 +162,14 @@ L'avantage de ces tests systèmes est qu'il s'agit des tests les plus complets, 
 Souvent réalisé par le client, il va consister, au travers d'une campagne de test généralement manuelle, à vérifier que les \emph{règles métiers} sont bien respectées. Le client peut néanmoins décider de déléguer ce test à une équipe qualité, ou à un prestataire externe.
 
 Il est néanmoins possible que certain test d'acceptation soit validé en amont, comme l'exemple de la calculatrice donné dans la partie \frquote{\nameref{test-composant}} (p. \pageref{test-composant}) qui va valider la \emph{règle métier} (effectuer une opération) tout en validant le bon fonctionnement du code et ses cas limites.
+
+\subsubsection{Choisir les type de tests à prioriser}
+
+Chaque application étant différentes, tous les type de tests ne sont pas adaptés à toutes les applications. Il faut donc déterminer les tests à prioriser, selon le type de produit que l'on livre.
+
+Ainsi, dans le cas d'une application métier complexe, tel que les banques ou assurances, ou les cas d'utilisations sont nombreux et nécessite des algorithmes potentiellement compliqués, il peut être intéressant de concentrer ses effort sur des tests d'acceptations via des \gls{TU} pour valider les besoins métiers, du fait de leur criticité.
+
+Si l'on vient à travailler avec des \gls{cms} ou que l'on interagit avec des services qui ne sont pas de notre ressort, il y a des risques non négligeables de se retrouver dans des cas où les mises à jour de ces services risquent d'entrainer des régressions. Il faut alors concentrer ses efforts sur les tests d'intégrations pour s'assurer que le code développé puisse correctement s'exécuter avec les librairies tierces.
 
 \subsubsection{Les tests par mutation et chaos engineering}
 
