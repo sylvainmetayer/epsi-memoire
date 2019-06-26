@@ -28,6 +28,51 @@
 	\label{annexe:devops-matrice}
 \end{figure}
 
+\clearpage
+\section{Exemple d'erreurs détectées par PHPStan}
+
+Dans l'exemple ci-dessous, PHPStan retournera une erreur indiquant que le paramètre requis \frquote{\$type} n'a pas été renseigné, ainsi qu'une erreur indiquant que la méthode privée \frquote{internalBehaviour} ne peut être utilisée en dehors de la classe. 
+
+Il est à noter que cette analyse statique de code peut être et est souvent effectuée au sein de l'\gls{IDE} pour permettre une détection de l'erreur au plus tôt.
+
+\begin{minted}[linenos]{php}
+<?php
+// index.php
+
+require_once(__DIR__."/vendor/autoload.php");
+$a = new \App\File();
+$content = $a->loadFile("file.json");
+$a->internalBehaviour();
+
+// src/File.php
+
+namespace App;
+
+class File {
+  public function loadFile($file, $type) {
+    $content = file_get_contents($file);
+    if ($type == "json") {
+      return json_decode($file);
+    }
+    return $content;
+  }
+  
+  private function internalBehaviour() {
+    echo "this is not public";
+  }
+}
+
+// ------ ------------------------------------------------------------------- 
+// Line   index.php                                                          
+// ------ ------------------------------------------------------------------- 
+// 6      Method App\File::loadFile() invoked with 1 parameter, 2 required.  
+// 7      Call to private method internalBehaviour() of class App\File.      
+// ------ ------------------------------------------------------------------- 
+
+\end{minted}
+\label{annexe:php-error}
+
+
 %\clearpage
 %\section{Flux de travail pour un hotfix sur un site \naq}
 %\newImageAnnexe{0.25}{hotfix.png}{hotfix-naq}
