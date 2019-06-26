@@ -32,29 +32,31 @@
 \newpage
 	%% TODO Listing. Add disable option to package before printing !
 	\iftoggle{todoExplain}{%
-		\section*{Détails des couleurs todo}
+		Cette page liste les éléments restants à faire avant de rendre le document. Elle ne sera pas présente dans le document final
+		\listoftodos 
 		\begin{itemize}
-			\item \emph{gray} est utilisé pour les parties obligatoires, mais non relative au contenu pur du mémoire (remerciements, abstract...)
-			\item \emph{red} est utilisé pour les todos nécessitant de la recherche et de la rédaction.
-			\item \emph{orange} est utilisé pour les parties nécessitant des refonte, soit sur la forme, soit parce qu'elle doivent être liées à d'autres parties.
-			\item \emph{cyan} est utilisé pour les parties nécessitant de la rédaction sans recherche.
-			\item \emph{yellow} est utilisé pour des estimations de nombre de page que la partie est \emph{censée} occuper.
+			\setlength\itemsep{0em}
+			\item La couleur \emph{gray} est utilisée pour les parties obligatoires, mais non relative au contenu pur du mémoire (remerciements, abstract...)
+			\item La couleur \emph{red} est utilisée pour les todos nécessitant de la recherche et de la rédaction.
+			\item La couleur \emph{orange} est utilisée pour les parties nécessitant des refonte, soit sur la forme, soit parce qu'elle doivent être liées à d'autres parties.
+			\item La couleur \emph{cyan} est utilisée pour les parties nécessitant de la rédaction sans recherche.
+			\item La couleur \emph{yellow} est utilisée pour des estimations de nombre de page que la partie est \emph{censée} occuper.
 		\end{itemize}
 	}{}
-	\listoftodos 
 \newpage
 	\section*{Remerciements}
 	\input{content/remerciements}
 \newpage
-\includepdf[scale=0.8,pagecommand=\section*{Attestation de non plagiat}, offset=0 -2cm]{docs/non-plagiat.pdf}
-% \addcontentsline{toc}{section}{Attestation de non plagiat} % ajout de la référence dans la table des matières
+\includepdf[scale=0.8,offset=0 -2cm]{docs/non-plagiat.pdf}
+\addcontentsline{toc}{section}{Attestation de non plagiat} % ajout de la référence dans la table des matières
+\newpage
+	\input{content/resume}
+\newpage
+	\input{content/abstract}
 \newpage
 	\shorttoc{Sommaire}{2} % Only sections
 \newpage
 	\pagenumbering{\numerotationType} % start numerotation
-	\input{content/resume}
-\newpage
-	\input{content/abstract}
 \newpage
 	\section*{Introduction}
 	\addcontentsline{toc}{section}{Introduction} % ajout de la référence dans la table des matières
