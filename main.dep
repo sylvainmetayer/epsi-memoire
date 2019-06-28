@@ -1,0 +1,247 @@
+\RequireVersions{
+  *{application}{TeX}     {1990/03/25 v3.x}
+  *{format} {LaTeX2e}     {2018-04-01 v2.e}
+  *{package}{snapshot}    {2002/03/05 v1.14}
+  *{class}  {article}     {2014/09/29 v1.4h}
+  *{file}   {size11.clo}  {2014/09/29 v1.4h}
+  *{file}   {packages.tex}{0000/00/00 v0.0}
+  *{package}{indentfirst} {1995/11/23 v1.03}
+  *{package}{shellesc}    {2016/06/07 v0.02a}
+  *{package}{xpatch}      {2012/10/02 v0.3}
+  *{package}{expl3}       {2018-06-14 v3}
+  *{file}   {expl3-code.tex}{2018-06-14 v3}
+  *{file}   {l3pdfmode.def}{2018-06-14 v3}
+  *{package}{xparse}      {2018-05-12 v3}
+  *{package}{etoolbox}    {2018/02/11 v2.5e}
+  *{package}{translator}  {2018/01/04 v1.12}
+  *{package}{keyval}      {2014/10/28 v1.15}
+  *{package}{float}       {2001/11/08 v1.3d}
+  *{package}{glossaries}  {2018/06/01 v4.40}
+  *{package}{ifthen}      {2014/09/29 v1.1c}
+  *{package}{xkeyval}     {2014/12/03 v2.7a}
+  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
+  *{package}{mfirstuc}    {2017/11/14 v2.06}
+  *{package}{textcase}    {2004/10/07 v0.07}
+  *{package}{xfor}        {2009/02/05 v1.05}
+  *{package}{datatool-base}{2018/04/16 v2.30}
+  *{package}{amsmath}     {2017/09/02 v2.17a}
+  *{package}{amstext}     {2000/06/29 v2.01}
+  *{package}{amsgen}      {1999/11/30 v2.0}
+  *{package}{amsbsy}      {1999/11/29 v1.2d}
+  *{package}{amsopn}      {2016/03/08 v2.02}
+  *{package}{substr}      {2009/10/20 v1.2}
+  *{package}{datatool-fp} {2018/04/16 v2.30}
+  *{package}{fp}          {1995/04/02 v0.0}
+  *{package}{defpattern}  {1994/10/12 v0.0}
+  *{package}{fp-basic}    {1996/05/13 v0.0}
+  *{package}{fp-addons}   {1995/03/15 v0.0}
+  *{package}{fp-snap}     {1995/04/05 v0.0}
+  *{package}{fp-exp}      {1995/04/03 v0.0}
+  *{package}{fp-trigo}    {1995/04/14 v0.0}
+  *{package}{fp-pas}      {1994/08/29 v0.0}
+  *{package}{fp-random}   {1995/02/23 v0.0}
+  *{package}{fp-eqn}      {1995/04/03 v0.0}
+  *{package}{fp-upn}      {1996/10/21 v0.0}
+  *{package}{fp-eval}     {1995/04/03 v0.0}
+  *{package}{glossaries-compatible-307}{2018/06/01 v4.40}
+  *{package}{tracklang}   {2018/05/13 v1.3.6}
+  *{file}   {tracklang.tex}{2018/05/13 v1.3.6}
+  *{file}   {glossaries-english.ldf}{2014/11/23 v1.0}
+  *{file}   {glossaries-french.ldf}{2016/12/12 v1.1}
+  *{package}{glossary-hypernav}{2018/06/01 v4.40}
+  *{package}{glossary-list}{2018/06/01 v4.40}
+  *{package}{glossary-long}{2018/06/01 v4.40}
+  *{package}{longtable}   {2014/10/28 v4.11}
+  *{package}{glossary-super}{2018/06/01 v4.40}
+  *{package}{supertabular}{2004/02/20 v4.1e}
+  *{package}{glossary-tree}{2018/06/01 v4.40}
+  *{package}{biblatex}    {2018/03/04 v3.11}
+  *{package}{pdftexcmds}  {2018/01/30 v0.27}
+  *{package}{infwarerr}   {2016/05/16 v1.4}
+  *{package}{ifluatex}    {2016/05/16 v1.4}
+  *{package}{ltxcmds}     {2016/05/16 v1.23}
+  *{package}{ifpdf}       {2017/03/15 v3.2}
+  *{package}{kvoptions}   {2016/05/16 v3.12}
+  *{package}{kvsetkeys}   {2016/05/16 v1.17}
+  *{package}{etexcmds}    {2016/05/16 v1.6}
+  *{package}{logreq}      {2010/08/04 v1.0}
+  *{file}   {logreq.def}  {2010/08/04 v1.0}
+  *{package}{url}         {2013/09/16 v3.4}
+  *{package}{xstring}     {2013/10/13 v1.7c}
+  *{file}   {blx-dm.def}  {2018/03/04 v3.11}
+  *{file}   {blx-unicode.def}{0000/00/00 v0.0}
+  *{file}   {blx-compat.def}{2018/03/04 v3.11}
+  *{file}   {biblatex.def}{2018/03/04 v3.11}
+  *{file}   {standard.bbx}{2018/03/04 v3.11}
+  *{file}   {numeric.bbx} {2018/03/04 v3.11}
+  *{file}   {numeric.cbx} {2018/03/04 v3.11}
+  *{file}   {biblatex.cfg}{0000/00/00 v0.0}
+  *{package}{comment}     {0000/00/00 v0.0}
+  *{package}{graphicx}    {2017/06/01 v1.1a}
+  *{package}{graphics}    {2017/06/25 v1.2c}
+  *{package}{trig}        {2016/01/03 v1.10}
+  *{file}   {graphics.cfg}{2016/06/04 v1.11}
+  *{file}   {luatex.def}  {2018/01/08 v1.0l}
+  *{package}{babel}       {2018/06/05 v3.22}
+  *{file}   {french.ldf}  {2018/07/17 v3.5b}
+  *{file}   {english.ldf} {2017/06/06 v3.3r}
+  *{package}{scalefnt}    {0000/00/00 v0.0}
+  *{package}{fontspec}    {2018/07/30 v2.6h}
+  *{package}{fontspec-luatex}{2018/07/30 v2.6h}
+  *{package}{fontenc}     {0000/00/00 v0.0}
+  *{file}   {tuenc.def}   {2017/04/05 v2.0i}
+  *{file}   {fontspec.cfg}{0000/00/00 v0.0}
+  *{package}{abstract}    {2009/06/08 v1.2a}
+  *{package}{fancyhdr}    {2017/06/30 v3.9a}
+  *{package}{appendix}    {2009/09/02 v1.2b}
+  *{package}{listings}    {2015/06/04 v1.6}
+  *{package}{lstmisc}     {2015/06/04 v1.6}
+  *{file}   {listings.cfg}{2015/06/04 v1.6}
+  *{package}{todonotes}   {2012/07/25 v0.0}
+  *{package}{xcolor}      {2016/05/11 v2.12}
+  *{file}   {color.cfg}   {2016/01/02 v1.6}
+  *{package}{tikz}        {2015/08/07 v3.0.1a}
+  *{package}{pgf}         {2015/08/07 v3.0.1a}
+  *{package}{pgfrcs}      {2015/08/07 v3.0.1a}
+  *{package}{everyshi}    {2001/05/15 v3.00}
+  *{file}   {pgfrcs.code.tex}{0000/00/00 v0.0}
+  *{package}{pgfcore}     {2010/04/11 v3.0.1a}
+  *{package}{pgfsys}      {2014/07/09 v3.0.1a}
+  *{file}   {pgfsys.code.tex}{0000/00/00 v0.0}
+  *{file}   {pgfsyssoftpath.code.tex}{2013/09/09 v1.9)}
+  *{file}   {pgfsysprotocol.code.tex}{2006/10/16 v1.4)}
+  *{file}   {pgfcore.code.tex}{0000/00/00 v0.0}
+  *{package}{pgfcomp-version-0-65}{2007/07/03 v3.0.1a}
+  *{package}{pgfcomp-version-1-18}{2007/07/23 v3.0.1a}
+  *{package}{pgffor}      {2013/12/13 v3.0.1a}
+  *{package}{pgfkeys}     {0000/00/00 v0.0}
+  *{file}   {pgfkeys.code.tex}{0000/00/00 v0.0}
+  *{package}{pgfmath}     {0000/00/00 v0.0}
+  *{file}   {pgfmath.code.tex}{0000/00/00 v0.0}
+  *{file}   {pgffor.code.tex}{0000/00/00 v0.0}
+  *{file}   {tikz.code.tex}{0000/00/00 v0.0}
+  *{package}{calc}        {2017/05/25 v4.3}
+  *{package}{minted}      {2017/07/19 v2.5}
+  *{package}{fvextra}     {2017/07/08 v1.3.1}
+  *{package}{fancyvrb}    {2008/02/07 v0.0}
+  *{package}{upquote}     {2012/04/19 v1.3}
+  *{package}{textcomp}    {2017/04/05 v2.0i}
+  *{file}   {ts1enc.def}  {2001/06/05 v3.0e}
+  *{package}{lineno}      {2005/11/02 v4.41}
+  *{package}{ifplatform}  {2017/10/13 v0.4a}
+  *{package}{catchfile}   {2016/05/16 v1.7}
+  *{file}   {main.w18}    {0000/00/00 v0.0}
+  *{package}{framed}      {2011/10/22 v0.96:}
+  *{package}{enumerate}   {2015/07/23 v3.00}
+  *{package}{pdfpages}    {2017/10/31 v0.5l}
+  *{package}{eso-pic}     {2018/04/12 v2.0h}
+  *{package}{atbegshi}    {2016/06/09 v1.18}
+  *{file}   {ppluatex.def}{2017/10/31 v0.5l}
+  *{package}{epigraph}    {2009/09/02 v1.5c}
+  *{package}{hyperref}    {2018/02/06 v6.86b}
+  *{package}{hobsub-hyperref}{2016/05/16 v1.14}
+  *{package}{hobsub-generic}{2016/05/16 v1.14}
+  *{package}{hobsub}      {2016/05/16 v1.14}
+  *{package}{ifvtex}      {2016/05/16 v1.6}
+  *{package}{intcalc}     {2016/05/16 v1.2}
+  *{package}{kvdefinekeys}{2016/05/16 v1.4}
+  *{package}{luatex-loader}{2016/05/16 v0.6}
+  *{package}{pdfescape}   {2016/05/16 v1.14}
+  *{package}{bigintcalc}  {2016/05/16 v1.4}
+  *{package}{bitset}      {2016/05/16 v1.2}
+  *{package}{uniquecounter}{2016/05/16 v1.3}
+  *{package}{letltxmacro} {2016/05/16 v1.5}
+  *{package}{hopatch}     {2016/05/16 v1.3}
+  *{package}{xcolor-patch}{2016/05/16 v0.0}
+  *{package}{atveryend}   {2016/05/16 v1.9}
+  *{package}{refcount}    {2016/05/16 v3.5}
+  *{package}{hycolor}     {2016/05/16 v1.8}
+  *{package}{ifxetex}     {2010/09/12 v0.6}
+  *{package}{auxhook}     {2016/05/16 v1.4}
+  *{file}   {pd1enc.def}  {2018/02/06 v6.86b}
+  *{file}   {hyperref.cfg}{2002/06/06 v1.2}
+  *{file}   {hluatex.def} {2018/02/06 v6.86b}
+  *{package}{rerunfilecheck}{2016/05/16 v1.8}
+  *{package}{numprint}    {2012/08/20 v1.39}
+  *{package}{array}       {2018/04/30 v2.4h}
+  *{package}{csquotes}    {2018/04/13 v5.2d}
+  *{file}   {csquotes.def}{2018/04/13 v5.2d}
+  *{file}   {csquotes.cfg}{0000/00/00 v0.0}
+  *{package}{shorttoc}    {2002/08/20 v1.3}
+  *{package}{microtype}   {2018/01/14 v2.7a}
+  *{file}   {microtype-luatex.def}{2018/01/14 v2.7a}
+  *{file}   {microtype.cfg}{2018/01/14 v2.7a}
+  *{package}{nowidow}     {0000/00/00 v0.0}
+  *{package}{paralist}    {2017/01/22 v2.7}
+  *{package}{diagbox}     {2016/12/28 v2.2}
+  *{package}{pict2e}      {2016/02/05 v0.3b}
+  *{file}   {pict2e.cfg}  {2016/02/05 v0.1u}
+  *{file}   {p2e-luatex.def}{2016/02/05 v0.1u}
+  *{package}{adjustbox}   {2018/04/08 v1.1}
+  *{package}{adjcalc}     {2012/05/16 v1.1}
+  *{package}{trimclip}    {2018/04/08 v1.1}
+  *{package}{collectbox}  {2012/05/17 v0.4b}
+  *{file}   {tc-pgf.def}  {2018/04/08 v2.1}
+  *{package}{ifoddpage}   {2016/04/23 v1.1}
+  *{package}{varwidth}    {2009/03/30 v0.92;}
+  *{package}{nag}         {2011/11/25 v0.7}
+  *{file}   {nag-l2tabu.cfg}{2010/05/17 v2.11}
+  *{file}   {nag-orthodox.cfg}{2006/04/19 v1.8}
+  *{file}   {parameters.tex}{0000/00/00 v0.0}
+  *{package}{geometry}    {2018/04/16 v5.8}
+  *{file}   {puenc.def}   {2018/02/06 v6.86b}
+  *{file}   {fonctions.tex}{0000/00/00 v0.0}
+  *{file}   {glossaire.tex}{0000/00/00 v0.0}
+  *{file}   {english.lbx} {2018/03/04 v3.11}
+  *{file}   {french.lbx}  {2018/03/04 v3.11}
+  *{file}   {ts1cmr.fd}   {2014/09/29 v2.5h}
+  *{file}   {main.bbl}    {0000/00/00 v0.0}
+  *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
+  *{package}{epstopdf-base}{2016/05/15 v2.6}
+  *{package}{grfext}      {2016/05/16 v1.2}
+  *{file}   {epstopdf-sys.cfg}{2010/07/13 v1.3}
+  *{package}{pdflscape}   {2016/05/14 v0.11}
+  *{package}{lscape}      {2000/10/22 v3.01}
+  *{package}{nameref}     {2016/05/21 v2.44}
+  *{package}{gettitlestring}{2016/05/16 v1.5}
+  *{file}   {main.out}    {0000/00/00 v0.0}
+  *{file}   {main.out}    {0000/00/00 v0.0}
+  *{file}   {content/cover.tex}{0000/00/00 v0.0}
+  *{file}   {mt-cmr.cfg}  {2013/05/19 v2.2}
+  *{file}   {img/epsi.jpg}{0000/00/00 v0.0}
+  *{file}   {img/onepoint.jpg}{0000/00/00 v0.0}
+  *{file}   {main.info}   {0000/00/00 v0.0}
+  *{file}   {content/remerciements.tex}{0000/00/00 v0.0}
+  *{file}   {docs/non-plagiat.pdf}{0000/00/00 v0.0}
+  *{file}   {docs/non-plagiat.pdf}{0000/00/00 v0.0}
+  *{file}   {docs/non-plagiat.pdf}{0000/00/00 v0.0}
+  *{file}   {docs/non-plagiat.pdf}{0000/00/00 v0.0}
+  *{file}   {content/resume.tex}{0000/00/00 v0.0}
+  *{file}   {content/abstract.tex}{0000/00/00 v0.0}
+  *{file}   {content/introduction.tex}{0000/00/00 v0.0}
+  *{file}   {content/cycle_vie_application.tex}{0000/00/00 v0.0}
+  *{file}   {img/cycle-vie-projet.png}{0000/00/00 v0.0}
+  *{file}   {img/gestionProjet.jpg}{0000/00/00 v0.0}
+  *{file}   {img/gantt.png}{0000/00/00 v0.0}
+  *{file}   {content/mise_en_oeuvre.tex}{0000/00/00 v0.0}
+  *{file}   {img/etsy.png}{0000/00/00 v0.0}
+  *{file}   {img/etsy-github.png}{0000/00/00 v0.0}
+  *{file}   {img/standards.png}{0000/00/00 v0.0}
+  *{file}   {content/automatiser.tex}{0000/00/00 v0.0}
+  *{file}   {img/devops-objective.jpg}{0000/00/00 v0.0}
+  *{file}   {img/no-integration-tests.png}{0000/00/00 v0.0}
+  *{file}   {img/feature-branching.png}{0000/00/00 v0.0}
+  *{file}   {content/conclusion.tex}{0000/00/00 v0.0}
+  *{file}   {img/time-worth.png}{0000/00/00 v0.0}
+  *{file}   {main.acr}    {0000/00/00 v0.0}
+  *{file}   {main.gls}    {0000/00/00 v0.0}
+  *{file}   {content/annexes.tex}{0000/00/00 v0.0}
+  *{file}   {img/cycle-vie-projet.png}{0000/00/00 v0.0}
+  *{file}   {img/modules.png}{0000/00/00 v0.0}
+  *{file}   {img/build-continu.png}{0000/00/00 v0.0}
+  *{file}   {img/release.png}{0000/00/00 v0.0}
+  *{file}   {img/devops-matrice.jpg}{0000/00/00 v0.0}
+  *{file}   {main.out.pyg}{0000/00/00 v0.0}
+  *{file}   {main.out.pyg}{0000/00/00 v0.0}
+  *{file}   {main.out.pyg}{0000/00/00 v0.0}
+}
