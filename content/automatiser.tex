@@ -277,7 +277,19 @@ On va ensuite pouvoir déposer cet unique livrable\footnote{Comme indiqué dans 
 
 La livraison continue ne permet ainsi pas de déploiement automatique de l'application, mais il est possible de déclencher manuellement le déploiement, qui va alors récupérer le livrable construit précédemment et procéder à son déploiement. Une fois le déploiement terminé, le livrable sera alors promu sur l'\gls{artifactory} selon l'environnement sur lequel la livraison a été effectuée.
 
+\todo{livraison continue}
+
+Parler du la mise en place après déploiement avec Jenkins + ansible.
+
+Parler du rollback en cas d'échec de déploiement.
+
 \subsubsection{Déploiement continu}
+
+La différence entre le déploiement continu et l'intégration réside dans l'automatisation du déploiement. La ou la livraison continue ne permet pas de déployer de façon automatique, le déploiement continu va permettre de livrer toute version qui passe tous les critères définis : passage des tests, qualité de code\ldots
+
+Cette méthode de déploiement, bien qu'avantageuse puisque les différentes versions se déploient continuellement, peut ne pas être adaptée à toutes les entreprises et besoin. Par exemple, certains clients souhaitent peut-être attendre, pour des raisons commerciales ou légales, et ne souhaitent donc pas mettre en place ce système. De plus, pour pouvoir effectuer du déploiement continu, il est nécessaire de s'assurer que les tests automatisés soient nombreux et valident les différents cas d'usage de l'application, étant donné qu'il n'y aura pas d'interaction humaine pour le déploiement en production d'une version.
+
+Un des avantages au déploiement continu est que l'on peut, couplé à du monitoring, gérer les montées en charge (les pics de trafic) plus facilement que manuellement puisqu'il suffit alors d'instancier et de provisionner alors un nouvel environnement puis de répartir le pic de charge sur les différents serveurs. Cela demande une mise en place initiale un peu plus complexe mais permet de mieux supporter des pics de trafic.
 
 \todo{Déploiement continu}
 
@@ -297,9 +309,17 @@ scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ans
 
 \subsubsection{Monitoring}
 
+Lors de déploiement, de livraison ou d'intégration continue, il est nécessaire de savoir si les déploiements sont complets et de manière générale, comment répond l'application une fois déployée, afin d'être alerté en cas d'erreur ou d'incident.
+
+Il est alors important de mettre en place des logs et du monitoring.
+
 \todo{Monitoring}
 
 % https://prometheus.io/
+
+taux de charges CPU / i/o / ram / disque 
+
+surveiller trafic avec retour 200 / 400 / 500
 
 Le reporting de bug automatique (sentry.io)
 
