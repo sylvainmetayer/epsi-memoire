@@ -301,8 +301,11 @@ La gestion de l'infrastructure fait également partie de l'automatisation d'un p
 
 avant server bare metal à config a la main
 
-ùaontenant in décrit ce dont a besoin de lserveir et on se sert de docker ansible terraform \& pour provisionner des machine virtuelle
+maintenant on décrit ce dont a besoin et on se sert de docker ansible terraform \& pour provisionner des machines virtuelles
 
+\gls{IaC} permet de passer de configuration manuelle à provisionnement automatique. Permet d'éviter les wiki non mis à jour d'infrastructure parce que patch déployé à l'arrache sur le serveur.
+
+Avantage : versionnable donc on peut consulter les modifications et l'évolution. Reproductibilité : automatique donc on peut reproduire à l'identique. facilite provisionnement
 
 \gls{IaC} => permet de découpler architecture ? % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
 
@@ -320,9 +323,13 @@ Il est alors important de mettre en place des logs et du monitoring. Cela peut s
 
 % https://12factor.net/logs
 
+traitement des logs selon 12factor serait de faire tout vers stdout stderr et laisser les outils de monitoring exécution (docker) gérer l'écriture dans des fichiers.
+
 surveiller trafic avec retour 200 / 400 / 500
 
 Le reporting de bug automatique (sentry.io)
+
+notification (mattermost, email\ldots) en cas d'erreur. Possiblité d'enclencher des actions lorsque des seuils sont dépassées (rollback, provsionnement nouveaux serveurs...)
 
 Monitoring : monit pour monitorer l'état d'application ? (perso)
 
