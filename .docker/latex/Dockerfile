@@ -17,6 +17,8 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
 
 ENV PATH="/usr/local/texlive/2019/bin/x86_64-linux:${PATH}"
 
+RUN mkdir -p /img
+
 ENV HOME /data
 WORKDIR /data
 

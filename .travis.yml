@@ -7,6 +7,7 @@ env:
     - TODO_NAME=report_with_todo.pdf
     - PDF_NAME=M19_SYLVAINMETAYER.pdf
     - PAPER_NAME=M19_SYLVAINMETAYER_PAPER.pdf
+    - SOUTENANCE_NAME=soutenance.pdf
 
 services:
   - docker
@@ -22,6 +23,7 @@ script:
   - make docker-build && mv main.pdf $PDF_NAME
   - make paper
   - make docker-build && mv main.pdf $PAPER_NAME
+  - make docker-soutenance && mv soutenance/main.pdf $SOUTENANCE_NAME
 
 deploy:
   - provider: releases
@@ -33,6 +35,7 @@ deploy:
       - ./$PDF_NAME
       - ./$PAPER_NAME
       - ./$TODO_NAME
+      - ./$SOUTENANCE_NAME
     on:
       branch: master
       tags: true

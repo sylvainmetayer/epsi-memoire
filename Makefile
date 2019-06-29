@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: plantuml
+.PHONY: plantuml soutenance
 filename=main
 
 build: clean ## Build the pdf without docker
@@ -15,6 +15,12 @@ docker-build: clean ## Build the pdf with docker support
 	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "sylvainmetayer/latex-debian" biber "${filename}"
 	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "sylvainmetayer/latex-debian" lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
 	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "sylvainmetayer/latex-debian" lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
+
+soutenance: ## Build the presentation
+	+$(MAKE) build -C soutenance
+
+docker-soutenance: ## Build the presentation with docker
+	+$(MAKE) docker-build -C soutenance
 
 version: ## Print latest tag
 	@echo -n "Dernière version : "
@@ -51,7 +57,7 @@ build-docker-plantuml: ## Build Plantuml docker image
 	docker build -t plantuml .docker/plantuml
 	docker tag plantuml sylvainmetayer/plantuml
 
-push-image: build-docker-latex build-docker-plantuml ## Push docker image
+push-image: #build-docker-latex build-docker-plantuml ## Push docker image
 	docker push sylvainmetayer/latex-debian
 	docker push sylvainmetayer/plantuml
 

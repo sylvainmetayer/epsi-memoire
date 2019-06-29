@@ -1,0 +1,66 @@
+% !TeX program = lualatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = fr_FR
+% !TeX root = main.tex
+% Source : https://fr.overleaf.com/latex/templates/template-defesa-ipb-utfpr/dcyxxfxxwfmv
+
+\documentclass[xcolor={dvipsnames}]{beamer}
+
+\mode<presentation> {
+	\usepackage{bookmark}
+    \usepackage[french]{babel}
+    \usepackage[autostyle]{csquotes}
+
+    \usetheme{Madrid}
+    \usecolortheme[named=Farbe]{} % use a pre defined theme
+    %\usecolortheme{ipbutfpr} % use a custom color theme
+
+    \setbeamertemplate{caption}[numbered]
+    \setbeamertemplate{frametitle continuation}{\gdef\beamer@frametitle{}}
+
+    \setbeamertemplate{footline}{
+        \leavevmode%
+        \hbox{%
+            \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+                \usebeamerfont{author in head/foot}\insertshortauthor
+            \end{beamercolorbox}%
+            \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+                \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{6em}
+                \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+            \end{beamercolorbox}
+        }%
+        \vskip0pt%
+    }
+
+    \setbeamertemplate{navigation symbols}{}
+}
+
+\title{Une soutenance}
+\author{Sylvain METAYER}
+
+\institute{\normalsize
+	EPSI \\
+    onepoint \\
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.20\textwidth]{../img/onepoint.jpg}
+        \includegraphics[width=0.20\textwidth]{../img/epsi.jpg}
+    \end{figure}
+}
+
+\date{\small
+Septembre 2019\\ coucou}
+
+\begin{document}
+    \frame{\titlepage}
+
+    %----SLIDES----%
+    \input{slides/introduction}
+    \input{slides/test}
+    \input{slides/exemple}
+    \input{slides/autre-exemple}
+    \input{slides/conclusion}
+    %--------------%
+
+\end{document}
