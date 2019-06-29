@@ -21,7 +21,7 @@ version: ## Print latest tag
 	@git describe --abbrev=0 --tags
 
 tag: version ## Tag a new version
-	@echo "Numéro de version?"; read tag; echo "Message du tag ?"; read message; git tag -a $$tag -m "$$message"; git push --tags
+	@echo "Numéro de version?"; read tag; echo "Message du tag ?"; read message; git tag -a $$tag -m "$$message"; git push; git push --tags
 
 clean: soft_clean ## Clean all files, including generated pdf
 	@rm -f ${filename}.pdf
