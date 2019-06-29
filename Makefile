@@ -57,7 +57,7 @@ build-docker-plantuml: ## Build Plantuml docker image
 	docker build -t plantuml .docker/plantuml
 	docker tag plantuml sylvainmetayer/plantuml
 
-push-image: #build-docker-latex build-docker-plantuml ## Push docker image
+push-image: build-docker-latex build-docker-plantuml ## Push docker image
 	docker push sylvainmetayer/latex-debian
 	docker push sylvainmetayer/plantuml
 
