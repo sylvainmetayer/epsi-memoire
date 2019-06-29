@@ -291,35 +291,34 @@ Cette méthode de déploiement, bien qu'avantageuse puisque les différentes ver
 
 Un des avantages au déploiement continu est que l'on peut, couplé à du monitoring, gérer les montées en charge (les pics de trafic) plus facilement que manuellement puisqu'il suffit alors d'instancier et de provisionner alors un nouvel environnement puis de répartir le pic de charge sur les différents serveurs. Cela demande une mise en place initiale un peu plus complexe mais permet de mieux supporter des pics de trafic.
 
-\todo{Déploiement continu}
-
-deploiement de packages continu dès leur création et validation. Système de promotion auto.
-
-Métriques pour attester déroulement OK => Uptime, temps déploiement, ratio rollback suite à déploiement foiré\ldots
-
-scalabilité, résilience. provisionner de nouveaux serveurs rapidement avec Ansible par exemple. Inconvénient : nécessite une architecture découplée, si on vient a faire un changemnt (ex: rajouter un serveur redis) mais qu'on doit attendre 2 semaines pour valider ce changement, on pert intérêt
+Le déploiement continu est donc une extension de la livraison continue, avec un système de promotion automatique sur les différents environnements. Il est alors essentiel de disposer d'un système de métrique et de monitoring efficace pour être au courant d'éventuel problème, comme cela sera évoqué dans la sous-partie \frquote{\nameref{paragraph:monitoring}} (p. \pageref{paragraph:monitoring})
 
 \subsubsection{Gestion de l'infrastructure}
 
+La gestion de l'infrastructure fait également partie de l'automatisation d'un projet.
+
 \todo{Gestion de l'infrastructure}
+
+avant server bare metal à config a la main
+
+ùaontenant in décrit ce dont a besoin de lserveir et on se sert de docker ansible terraform \& pour provisionner des machine virtuelle
+
 
 \gls{IaC} => permet de découpler architecture ? % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
 
 % https://aws.amazon.com/fr/cloudformation/ ----------- https://www.terraform.io/
 
-\subsubsection{Monitoring}
+\subsubsection{Monitoring}\label{paragraph:monitoring}
 
 Lors de déploiement, de livraison ou d'intégration continue, il est nécessaire de savoir si les déploiements sont complets et de manière générale, comment répond l'application une fois déployée, afin d'être alerté en cas d'erreur ou d'incident.
 
-Il est alors important de mettre en place des logs et du monitoring.
+Il est alors important de mettre en place des logs et du monitoring. Cela peut servir à suivre plusieurs comportements, tel que le taux de \gls{CPU} utilisé par le serveur, son utilisation du disque ou encore sa consommation de \gls{RAM}.
 
 \todo{Monitoring}
 
 % https://prometheus.io/
 
 % https://12factor.net/logs
-
-taux de charges CPU / i/o / ram / disque 
 
 surveiller trafic avec retour 200 / 400 / 500
 
@@ -335,18 +334,16 @@ Un projet automatisé de A à Z peut être testé intégralement, si la sécurit
 
 En effet, si l'on vient à déployer de façon automatique, il va falloir que les outils déployant et testant automatiquement l'application aient accès aux données de l'application. Ces dernières peuvent parfois contenir des tokens, des clés d'\gls{API}\ldots Il faut alors réfléchir à la façon de sécuriser l'infrastructure. 
 
-Il faut tout d'abord restreindre les accès aux différents outils d'automatisation. Pour cela, on peut se servir d'un pare feu, qui va filtrer les connexions entrantes sur les différents serveurs. On peut également mettre en place une \gls{DMZ}, qui permet ainsi de séparer le réseau interne de celui externe, connecté à Internet et qui contient les applications ayant besoin d'être accessible via l'extérieur. En plus de cela, on peut également restreindre les accès aux différentes applications via la mise en place d'un \gls{VPN}, qui permet l'accès aux applications via une connexion sécurisée, comme si l'on était présent sur site et évite ainsi d'avoir à exposer les applications sur Internet. Toutes ces mesures sont valable pour tout type d'application, automatisée ou non.
+Il faut tout d'abord restreindre les accès aux différents outils d'automatisation. Pour cela, on peut se servir d'un pare feu, qui va filtrer les connexions entrantes sur les différents serveurs. On peut également mettre en place une \gls{DMZ}, qui permet ainsi de séparer le réseau interne de celui externe, connecté à Internet et qui contient les applications ayant besoin d'être accessible via l'extérieur. En plus de cela, on peut également restreindre les accès aux différentes applications via la mise en place d'un \gls{VPN}, qui permet l'accès aux applications via une connexion sécurisée, comme si l'on était présent sur site et évite ainsi d'avoir à exposer les applications sur Internet. Toutes ces mesures sont valables pour tout type d'application, automatisée ou non. 
+
+Il est également possible de mettre en place un bastion qui permet alors de restreindre les accès \gls{SSH} aux machines pour effectuer des tâches d'administrations. En effet, avec un bastion, on ne peut pas se connecter directement en \gls{SSH} sur les machines hébergeant les applications. Il faut passer par une machine dédiée, exposée à Internet (au contraire des autres, qui sont sur un réseau privé) et dont la sécurité est souvent renforcée. Un des avantages est que l'on peut éteindre le bastion une fois les tâches d'administration effectuées et ainsi couper tout accès \gls{SSH} sur les machines.
+
+\newImage{0.30}{bastion.png}{Illustration d'un réseau avec un bastion -  \citetitle{bastion} \cite{bastion} \url{https://blog.octo.com/le-bastion-ssh/}}{bastion}
 
 On peut (\emph{et l'on doit}) aussi se référer à la documentation des outils d'automatisation utilisés. Par exemple, la documentation de Jenkins\footnote{\url{https://jenkins.io/doc/}} ainsi que le livre numérique \citetitle{jenkins-guide} \cite[chapitre 7, Sécuriser Jenkins]{jenkins-guide} décrivent les façons de sécuriser l'outil et éviter ainsi que le serveur d'intégration et de déploiement continu ne serve de vecteur d'attaque pour compromettre l'application (\emph{ou pire, l'entreprise entière, étant donné qu'un système d'intégration continu est souvent utilisé pour plusieurs projets}). Une des premières mesures est de restreindre les accès utilisateurs, en appliquant le principe de moindre privilège (voir \citetitle{anssi-least-privilege} \cite{anssi-least-privilege}). Cela signifie donner uniquement les droits strictement nécessaire. Si un utilisateur a simplement besoin de consulter les rapports, il n'y a pas d'intérêt de lui donner les droits pour pouvoir éditer la configuration permettant de générer ces derniers.
 
 Concernant les interactions entre le serveur d'intégration continue, le gestionnaire de version et les différents serveurs, il peut être nécessaire de créer un compte de service (\emph{compte système, n'étant relié à aucun utilisateur et disposant des droits minimaux pour l'exécution de la tâche pour lequel il est utilisé}) avec des accès par clé \gls{SSH} utilisés pour les déploiements. L'utilisation d'une clé \gls{SSH} plutôt qu'un mot de passe est obligatoire puisque la demande de mot de passe se fait de façon interactive (et requiert donc une intervention utilisateur)\footnote{Même s'il est possible de contourner ce fonctionnement, par exemple avec sshpass, il est recommandé d'utiliser des clés \gls{SSH}}. De même, l'accès aux serveurs doit être limité et surtout contrôlé. Il faut ainsi préférer des comptes nominatif pour les personnes intervenant manuellement sur le serveur, même si leur création peut s'avérer plus fastidieuse plutôt qu'un seul compte administrateur partagé entre les membres de l'équipe. Ainsi, si un compte vient être compromis, il est plus facile de révoquer ses accès plutôt que de bloquer l'accès à tous les membres de l'équipe.
 
-Un autre aspect à prendre en compte, selon la confidentialité requise par les projets, est l'endroit ou le code source du projet va transiter. Si par exemple, un prestataire ne dispose pas de son propre serveur d'intégration continue mais possède une offre chez un autre prestataire (TravisCI par exemple), il faut être prudent, puisque le code sera alors à un moment transmis en dehors du réseau de l'entreprise. Selon les projets, il peut être nécessaire d'auto-héberger des solutions en interne afin de garder une maitrise totale de la chaine d'industrialisation.
-
 Finalement et comme on peut le lire dans \citetitle{jenkins-security} \cite{jenkins-security}, il est important de savoir les limites de l'outil que l'on utilise et à qui on en donne le contrôle, sous peine de se retrouver à donner des accès privilégiés à une personne à qui l'on pensait simplement donner des droits d'exécution. L'exemple donné dans cet article\footnote{L'exemple résumé est le suivant : contourner le fonctionnement d'une demande d'interaction utilisateur pour pouvoir exécuter des commandes sur le serveur, dans une boucle, ce qui revient alors à disposer d'un terminal} est totalement valable, puisqu'un développeur qui peut renseigner des paramètres avant (ou durant) l'exécution d'un job peut tout à fait y inclure des commandes, qui peuvent potentiellement être exécutées et amener à des fuites de secrets, identifiants ou mot de passe\ldots{} 
 
-\todo[color=cyan]{Sécurité, 1-2 page }
-
-OWASP
-
-bastion qui peut permettre de couper l'accès à l'infra.
+Concernant les applications web, l'organisation \gls{OWASP}\footnote{\url{https://www.owasp.org}} est reconnue pour ses conseils et bonnes pratique dans le domaine de la sécurité. Elle fournit des outils afin de tester ses applications lors de leur développement (tel que ZAP\footnote{Zed Attack Proxy} qui permet de détecter automatiquement les vulnérabilités connues lors du développement d'applications web) ou encore des listes de bonnes pratiques tel que par exemple les dix failles de sécurité les plus communes dans un projet et comment s'en prémunir\footnote{\url{https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project}}
