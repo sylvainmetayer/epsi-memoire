@@ -103,10 +103,13 @@
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
 	\input{content/conclusion}
 \newpage
+	\pagenumbering{Roman} % Numérotation romaine pour les bibliographies & co
 	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
 	\printglossary[type=\acronymtype,title={Acronymes}]
-	\printglossary[type=main,title={Glossaire}] \label{glossaire}
-	\addcontentsline{toc}{section}{Références bibliographiques} \label{bibliographies}
+	\addcontentsline{toc}{section}{Glossaire}\label{glossaire}
+	\printglossary[type=main]\label{}
+\clearpage
+	\addcontentsline{toc}{section}{Références bibliographiques}\label{bibliographies}
 	\nocite{*} % Ajout de toutes les références bibliographiques non citées jusqu'à présent.
 	\printbibliography[type=book,title={Références bibliographiques}]
 	\addcontentsline{toc}{section}{Références webographiques}
