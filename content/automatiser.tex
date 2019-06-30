@@ -163,6 +163,33 @@ Souvent réalisé par le client, il va consister, au travers d'une campagne de t
 
 Il est néanmoins possible que certain test d'acceptation soit validé en amont, comme l'exemple de la calculatrice donné dans la partie \frquote{\nameref{test-composant}} (p. \pageref{test-composant}) qui va valider la \emph{règle métier} (effectuer une opération) tout en validant le bon fonctionnement du code et ses cas limites.
 
+\subsubsection{Les tests par mutation}
+
+L'objectif des tests par mutation est de vérifier la pertinence des cas de tests. En effet, une couverture de 100\% de code via des tests ne garantit pas que 100\% du code soit testé. Voici son déroulement : 
+
+\begin{enumerate}
+	\setlength\itemsep{0em}
+	\item On part d'une classe métier sur laquelle on souhaite vérifier la pertinence de nos tests.
+	\item On détermine les opérations possibles à effectuer : changement de condition, changement d'opérateurs (< ; > ; <= ; >= ; != ; == ; \ldots), \ldots
+	\item On génère alors des \frquote{mutants} qui vont correspondre à tous les changements possibles selon les critères définis à l'étape précédente. C'est une étape qui peut être très longue à générer selon le nombre de critères sélectionnés. Une fois cela effectué, on va donc disposer de plusieurs classes \frquote{mutantes}.
+	\item On lance alors notre test contre la classe métier originale, et on s'assure que les tests soient valides.
+	\item On lance ensuite les tests sur chacune des classes \frquote{mutantes}.
+\end{enumerate}
+
+Logiquement, le code ayant changé, des erreurs dans les tests devraient alors apparaitre dans un ou plusieurs cas. Si tous les tests sont valides, cela veut dire que le test ignore un ou plusieurs comportements de la classe et qu'il faut revoir la pertinence des tests.
+
+%\paragraph{Chaos engineering}
+
+%Le Chaos engineering permet de tester la résilience des moyennes ou grandes infrastructures. L'objectif est de simuler une panne (serveur, disque dur en panne, réseau indisponible\ldots) dans un contexte de production et de vérifier que l'application est toujours fonctionnelle. Évidemment, cela ne se fait pas sans préparation. 
+
+%\begin{enumerate}
+%	\setlength\itemsep{0em}
+%	\item Tout d'abord, il s'agit de déterminer la partie de l'infrastructure que l'on souhaite tester : l'application seule, dans un environnement de production global, sur une partie des serveurs seulement, sur le load balancer, \ldots?
+%	\item Il faut ensuite définir des métriques qui valideront le test. Ce sont également ces métriques qui peuvent déterminer 
+%\end{enumerate}
+
+%Il s'agit de trouver les petites erreurs en les simulant et de les corriger avant qu'elles n'affectent une plus grande partie de l'infrastructure. Étant donné que le test est effectué en environnement de production, il ne faut pas que cela impacte pour autant le client final, qui lui souhaite utiliser le service. On va donc effectuer ces tests sur des petites portions de l'infrastructure.
+
 \subsubsection{Choisir les type de tests à prioriser}
 
 Chaque application étant différentes, tous les type de tests ne sont pas adaptés à toutes les applications. Il faut donc déterminer les tests à prioriser, selon le type de produit que l'on livre.
@@ -170,12 +197,6 @@ Chaque application étant différentes, tous les type de tests ne sont pas adapt
 Ainsi, dans le cas d'une application métier complexe, tel que les banques ou assurances, ou les cas d'utilisations sont nombreux et nécessite des algorithmes potentiellement compliqués, il peut être intéressant de concentrer ses effort sur des tests d'acceptations via des \gls{TU} pour valider les besoins métiers, du fait de leur criticité.
 
 Si l'on vient à travailler avec des \gls{cms} ou que l'on interagit avec des services qui ne sont pas de notre ressort, il y a des risques non négligeables de se retrouver dans des cas où les mises à jour de ces services risquent d'entrainer des régressions. Il faut alors concentrer ses efforts sur les tests d'intégrations pour s'assurer que le code développé puisse correctement s'exécuter avec les librairies tierces.
-
-\subsubsection{Les tests par mutation et chaos engineering}
-
-\todo[color=gray]{Partie bonus test mutation / chaos engineering à eventuellement traiter}
-
-Ces deux pratiques viennent compléter les batteries de tests existant afin de garantir que le système, et l'application puissent réagir à tout instant, en venant volontairement modifier le code ou endommager un serveur ou paramètre sur le serveur de l'application afin de constater comment réagit cette dernière.
 
 \subsection{Intégration, déploiement et livraison continue}
 
