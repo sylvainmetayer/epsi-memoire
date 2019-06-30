@@ -69,7 +69,7 @@ L'environnement de développement est le premier environnement où sont dévelop
 
 Plusieurs personnes sont potentiellement amener à travailler sur le projet. Il est donc important de documenter l'installation et les pré-requis afin de pouvoir commencer à travailler. Il n'est malheureusement pas rare de voir des projets où la documentation du projet est faible, voir inexistante.
 
-L'idéal pour un développeur qui vient d'arriver sur un projet serait de disposer d'un environnement prêt à l'emploi, qui puisse se lancer en quelques commandes (installation des dépendances et provisionnement de l'environnement). Des outils de conteneurisation tel que Docker\footnote{\url{https://www.docker.com/}} permettent ainsi d'avoir des environnements isolés et reproductibles quelque soit l'environnement du développeur. De plus, avec Docker, l'architecture du projet est représenté sous forme textuelle et donc intégrable dans le \gls{SCM}, ce qui permet de savoir les évolutions sur l'architecture du projet facilement. On parle alors d'\gls{IaC}. De plus, un projet qui peut s'installer rapidement signifie qu'un développeur peut être efficient plus rapidement sur son projet. Il peut ainsi apporter ses compétences sur de réelles problématiques plutôt qu'être bloqué pendant de longues heures à chercher comment installer ledit projet.
+L'idéal pour un développeur qui vient d'arriver sur un projet serait de disposer d'un environnement prêt à l'emploi, qui puisse se lancer en quelques commandes (installation des dépendances et provisionnement de l'environnement). Des outils de conteneurisation tel que Docker\footnote{\url{https://www.docker.com/}} permettent ainsi d'avoir des environnements isolés et reproductibles quelque soit l'environnement du développeur. De plus, avec Docker, l'architecture du projet est représenté sous forme textuelle et donc intégrable dans le \gls{SCM}, ce qui permet de savoir les évolutions sur l'architecture du projet facilement. De plus, un projet qui peut s'installer rapidement signifie qu'un développeur peut être efficient plus rapidement sur son projet. Il peut ainsi apporter ses compétences sur de réelles problématiques plutôt qu'être bloqué pendant de longues heures à chercher comment installer ledit projet.
 
 Afin de permettre un démarrage rapide, il est également commun de mettre des alias sur les commandes les plus utilisées lors des développements. Par exemple, si une commande permettant d'effacer le cache de l'application est longue à taper, on la raccourcira en quelques chose tel que \frquote{make clear} par exemple. Pour cela, plusieurs solutions sont disponibles: les scripts \gls{PHP} dans le cas d'un projet \gls{PHP} ou encore l'utilisation des Makefile, permettant de construire les logiciels et leur dépendances et d'y effectuer des tâches diverses, définies dans un fichier. Il est également possible d'écrire des scripts shell, permettant d'effectuer des tâches plus complexe\footnote{Comme faire le café ? \emoji{😊} - \url{https://github.com/NARKOZ/hacker-scripts}}
 
@@ -277,11 +277,7 @@ On va ensuite pouvoir déposer cet unique livrable\footnote{Comme indiqué dans 
 
 La livraison continue ne permet ainsi pas de déploiement automatique de l'application, mais il est possible de déclencher manuellement le déploiement, qui va alors récupérer le livrable construit précédemment et procéder à son déploiement. Une fois le déploiement terminé, le livrable sera alors promu sur l'\gls{artifactory} selon l'environnement sur lequel la livraison a été effectuée.
 
-\todo{livraison continue}
-
-Parler du la mise en place après déploiement avec Jenkins + ansible.
-
-Parler du rollback en cas d'échec de déploiement.
+Pour prendre les projets de la \naq{} en exemple, le déploiement en recette est fait sous forme de livraison continue. Le paquet est prêt à être livré, mais requiert une validation manuelle pour pouvoir être déployé comme on peut le voir sur l'annexe \ref{annexe:release-naq}. Une fois la validation effectuée, les scripts ansible\footnote{\url{https://www.ansible.com/}} permettent d'effectuer le déploiement du paquet sur le serveur de recette. Si jamais une erreur survient lors du déploiement, elle sera notifiée à Jenkins qui va alors effectuer un retour en arrière et déployer la dernière sauvegarde disponible.
 
 \subsubsection{Déploiement continu}
 
@@ -295,21 +291,11 @@ Le déploiement continu est donc une extension de la livraison continue, avec un
 
 \subsubsection{Gestion de l'infrastructure}
 
-La gestion de l'infrastructure fait également partie de l'automatisation d'un projet.
+La gestion de l'infrastructure fait également partie de l'automatisation d'un projet. Elle permet de ne plus avoir à configurer à la main ou via des scripts difficile à maintenir les différents serveurs qui représentent l'infrastructure nécessaire pour héberger l'application.
 
-\todo{Gestion de l'infrastructure}
+Il suffit désormais de décrire dans fichier texte (\frquote{Dockerfile} pour les containers Docker, des fichiers YML pour les scripts ansible\ldots). On parle alors d'\gls{IaC}. Cela permet de passer d'une configuration manuelle, où l'on pouvait oublier un paquet à installer, un fichier de configuration à renseigner\ldots{} A une infrastructure versionnable dans un \gls{SCM}, permettant ainsi de suivre les évolutions de cette dernière. Il est également plus facile de reproduire l'architecture et donc plus facile de provisionner rapidement de nouveaux serveurs/containers, avec Docker et/ou ansible par exemple.
 
-avant server bare metal à config a la main
-
-maintenant on décrit ce dont a besoin et on se sert de docker ansible terraform \& pour provisionner des machines virtuelles
-
-\gls{IaC} permet de passer de configuration manuelle à provisionnement automatique. Permet d'éviter les wiki non mis à jour d'infrastructure parce que patch déployé à l'arrache sur le serveur.
-
-Avantage : versionnable donc on peut consulter les modifications et l'évolution. Reproductibilité : automatique donc on peut reproduire à l'identique. facilite provisionnement
-
-\gls{IaC} => permet de découpler architecture ? % https://dev.to/klauenboesch/why-use-infrastructure-as-a-code-3793
-
-% https://aws.amazon.com/fr/cloudformation/ ----------- https://www.terraform.io/
+L'\gls{IaC} peut également s'appliquer sur le serveur d'intégration continue, tel que Jenkins, ou l'on va décrire les différentes étapes des jobs dans des scripts Groovy\footnote{\url{https://groovy-lang.org/}}, permettant ainsi de décrire ce que va effectuer ce job.
 
 \subsubsection{Monitoring}\label{paragraph:monitoring}
 
@@ -317,23 +303,25 @@ Lors de déploiement, de livraison ou d'intégration continue, il est nécessair
 
 Il est alors important de mettre en place des logs et du monitoring. Cela peut servir à suivre plusieurs comportements, tel que le taux de \gls{CPU} utilisé par le serveur, son utilisation du disque ou encore sa consommation de \gls{RAM}.
 
+Ces logs peuvent être le résultats des tâches effectuées par Jenkins, tel qu'on peut le voir sur la figure TODO. On distingue alors au premier coup d'œil l'état de l'application et on peut consulter les détails de chaque étape afin de savoir ce qui a réussi/échoué.
+
+\missingfigure{Job jenkins avec résultats vert/rouge}
+
+Pour une application web, il est également nécessaire de surveiller les code retours \gls{HTTP} envoyés pour distinguer les erreurs utilisateurs (retours \gls{HTTP} 4xx) des erreurs serveurs (retours \gls{HTTP} 5xx) et également surveiller les requêtes \gls{HTTP} valides (retours \gls{HTTP} 2xx). Ce monitoring permet ainsi de détecter les potentielles tentatives d'intrusions (un grand nombre d'erreurs utilisateurs sur un formulaire de connexion peut indiquer une tentative d'accès non autorisée) ou encore des erreurs de l'application (une page spécifique qui retourne constamment des erreurs serveurs est une page sur laquelle il est important de se concentrer puisqu'elle contient sûrement un bug)
+
+Il est également nécessaire de surveiller les logs de l'application en elle-même. Pour cela, \citetitle{12factor} \cite{12factor} recommande d'écrire les logs de l'application sur deux sorties : \frquote{stdout}, qui correspond à la sortie standard et \frquote{stderr} qui correspond à la sortie d'erreur standard. Pourquoi ne pas utiliser des fichiers pour pouvoir écrire ? Car en développement, on souhaite avoir les logs rapidement, en général dans la console d'exécution et en production, on utilise les outils qui exécutent l'application pour pouvoir capturer les logs et les écrire aux endroits souhaités (dans les logs Docker par exemple, ou dans un fichier de logs Apache). Cela permet donc une plus grande interchangeabilité et facilité de suivi des logs. 
+
+Évidemment, il est possible d'être alerté lors d'une erreur présente dans les logs, via des canaux variés qui peuvent être des e-mails, un message sur un canal Mattermost\footnote{\url{https://mattermost.com/}}\ldots{}
+
 \todo{Monitoring}
 
 % https://prometheus.io/
 
-% https://12factor.net/logs
-
-traitement des logs selon 12factor serait de faire tout vers stdout stderr et laisser les outils de monitoring exécution (docker) gérer l'écriture dans des fichiers.
-
-surveiller trafic avec retour 200 / 400 / 500
-
 Le reporting de bug automatique (sentry.io)
 
-notification (mattermost, email\ldots) en cas d'erreur. Possiblité d'enclencher des actions lorsque des seuils sont dépassées (rollback, provsionnement nouveaux serveurs...)
+%notification (mattermost, email\ldots) en cas d'erreur. Possiblité d'enclencher des actions lorsque des seuils sont dépassées (rollback, provsionnement nouveaux serveurs...)
 
-Monitoring : monit pour monitorer l'état d'application ? (perso)
-
-ELK, traitement logs, grafana\ldots
+%ELK, traitement logs, grafana\ldots
 
 \subsection{Et la sécurité dans tout ça ?}
 

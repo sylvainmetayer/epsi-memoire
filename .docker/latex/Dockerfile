@@ -3,7 +3,7 @@ FROM debian:stretch-slim
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -q \
-    && apt-get install -qy python-pygments build-essential wget libfontconfig1 \
+    && apt-get install -qy python-pygments build-essential wget libfontconfig1 git \
     && rm -rf /var/lib/apt/lists/*
 
 # Install TexLive with scheme-basic
