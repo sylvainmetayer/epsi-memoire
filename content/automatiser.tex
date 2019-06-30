@@ -311,13 +311,9 @@ Pour une application web, il est également nécessaire de surveiller les code r
 
 Il est également nécessaire de surveiller les logs de l'application en elle-même. Pour cela, \citetitle{12factor} \cite{12factor} recommande d'écrire les logs de l'application sur deux sorties : \frquote{stdout}, qui correspond à la sortie standard et \frquote{stderr} qui correspond à la sortie d'erreur standard. Pourquoi ne pas utiliser des fichiers pour pouvoir écrire ? Car en développement, on souhaite avoir les logs rapidement, en général dans la console d'exécution et en production, on utilise les outils qui exécutent l'application pour pouvoir capturer les logs et les écrire aux endroits souhaités (dans les logs Docker par exemple, ou dans un fichier de logs Apache). Cela permet donc une plus grande interchangeabilité et facilité de suivi des logs. 
 
-Évidemment, il est possible d'être alerté lors d'une erreur présente dans les logs, via des canaux variés qui peuvent être des e-mails, un message sur un canal Mattermost\footnote{\url{https://mattermost.com/}}\ldots{}
-
-\todo{Monitoring}
+Évidemment, il est possible d'être alerté lors d'une erreur présente dans les logs, via des canaux variés qui peuvent être des e-mails, un message sur un canal Mattermost\footnote{\url{https://mattermost.com/}}\ldots{}. De plus, des solutions dédiées au suivi d'erreurs existent, tel que Sentry\footnote{Auto-hébergeable - \url{https://sentry.io/}} qui va permettre de s'intégrer dans le code de l'application via des \gls{SDK} dans de nombreux langages. Cela permet d'obtenir en temps réel les erreurs non traitées qui surviennent dans l'application, avec leur contexte (valeurs des variables déclarées à l'instant ou l'erreur est survenue, pile d'erreur\ldots). Sentry va également s'intégrer avec le \gls{SCM} utilisé (Gitlab ou \github{} par exemple) et créer des issues\footnote{Ticket de suivi d'erreur} afin de garder une trace des erreurs au fur et à mesure et de l'impact que cela a eu sur les utilisateurs (si seulement 10 personnes ont eu cette erreur ou bien 5000 par exemple). 
 
 % https://prometheus.io/
-
-Le reporting de bug automatique (sentry.io)
 
 %notification (mattermost, email\ldots) en cas d'erreur. Possiblité d'enclencher des actions lorsque des seuils sont dépassées (rollback, provsionnement nouveaux serveurs...)
 
