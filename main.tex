@@ -29,8 +29,13 @@
 	\pagestyle{plain} % Juste le numero de page pour en-tête / pied de page.
 	\pagenumbering{gobble} % pas de numérotation
 	\input{content/cover} 
+
+% Only print an empty page on the paper version as it is useless on the numeric one.
+\iftoggle{paper}{
 \newpage
-	~ % Hide summary page.
+~ % Hide summary page.
+}{}
+
 \newpage
 	%% TODO Listing. Add disable option to package before printing !
 	\iftoggle{todoExplain}{%
