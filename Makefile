@@ -44,10 +44,7 @@ removeComment: ## Configuration to disable todos
 	sed -i 's/\\usepackage\[colorinlistoftodos,french\]{todonotes}/\\usepackage\[colorinlistoftodos,french,disable\]{todonotes}/' packages.tex
 
 wordCount: ## Count the number of words
-	@detex main.tex | wc -w | tr -d [:space:]
-	@echo
-	@echo or 
-	@texcount main.tex -inc -incbib -sum -1 2>/dev/null
+	@texcount main.tex -inc -incbib -sum
 
 build-docker-latex: ## Build LaTeX docker image
 	docker build -t latex-debian .docker/latex
