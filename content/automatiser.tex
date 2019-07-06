@@ -15,10 +15,10 @@ Il faut ainsi préparer son argumentaire, avec les bienfaits que cela pourra obt
 	\setlength\itemsep{0em}
 	\item [La durée de de déploiement] peut être réduite pour permettre de se concentrer sur d'autres problématiques. De plus, si les temps de déploiement sont réduits, cela signifie que les temps d'interruption de service pourront être réduit lors des livraisons.
 	\item [Erreur de déploiement] Si les déploiements sont automatisés, les risques d'incidents lors des déploiements, souvent du à des erreurs humaines, seront alors réduit.
-	\item [Rentabilité financière] Prenons une tâche qui coûte \numprint{3000}€ à réaliser toutes les 3 semaines. Son coût est donc assez élevé. Le fait d'automatiser cette tâche permettra d'économiser de l'argent sur la durée. Si le fait d'automatiser cette tâche coûte par exemple, \numprint{10000}€, un gain sera perçu dès la 12\up{ème} semaine.
+	\item [Rentabilité financière] Prenons une tâche qui coûte \numprint{3000}€ à réaliser toutes les 3 semaines. Son coût est donc assez élevé. Le fait d'automatiser cette tâche permettra d'économiser de l'argent sur la durée. Si le fait d'automatiser cette tâche coûte par exemple, \numprint{10000}€, un gain sera perçu dès la 12\up{ème} semaine.\label{ref-rentabilite-finance}
 	\item [Part de marché] Si les déploiements sont plus fiables et rapides, que la rentabilité financière du projet est également florissante alors il sera possible de concentrer les efforts sur des fonctionnalités à forte valeurs ajoutées qui permettront ainsi de se démarquer de la concurrence et d'augmenter les parts de marché à moyen/long terme. C'est ce que les économistes appellent la compétitivité hors-prix.
 	\item [\Gls{timetomarket}] Dans un environnement très concurrentiel, il est essentiel de pouvoir intervenir rapidement. Réduire la durée entre la naissance d'une idée/besoin et sa mise en production est important, sous peine de voir des concurrents prendre des parts de marché. L'automatisation peut alors permettre de déployer rapidement et avec confiance les développements réalisés.
-	\item [Reprise d'activité] Il s'agit ici de démontrer que le produit parfait n'existe pas. Il arrivera que l'application soit hors ligne à cause d'un incident ou qu'une mise à jour entraine une interruption de service. En revanche, si l'on ne peut éviter l'incident à un moment donné, il est capital de pouvoir restaurer l'application dans des court délai et ce de façon certaine. Disposer d'un \gls{PCA} ou d'un \gls{PRA} intégrant une automatisation de la reprise d'activité est un atout non négligeable qui permettra une reprise de l'activité au plus vite. On peut alors passer d'une interruption de plusieurs heures à une se comptant en minutes.
+	\item [Reprise d'activité] Il s'agit ici de démontrer que le produit parfait n'existe pas. Il arrivera que l'application soit hors ligne à cause d'un incident ou qu'une mise à jour entraine une interruption de service. En revanche, si l'on ne peut éviter l'incident à un moment donné, il est capital de pouvoir restaurer l'application rapidement. Disposer d'un \gls{PCA} ou d'un \gls{PRA} intégrant une automatisation de la reprise d'activité est un atout non négligeable qui permettra une reprise de l'activité au plus vite. On peut alors passer d'une interruption de plusieurs heures à une se comptant en minutes.\label{ref-pra}
 \end{description}
 
 \subsubsection{Organiser le flux de travail}
@@ -161,7 +161,7 @@ Souvent réalisé par le client, il va consister, au travers d'une campagne de t
 
 Il est néanmoins possible que certain test d'acceptation soit validé en amont, comme l'exemple de la calculatrice donné dans la partie \frquote{\nameref{test-composant}} (p. \pageref{test-composant}) qui va valider la \emph{règle métier} (effectuer une opération) tout en validant le bon fonctionnement du code et ses cas limites.
 
-\subsubsection{Les tests par mutation}
+\subsubsection{Les tests par mutation}\label{ref-mutation}
 
 L'objectif des tests par mutation est de vérifier la pertinence des cas de tests. En effet, une couverture de 100\% de code via des tests ne garantit pas que 100\% du code soit testé. Voici son déroulement : 
 
@@ -250,18 +250,6 @@ Un \gls{SCM} est évidemment obligatoire pour pouvoir effectuer une intégration
 
 Chaque projet va souvent dépendre de dépendances. Dans le cas d'un projet \gls{PHP}, on va souvent retrouver des dépendances via composer, qui sont des dépendances externes. Mais on peut également dépendre de dépendances internes, qui peuvent être des composants réutilisés en interne au sein de plusieurs projets. Il faut alors pouvoir gérer ses dépendances. S'il est possible de déployer ses dépendances internes sur Packagist\footnote{Gestionnaire de dépendances \gls{PHP} - \url{https://packagist.org/}}, il se peut que l'on souhaite garder la main sur ses dépendances, ou ne pas les rendre publique, et que l'on souhaite donc les garder sur un gestionnaires de paquets privés. Dans le cas de la \naq, c'est l'\gls{artifactory} de Jfrog\footnote{Gestionnaire de fichier binaire - \url{https://jfrog.com/artifactory/}} qui est utilisé afin de gérer ses dépendances. Concrètement, cela consiste à ajouter un repository\footnote{dépôt} au fichier de définition des dépendances (dans le cas de \gls{PHP}, il s'agit d'un fichier appelé \frquote{composer.json}).
 
-%\begin{listing}[H]
-%	\begin{minted}{json}
-%	{
-%	"type": "composer",
-%	"url": "https://ARTIFACTORY/api/composer/nouvelle-aquitaine",
-%	"vendor-alias": "nouvelle-aquitaine"
-%	}
-%	\end{minted}
-%	\caption{Définition d'un dépôt composer externe dans un fichier %\frquote{composer.json}}
-%	\label{code:composer-setup}
-%\end{listing}
-
 Il est ensuite nécessaire, pour pouvoir effectuer de l'intégration continue, de disposer d'un serveur\ldots{} D'intégration continue. De nombreux outils existent, chacun se démarquant avec ses propres fonctionnalités. Les plus connus sont TravisCI\footnote{\url{http://travis-ci.org/}} qui est souvent utilisé lors de projets étant versionné sous \github, TeamCity\footnote{\url{https://www.jetbrains.com/teamcity/}} qui après ses \gls{IDE}, propose également son propre outil d'intégration continue. Finalement, le leader reste Jenkins\footnote{\url{http://jenkins.io/}}. Tous permettent de réaliser de l'intégration continue, mais proposent souvent plus, tel que la livraison ou encore le déploiement continu, le tout selon les besoins \& le budget du client.
 
 \subsubsection{Intégration continue}
@@ -322,9 +310,9 @@ Lors de déploiement, de livraison ou d'intégration continue, il est nécessair
 
 Il est alors important de mettre en place des logs et du monitoring. Cela peut servir à suivre plusieurs comportements, tel que le taux de \gls{CPU} utilisé par le serveur, son utilisation du disque ou encore sa consommation de \gls{RAM}.
 
-Ces logs peuvent être le résultats des tâches effectuées par Jenkins, tel qu'on peut le voir sur la figure TODO. On distingue alors au premier coup d'œil l'état de l'application et on peut consulter les détails de chaque étape afin de savoir ce qui a réussi/échoué.
+Ces logs peuvent être le résultat des tâches effectuées par Jenkins, tel qu'on peut le voir sur la figure \ref{fig:jenkins-results}. On distingue alors au premier coup d'œil l'état de l'application et on peut consulter les détails de chaque étape afin de savoir ce qui a réussi/échoué.
 
-\missingfigure{Job jenkins avec résultats vert/rouge}
+\newImage{0.45}{jenkins-results.png}{Métriques sur les résultats des jobs Jenkins}{jenkins-results}
 
 Pour une application web, il est également nécessaire de surveiller les code retours \gls{HTTP} envoyés pour distinguer les erreurs utilisateurs (retours \gls{HTTP} 4xx) des erreurs serveurs (retours \gls{HTTP} 5xx) et également surveiller les requêtes \gls{HTTP} valides (retours \gls{HTTP} 2xx). Ce monitoring permet ainsi de détecter les potentielles tentatives d'intrusions (un grand nombre d'erreurs utilisateurs sur un formulaire de connexion peut indiquer une tentative d'accès non autorisée) ou encore des erreurs de l'application (une page spécifique qui retourne constamment des erreurs serveurs est une page sur laquelle il est important de se concentrer puisqu'elle contient sûrement un bug)
 

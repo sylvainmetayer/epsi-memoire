@@ -2,81 +2,44 @@ C'est maintenant la fin de ce document. Les différentes étapes du cycle de vie
 
 Nous avons aussi vu que les besoins d'automatisation était de plus en plus utilisés, du fait que la complexité des applications grandit de jour en jour\footnote{bien que cela ne soit pas toujours justifié}. L'objectif est de fournir la meilleure expérience pour l'utilisateur, tout en permettant des livraisons fréquentes et rapide afin d'apporter de la valeur ajoutée au produit.
 
-
 Nous allons donc reprendre dans cette conclusion les différents avantages à mettre en place une démarche d'automatisation sur un projet.
 
-Tout d'abord, le but est de réduire les erreurs humaines lors des phases de développement tout en permettant d'automatiser les tâches répétitives. La réduction des erreurs entraine alors une meilleure fiabilité de l'application, via la mise en place de tests automatisés. Cette confiance dans l'application permet alors de livrer des fonctionnalités plus rapidement et contribue à réduire le \gls{timetomarket} pour offrir de nouvelles fonctionnalités aux utilisateurs, ou corriger les bugs plus rapidement.
+Tout d'abord, le but est de réduire les erreurs humaines lors des phases de développement tout en permettant d'automatiser les tâches répétitives. La réduction des erreurs entraine alors une meilleure fiabilité de l'application via la mise en place de tests automatisés. Cette confiance dans l'application permet alors de livrer des fonctionnalités plus rapidement et contribue à réduire le \gls{timetomarket} pour offrir de nouvelles fonctionnalités aux utilisateurs, ou corriger les bugs plus rapidement. Si le \gls{timetomarket} est réduit alors il y a de grandes chances que le \gls{ROI} soit également réduit, permettant de se concentrer sur des fonctionnalités ou évolutions à plus grandes valeurs ajoutées que des correctifs de bugs.
 
-L'automatisation va également permettre une reprise d'activité plus rapide et peut donc être justifiée dans les \gls{PRA} et les \gls{PCA}, en insistant sur le fait qu'une relance rapide de l'activité peut permettre de limiter les pertes financières. Cela en dû au fait que l'automatisation permet de provisionner un serveur de façon automatique, garantissant la reproductibilité des étapes à réaliser pour déployer une application, avec des outils tel qu'Ansible.
+L'automatisation va également permettre une reprise d'activité plus rapide et peut donc être justifiée dans les \gls{PRA} et les \gls{PCA}, en insistant sur le fait qu'une relance rapide de l'activité peut permettre de limiter les pertes financières (p. \pageref{ref-pra}). Cela en dû au fait qu'il est possible d'automatiser le provisionnement d'un serveur, garantissant la reproductibilité des étapes à réaliser pour déployer une application, avec des outils tel qu'Ansible.
 
-De plus, on peut penser que l'automatisation a un coût élevé, dû au fait que sa mise en place initiale puisse avoir un coût plus ou moins important selon les besoins auxquels on souhaite répondre. C'est néanmoins négliger les avantages qui permettront d'économiser de l'argent en évitant des potentielles erreurs de livraisons manuelles, ce qui aurait pour effet d'augmenter les délais de livraisons, voir de briser les règles de \gls{SLA} définies dans le contrat avec le client, entrainant des pénalités pour l'entreprise. Cela permettra 
+De plus, on peut penser que l'automatisation a un coût élevé, dû au fait que sa mise en place initiale est plus ou moins coûteuse selon les besoins auxquels on souhaite répondre. C'est néanmoins négliger les avantages qui permettront d'économiser de l'argent en évitant des potentielles erreurs de livraisons manuelles, ce qui aurait pour effet d'augmenter les délais de livraisons, voir de briser les règles du \gls{SLA} défini dans le contrat avec le client, entrainant des pénalités pour l'entreprise.
 
-\todo[color=yellow]{Conclusion, 7 pages}
+Nous avons également vus différents \gls{KPI} permettant de montrer les bénéfices à la mise en place d'une démarche \devops{} et d'automatisation. Ces \gls{KPI} sont variés et peuvent concerner des facteurs organisationnels ou financiers avec les notions de rentabilité financière (p. \pageref{ref-rentabilite-finance}). Mais elles sont également importantes pour les \dev{} et les \ops{} qui peuvent alors déterminer le temps de déploiement de l'application, les requêtes \gls{SQL} lentes ou encore la qualité du code produit au sein d'un projet.
 
-\subsection*{Bénéfices}
+La mise en place d'une démarche \devops{} passe aussi par une meilleure organisation du flux de travail des équipes. Il est possible de limiter le flux de travail en cours et ainsi d'éviter d'être retardé par le travail non planifié qui est souvent un facteur très coûteux, ce qui permet alors de gagner du temps et d'être plus efficace.
 
-\todo[color=orange]{Benefices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-moins d'erreurs développeur, plus de fiabilité, time to market réduit, ROI avec confiance et livraison plus rapide. Relancer activité défaillante (SLA/PCA/PRA). Plus de temps pour la valeur métier. 
+Bien que l'automatisation puisse présenter bon nombre d'avantages qui améliore le cycle de vie d'une application, il convient de faire attention à certains aspects. En effet, selon la qualité des tests, l'automatisation sera plus ou moins risquée. Déployer une application automatiquement alors qu'elle n'est pas correctement testée est inutile. Des outils existent alors afin de vérifier la pertinence des tests, tel que les tests par mutation (p. \pageref{ref-mutation}). 
 
-Documentation : arrivée sur un projet, démarrage rapide.
+De plus, il faut faire attention à ne pas tomber dans la sur-qualité ou sur-optimisation, pour des raisons de coûts et de temps évidente. Si le temps pour mettre en place une démarche d'automatisation coûte plus cher que le développement du projet, cela sera sûrement refusé par les équipes de direction. Il faut garder en tête que l'automatisation est au service du projet, afin d'améliorer ce dernier et de gagner du temps mais qu'il ne faut peut-être pas tout automatiser et préférer automatiser seulement une partie des tâches pour se concentrer sur l'ajout de valeur au projet. La mise en place d'une démarche \devops{} faisant partie d'une amélioration continue, il sera possible de faire évoluer la chaine d'automatisation au fur et à mesure du temps.
 
-Scalabilité : docker - provisionnemnt rapide de novueaux serveurs avec ansible.
+Un autre point sur lequel il faut être vigilant est l'interprétation des métriques d'une application. En effet, même si les tests automatisés indiquent un état stable de l'application, cela ne veut pas dire que l'application est stable pour autant. En effet, si l'on prend comme exemple l'article  \citetitle{web_inaccessible_app} de \citeauthor{web_inaccessible_app} \cite{web_inaccessible_app}, on peut constater qu'il est possible de construire une application répondant aux différents critères d'accessibilités, mais étant pour autant totalement inaccessible. Bien que cet exemple soit fait exprès par son auteur, cela montre qu'il faut être critique sur les résultats des différentes métriques que l'on obtient et ne pas pour autant négliger le travail de test manuel, sous prétexte que l'application est automatiquement déployée et testée.
 
-en dev, on souhaite des logs direct dans la console, en prod on les mets dans un fichier de log.
-en dev, on veut le mode debug, en prod on le désactive.
+L'automatisation nécessite également une certaine maturité de l'équipe et le l'entreprise pour être mise en place avec succès. Une équipe ou la communication est inexistante et ou les erreurs sont masquées au lieu d'être traitées sera nocive. Il en va de même pour les entreprises qui restreignent les idées ou qui disposent de très long processus hiérarchique pour pouvoir effectuer la moindre action ne verront pas d'intérêt à mettre en place une démarche d'automatisation puisque les bénéfices de cette dernière seront alors effacés devant la lenteur des procédures administratives requises pour effectuer une action sur le projet.
 
-Cela peut être perçu comme une perte de temps par certaines personnes (hiérarchie, manager...), qui y verrons la une perte d'argent et de temps par exemple. Il faut alors pouvoir montrer que cela est rentable, au travers de \gls{KPI} bien déterminés.
+Une \frquote{contrainte}\footnote{Selon les points de vue, cela est perçu comme un avantage, puisque toute application devrait disposer d'un système de log efficace} de l'automatisation est que pour qu'elle soit mise en place correctement, il est nécessaire de pouvoir tracer les différentes étapes et erreurs de l'application. Les logs deviennent alors essentiels, puisque l'application peut être déployée de façon automatique à tout moment. Il faut donc pouvoir déterminer les causes d'une erreur lorsqu'elle survient et les logs permettent alors de fournir un contexte détaillé menant à la résolution de l'incident.
 
-Le fait d'automatiser des processus permet de gagner du temps, et par conséquent de l'argent et de consacrer ses efforts à d'autres taches qui peuvent apporter de la valeur métier. Le coût horaire libéré, calculer à partir de combien de temps il est rentable.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Facteur humain : Le temps libéré par l'automatisation des tâches peut permettre de souder les liens d'une équipe et d'améliorer les relations de cette dernière. Cela libère du temps pour du team building par exemple.
+Maintenant que nous avons évoqué les avantages et limites de l'automatisation au sein du cycle de vie d'une application, il convient de s'attarder sur ce qui n'est pas encore automatisé. Comme évoqué précédemment, cela dépend beaucoup de l'entreprise et du projet. Un client qui souhaite un site ou une application mobile temporaire pour couvrir les besoins d'un évènement sur 3 semaines n'aura certainement pas les mêmes attentes qu'un projet de refonte du parc web d'une région. Chaque équipe a également des attentes différentes sur l'automatisation, certains souhaiteront pouvoir réinstaller leur environnement rapidement, à l'aide de \glsplural{conteneur} qu'ils pourront recréer à loisir tandis que d'autres préféreront prioriser l'intégration de leur code au sein du \gls{cms} utilisé par le projet de façon continue afin de prévenir toute régression le plus vite possible. 
 
-Métrique - KPI - temps de déploiement / nombre d'incident / uptime / Nombre de build KO / Nombre de build OK ... permettent de définir l'impact des services mis en place sur le S.I
+\newImage[H]{0.6}{time-worth.png}{Temps disponible pour automatiser une tâche selon le temps qu'elle prend manuellement - \url{https://xkcd.com/1205/}}{time-worth}
 
-\begin{itemize}
-	\item temps de déploiement
-	\item taux de déploiement succès
-	\item couverture de code
-	\item tests au verts
-	\item derniers build KO
-\end{itemize}
+Comme on peut le voir sur la figure \ref{fig:time-worth}, il est possible d'estimer le temps que l'on peut allouer à automatiser une tâche selon sa fréquence et le temps qu'elle prend à effectuer manuellement. On obtient alors le temps que l'on peut passer à automatiser une tâche. Si l'on passe plus de temps à automatiser cette tâche, alors le \gls{ROI} sur cette tâche sera négatif et cela pourrait relever d'une\frquote{perte de temps}. Bien que cette image soit pertinente, il est nécessaire d'être critique face à cette dernière. En effet, dans certains projets critiques (bancaire, aviation, site marchand avec un fort trafic\ldots), il est préférable de perdre du temps sur l'automatisation d'une tâche que risquer de voir une erreur arriver en production due à une action manuelle, ce qui pourrait entrainer une perte de revenus pour l'entreprise.
 
-\subsection*{Limites}
+Auparavant\footnote{Bien que cela soit encore le cas dans de nombreux projets}, et pour caricaturer un petit peu, les développeurs s'occupaient de leur code, puis transmettaient ce dernier, parfois non ou mal testé aux responsables d'opérations qui devait alors déployer l'application. Si le déploiement venait à échouer où si l'application consommait trop de ressources, elle était renvoyée aux développeurs pour un correctif. Les communications entre les équipes étaient faibles et confuses, ce qui entrainait souvent des tensions entre les équipes. Cela s'illustre très bien sur la figure \ref{fig:devops-wall}.
 
-\todo[color=orange]{Limites}
+\newImage{0.4}{devops-wall.jpg}{Confusion lors de la communication entre \dev{} et \ops{} - \url{https://www.kovair.com/}}{devops-wall}
 
-Sur-qualité, sur-optimisation
+On peut ainsi voir que la démarche \devops{} et l'automatisation changent les façons de développer des applications. La démarche \devops{} a apporté des solutions à des problèmes humains (relatif à la communication, méthode de travail\ldots) la où l'automatisation a permis d'améliorer les retours entre les équipes avec l'intégration continue et le déploiement continu par exemple. Pour assurer le succès du projet, les \ops{} et les \dev{} sont alors amenés à collaborer de façon beaucoup fréquentes qu'avant, chacun intégrant et corrigeant les erreurs relevées au fur et à mesure, plutôt qu'après un certain laps de temps. Comme on peut le voir sur la figure \ref{fig:devopsObjective}, plus la collaboration est fréquente entre les équipes, plus le projet aura de chances d'aboutir. L'objectif de la démarche \devops{} est non plus d'avoir plusieurs équipes séparées, mais bien une seule équipe qui œuvre dans le même but : délivrer un projet fonctionnel et de qualité, répondant aux attentes du client.
 
-Aucun intérêt si les tests ne sont pas fiable.
+Néanmoins, cela soulève une question sur les compétences de chacun : les développeurs doivent ainsi se former sur la façon dont une application s'exécute en production, voir être capable de maintenir les images des \glsplural{conteneur} qu'ils utilisent pour leur application. Les responsables d'opérations doivent également effectuer des tâches supplémentaires (développement de scripts pour les déploiements\ldots). On peut alors se demander si les métiers des développeurs et des responsables d'opérations ne vont pas évoluer et si les formations n'incluront pas des sensibilisations au \devops{}.
 
-Dépend du client, de l'environnement, demande de la flexibilité, délai de mise en place, ROI
-
-Pré-requis à l'automatisation
-
-Attention, auto != vérité. récompenses / punition : il y a des phénommènes de triches / optimisation pour avoir le meilleur score.
-% https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/
-
-L'automatisation ne peut être utilisée, ou sera risquée, ou plus à même d'amener des régression si de mauvaise pratique sont présentes : variable codée en dur à la place de variable d'environnement
-
-De plus, il faut une certaine organisation.
-
-Parler de l'importance de l'implication du client. 
-
-Ex :  Rédaction de SFD, qui évolue tout les 4 matins, et demande un changement dans l'architecture => automatisation perdante.
-
-nécessite certains prérequis : 
-
-- création d'environnemnet à la volée. Si on doit attendre des mois pour ça, ça n'a pas de sens. Solution => serverless avec à la demande ? 
-
-\subsection*{Ce qui n'est pas encore automatisé}
-
-\todo{ce qui n'est pas encore automatisé}
-
-selon les entreprises, dépend du besoin.
-
-\newImage[H]{0.7}{time-worth.png}{Temps pour automatiser tâches - \url{https://xkcd.com/1205/}}{time-worth}
-
-\subsection*{Les possiblités d'automatisation dans le futur}
-
-\todo{Parler de ce qui n'est pas encore automatisé, et les différentes pistes d'automatisation possible dans le futur.}
+\todo[color=yellow]{Ouverture à revoir ?}

@@ -11,3 +11,6 @@ no-integration-test => https://me.me/i/unittests-passing-nointegrationitests-uni
 time-worth => https://xkcd.com/1205/
 feature-branching => https://www.atlassian.com/continuous-delivery/principles/workflows-with-feature-branching-and-gitflow
 devops-maturity => https://www.infoq.com/articles/Continuous-Delivery-Maturity-Model/
+devops-qa => https://devops.com/devops-killed-qa/
+devops-wall => https://www.kovair.com/blog/the-battle-dev-vs-ops/
+devops-mvp => https://www.slideshare.net/y2ktim/dev-ops-mvp-101390691
