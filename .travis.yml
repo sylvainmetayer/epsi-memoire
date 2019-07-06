@@ -24,7 +24,6 @@ script:
   - make paper
   - make docker-build && mv main.pdf $PAPER_NAME
   - make docker-soutenance && mv soutenance/main.pdf $SOUTENANCE_NAME
-  - make wordCount
 
 deploy:
   - provider: releases
