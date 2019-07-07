@@ -101,7 +101,7 @@
 \newpage
 	\section{Automatisation du cycle de vie}
 	\input{content/automatiser}
-\newpage
+\cleardoublepage
 	\pagestyle{plain} % Juste le numéro de page pour en-tête / pied de page à partir de maintenant
 	\section*{Conclusion}
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
@@ -110,6 +110,7 @@
 	\pagenumbering{roman}
 	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
 	\printglossary[type=\acronymtype,title={Acronymes}]
+\clearpage
 	\printglossary[type=main,toctitle={Glossaire}]\label{glossaire}
 \clearpage
 	\addcontentsline{toc}{section}{Références bibliographiques}\label{bibliographies}
