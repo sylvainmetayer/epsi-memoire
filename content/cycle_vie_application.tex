@@ -6,17 +6,17 @@ On peut ainsi représenter chacune de ses étapes avec le schéma présent sur l
 
 Le but de cette partie est de présenter, les une après les autres, les étapes présentes sur le schéma \ref{fig:cycleVieProjet}. Ce schéma est également disponible pour une meilleure lisibilité en annexe \ref{annexe:cycleVieProjet}. Il a été fait le choix de détailler le cycle de vie d'un projet dans le cadre d'une méthodologie agile, étant donné que c'est cette dernière qui est la plus utilisée pour pouvoir mettre en place une démarche d'automatisation sur un projet, mais des équivalences sont tout à fait possibles sur les autres méthodologies, modulant quelques petites modifications qui ne seront pas spécifiquement abordées.
 
-\newImage[H]{0.30}{cycle-vie-projet.png}{Schéma simplifié du cycle de vie d'un projet}{cycleVieProjet}
+\newImage{0.30}{cycle-vie-projet.png}{Schéma simplifié du cycle de vie d'un projet}{cycleVieProjet}
 
 \subsection{Répondre à un besoin}
 
-La première étape du développement d'une application est \emph{l'expression du besoin} durant laquelle il s'agit de détailler et définir le besoin auquel le produit doit répondre. Le but de cette étape est de déterminer si le besoin de l'application est réel, qui est amené à utiliser cette application et de constituer une première équipe qui portera ce projet.
+La première étape du développement d'une application est \emph{la définition du besoin} durant laquelle il s'agit de détailler et définir les problématiques auxquelles le produit doit répondre. Le but de cette étape est de déterminer si le besoin de l'application est réel, qui est amené à utiliser cette application et de constituer une première équipe qui portera ce projet.
 
-Ainsi, on va d'abord commencer par savoir à quel problématique répondre. À quel besoin cette problématique répond ? Quel est le \gls{ROI} de cette dernière ? Il est nécessaire de se poser toutes ces questions lorsque l'on commence à réfléchir à une idée d'application.
+Ainsi, on va d'abord commencer par savoir à quel problématique répondre. À quel besoin cette problématique répond ? Quel est le \gls{ROI} de cette dernière ? Il est nécessaire de se poser toutes ces questions lorsque l'on commence à réfléchir à une problématique pour un projet.
 
-L'une des premières étapes, peut être de vérifier si une application similaire, ou répondant déjà à ce besoin n'existe pas déjà. Dans le cas ou une application similaire existe déjà, on peut tenter de se démarquer, en proposant des fonctionnalités supplémentaires, une interface améliorée... Ou parfois tout simplement en utilisant le produit existant et en passant à une autre idée.
+L'une des premières étapes, peut être de vérifier si une application similaire, ou répondant déjà à cette problématique n'existe pas déjà. Dans le cas ou une application similaire existe déjà, on peut tenter de se démarquer, en proposant des fonctionnalités supplémentaires, une interface améliorée... Ou parfois tout simplement en utilisant le produit existant et en passant à la résolution du problème suivant.
 
-Il s'agit ensuite de déterminer son but, le besoin auquel le produit répond. Par exemple, les VTC\footnote{Véhicule de Tourisme avec Chauffeur} répondent à un besoin de déplacement instantané d'un point A à un point B et une facilité de réservation, peu importe l'endroit ou la personne se trouve. De plus, il faut également se renseigner sur les utilisateurs potentiels avant de lancer son produit. Si des services similaires existent, il est nécessaire de pouvoir déterminer une tranche d'utilisateurs à viser. Si le service est nouveau, il faut pouvoir déterminer les \gls{earlyadopter} du service. Cela peut se faire au travers de démonstration d'une version bêta du site, par un sondage en ligne afin de déterminer les cibles les plus à même d'utiliser le service... Pour bien déterminer ses \gls{earlyadopter}, on peut se poser les questions suivantes afin de déterminer des \Glsplural{persona} :
+Il s'agit ensuite de déterminer le but et le besoin auquel le produit répond. Par exemple, les VTC\footnote{Véhicule de Tourisme avec Chauffeur} répondent à un besoin de déplacement instantané d'un point A à un point B et une facilité de réservation, peu importe l'endroit où la personne se trouve. De plus, il faut également se renseigner sur les utilisateurs potentiels avant de lancer son produit. Si des services similaires existent, il est nécessaire de pouvoir déterminer une tranche d'utilisateurs à viser. Si le service est nouveau, il faut pouvoir déterminer les \gls{earlyadopter} du service. Cela peut se faire au travers de démonstration d'une version bêta du site, par un sondage en ligne afin de déterminer les cibles les plus à même d'utiliser le service... Pour bien déterminer ses \gls{earlyadopter}, on peut se poser les questions suivantes afin de déterminer des \glsplural{persona} :
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
@@ -26,12 +26,12 @@ Il s'agit ensuite de déterminer son but, le besoin auquel le produit répond. P
 	\item Où habite la personne ciblée ? En ville, en campagne... ? 
 	\item Pourquoi a-t-il besoin de ce service ? 
 	\item Qu'est-ce qui peut l'empêcher d'utiliser le service (aspect financier, lenteur du service...) 
-	\item Quel serait un (ou plusieurs) cas d'usage de la personne ciblée avec le service ?
+	\item Quel serait un (ou plusieurs) cas d'utilisation de la personne ciblée avec le service ?
 \end{itemize}
 
 Une fois la cible établie, il convient également de savoir si la solution est viable financièrement. En effet, on peut avoir la meilleure idée du monde, mais si on ne peut gérer la partie financière du projet, ce dernier est voué à l'échec. Cette étude financière va inclure une étude sur le temps de développement d'une première version, les coûts de communication, des serveurs, des déplacements (forums, congrès...) pour présenter l'application\ldots
 
-De l'autre côté, on va déterminer les recettes de l'application, en estimant les revenus que pourrait générer les \gls{earlyadopter} et les autres utilisateurs, ainsi que les autres sources de revenus potentiels (publicité, crowfounding...). Ainsi, lorsque l'on va contacter les \gls{earlyadopter} pour s'informer de leur intérêt sur le projet via, par exemple, un sondage en ligne, il n'est pas rare de voir une partie concernant les tarifs que les utilisateurs seraient prêts à dépenser, avec des questions telle que :
+De l'autre côté, on va déterminer les recettes prévisionnelles de l'application, en estimant les revenus que pourrait générer les \gls{earlyadopter} et les autres utilisateurs, ainsi que les autres sources de revenus potentiels (publicité, crowfounding, subventions\ldots). Ainsi, lorsque l'on va contacter les \glsplural{earlyadopter} pour s'informer de leur intérêt sur le projet via, par exemple, un sondage en ligne, il n'est pas rare de voir une partie concernant les tarifs que les utilisateurs seraient prêts à dépenser, avec des questions telle que :
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
@@ -39,7 +39,7 @@ De l'autre côté, on va déterminer les recettes de l'application, en estimant 
 	\item Quel est le prix maximum acceptable pour l'utilisation de ce service?
 \end{itemize}
 
-Ces questions permettent de définir de potentiels avertissements sur la viabilité financière du projet. Si l'on constate que peu d'utilisateurs sont prêt à investir de l'argent pour utiliser le projet, il faudra se demander si l'ajout d'une version gratuite et d'une version premium payante, ne serait pas plus intéressante. On peut également penser à se tourner vers d'autres entreprises prête à financer le projet en échange de publicité ou d'exclusivité par exemple.
+Ces questions permettent de définir de potentiels indices sur la viabilité financière du projet. Si l'on constate que peu d'utilisateurs sont prêt à investir de l'argent pour utiliser le projet, il faudra se demander si l'ajout d'une version gratuite et d'une version premium payante, ne serait pas plus intéressante. On peut également penser à se tourner vers d'autres entreprises prête à financer le projet en échange de publicité ou d'exclusivité par exemple.
 
 \subsection{Expression \& Planification du besoin}
 
