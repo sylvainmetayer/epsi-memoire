@@ -60,10 +60,10 @@
 \newpage
 	\input{content/abstract}
 \newpage
-	\shorttoc{Sommaire}{2} % Only sections
+	\shorttoc{Sommaire}{2} % Only sections and subsection
 \newpage
 	\pagenumbering{\numerotationType} % start numerotation
-\newpage
+\cleardoublepage
 	\section*{Introduction}
 	\addcontentsline{toc}{section}{Introduction} % ajout de la référence dans la table des matières
 	\input{content/introduction}
@@ -110,7 +110,7 @@
 	\pagenumbering{roman}
 	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
 	\printglossary[type=\acronymtype,title={Acronymes}]
-	\printglossary[type=main,toctitle={Glossaire}]\label{}
+	\printglossary[type=main,toctitle={Glossaire}]\label{glossaire}
 \clearpage
 	\addcontentsline{toc}{section}{Références bibliographiques}\label{bibliographies}
 	\nocite{*} % Ajout de toutes les références bibliographiques non citées jusqu'à présent.
@@ -134,6 +134,7 @@
 	\vspace*{\stretch{1}}
 \clearpage
 	\appendix
+	\pagenumbering{Roman}
 	\renewcommand{\thesection}{\Roman{section}}%If there are no chapters
 	\input{content/annexes}
 \end{document}
