@@ -23,10 +23,9 @@
 
 \listfiles
 
-% Début du document
 \begin{document}
 	\selectlanguage{french}
-	\pagestyle{plain} % Juste le numero de page pour en-tête / pied de page.
+	\pagestyle{plain} % Juste le numero de page en pied de page.
 	\pagenumbering{gobble} % pas de numérotation
 	\input{content/cover} 
 
@@ -111,8 +110,7 @@
 	\pagenumbering{roman}
 	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
 	\printglossary[type=\acronymtype,title={Acronymes}]
-	\addcontentsline{toc}{section}{Glossaire}\label{glossaire}
-	\printglossary[type=main]\label{}
+	\printglossary[type=main,toctitle={Glossaire}]\label{}
 \clearpage
 	\addcontentsline{toc}{section}{Références bibliographiques}\label{bibliographies}
 	\nocite{*} % Ajout de toutes les références bibliographiques non citées jusqu'à présent.
