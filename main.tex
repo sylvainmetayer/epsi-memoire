@@ -60,7 +60,9 @@
 \newpage
 	\input{content/abstract}
 \newpage
+	\setlength{\parskip}{1em} % On modifie l'espace entre les paragraphes
 	\shorttoc{Sommaire}{2} % Only sections and subsection
+	\setlength{\parskip}{1.5em} % On modifie l'espace entre les paragraphes
 \newpage
 	\pagenumbering{\numerotationType} % start numerotation
 \cleardoublepage
@@ -101,7 +103,7 @@
 \newpage
 	\section{Automatisation du cycle de vie}
 	\input{content/automatiser}
-\cleardoublepage
+\clearpage
 	\pagestyle{plain} % Juste le numéro de page pour en-tête / pied de page à partir de maintenant
 	\section*{Conclusion}
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
@@ -127,7 +129,9 @@
 \newpage
 	\pagenumbering{gobble} % No numérotation
 	\addcontentsline{toc}{section}{Table des matières}
+	\setlength{\parskip}{1em} % On modifie l'espace entre les paragraphes
 	\tableofcontents
+	\setlength{\parskip}{1.5em} % On modifie l'espace entre les paragraphes
 \newpage
 	\addcontentsline{toc}{section}{Annexes}
 	\vspace*{\stretch{1}}
