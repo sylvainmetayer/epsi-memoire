@@ -65,7 +65,11 @@
 	\setlength{\parskip}{1.5em} % On modifie l'espace entre les paragraphes
 \newpage
 	\pagenumbering{\numerotationType} % start numerotation
+\iftoggle{paper}{
 \cleardoublepage
+}{
+\clearpage
+}
 	\section*{Introduction}
 	\addcontentsline{toc}{section}{Introduction} % ajout de la référence dans la table des matières
 	\input{content/introduction}
@@ -103,7 +107,11 @@
 \newpage
 	\section{Automatisation du cycle de vie}
 	\input{content/automatiser}
-\clearpage
+\iftoggle{paper}{
+	\cleardoublepage
+}{
+	\clearpage
+}
 	\pagestyle{plain} % Juste le numéro de page pour en-tête / pied de page à partir de maintenant
 	\section*{Conclusion}
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
