@@ -32,7 +32,11 @@
 % Only print an empty page on the paper version as it is useless on the numeric one.
 \iftoggle{paper}{
 \newpage
-~ % Hide summary page.
+~
+\newpage
+~
+\newpage
+~ % Hide summary page and leave a blank page
 }{}
 
 \newpage
@@ -117,7 +121,6 @@
 	\addcontentsline{toc}{section}{Conclusion} % ajout de la référence dans la table des matières
 	\input{content/conclusion}
 \newpage
-	\pagenumbering{roman}
 	\glsaddall % ajouter toutes les entrées n'ayant pas encore été citées
 	\printglossary[type=\acronymtype,title={Acronymes}]
 \clearpage
@@ -148,6 +151,6 @@
 \clearpage
 	\appendix
 	\pagenumbering{Roman}
-	\renewcommand{\thesection}{\Roman{section}}%If there are no chapters
+	%\renewcommand{\thesection}{\Roman{section}}%If there are no chapters
 	\input{content/annexes}
 \end{document}
