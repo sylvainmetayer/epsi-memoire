@@ -40,11 +40,12 @@ Exemple d'utilisation :
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Same as before, but annexe without captions.
-\newcommand{\newImageAnnexe}[4][ht]
+\newcommand{\newImageAnnexe}[5][ht]
 {
 \begin{figure}[#1]
     \centering
     \includegraphics[scale=#2]{img/#3}
+    \caption{#5}
     \label{annexe:#4}
 \end{figure}
 }

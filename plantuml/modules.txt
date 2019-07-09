@@ -4,6 +4,5 @@ Common -> Gitlab : Push
 Gitlab -> Jenkins : Webhook
 Jenkins -> Jenkins : Build des modules
 Jenkins -> Gitlab: Bump version
-Jenkins -> Artifactory : Upload sur composer GOP
+Jenkins -> Artifactory : Upload sur artifactory
 @enduml
-
