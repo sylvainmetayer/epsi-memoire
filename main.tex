@@ -146,11 +146,12 @@
 \newpage
 	\addcontentsline{toc}{section}{Annexes}
 	\vspace*{\stretch{1}}
-		\centering \Huge \section*{\MakeUppercase{Annexes}}
+	\begin{Huge}
+		\centering \section*{\MakeUppercase{Annexes}}
+	\end{Huge}
 	\vspace*{\stretch{1}}
 \clearpage
 	\appendix
 	\pagenumbering{Roman}
-	%\renewcommand{\thesection}{\Roman{section}}%If there are no chapters
 	\input{content/annexes}
 \end{document}
