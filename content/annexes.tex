@@ -1,8 +1,8 @@
-\section{Schéma simplifié du cycle de vie d'un projet}
-\newImageAnnexe[H]{0.75}{cycle-vie-projet.png}{cycleVieProjet}{Schéma simplifié du cycle de vie d'un projet}
+\section{Schéma simplifié du cycle de vie d'un projet}\label{annexe:cycleVieProjet}
+\newImageAnnexe[H]{0.75}{cycle-vie-projet.png}{cycleVieProjetImage}{Schéma simplifié du cycle de vie d'un projet}
 
 \clearpage
-\section{Build continu d'un projet \naq}
+\section{Build continu d'un projet \naq}\label{annexe:build-continu}
 
 Sur ce schéma, on peut constater le retour rapide qui est fait au développeur une fois le code sorti de sa boucle locale (son poste de développeur). Les seules opérations effectuées sont l'installation des dépendances et les tests unitaire, qui prennent quelques secondes à s'exécuter.
 
@@ -10,20 +10,20 @@ Sur ce schéma, on peut constater le retour rapide qui est fait au développeur 
 	\centering
 	\includegraphics[scale=0.6,angle=-90]{img/build-continu.png}
 	\caption{Build continu d'un projet \naq}
-	\label{annexe:build-continu}
+	\label{annexe:build-continuImage}
 \end{figure}
 
 \clearpage
-\section{Déploiement d'une version d'un site \naq}
+\section{Déploiement d'une version d'un site \naq}\label{annexe:release-naq}
 
 Ce schéma permet de détailler les actions réalisées pour déployer une version d'un site \naq{} en production. Il commence par la demande d'un développeur de lancer un nouveau déploiement. Jenkins, l'outil d'intégration continue, va alors récupérer les dernières sources disponibles sur le \gls{SCM} afin de tester ces dernières. Si les tests sont concluants, Jenkins va alors construire l'application sous forme d'une archive incluant toutes les dépendances nécessaires, en lui attribuant un numéro de version unique incrémenté automatiquement. C'est cette archive qui sera ensuite déployée sur chaque environnement, à commencer par le staging, zone de test interne à l'équipe de développement. Une fois que l'équipe considère que les tests sont valides en staging, l'archive est alors déployée en recette afin d'être mise à disposition du client. Une fois les modifications validées par le client, l'archive est alors déployée en pré-production afin de faire les derniers tests dans un environnement identique à la production. Une fois ces tests passés avec succès, l'application est alors déployée en production et le code est alors rapatrié (\emph{mergé}) de la branche \frquote{develop} sur la branche \frquote{master}. 
 
 On peut constater qu'après chaque déploiement, des \frquote{smoke tests} sont effectués. Ces derniers sont des tests très basiques qui permettent de s'assurer que l'application est stable dans le cas nominal. On va alors tester, dans le cas d'un catalogue d'aide par exemple, que les pages d'aides renvoient bien des statuts \gls{HTTP} 200 ce qui indique que la page répond correctement. Son contenu n'est peut-être pas valide, mais cela indique au moins que le déploiement n'a pas entrainé d'erreurs critiques. 
 
-\newImageAnnexe{0.38}{release.png}{release-naq}{Déploiement d'une version d'un site \naq}
+\newImageAnnexe{0.38}{release.png}{release-naqImage}{Déploiement d'une version d'un site \naq}
 
 \clearpage
-\section{Matrice de développement \devops}
+\section{Matrice de développement \devops}\label{annexe:devops-matrice}
 
 Dans l'image ci-dessous, on peut distinguer une matrice permettant à une entreprise de situer son niveau dans l'adoption d'une démarche \devops. Cette matrice est constituée de 5 niveaux, chacun demandant plus ou moins d'effort pour être atteint et permet de juger 5 points clés, le premier étant la culture de l'entreprise et la façon dont elle est organisée. Cela correspond à la façon l'entreprise va prioriser le travail et organiser les décisions à prendre.
 
@@ -35,11 +35,11 @@ Le troisième point concerne la façon dont sont déployées les applications, l
 	\centering
 	\includegraphics[scale=0.62,angle=-90]{img/devops-matrice.jpg}
 	\caption{Matrice de développement \devops - \url{https://www.infoq.com}}
-	\label{annexe:devops-matrice}
+	\label{annexe:devops-matriceImage}
 \end{figure}
 
 \clearpage
-\section{Exemple d'erreurs détectées par PHPStan}
+\section{Exemple d'erreurs détectées par PHPStan}\label{annexe:php-error}
 
 Dans l'exemple ci-dessous, PHPStan retournera une erreur indiquant que le paramètre requis \frquote{\$type} n'a pas été renseigné, ainsi qu'une erreur indiquant que la méthode privée \frquote{internalBehaviour} ne peut être utilisée en dehors de la classe. 
 
@@ -81,5 +81,5 @@ class File {
 // ------ ------------------------------------------------------------------- 
 
 \end{minted}
-\label{annexe:php-error}
+\label{annexe:php-errorCode}
 %%TC:endignore
