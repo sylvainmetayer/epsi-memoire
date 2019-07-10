@@ -14,13 +14,13 @@ Sur ce schéma, on peut constater le retour rapide qui est fait au développeur 
 \end{figure}
 
 \clearpage
-\section{Flux de travail du déploiement d'une version d'un site \naq}
+\section{Déploiement d'une version d'un site \naq}
 
 Ce schéma permet de détailler les actions réalisées pour déployer une version d'un site \naq{} en production. Il commence par la demande d'un développeur de lancer un nouveau déploiement. Jenkins, l'outil d'intégration continue, va alors récupérer les dernières sources disponibles sur le \gls{SCM} afin de tester ces dernières. Si les tests sont concluants, Jenkins va alors construire l'application sous forme d'une archive incluant toutes les dépendances nécessaires, en lui attribuant un numéro de version unique incrémenté automatiquement. C'est cette archive qui sera ensuite déployée sur chaque environnement, à commencer par le staging, zone de test interne à l'équipe de développement. Une fois que l'équipe considère que les tests sont valides en staging, l'archive est alors déployée en recette afin d'être mise à disposition du client. Une fois les modifications validées par le client, l'archive est alors déployée en pré-production afin de faire les derniers tests dans un environnement identique à la production. Une fois ces tests passés avec succès, l'application est alors déployée en production et le code est alors rapatrié (\emph{mergé}) de la branche \frquote{develop} sur la branche \frquote{master}. 
 
 On peut constater qu'après chaque déploiement, des \frquote{smoke tests} sont effectués. Ces derniers sont des tests très basiques qui permettent de s'assurer que l'application est stable dans le cas nominal. On va alors tester, dans le cas d'un catalogue d'aide par exemple, que les pages d'aides renvoient bien des statuts \gls{HTTP} 200 ce qui indique que la page répond correctement. Son contenu n'est peut-être pas valide, mais cela indique au moins que le déploiement n'a pas entrainé d'erreurs critiques. 
 
-\newImageAnnexe{0.40}{release.png}{release-naq}{Flux de travail du déploiement d'une version d'un site \naq}
+\newImageAnnexe{0.38}{release.png}{release-naq}{Déploiement d'une version d'un site \naq}
 
 \clearpage
 \section{Matrice de développement \devops}
