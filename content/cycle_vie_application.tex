@@ -6,7 +6,7 @@ On peut ainsi représenter chacune de ses étapes avec le schéma présent sur l
 
 Le but de cette partie est de présenter, les une après les autres, les étapes présentes sur le schéma \ref{fig:cycleVieProjet}. Ce schéma est également disponible pour une meilleure lisibilité en annexe \ref{annexe:cycleVieProjet}. Il a été fait le choix de détailler le cycle de vie d'un projet dans le cadre d'une méthodologie agile, étant donné que c'est cette dernière qui est la plus utilisée pour pouvoir mettre en place une démarche d'automatisation sur un projet, mais des équivalences sont tout à fait possibles sur les autres méthodologies, modulant quelques petites modifications qui ne seront pas spécifiquement abordées.
 
-\newImage{0.30}{cycle-vie-projet.png}{Schéma simplifié du cycle de vie d'un projet}{cycleVieProjet}
+\newImage[H]{0.28}{cycle-vie-projet.png}{Schéma simplifié du cycle de vie d'un projet}{cycleVieProjet}
 
 \subsection{Répondre à un besoin}
 
@@ -67,11 +67,9 @@ C'est également durant cette phase que l'on va décrire les interactions de l'a
 	\item A des fins de statistiques sur le taux d'utilisation, le site utilisera peut-être un système de suivis statistiques tel que Matomo\footnote{\url{https://matomo.org}} 
 \end{itemize}
 
-Dans la méthodologie \gls{cycle_v}, l'expression du besoin est réalisée par le client sans forcément communiquer avec l'équipe de développement qui effectue alors ses propres interprétations si le document n'est pas assez précis, ce qui peut donner lieu à des erreurs d'interprétations et provoquer une différence entre ce que le client s'attend à recevoir et ce qu'il obtient réellement à la fin.
+Dans la méthodologie \gls{cycle_v}, l'expression du besoin est réalisée par le client sans forcément communiquer avec l'équipe de développement qui effectue alors ses propres interprétations si le document n'est pas assez précis, ce qui peut donner lieu à des erreurs d'interprétations et provoquer une différence entre ce que le client s'attend à recevoir et ce qu'il obtient réellement à la fin. Comme le montre l'image \ref{fig:gestionProjet}, souvent utilisée pour illustrer de manière caricaturale les dérives potentielles de la gestion de projet, plus le nombre de personnes est important sur un projet et plus la déformation de l'information (\emph{au travers des différents intermédiaires}) est présente, plus les différences d'interprétations peuvent être importantes. 
 
-\newImage[H]{0.48}{gestionProjet.jpg}{Communication au sein d'un projet, allégorie - \url{https://www.anyideas.net}}{gestionProjet}
-
-Comme le montre l'image \ref{fig:gestionProjet}, souvent utilisée pour illustrer de manière caricaturale les dérives potentielles de la gestion de projet, plus le nombre de personnes est important sur un projet et plus la déformation de l'information (\emph{au travers des différents intermédiaires}) est présente, plus les différences d'interprétations peuvent être importantes. 
+\newImage[H]{0.60}{gestionProjet.jpg}{Communication au sein d'un projet, allégorie - \url{https://www.anyideas.net}}{gestionProjet}
 
 Une méthode de travail alternative a commencé à s'imposer depuis plus d'une dizaine d'années et a pour objectif de combler ce manque de communication et de faire des retours rapides au client. Dans cette méthodologie, dites \emph{méthodologie agile}, la phase de réalisation est caractérisée sous forme de sprint, qui inclut non pas toutes les fonctionnalités demandées, mais seulement une partie, qui peut être réalisable dans un temps convenu avec le client. Le but est de développer les fonctionnalités les une après les autres et de pouvoir présenter quelque chose de concret au client lors des fins de sprint. Ainsi, à chaque itération, on se rapproche un peu plus de la version complète du produit, et on apporte constamment de la valeur ajoutée au produit. Le client dispose ainsi d'une version \emph{incomplète, mais utilisable} à chaque fin de sprint et c'est au fur et à mesure des itérations que son produit deviendra de plus en plus complet. Si, pour une raison ou une autre, le client vient à manquer de financement pour continuer le projet, il peut en théorie toujours utiliser la dernière version disponible, même si elle ne dispose pas de toutes les fonctionnalités souhaitées, en attendant de disposer de fonds supplémentaires pour pouvoir continuer les développements.
 
@@ -88,7 +86,7 @@ Il est ainsi nécessaire de trier les fonctionnalités par priorité. En effet, 
 
 Concernant la planification d'un projet, l'organisation de ce dernier passe souvent par l'élaboration de \glsplural{gantt} (ou équivalent) pour représenter graphiquement les jalons du cycle de vie d'une application (fin des développements, phase de qualification, mise en production, réunions périodiques de suivi, durée de chaque sprint\ldots).
 
-\newImage[H]{0.30}{gantt.png}{Exemple de Gantt - \url{wikimedia.org}}{gantt}
+\newImage[H]{0.40}{gantt.png}{Exemple de Gantt - \url{wikimedia.org}}{gantt}
 
 Un \gls{gantt} contient donc les différents jalons du cycle de vie d'une application, mais il est aussi nécessaire de prévoir les éléments pouvant être bloquants. Par exemple, dans le cas de collecte de données utilisateurs afin de réaliser un traitement, il convient de prévoir un délai pour effectuer les démarches auprès de la \gls{cnil}, prévoir un délai de validation du contrat avec les différents prestataires, les délais de réponse au sein de l'organisation afin de valider le projet, les démarches administratives (conditions générales d'utilisations à rédiger par une équipe dédiée)\ldots{} De plus, on peut également prévoir les dates du \gls{kickoff} et autres ateliers aidant à exprimer les besoins sur certaines fonctionnalités, en collaboration avec le client. Selon la granularité souhaitée, on pourra également y faire figurer, à titre indicatif pour les équipes en charge de la réalisation, les dates à partir de laquelle le client va faire la promotion de son application (\emph{et par conséquent, la date à laquelle l'application doit être plus ou moins prête})
 
