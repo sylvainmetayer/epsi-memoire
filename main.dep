@@ -12,11 +12,11 @@
   *{file}   {expl3-code.tex}{2018-06-14 v3}
   *{file}   {l3pdfmode.def}{2018-06-14 v3}
   *{package}{xparse}      {2018-05-12 v3}
-  *{package}{etoolbox}    {2018/02/11 v2.5e}
+  *{package}{etoolbox}    {2018/08/19 v2.5f}
   *{package}{translator}  {2018/01/04 v1.12}
   *{package}{keyval}      {2014/10/28 v1.15}
   *{package}{float}       {2001/11/08 v1.3d}
-  *{package}{glossaries}  {2018/06/01 v4.40}
+  *{package}{glossaries}  {2018/07/23 v4.41}
   *{package}{ifthen}      {2014/09/29 v1.1c}
   *{package}{xkeyval}     {2014/12/03 v2.7a}
   *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
@@ -43,18 +43,18 @@
   *{package}{fp-eqn}      {1995/04/03 v0.0}
   *{package}{fp-upn}      {1996/10/21 v0.0}
   *{package}{fp-eval}     {1995/04/03 v0.0}
-  *{package}{glossaries-compatible-307}{2018/06/01 v4.40}
+  *{package}{glossaries-compatible-307}{2018/07/23 v4.41}
   *{package}{tracklang}   {2018/05/13 v1.3.6}
   *{file}   {tracklang.tex}{2018/05/13 v1.3.6}
   *{file}   {glossaries-english.ldf}{2014/11/23 v1.0}
   *{file}   {glossaries-french.ldf}{2016/12/12 v1.1}
-  *{package}{glossary-hypernav}{2018/06/01 v4.40}
-  *{package}{glossary-list}{2018/06/01 v4.40}
-  *{package}{glossary-long}{2018/06/01 v4.40}
+  *{package}{glossary-hypernav}{2018/07/23 v4.41}
+  *{package}{glossary-list}{2018/07/23 v4.41}
+  *{package}{glossary-long}{2018/07/23 v4.41}
   *{package}{longtable}   {2014/10/28 v4.11}
-  *{package}{glossary-super}{2018/06/01 v4.40}
+  *{package}{glossary-super}{2018/07/23 v4.41}
   *{package}{supertabular}{2004/02/20 v4.1e}
-  *{package}{glossary-tree}{2018/06/01 v4.40}
+  *{package}{glossary-tree}{2018/07/23 v4.41}
   *{package}{biblatex}    {2018/03/04 v3.11}
   *{package}{pdftexcmds}  {2018/01/30 v0.27}
   *{package}{infwarerr}   {2016/05/16 v1.4}
