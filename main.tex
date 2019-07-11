@@ -68,12 +68,14 @@
 	\shorttoc{Sommaire}{2} % Only sections and subsection
 	\setlength{\parskip}{1.5em} % On modifie l'espace entre les paragraphes
 \newpage
-	\pagenumbering{\numerotationType} % start numerotation
 \iftoggle{paper}{
-\cleardoublepage
+\clearpage
+~
+\newpage
 }{
 \clearpage
 }
+	\pagenumbering{\numerotationType} % start numerotation
 	\section*{Introduction}
 	\addcontentsline{toc}{section}{Introduction} % ajout de la référence dans la table des matières
 	\input{content/introduction}
