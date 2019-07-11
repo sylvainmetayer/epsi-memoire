@@ -12,6 +12,8 @@ De plus, on peut penser que l'automatisation a un coût élevé, dû au fait que
 
 Nous avons également vus différents \gls{KPI} permettant de montrer les bénéfices à la mise en place d'une démarche \devops{} et d'automatisation. Ces \gls{KPI} sont variés et peuvent concerner des facteurs organisationnels ou financiers avec les notions de rentabilité financière (p. \pageref{ref-rentabilite-finance}). Mais elles sont également importantes pour les \dev{} et les \ops{} qui peuvent alors déterminer le temps de déploiement de l'application, les requêtes \gls{SQL} lentes ou encore la qualité du code produit au sein d'un projet.
 
+\clearpage
+
 La mise en place d'une démarche \devops{} passe aussi par une meilleure organisation du flux de travail des équipes. Il est possible de limiter le flux de travail en cours et ainsi d'éviter d'être retardé par le travail non planifié qui est souvent un facteur très coûteux, ce qui permet alors de gagner du temps et d'être plus efficace.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,12 +29,15 @@ L'automatisation nécessite également une certaine maturité de l'équipe et le
 Une \frquote{contrainte}\footnote{Selon les points de vue, cela est perçu comme un avantage, puisque toute application devrait disposer d'un système de log efficace} de l'automatisation est que pour qu'elle soit mise en place correctement, il est nécessaire de pouvoir tracer les différentes étapes et erreurs de l'application. Les logs deviennent alors essentiels, puisque l'application peut être déployée de façon automatique à tout moment. Il faut donc pouvoir déterminer les causes d'une erreur lorsqu'elle survient et les logs permettent alors de fournir un contexte détaillé menant à la résolution de l'incident.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
 
 Maintenant que nous avons évoqué les avantages et limites de l'automatisation au sein du cycle de vie d'une application, il convient de s'attarder sur ce qui n'est pas encore automatisé. Comme évoqué précédemment, cela dépend beaucoup de l'entreprise et du projet. Un client qui souhaite un site ou une application mobile temporaire pour couvrir les besoins d'un évènement sur 3 semaines n'aura certainement pas les mêmes attentes qu'un projet de refonte du parc web d'une région. Chaque équipe a également des attentes différentes sur l'automatisation, certains souhaiteront pouvoir réinstaller leur environnement rapidement, à l'aide de \glsplural{conteneur} qu'ils pourront recréer à loisir tandis que d'autres préféreront prioriser l'intégration de leur code au sein du \gls{cms} utilisé par le projet de façon continue afin de prévenir toute régression le plus vite possible. 
 
 \newImage[H]{0.6}{time-worth.png}{Temps disponible pour automatiser une tâche selon le temps qu'elle prend manuellement - \url{https://xkcd.com/1205/}}{time-worth}
 
 Comme on peut le voir sur la figure \ref{fig:time-worth}, il est possible d'estimer le temps à allouer pour automatiser une tâche selon sa fréquence et le temps qu'elle prend à effectuer manuellement. On obtient alors le temps que l'on peut passer à automatiser une tâche. S'il faut plus de temps pour automatiser cette tâche, alors le \gls{ROI} sur cette tâche sera négatif et cela pourrait relever d'une\frquote{perte de temps}. Bien que cette image soit pertinente, il est nécessaire d'être critique face à cette dernière. En effet, dans certains projets critiques (bancaire, aviation, site marchand avec un fort trafic\ldots), il est préférable de perdre du temps sur l'automatisation d'une tâche que risquer de voir une erreur arriver en production due à une action manuelle, ce qui pourrait entrainer une perte de revenus pour l'entreprise.
+
+\clearpage
 
 Auparavant\footnote{Bien que cela soit encore le cas dans de nombreux projets}, et pour caricaturer un petit peu, les développeurs s'occupaient de leur code, puis transmettaient ce dernier, parfois non ou mal testé aux responsables d'opérations qui devaient alors déployer l'application. Si le déploiement venait à échouer où si l'application consommait trop de ressources, elle était renvoyée aux développeurs pour un correctif. Les communications entre les équipes étaient faibles et confuses, ce qui entrainait souvent des tensions entre les équipes. Cela s'illustre très bien sur la figure \ref{fig:devops-wall}.
 
