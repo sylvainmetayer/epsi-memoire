@@ -1,6 +1,9 @@
 .DEFAULT_GOAL := help
 filename=main
 
+presentation: ## Run prestatnio in fullscree mode
+	impressive ${filename}.pdf
+
 build: clean ## Build the presentation without docker
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
