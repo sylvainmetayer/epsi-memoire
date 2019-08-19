@@ -6,10 +6,16 @@
 
 \documentclass[xcolor={dvipsnames}]{beamer}
 
+\usepackage{xkeyval}
+\usepackage[colorinlistoftodos,french]{todonotes}
+\usepackage{bookmark}
+\usepackage[french]{babel}
+\usepackage[autostyle]{csquotes}
+
+% Mettre les todos en lignes plutôt qu'en marge de la page
+\presetkeys{todonotes}{inline}{}
+
 \mode<presentation> {
-	\usepackage{bookmark}
-    \usepackage[french]{babel}
-    \usepackage[autostyle]{csquotes}
 
     \usetheme{Madrid}
     \usecolortheme[named=Farbe]{} % use a pre defined theme
@@ -55,7 +61,7 @@
 \date{\small 4 Septembre 2019 \\ 11h}
 
 % https://tex.stackexchange.com/a/15429
-\defbeamertemplate*{headline}{miniframes theme}
+%\defbeamertemplate*{headline}{miniframes theme}
 %{%
 %	\begin{beamercolorbox}{section in head/foot}
 %		\insertnavigation{\paperwidth}
@@ -88,6 +94,8 @@
 
 	%-----SLIDES-----%
 	\input{slides/introduction}
+	\input{slides/cycle-vie}
+	\input{slides/automatisation}
 	\input{slides/conclusion}
 	%----------------%
 	
