@@ -23,11 +23,11 @@ docker-soutenance: ## Build the presentation with docker without notes (default)
 	+$(MAKE) docker-build -C soutenance
 
 docker-soutenance-notes: ## Build notes soutenance
-	+$(MAKE) docker-build -C notes
+	+$(MAKE) notes -C soutenance
 	+$(MAKE) docker-build -C soutenance
 
 docker-soutenance-slides-notes: ## Build slides and notes soutenance
-	+$(MAKE) docker-build -C notesAndSlides
+	+$(MAKE) notesAndSlides -C soutenance
 	+$(MAKE) docker-build -C soutenance
 
 version: ## Print latest tag
