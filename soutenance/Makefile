@@ -23,3 +23,11 @@ todo: ## Find todo
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+notes: ## Enable only notes document
+	sed -i 's/\\setbeameroption{hide notes}/%\\setbeameroption{hide notes}/' main.tex
+	sed -i 's/%\\setbeameroption{show only notes}/\\setbeameroption{show only notes}/' main.tex
+
+notesAndSlides: ## Show slides and notes to the right
+	sed -i 's/%\\setbeameroption{show notes on second screen=right}/\\setbeameroption{show notes on second screen=right}/' main.tex
+	sed -i 's/\\setbeameroption{show only notes}/%\\setbeameroption{show only notes}/' main.tex

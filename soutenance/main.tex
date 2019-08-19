@@ -14,6 +14,7 @@
     \usetheme{Madrid}
     \usecolortheme[named=Farbe]{} % use a pre defined theme
     %\usecolortheme{ipbutfpr} % use a custom color theme
+    % http://mcclinews.free.fr/latex/introbeamer/elements_diaporama.html
 
     \setbeamertemplate{caption}[numbered]
     \setbeamertemplate{frametitle continuation}{\gdef\beamer@frametitle{}}
@@ -21,10 +22,10 @@
     \setbeamertemplate{footline}{
         \leavevmode%
         \hbox{%
-            \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-                \usebeamerfont{author in head/foot}\insertshortauthor
-            \end{beamercolorbox}%
-            \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+            %\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+            %    \usebeamerfont{author in head/foot}\insertshortauthor
+            %\end{beamercolorbox}%
+            \begin{beamercolorbox}[wd=1\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
                 \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{6em}
                 \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
             \end{beamercolorbox}
@@ -34,16 +35,16 @@
 
     \setbeamertemplate{navigation symbols}{}
     \usepackage{pgfpages}
-    \setbeameroption{show notes on second screen=right}
+    %\setbeameroption{show notes on second screen=right}
+	%\setbeameroption{show only notes}
+    \setbeameroption{hide notes}
+    
 }
 
-\title{Une soutenance}
+\title[Automatisation \& amélioration du cycle de vie d'une application]{Comment l’automatisation peut-elle permettre d’améliorer le cycle de vie d’une application ?}
 \author{Sylvain METAYER}
 
 \institute{\normalsize
-	EPSI \\
-    onepoint \\
-
     \begin{figure}[htb]
         \centering
         \includegraphics[width=0.20\textwidth]{../img/onepoint.jpg}
@@ -51,18 +52,49 @@
     \end{figure}
 }
 
-\date{\small
-Septembre 2019\\ coucou}
+\date{\small 4 Septembre 2019 \\ 11h}
+
+% https://tex.stackexchange.com/a/15429
+\defbeamertemplate*{headline}{miniframes theme}
+%{%
+%	\begin{beamercolorbox}{section in head/foot}
+%		\insertnavigation{\paperwidth}
+%	\end{beamercolorbox}%
+%}
+
+\definecolor{inversevideodessous}{rgb}{0.0, 0.28, 0.67}
+\definecolor{inversevideodessus}{rgb}{1,1,1}
+\usesectionheadtemplate
+{\colorbox{inversevideodessous}{\color{inversevideodessus} \insertsectionhead}}
+{\color{inversevideodessous} \insertsectionhead}
+\defbeamertemplate*{headline}{}
+{%
+	\begin{beamercolorbox}[ht=1.875ex,dp=0.75ex]{section in head/foot}%
+		\insertsectionnavigationhorizontal{\paperwidth}{}{}%
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[ht=1.875ex,dp=0.75ex]{subsection in head/foot}
+		\usebeamerfont{subsection in head/foot}
+		\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll%
+			\insertframenumber/\inserttotalframenumber\hskip2ex}%
+	\end{beamercolorbox}%
+}
 
 \begin{document}
-    \frame{\titlepage}
+    \frame[plain]{\titlepage}
+    
+    \begin{frame}[plain]{Plan}
+    	\tableofcontents
+	\end{frame}      
 
-    %----SLIDES----%
-    \input{slides/introduction}
-    \input{slides/test}
-    \input{slides/exemple}
-    \input{slides/autre-exemple}
-    \input{slides/conclusion}
+	%-----SLIDES-----%
+	\input{slides/introduction}
+	\input{slides/conclusion}
+	%----------------%
+	
+    %----SAMPLES----%
+    %\input{slides/test}
+    %\input{slides/exemple}
+    %\input{slides/autre-exemple}
     %--------------%
 
 \end{document}
