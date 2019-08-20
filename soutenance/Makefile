@@ -1,9 +1,13 @@
 .DEFAULT_GOAL := help
 filename=main
 
-presentation: ## Run prestatnio in fullscree mode
-	impressive ${filename}.pdf
+pympress-deps-debian: ## Debian install of pympress
+	sudo apt-get install python3 python3-pip libgtk-3-0 libpoppler-glib8 libcairo2 python3-gi python3-cairo python3-gi-cairo gir1.2-gtk-3.0 gir1.2-poppler-0.18
+	sudo pip3 install pympress
 
+presentation: build ## Run présentation mode
+	pympress main.pdf
+	
 build: clean ## Build the presentation without docker
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
@@ -24,10 +28,10 @@ todo: ## Find todo
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-notes: ## Enable only notes document
-	sed -i 's/\\setbeameroption{hide notes}/%\\setbeameroption{hide notes}/' main.tex
+notes:
+	sed -i 's/\\setbeameroption{show notes on second screen=right}/%\\setbeameroption{show notes on second screen=right}/' main.tex
 	sed -i 's/%\\setbeameroption{show only notes}/\\setbeameroption{show only notes}/' main.tex
 
-notesAndSlides: ## Show slides and notes to the right
-	sed -i 's/%\\setbeameroption{show notes on second screen=right}/\\setbeameroption{show notes on second screen=right}/' main.tex
+slidesOnly:
+	sed -i 's/\\setbeameroption{hide notes}/%\\setbeameroption{hide notes}/' main.tex
 	sed -i 's/\\setbeameroption{show only notes}/%\\setbeameroption{show only notes}/' main.tex
