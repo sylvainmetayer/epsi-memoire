@@ -6,7 +6,7 @@ pympress-deps-debian: ## Debian install of pympress
 	sudo pip3 install pympress
 
 presentation: build ## Run présentation mode
-	pympress main.pdf
+	pympress main.pdf -t 20
 	
 build: clean ## Build the presentation without docker
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
