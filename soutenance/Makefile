@@ -8,7 +8,12 @@ pympress-deps-debian: ## Debian install of pympress
 
 presentation: build ## Run présentation mode
 	pympress main.pdf -t 20
-	
+
+docker-presentation-x11: ## Run presentation with docker image, for X11 graphics environments.
+	xhost +
+	docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $$(pwd)/main.pdf:/data/main.pdf sylvainmetayer/pympress
+	xhost -
+
 build: clean ## Build the presentation without docker
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 	@lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
