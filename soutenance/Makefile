@@ -1,4 +1,5 @@
 .DEFAULT_GOAL := help
+.PHONY: slides pympress-deps-debian
 filename=main
 
 pympress-deps-debian: ## Debian install of pympress

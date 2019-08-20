@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: plantuml soutenance
+.PHONY: plantuml soutenance docker-soutenance docker-soutenance-slidesOnly
 filename=main
 
 build: clean ## Build the pdf without docker
