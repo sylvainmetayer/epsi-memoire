@@ -36,6 +36,12 @@
 	\missingfigure{Récap ansible déploiement}
 \end{frame}
 
+\begin{frame}{Backup}
+	TODO activé par une option. choix car staging déploiement fréquent et on ne souhaite pas forcément disposer de backup car environnement de test fréquemment remis à zéro. En recette, option activée. \\ 
+	
+	Actuellement, restauration manuelle. Prévu de faire un job de restauration.
+\end{frame}
+
 \subsection{Monitoring}
 \begin{frame}{\subsecname}
 	Logs
@@ -49,4 +55,8 @@
 	Compte nominatif de recette \\
 	permissions uniquement pour webserver + user de déploiement. 
 	User de déploiement dédié avec droit minimaux (sudo pour seulement quelques commandes)
+\end{frame}
+
+\begin{frame}{Bastion}
+	\centering \includegraphics[width=0.60\textwidth]{../img/bastion.png}
 \end{frame}

@@ -16,6 +16,9 @@ docker-build: clean ## Build the pdf with docker support
 	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "sylvainmetayer/latex-debian" lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex > /dev/null
 	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $$(pwd):/data "sylvainmetayer/latex-debian" lualatex --shell-escape -synctex=1 -interaction=nonstopmode -halt-on-error ${filename}.tex
 
+presentation: ## Soutenance presentation
+	+$(MAKE) presentation -C soutenance
+
 soutenance: ## Build the presentation
 	+$(MAKE) build -C soutenance
 
