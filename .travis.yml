@@ -7,9 +7,8 @@ env:
     - TODO_NAME=report_with_todo.pdf
     - PDF_NAME=M19_SYLVAINMETAYER.pdf
     - PAPER_NAME=M19_SYLVAINMETAYER_PAPER.pdf
-    - SOUTENANCE_NAME=soutenance.slides.pdf
-    - SOUTENANCE_NAME_NOTES=soutenance.notes.pdf
-    - SOUTENANCE_NAME_BOTH=soutenance.both.pdf
+    - SOUTENANCE_SLIDES=slides.pdf
+    - SOUTENANCE_PRESENTATION=presentation.pdf
 
 services:
   - docker
@@ -20,14 +19,13 @@ addons:
 
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
-  - make docker-build && mv main.pdf $TODO_NAME
+#  - make docker-build && mv main.pdf $TODO_NAME
   - make removeComment
   - make docker-build && mv main.pdf $PDF_NAME
   - make paper
   - make docker-build && mv main.pdf $PAPER_NAME
-  - make docker-soutenance && mv soutenance/main.pdf $SOUTENANCE_NAME_BOTH
-  - make docker-soutenance-notes && mv soutenance/main.pdf $SOUTENANCE_NAME_NOTES
-  - make docker-soutenance-slidesOnly && mv soutenance/main.pdf SOUTENANCE_NAME
+  - make docker-soutenance && mv soutenance/main.pdf $SOUTENANCE_PRESENTATION
+  - make docker-soutenance-slidesOnly && mv soutenance/main.pdf SOUTENANCE_SLIDES
 
 deploy:
   - provider: releases
@@ -38,10 +36,8 @@ deploy:
     file:
       - ./$PDF_NAME
       - ./$PAPER_NAME
-      - ./$TODO_NAME
-      - ./$SOUTENANCE_NAME
-      - ./$SOUTENANCE_NAME_NOTES
-      - ./$SOUTENANCE_NAME_BOTH
+      - ./$SOUTENANCE_SLIDES
+      - ./$SOUTENANCE_PRESENTATION
     on:
       branch: master
       tags: true
