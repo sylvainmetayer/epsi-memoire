@@ -25,7 +25,7 @@ script:
   - make paper
   - make docker-build && mv main.pdf $PAPER_NAME
   - make docker-soutenance && mv soutenance/main.pdf $SOUTENANCE_PRESENTATION
-  - make docker-soutenance-slidesOnly && mv soutenance/main.pdf SOUTENANCE_SLIDES
+  - make docker-soutenance-slidesOnly && mv soutenance/main.pdf $SOUTENANCE_SLIDES
 
 deploy:
   - provider: releases
