@@ -6,11 +6,8 @@
 
 \documentclass[xcolor={dvipsnames}]{beamer}
 
-\usepackage{xkeyval}
 \usepackage[colorinlistoftodos,french]{todonotes}
-\usepackage{bookmark}
 \usepackage[french]{babel}
-\usepackage[autostyle]{csquotes}
 \usepackage{multimedia}
 
 \setcounter{tocdepth}{1}
@@ -49,7 +46,23 @@
     \setbeameroption{show notes on second screen=right}
 	%\setbeameroption{show only notes}
     %\setbeameroption{hide notes}
-    
+
+	\definecolor{inversevideodessous}{rgb}{0.0, 0.28, 0.67}
+	\definecolor{inversevideodessus}{rgb}{1,1,1}
+	\usesectionheadtemplate
+	{\colorbox{inversevideodessous}{\color{inversevideodessus} \insertsectionhead}}
+	{\color{inversevideodessous} \insertsectionhead}
+	
+	\defbeamertemplate*{headline}{}
+	{%
+		\begin{beamercolorbox}[ht=1.875ex,dp=0.75ex]{section in head/foot}%
+			\insertsectionnavigationhorizontal{\paperwidth}{}{}%
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[ht=1.875ex,dp=0.75ex]{subsection in head/foot}
+			\usebeamerfont{subsection in head/foot}
+			\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}%
+		\end{beamercolorbox}%
+	}    
 }
 
 \title[Automatisation \& amélioration du cycle de vie d'une application]{Comment l’automatisation peut-elle permettre d’améliorer le cycle de vie d’une application ?}
@@ -58,37 +71,12 @@
 \institute{\normalsize
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=0.35\textwidth]{../img/onepoint.jpg}
-        \includegraphics[width=0.35\textwidth]{../img/epsi.jpg}
+        \includegraphics[width=0.35\textwidth]{img/onepoint.jpg}
+        \includegraphics[width=0.35\textwidth]{img/epsi.jpg}
     \end{figure}
 }
 
 \date{\small 4 Septembre 2019 \\ 11h}
-
-% https://tex.stackexchange.com/a/15429
-%\defbeamertemplate*{headline}{miniframes theme}
-%{%
-%	\begin{beamercolorbox}{section in head/foot}
-%		\insertnavigation{\paperwidth}
-%	\end{beamercolorbox}%
-%}
-
-\definecolor{inversevideodessous}{rgb}{0.0, 0.28, 0.67}
-\definecolor{inversevideodessus}{rgb}{1,1,1}
-\usesectionheadtemplate
-{\colorbox{inversevideodessous}{\color{inversevideodessus} \insertsectionhead}}
-{\color{inversevideodessous} \insertsectionhead}
-
-\defbeamertemplate*{headline}{}
-{%
-	\begin{beamercolorbox}[ht=1.875ex,dp=0.75ex]{section in head/foot}%
-		\insertsectionnavigationhorizontal{\paperwidth}{}{}%
-	\end{beamercolorbox}%
-	\begin{beamercolorbox}[ht=1.875ex,dp=0.75ex]{subsection in head/foot}
-		\usebeamerfont{subsection in head/foot}
-		\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}%
-	\end{beamercolorbox}%
-}
 
 \begin{document}
     \frame[plain]{\titlepage}

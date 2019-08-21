@@ -15,4 +15,5 @@ devops-qa => https://devops.com/devops-killed-qa/
 devops-wall => https://www.kovair.com/blog/the-battle-dev-vs-ops/
 devops-mvp => https://www.slideshare.net/y2ktim/dev-ops-mvp-101390691
 who are you => https://giphy.com/gifs/jimgaffigan-jim-gaffigan-4bjIn0rsYmutZRFKmQ
-
+web developer gif => https://giphy.com/gifs/YFkpsHWCsNUUo
+after =>https://giphy.com/gifs/newamsterdam-season-1-nbc-new-amsterdam-d91GYYVM8V0fFyTWWF 
