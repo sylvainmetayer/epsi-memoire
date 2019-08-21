@@ -17,7 +17,7 @@ T is "Mise en production"
 PJE is "Définition Besoin"
 
 @5
-T is "Bug production"
+T is "Problème production"
 PJE is "Réalisation"
 
 @6
