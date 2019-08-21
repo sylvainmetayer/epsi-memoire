@@ -1,0 +1,38 @@
+@startuml
+robust "Transport" as T
+robust "Portail Jeune" as PJE
+robust "Guides des Aides" as GDA
+
+@1
+T is "Définition Besoin"
+
+@2
+T is "Réalisation"
+
+@3
+T is "Qualification"
+
+@4
+T is "Mise en production"
+PJE is "Définition Besoin"
+
+@5
+T is "Bug production"
+PJE is "Réalisation"
+
+@6
+T is "Correctif"
+PJE is "Qualification"
+
+@7
+T is "Mise en production"
+PJE is "Mise en production"
+
+@8
+T is "Définition Besoin"
+GDA is "Définition Besoin"
+
+@9
+T is "Réalisation"
+GDA is "Réalisation"
+@enduml

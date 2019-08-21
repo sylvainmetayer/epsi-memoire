@@ -78,6 +78,7 @@
 \usesectionheadtemplate
 {\colorbox{inversevideodessous}{\color{inversevideodessus} \insertsectionhead}}
 {\color{inversevideodessous} \insertsectionhead}
+
 \defbeamertemplate*{headline}{}
 {%
 	\begin{beamercolorbox}[ht=1.875ex,dp=0.75ex]{section in head/foot}%
@@ -85,8 +86,7 @@
 	\end{beamercolorbox}%
 	\begin{beamercolorbox}[ht=1.875ex,dp=0.75ex]{subsection in head/foot}
 		\usebeamerfont{subsection in head/foot}
-		\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll%
-			\insertframenumber/\inserttotalframenumber\hskip2ex}%
+		\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}%
 	\end{beamercolorbox}%
 }
 
