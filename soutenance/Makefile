@@ -9,7 +9,7 @@ pympress-deps-debian: ## Debian install of pympress
 presentation: build ## Run présentation mode
 	pympress main.pdf -t 20
 
-docker-presentation-x11: ## Run presentation with docker image, for X11 graphics environments.
+docker-presentation: ## Run presentation with docker image.
 	xhost +
 	docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $$(pwd):/data -v $$(readlink -f $$(pwd)/img):/data/img sylvainmetayer/pympress pympress /data/main.pdf
 	xhost -
