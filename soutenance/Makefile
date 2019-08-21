@@ -11,7 +11,7 @@ presentation: build ## Run présentation mode
 
 docker-presentation-x11: ## Run presentation with docker image, for X11 graphics environments.
 	xhost +
-	docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $$(pwd)/main.pdf:/data/main.pdf sylvainmetayer/pympress
+	docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $$(pwd):/data sylvainmetayer/pympress pympress /data/main.pdf
 	xhost -
 
 build: clean ## Build the presentation without docker
