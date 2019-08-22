@@ -7,68 +7,130 @@
 	\end{block}
 \end{frame}
 
-\subsection{Raisons}
+\subsection{Pourquoi ?}
 \begin{frame}{\subsecname}
-	\begin{itemize}
-		\item Factorisation
-		\item Mise à disposition lente
-		\item Peu de personnes pour déployer, processus bloquant
-	\end{itemize}
-
-	\todo{plusieurs sites à déployer sur NAQ. Soucis de factorisation/ possibilité de pouvoir mettre à disposition du client une version rapidement. Avant : déploiement fait par une ou deux personnes manuellement. Maintenant : déploiement à la demande auto via clic bouton}
+	\begin{overprint}
+		\onslide<1> 
+		\begin{block}{Besoin de factorisation -- harmonisation}
+			\note[item]{Emergence de besoins communs selon les portails, mais pas de réelles solutions pour mutualiser les solutions. Copier coller entre les portails qui faisait que les mises à jour étaient compliquées. Besoin d'harmonisation entre les portails}
+			\missingfigure{Illustration}
+		\end{block}
+		\onslide<2> 
+		\begin{block}{Mise à disposition lente \& peu fréquente}
+			\note[item]{Une ou deux personnes disponible pour déployer. Déploiement manuel pouvant entrainer des erreurs.}
+			\missingfigure{Illustration}
+		\end{block}
+		\onslide<3> 
+		\begin{block}{Pas de réel environnement de test}
+			\note[item]{Staging qui était assez instable, déployé par qui pouvait selon les moments/compétences. Fait que les phases de tests étaient parfois sur les postes des développeurs au lieu d'être sur une vraie recette interne avant la recette client.}
+			\missingfigure{Illustration}
+		\end{block}
+	\end{overprint}
 \end{frame}
 
 \subsection{Gestion de projet}
-\begin{frame}{Partie Financière}
+\begin{frame}{KPI}
 	\begin{columns}[onlytextwidth]
-		\column{.47\textwidth}
-		\begin{block}{KPI}
+		\column{.4\textwidth}
+		\begin{block}{}
+			\todo{trouver d'autres exemple de KPI NAQ en réponses à d'éventuelles questions.}
 			\begin{itemize}
-				\item Temps de déploiement réduit
-				\item Time to market réduit
-				\item PRA
+				\item Temps de déploiement réduit (30min -- 1h $\rightarrow$ 5min)
+				\note[item]{Avant : construction package de livraison à la main, upload, potentielle erreur de droits... Du temps gagné, donc de l'argent }
+				\pause
 				\item Livrer de la valeur métier plus rapidement
+				\note[item]{Réduire délai entre poste développeur -- test -- recette -- preprod -- prod et passer plus de temps sur de la valeur métier que de la livraison}
 			\end{itemize}
-			\note{Exemple sur les projets NAQ, avant déploiements manuels de ~20min/site. Maintenant ~5min par site. Permet de livrer plus rapidment au client, et permet une reprise plus rapide}
 		\end{block}
-		\column{.47\textwidth}
-		\pause
-		\begin{figure}
-			\includegraphics[width=0.9\linewidth]{img/devops-objective.jpg}
-			\caption{Mouvement DevOps}
-			\label{fig:devops}
-		\end{figure}
+		\column{.5\textwidth}
+		\includegraphics[width=0.8\linewidth]{img/devops-objective.jpg}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Organisation}
-	\begin{block}{Flux de travail}
-		\begin{itemize}
-			\item Réduire WIP
-			\item Jira
-			\item Code review
-		\end{itemize}
-		\note{Exemple sur les projets NAQ, avant demande qui pouvait trainer plusieurs semaines en attente. Maintenant, on a des demandes qui ne sont pas travaillées tant qu'elles ne sont pas clairemeent définies par le client.}
-		\note{Code review qui se met petit à petit en place}
+\begin{frame}{Work In Progress}
+	\begin{block}{Objectif : le réduire}
 	\end{block}
-
-	\missingfigure{Code review + JIRA}
+	\note{Exemple sur les projets NAQ, avant demande qui pouvait trainer plusieurs semaines en attente. Maintenant, on a des demandes qui ne sont pas travaillées tant qu'elles ne sont pas clairement définies par le client.\\ JIRA pour s'organiser dans les tâches. Permet de voir que si quelqu'un sur plusieurs sujet, il vaut mieux le laisser se concentrer sur un et dispatcher les autres à d'autres personnes ou remettre ces tâches à une date ultérieure \\ Automatisation permet de réduire les bouchons d'étranglement de déploiement de tous les portails en même temps pour tester.}
+	\centering \movie[width=8cm,height=5cm]{}{img/wip.gif}
 \end{frame}
 
-\subsection[Développement]{Environnement de développement local}
-\begin{frame}{\subsecname}
-	IDE
-	
-	Initialisation ud projet : avant c'était chiant à faire. Maintenant c'est 5 commandes et 10min à peine
+\subsection[Développement]{Pratiques de développement}
+\begin{frame}{Code review}
+	\centering \includegraphics[width=0.50\textwidth]{img/code-review.png}
+	\note[item]{Entraine une plus grande communication au sein de l'équipe, et une résilience de l'information même s'il peut y avoir des différents comme l'illustre l'image ci-contre}
+\end{frame}
+
+\begin{frame}{Environnement local de développement}
+	\begin{overprint}
+		\onslide<1> 
+		\begin{block}{Installation d'un portail localement -- Avant}
+			\note[item]{README trop long, pas maintenu, pas assez détaillé, qui se contredise, différentes selon les portails}
+			\begin{columns}[onlytextwidth]
+				\column{.4\textwidth}
+				\begin{itemize}
+					\item Chaque portail à ses spécificités
+					\item \textasciitilde 15 étapes
+					\item 20 minutes $\longleftrightarrow$ 2 heures
+				\end{itemize}
+				\column{.5\textwidth}
+				\movie[width=6cm,height=6cm]{}{img/before-2.gif}
+			\end{columns}
+		\end{block}
+		\onslide<2> 
+		\begin{block}{Installation d'un portail localement -- Maintenant}
+			\note[item]{Même procédure d'installation pour tous les portails. Passage de Xh à 10min, temps de téléchargement des dépendances compris. Pile le temps de prendre un café !}
+			\begin{columns}[onlytextwidth]
+				\column{.4\textwidth}
+				\begin{itemize}
+					\item Identique pour tous les portails
+					\item 5 commandes
+					\item 10 minutes
+				\end{itemize}
+				\column{.5\textwidth}
+				\movie[width=6cm,height=6cm]{}{img/after3.gif}
+			\end{columns}
+		\end{block}
+		\onslide<3> 
+		\todo{Soit étoffer cette slide, soit la supprimer}
+		\begin{block}{Bonnes pratiques}
+			\begin{itemize}
+				\item PSR PHP (Propose a Standards Recommendation for PHP)
+			\end{itemize}
+		\end{block}
+	\end{overprint}
 \end{frame}
 
 \subsection{Tests}
 \begin{frame}{\subsecname}
-	Mise en place de POC de test (test unitaire avec mock de composant) \\
-	CI test dump de prod pour vérifier que les updates passent bien.
+	\begin{block}{Une mise en place timide}
+		\begin{itemize}
+			\item POC tests Drupal
+			\item Écriture de \frquote{modèle de tests} pour encourager la pratique
+			\item Build qualité -- test de mise à jour
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \subsection{Conduite de changement}
 \begin{frame}{\subsecname}
-	Cela ne s'est pas fait en un jour. Changement petit à petit, pour inclure de plus en plus de bonne pratiques \& et d'automatisation
+	\note[item]{Changement petit à petit, pour permettre une migration en douceur.}
+	\begin{columns}[onlytextwidth]
+		\column{.4\textwidth}
+		\begin{itemize}
+			\item Phase de réflexion commune
+			\note[item]{validation par plusieurs architectes applicatifs}
+			\item Accompagnement
+			\note[item]{pour les migrations/ changement d'habitude}
+			\item Dépréciation ancienne structure de code sur 2 mois
+			\note[item]{garantir que il n'y aura pas de perte de code ni d'historique lors de la transition}
+		\end{itemize}
+		\column{.6\textwidth}
+		\begin{figure}
+			\includegraphics[width=0.6\linewidth]{img/rome.jpg}
+			\captionsetup{labelformat=empty}
+			\caption{https://twitter.com/drzarrow/status/479245604552704000}
+			\label{fig:rome}
+		\end{figure}
+	\end{columns}
+	%Cela ne s'est pas fait en un jour. Changement petit à petit, pour inclure de plus en plus de bonne pratiques \& et d'automatisation
 \end{frame}

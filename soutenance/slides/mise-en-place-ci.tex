@@ -9,10 +9,12 @@
 	 \\
 	 un site 
 	 \\ gros projet de migration de l'existant qui était fait à la bonne franquette
+	 \todo{plantuml d'archi projet avant après}
 \end{frame}
 
 \subsection{Versions}
 \begin{frame}{Gestion de versions}
+	\todo{Selon timing, frame qui saute ?}
 	Primordial pour différencier les différentes version \\
 	avant : manuel \\
 	maintenant : auto sur 4 digits. Les deux premiers peuvent être incrémentés auto
@@ -20,7 +22,8 @@
 
 \subsection{Jenkins}
 \begin{frame}{\subsecname}
-	\missingfigure{Image des jobs jenkins}
+	\missingfigure{Screen des jobs jenkins pour tous les sites, et sur un portail}
+	\missingfigure{Screen artifactory composer}
 	Organisation par portail \\ 
 	Job sur SCM \\
 	Interaction avec artifactory pour gérer dépôts composer + stocker package \\
@@ -30,6 +33,7 @@
 \subsection{Déploiement}
 \begin{frame}{\subsecname}
 	build package avec dépendances (expliquer pourquoi)\\
+	avant déploiements manuels de ~20min/site. Maintenant ~5min par site. \\
 	checksum
 	upload
 	ansible
@@ -59,5 +63,5 @@
 \end{frame}
 
 \begin{frame}{Bastion}
-	\centering \includegraphics[width=0.60\textwidth]{../img/bastion.png}
+	\centering \includegraphics[width=0.60\textwidth]{img/bastion.png}
 \end{frame}
