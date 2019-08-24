@@ -9,23 +9,20 @@
 
 \subsection{Pourquoi ?}
 \begin{frame}{\subsecname}
-	\begin{overprint}
-		\onslide<1> 
-		\begin{block}{Besoin de factorisation -- harmonisation}
-			\note[item]{Emergence de besoins communs selon les portails, mais pas de réelles solutions pour mutualiser les solutions. Copier coller entre les portails qui faisait que les mises à jour étaient compliquées. Besoin d'harmonisation entre les portails}
-			\missingfigure{Illustration}
-		\end{block}
-		\onslide<2> 
-		\begin{block}{Mise à disposition lente \& peu fréquente}
-			\note[item]{Une ou deux personnes disponible pour déployer. Déploiement manuel pouvant entrainer des erreurs.}
-			\missingfigure{Illustration}
-		\end{block}
-		\onslide<3> 
-		\begin{block}{Pas de réel environnement de test}
-			\note[item]{Staging qui était assez instable, déployé par qui pouvait selon les moments/compétences. Fait que les phases de tests étaient parfois sur les postes des développeurs au lieu d'être sur une vraie recette interne avant la recette client.}
-			\missingfigure{Illustration}
-		\end{block}
-	\end{overprint}
+	\begin{center}
+		\begin{minipage}{0.5\textwidth}
+			\begin{itemize}
+				\item Besoin de factorisation -- harmonisation
+				\note[item]{Emergence de besoins communs selon les portails, mais pas de réelles solutions pour mutualiser les solutions. Copier coller entre les portails qui faisait que les mises à jour étaient compliquées. Besoin d'harmonisation entre les portails}
+				\pause
+				\item Mise à disposition lente \& peu fréquente
+				\note[item]{Une ou deux personnes disponible pour déployer. Déploiement manuel pouvant entrainer des erreurs.}
+				\pause
+				\item Pas de réel environnement de test
+				\note[item]{Staging qui était assez instable, déployé par qui pouvait selon les moments/compétences. Fait que les phases de tests étaient parfois sur les postes des développeurs au lieu d'être sur une vraie recette interne avant la recette client.}
+			\end{itemize}
+		\end{minipage}
+	\end{center}
 \end{frame}
 
 \subsection{Gestion de projet}
@@ -78,7 +75,7 @@
 		\end{block}
 		\onslide<2> 
 		\begin{block}{Installation d'un portail localement -- Maintenant}
-			\note[item]{Même procédure d'installation pour tous les portails. Passage de Xh à 10min, temps de téléchargement des dépendances compris. Pile le temps de prendre un café !}
+			\note[item]{Même procédure d'installation pour tous les portails. Garanti reproductiblité en définissant les modules actifs ainsi que certaines configurations communes. Passage de Xh à 10min, temps de téléchargement des dépendances compris. Pile le temps de prendre un café !}
 			\begin{columns}[onlytextwidth]
 				\column{.4\textwidth}
 				\begin{itemize}
@@ -86,23 +83,16 @@
 					\item 5 commandes
 					\item 10 minutes
 				\end{itemize}
-				\column{.5\textwidth}
-				\movie[width=6cm,height=6cm]{}{img/after3.gif}
+				\column{.3\textwidth}
+				\movie[width=4cm,height=4cm]{}{img/after.gif}
 			\end{columns}
-		\end{block}
-		\onslide<3> 
-		\todo{Soit étoffer cette slide, soit la supprimer}
-		\begin{block}{Bonnes pratiques}
-			\begin{itemize}
-				\item PSR PHP (Propose a Standards Recommendation for PHP)
-			\end{itemize}
 		\end{block}
 	\end{overprint}
 \end{frame}
 
 \subsection{Tests}
 \begin{frame}{\subsecname}
-	\begin{block}{Une mise en place timide}
+	\begin{block}{Mise en place}
 		\begin{itemize}
 			\item POC tests Drupal
 			\item Écriture de \frquote{modèle de tests} pour encourager la pratique

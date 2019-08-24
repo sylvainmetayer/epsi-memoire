@@ -1,0 +1,8 @@
+@startuml
+folder site
+folder modules
+folder themes
+
+site --> modules
+site --> themes
+@enduml
