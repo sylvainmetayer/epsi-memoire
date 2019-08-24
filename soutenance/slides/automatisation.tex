@@ -30,18 +30,18 @@
 	\begin{columns}[onlytextwidth]
 		\column{.4\textwidth}
 		\begin{block}{}
-			\todo{trouver d'autres exemple de KPI NAQ en réponses à d'éventuelles questions.}
 			\begin{itemize}
 				\item Temps de déploiement réduit (30min -- 1h $\rightarrow$ 5min)
 				\note[item]{Avant : construction package de livraison à la main, upload, potentielle erreur de droits... Du temps gagné, donc de l'argent }
 				\pause
-				\item Livrer de la valeur métier plus rapidement
+				\item Se concentrer sur la valeur métier
 				\note[item]{Réduire délai entre poste développeur -- test -- recette -- preprod -- prod et passer plus de temps sur de la valeur métier que de la livraison}
 			\end{itemize}
 		\end{block}
 		\column{.5\textwidth}
 		\includegraphics[width=0.8\linewidth]{img/devops-objective.jpg}
 	\end{columns}
+	\note[item]{KPI vracs : Rentabilité financière, car tâches prennent moins de temps, réduction time to market}
 \end{frame}
 
 \begin{frame}{Work In Progress}
@@ -52,12 +52,8 @@
 \end{frame}
 
 \subsection[Développement]{Pratiques de développement}
-\begin{frame}{Code review}
-	\centering \includegraphics[width=0.50\textwidth]{img/code-review.png}
-	\note[item]{Entraine une plus grande communication au sein de l'équipe, et une résilience de l'information même s'il peut y avoir des différents comme l'illustre l'image ci-contre}
-\end{frame}
 
-\begin{frame}{Environnement local de développement}
+\begin{frame}{Environnement de développement local}
 	\begin{overprint}
 		\onslide<1> 
 		\begin{block}{Installation d'un portail localement -- Avant}
@@ -84,7 +80,7 @@
 					\item 10 minutes
 				\end{itemize}
 				\column{.3\textwidth}
-				\movie[width=4cm,height=4cm]{}{img/after.gif}
+				\movie[width=4cm,height=4cm]{}{img/coffee.gif}
 			\end{columns}
 		\end{block}
 	\end{overprint}
@@ -99,6 +95,11 @@
 			\item Build qualité -- test de mise à jour
 		\end{itemize}
 	\end{block}
+\end{frame}
+
+\begin{frame}{Code review}
+\centering \includegraphics[width=0.50\textwidth]{img/code-review.png}
+\note[item]{Entraine une plus grande communication au sein de l'équipe, et une résilience de l'information même s'il peut y avoir des différents comme l'illustre l'image ci-contre}
 \end{frame}
 
 \subsection{Conduite de changement}
@@ -122,5 +123,4 @@
 			\label{fig:rome}
 		\end{figure}
 	\end{columns}
-	%Cela ne s'est pas fait en un jour. Changement petit à petit, pour inclure de plus en plus de bonne pratiques \& et d'automatisation
 \end{frame}

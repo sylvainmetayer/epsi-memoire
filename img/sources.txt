@@ -21,3 +21,4 @@ wip => https://giphy.com/gifs/work-simpsons-genius-EPlff1MynUFyM
 before 2 => https://giphy.com/gifs/lego-l0Iy88cWKqBeBN92o
 before3 => https://giphy.com/gifs/angry-computer-frustrated-ReImZejkBnqYU
 rome wasn't build in a day => https://twitter.com/drzarrow/status/479245604552704000
+coffee => https://media1.giphy.com/media/7qV3yswT0K8hi/giphy.gif?cid=790b761148ccf8c8a44953d4f273f94118de5b8e9bb2afb6&rid=giphy.gif
