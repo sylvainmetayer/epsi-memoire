@@ -4,7 +4,7 @@
 	\begin{overprint}
 		\onslide<1> 
 		\begin{block}{Avant}
-			\note[item]{Chaque portails différents, impossible de définir une façon de déployer commune. Maintenance difficile, impossible de réutiliser des modules d'un site dans un autres.}
+			\note[item]{Chaque portail différent. Maintenance difficile, impossible de réutiliser des modules d'un site dans un autres.}
 			\centering \includegraphics[width=0.25\textwidth]{img/before-drupal.png}
 		\end{block}
 		\onslide<2> 
@@ -19,9 +19,8 @@
 \begin{frame}{Gestion de versions}
 	\note[item]{Déploiement auto = version auto. Besoin de savoir ce qui est déployé à un instant T car plusieurs déploiement peuvent être fait par jour.}
 	\note[item]{avant: tag git manuel, mais pouvait être oublié sur l'un des trois dépôts. Inconvénient : si erreur de livraison, on ne pense pas forcément à retaguer les trois dépôt après le correctif. Peut être source de problème.}
-	\note[item]{Maintenant, modules commun mis à jour à chaque push des développeurs, permettant d'avoir des versions mineures. Version site exposé sur une route /version et mis à jour auto à chaque déploiement. On peut donc savoir la version d'un site et des modules communs qu'il utilisent à tout instant.}
+	\note[item]{Maintenant, modules commun mis à jour à chaque push des développeurs. On peut donc savoir la version d'un site et des modules communs qu'il utilisent à tout instant.}
 
-	
 	\begin{columns}[onlytextwidth]
 		\column{.4\textwidth}
 		\centering \includegraphics[width=1\textwidth]{img/final-version.png}
@@ -40,11 +39,10 @@
 
 \subsection{Jenkins}
 \begin{frame}{\subsecname}
-	\note[item]{Organisé par portail}
-	\note[item]{job identiques, versionnés pour maintenabilité}
-	\note[item]{log par étape afin de savoir les étapes réussies ou non}
-	\note[item]{Différents type de job : après push développeur, rapide, chaque nuit, qualité, dpéloiement, à la demande, possible par toute l'équipe.}
-	\note[item]{Alerte sur Teams (outil com interne) sur les résultats des builds}
+	\note<1>[item]{Organisé par portail, job identiques, versionnés pour maintenabilité}
+	\note<2>[item]{Différents type de job : après push développeur, rapide, chaque nuit, qualité, déploiement, à la demande, possible par toute l'équipe.}
+	\note<3>[item]{log par étape afin de savoir les étapes réussies ou non}
+	\note<3>[item]{Alerte sur Teams (outil com interne) sur les résultats des builds}
 	\begin{overprint}
 		\onslide<1>
 		\begin{block}{Par projet}
@@ -64,20 +62,18 @@
 \subsection{Déploiement}
 \begin{frame}{\subsecname}
 	\note[item]{Build package de livraison avec ses dépendances, pour éviter erreurs futures \& comportement non souhaités (coupure réseau...) au plus tôt}
-	\note[item]{Réduction déploiement de ~20min/site à 5min}
 	\note[item]{Utilisation d'ansible pour décrire les tâches exécutées. Egalement versionné}	\missingfigure{Récap ansible déploiement}
 \end{frame}
 
 \subsection{Sauvegarde}
 \begin{frame}{\subsecname}
-	TODO activé par une option. choix car staging déploiement fréquent et on ne souhaite pas forcément disposer de backup car environnement de test fréquemment remis à zéro. En recette, option activée. \\ 
-	
-	Actuellement, restauration manuelle. Prévu de faire un job de restauration.
+	\note[item]{Activable par option, permet sauvegarder base données + fichiers. Restauration pas encore automatisée mais prévue.}
 \end{frame}
 
 \subsection{Sécurité}
 \begin{frame}{Sécurité - Bastion}
-	Clés SSH  -- Compte nominatif de recette -- permissions uniquement pour webserver + user de déploiement. \\
-	User de déploiement dédié avec droit minimaux (sudo pour seulement quelques commandes)
+	\note[item]{Clé SSH, compte nominatif, permissions restreinte, user de déploiement}
+	\note[item]{bastion ssh qui permet de se couper quand pas nécessaire}
+	\pause
 	\centering \includegraphics[width=0.60\textwidth]{img/bastion.png}
 \end{frame}

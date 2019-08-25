@@ -13,13 +13,13 @@
 		\begin{minipage}{0.5\textwidth}
 			\begin{itemize}
 				\item Besoin de factorisation -- harmonisation
-				\note[item]{Emergence de besoins communs selon les portails, mais pas de réelles solutions pour mutualiser les solutions. Copier coller entre les portails qui faisait que les mises à jour étaient compliquées. Besoin d'harmonisation entre les portails}
+				\note[item]{Besoin d'harmonisation, besoins communs entre portail (mail) et mises à jour de ces derniers compliqués.}
 				\pause
 				\item Mise à disposition lente \& peu fréquente
 				\note[item]{Une ou deux personnes disponible pour déployer. Déploiement manuel pouvant entrainer des erreurs.}
 				\pause
 				\item Pas de réel environnement de test
-				\note[item]{Staging qui était assez instable, déployé par qui pouvait selon les moments/compétences. Fait que les phases de tests étaient parfois sur les postes des développeurs au lieu d'être sur une vraie recette interne avant la recette client.}
+				\note[item]{Staging qui n'était pas déployé automatiquement et pas forcément à jour.}
 			\end{itemize}
 		\end{minipage}
 	\end{center}
@@ -47,8 +47,13 @@
 \begin{frame}{Work In Progress}
 	\begin{block}{Objectif : le réduire}
 	\end{block}
-	\note{Exemple sur les projets NAQ, avant demande qui pouvait trainer plusieurs semaines en attente. Maintenant, on a des demandes qui ne sont pas travaillées tant qu'elles ne sont pas clairement définies par le client.\\ JIRA pour s'organiser dans les tâches. Permet de voir que si quelqu'un sur plusieurs sujet, il vaut mieux le laisser se concentrer sur un et dispatcher les autres à d'autres personnes ou remettre ces tâches à une date ultérieure \\ Automatisation permet de réduire les bouchons d'étranglement de déploiement de tous les portails en même temps pour tester.}
+	\note[item]{JIRA pour s'organiser dans les tâches. Permet de voir que si quelqu'un sur plusieurs sujet, cest qu'il y a un soucis et qu'il y a un potentiel blocage}
 	\centering \movie[width=8cm,height=5cm]{}{img/wip.gif}
+\end{frame}
+
+\begin{frame}{Code review}
+	\centering \includegraphics[width=0.50\textwidth]{img/code-review.png}
+	\note[item]{Entraine une plus grande communication au sein de l'équipe, et une résilience de l'information même s'il peut y avoir des différents comme l'illustre l'image ci-contre}
 \end{frame}
 
 \subsection[Développement]{Pratiques de développement}
@@ -97,19 +102,13 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{Code review}
-\centering \includegraphics[width=0.50\textwidth]{img/code-review.png}
-\note[item]{Entraine une plus grande communication au sein de l'équipe, et une résilience de l'information même s'il peut y avoir des différents comme l'illustre l'image ci-contre}
-\end{frame}
-
 \subsection{Conduite de changement}
 \begin{frame}{\subsecname}
-	\note[item]{Changement petit à petit, pour permettre une migration en douceur.}
 	\begin{columns}[onlytextwidth]
 		\column{.4\textwidth}
 		\begin{itemize}
 			\item Phase de réflexion commune
-			\note[item]{validation par plusieurs architectes applicatifs}
+			\note[item]{travail \& validation par plusieurs architectes applicatifs}
 			\item Accompagnement
 			\note[item]{pour les migrations/ changement d'habitude}
 			\item Dépréciation ancienne structure de code sur 2 mois
