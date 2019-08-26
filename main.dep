@@ -204,8 +204,6 @@
   *{package}{lscape}      {2000/10/22 v3.01}
   *{package}{nameref}     {2016/05/21 v2.44}
   *{package}{gettitlestring}{2016/05/16 v1.5}
-  *{file}   {main.out}    {0000/00/00 v0.0}
-  *{file}   {main.out}    {0000/00/00 v0.0}
   *{file}   {content/cover.tex}{0000/00/00 v0.0}
   *{file}   {mt-cmr.cfg}  {2013/05/19 v2.2}
   *{file}   {img/epsi.jpg}{0000/00/00 v0.0}
@@ -238,7 +236,6 @@
   *{file}   {main.acr}    {0000/00/00 v0.0}
   *{file}   {main.gls}    {0000/00/00 v0.0}
   *{file}   {content/annexes.tex}{0000/00/00 v0.0}
-  *{file}   {img/cycle-vie-projet.png}{0000/00/00 v0.0}
   *{file}   {img/build-continu.png}{0000/00/00 v0.0}
   *{file}   {img/release.png}{0000/00/00 v0.0}
   *{file}   {img/devops-matrice.jpg}{0000/00/00 v0.0}

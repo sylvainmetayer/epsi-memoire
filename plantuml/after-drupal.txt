@@ -1,21 +1,31 @@
 @startuml
 folder starterkit [
-Site modèle de référence pour tous les portails
+Site modèle
 ]
 folder commonsModules [
-modules communs exposés dans un artifactory
+modules communs 
 ]
 folder commonsThemes [
-thèmes communs exposés dans un artifactory
+thèmes communs 
 ]
 
-starterkit --> commonsModules
-starterkit --> commonsThemes
+database artifactory [
+Artifactory composer
+]
+
+'starterkit --> commonsModules
+'starterkit --> commonsThemes
 
 folder site [
 Le site inclus maintenant ses modules et thèmes "custom"
 ]
 
-commonsModules --> site: utilisé sur
-commonsThemes --> site: utilisé sur
+commonsModules --> artifactory: stocké sur
+commonsThemes --> artifactory: stocké sur
+
+site ..> artifactory: utilise 
+
+'commonsModules --> site: utilisé sur
+'commonsThemes --> site: utilisé sur
+starterkit <.. site : se base sur
 @enduml

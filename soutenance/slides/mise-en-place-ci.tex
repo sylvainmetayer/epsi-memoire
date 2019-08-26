@@ -5,25 +5,25 @@
 		\onslide<1> 
 		\begin{block}{Avant}
 			\note<1>[item]{Chaque portail différent. Maintenance difficile, impossible de réutiliser des modules d'un site dans un autres.}
-			\centering \includegraphics[width=0.25\textwidth]{img/before-drupal.png}
+			\centering \includegraphics[width=0.3\textwidth]{img/before-drupal.png}
 		\end{block}
 		\onslide<2> 
 		\begin{block}{Après}
 			\note<2>[item]{Mise en place d'un modèle de référence pour tous les portails. Regroupement modules communs dans un dépôt à part qui sera exposé sur un artifactory pour être réutilisé par les autres sites, en gérant les versions. Travail de migration de tous les portails existants}
-			\centering \includegraphics[width=0.50\textwidth]{img/after-drupal.png}
+			\centering \includegraphics[width=1\textwidth]{img/after-drupal.png}
 		\end{block}
 	\end{overprint}
 \end{frame}
 
 \subsection{Versions}
 \begin{frame}{Gestion de versions}
-	\note[item]{Déploiement auto = version auto. Besoin de savoir ce qui est déployé à un instant T car plusieurs déploiement peuvent être fait par jour.}
-	\note[item]{avant: tag git manuel, mais pouvait être oublié sur l'un des trois dépôts. Inconvénient : si erreur de livraison, on ne pense pas forcément à retaguer les trois dépôt après le correctif. Peut être source de problème.}
-	\note[item]{Maintenant, modules commun mis à jour à chaque push des développeurs. On peut donc savoir la version d'un site et des modules communs qu'il utilisent à tout instant.}
+	\note[item]{Déploiement auto = version auto. Besoin de savoir ce qui est déployé à un instant T car sinon on peut se retrouver sans savoir ce qui est déployé (sans pour autant être dans le cas de yoda).}
+	\note[item]{avant: tag git manuel, mais pouvait être oublié sur l'un des trois dépôts. Peut être source de problème.}
+	\note[item]{Maintenant, auto tag + version mise à jour à chaque déploiement}
 
 	\begin{columns}[onlytextwidth]
 		\column{.4\textwidth}
-		\centering \includegraphics[width=1\textwidth]{img/final-version.png}
+		\centering \includegraphics[width=1\textwidth]{img/version-yoda.jpg}
 		\pause
 		\column{.5\textwidth}
 		\begin{block}{}
@@ -37,24 +37,23 @@
 	\end{columns}
 \end{frame}
 
-\subsection{Jenkins}
+\subsection{Intégration continue}
 \begin{frame}{\subsecname}
-	\note<1>[item]{Organisé par portail, job identiques, versionnés pour maintenabilité}
 	\note<2>[item]{Différents type de job : après push développeur, rapide, chaque nuit, qualité, déploiement, à la demande, possible par toute l'équipe.}
 	\note<3>[item]{log par étape afin de savoir les étapes réussies ou non}
 	\note<3>[item]{Alerte sur Teams (outil com interne) sur les résultats des builds}
 	\begin{overprint}
 		\onslide<1>
-		\begin{block}{Par projet}
-			\centering \includegraphics[width=0.8\textwidth]{img/job-naq.png}
+		\begin{block}{Jenkins}
+			\centering \includegraphics[width=0.25\textwidth]{img/jenkins.png}
 		\end{block}
 		\onslide<2>
 		\begin{block}{Différents besoins}
-			\centering \includegraphics[width=0.8\textwidth]{img/job-starter.png}
+			\centering \includegraphics[width=1\textwidth]{img/job-transport.png}
 		\end{block}
 		\onslide<3>
 		\begin{block}{Suivi des étapes}
-			\centering \includegraphics[width=0.8\textwidth]{img/job-regie-staging.png}
+			\centering \includegraphics[width=1\textwidth]{img/job-transport-staging.png}
 		\end{block}
 	\end{overprint}
 \end{frame}
@@ -68,12 +67,17 @@
 \subsection{Sauvegarde}
 \begin{frame}{\subsecname}
 	\note[item]{Activable par option, permet sauvegarder base données + fichiers. Restauration pas encore automatisée mais prévue.}
+	\begin{figure}
+		\includegraphics[width=0.6\linewidth]{img/backup.jpg}
+		\captionsetup{labelformat=empty}
+		\caption{Photo by Markus Spiske on Unsplash}
+		\label{fig:backup}
+	\end{figure}
 \end{frame}
 
 \subsection{Sécurité}
 \begin{frame}{Sécurité - Bastion}
 	\note[item]{Clé SSH, compte nominatif, permissions restreinte, user de déploiement}
 	\note[item]{bastion ssh qui permet de se couper quand pas nécessaire}
-	\pause
 	\centering \includegraphics[width=0.60\textwidth]{img/bastion.png}
 \end{frame}

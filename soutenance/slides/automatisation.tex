@@ -15,8 +15,8 @@
 				\item Besoin de factorisation -- harmonisation
 				\note[item]{Besoin d'harmonisation, besoins communs entre portail (mail) et mises à jour de ces derniers compliqués.}
 				\pause
-				\item Besoin de déploiement plus rapide
-				\note[item]{Une ou deux personnes disponible pour déployer. Déploiement manuel pouvant entrainer des erreurs.}
+				\item Faciliter les tests
+				\note[item]{Tests auto, on en reparle après}
 				\pause
 				\item Pas de réel environnement de test
 				\note[item]{Staging qui n'était pas déployé automatiquement et pas forcément à jour.}
@@ -25,16 +25,27 @@
 	\end{center}
 \end{frame}
 
+\subsection{Tests}
+\begin{frame}{\subsecname}
+\begin{block}{Mise en place}
+	\begin{itemize}
+		\item Preuve de concept des tests Drupal
+		\item Écriture de \frquote{modèles de tests} pour encourager la pratique
+		\item Build qualité -- test de mise à jour
+	\end{itemize}
+\end{block}
+\end{frame}
+
 \subsection{Gestion de projet}
 \begin{frame}{KPI}
 	\begin{columns}[onlytextwidth]
 		\column{.4\textwidth}
 		\begin{block}{}
 			\begin{itemize}
-				\item Temps de déploiement réduit (30min -- 45min $\rightarrow$ 5min)
+				\item Temps de déploiement réduit (\textasciitilde30min $\rightarrow$ 5min)
 				\note[item]{Avant : construction package de livraison à la main, upload, potentielle erreur de droits... Du temps gagné, donc de l'argent }
 				\pause
-				\item Se concentrer sur la valeur métier
+				\item Livrer plus rapidement de la valeur métier
 				\note[item]{Réduire délai entre poste développeur -- test -- recette -- preprod -- prod et passer plus de temps sur de la valeur métier que de la livraison}
 			\end{itemize}
 		\end{block}
@@ -62,16 +73,16 @@
 	\begin{overprint}
 		\onslide<1> 
 		\begin{block}{Installation d'un portail localement -- Avant}
-			\note[item]{README trop long, pas maintenu, pas assez détaillé, qui se contredise, différentes selon les portails}
+			\note[item]{README trop long, pas maintenu, pas assez détaillé, qui se contredise, différentes selon les portails, doc PAS A JOUR}
 			\begin{columns}[onlytextwidth]
 				\column{.4\textwidth}
 				\begin{itemize}
-					\item Chaque portail a ses spécificités
-					\item \textasciitilde 15 étapes
+					\item Chaque portail différent
+					\item \textasciitilde 10 étapes
 					\item 20 minutes $\longleftrightarrow$ 2 heures
 				\end{itemize}
 				\column{.5\textwidth}
-				\movie[width=6cm,height=6cm]{}{img/before-2.gif}
+				\movie[width=6cm,height=6cm]{}{img/no-please-no.gif}
 			\end{columns}
 		\end{block}
 		\onslide<2> 
@@ -89,17 +100,6 @@
 			\end{columns}
 		\end{block}
 	\end{overprint}
-\end{frame}
-
-\subsection{Tests}
-\begin{frame}{\subsecname}
-	\begin{block}{Mise en place}
-		\begin{itemize}
-			\item Preuve de concept des tests Drupal
-			\item Écriture de \frquote{modèles de tests} pour encourager la pratique
-			\item Build qualité -- test de mise à jour
-		\end{itemize}
-	\end{block}
 \end{frame}
 
 \subsection{Conduite de changement}

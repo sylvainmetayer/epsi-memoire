@@ -18,19 +18,20 @@ PJE is "Définition Besoin"
 
 @5
 T is "Problème production"
-PJE is "Réalisation"
+PJE is "Définition Besoin"
 
 @6
 T is "Correctif"
-PJE is "Qualification"
+PJE is "Réalisation"
 
 @7
 T is "Mise en production"
-PJE is "Mise en production"
+PJE is "Qualification"
 
 @8
 T is "Définition Besoin"
 GDA is "Définition Besoin"
+PJE is "Mise en production"
 
 @9
 T is "Réalisation"

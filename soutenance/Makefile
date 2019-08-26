@@ -7,7 +7,7 @@ pympress-deps-debian: ## Debian install of pympress
 	sudo pip3 install pympress
 
 presentation: build ## Run présentation mode
-	pympress main.pdf -t 20
+	pympress main.pdf
 
 docker-presentation: ## Run presentation with docker image.
 	xhost +
