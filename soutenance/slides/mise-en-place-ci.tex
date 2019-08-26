@@ -4,12 +4,12 @@
 	\begin{overprint}
 		\onslide<1> 
 		\begin{block}{Avant}
-			\note[item]{Chaque portail différent. Maintenance difficile, impossible de réutiliser des modules d'un site dans un autres.}
+			\note<1>[item]{Chaque portail différent. Maintenance difficile, impossible de réutiliser des modules d'un site dans un autres.}
 			\centering \includegraphics[width=0.25\textwidth]{img/before-drupal.png}
 		\end{block}
 		\onslide<2> 
 		\begin{block}{Après}
-			\note[item]{Mise en place d'un modèle de référence pour tous les portails. Regroupement modules communs dans un dépôt à part qui sera exposé sur un artifactory pour être réutilisé par les autres sites, en gérant les versions. Travail de migration de tous les portails existants}
+			\note<2>[item]{Mise en place d'un modèle de référence pour tous les portails. Regroupement modules communs dans un dépôt à part qui sera exposé sur un artifactory pour être réutilisé par les autres sites, en gérant les versions. Travail de migration de tous les portails existants}
 			\centering \includegraphics[width=0.50\textwidth]{img/after-drupal.png}
 		\end{block}
 	\end{overprint}
@@ -62,7 +62,7 @@
 \subsection{Déploiement}
 \begin{frame}{\subsecname}
 	\note[item]{Build package de livraison avec ses dépendances, pour éviter erreurs futures \& comportement non souhaités (coupure réseau...) au plus tôt}
-	\note[item]{Utilisation d'ansible pour décrire les tâches exécutées. Egalement versionné}	\missingfigure{Récap ansible déploiement}
+	\note[item]{Utilisation d'ansible pour décrire les tâches exécutées. Egalement versionné}	\centering \includegraphics[width=1\textwidth]{img/ansible-recap.png}
 \end{frame}
 
 \subsection{Sauvegarde}
