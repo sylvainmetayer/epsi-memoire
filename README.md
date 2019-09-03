@@ -10,6 +10,7 @@
 Comment l'automatisation peut permettre d'améliorer le cycle de vie d'une application ?
 
 - [Version 1.0 (document rendu)](https://github.com/sylvainmetayer/epsi-memoire/releases/tag/v1.0.0)
+- [Version 1.1 (date de soutenance)](https://github.com/sylvainmetayer/epsi-memoire/releases/tag/v1.1.0)
 
 ## Pre-requis
 
